@@ -25,7 +25,7 @@
   } ],
   "pkColumn" : null,
   "otherColumn" : null,
-  "savePackageName" : "com.qlu.entity",
-  "savePath" : "./src/main/java/com/qlu/entity",
+  "savePackageName" : "com.qlu",
+  "savePath" : "./src/main/java/com/qlu",
   "saveModelName" : "QLU_ClubsMS"
 }

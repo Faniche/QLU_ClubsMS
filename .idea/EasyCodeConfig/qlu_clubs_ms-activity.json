@@ -53,7 +53,7 @@
   } ],
   "pkColumn" : null,
   "otherColumn" : null,
-  "savePackageName" : "com.qlu.dao",
-  "savePath" : "./src/main/java/com/qlu/dao",
+  "savePackageName" : "com.qlu",
+  "savePath" : "./src/main/java/com/qlu",
   "saveModelName" : "QLU_ClubsMS"
 }

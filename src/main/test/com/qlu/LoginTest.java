@@ -14,13 +14,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class LoginTest {
 
     @Autowired
-    private LoginDao loginDao;
+    private LoginService loginService;
 
     @Test
     public void selectOne(){
         Login login = null;
-        System.out.println(loginDao.equals(null));
-        login = loginDao.queryById(3);
+        login = loginService.queryById(3);
         try {
             if (login == null) {
                 System.out.println(" ");

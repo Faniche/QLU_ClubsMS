@@ -3,7 +3,6 @@ package com.qlu.controller;
 import com.qlu.entity.Login;
 import com.qlu.service.LoginService;
 import org.springframework.web.bind.annotation.*;
-
 import javax.annotation.Resource;
 
 /**
@@ -29,7 +28,7 @@ public class LoginController {
      */
     @GetMapping("selectOne")
     public Login selectOne(Integer id) {
-        return this.loginService.queryById(1);
+        return this.loginService.queryById(id);
     }
 
 }
