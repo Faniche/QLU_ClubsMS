@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qlu.dao.ApplyDao">
+
+    <resultMap type="com.qlu.entity.Apply" id="ApplyMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="type" column="type" jdbcType="INTEGER"/>
+        <result property="proposerid" column="proposerId" jdbcType="INTEGER"/>
+        <result property="clubid" column="clubId" jdbcType="INTEGER"/>
+        <result property="date" column="date" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="ApplyMap">
+        select
+          id, type, proposerId, clubId, date
+        from qlu_clubs_ms.apply
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="ApplyMap">
+        select
+          id, type, proposerId, clubId, date
+        from qlu_clubs_ms.apply
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="ApplyMap">
+        select
+          id, type, proposerId, clubId, date
+        from qlu_clubs_ms.apply
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="type != null">
+                and type = #{type}
+            </if>
+            <if test="proposerid != null">
+                and proposerId = #{proposerid}
+            </if>
+            <if test="clubid != null">
+                and clubId = #{clubid}
+            </if>
+            <if test="date != null">
+                and date = #{date}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into qlu_clubs_ms.apply(type, proposerId, clubId, date)
+        values (#{type}, #{proposerid}, #{clubid}, #{date})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update qlu_clubs_ms.apply
+        <set>
+            <if test="type != null">
+                type = #{type},
+            </if>
+            <if test="proposerid != null">
+                proposerId = #{proposerid},
+            </if>
+            <if test="clubid != null">
+                clubId = #{clubid},
+            </if>
+            <if test="date != null">
+                date = #{date},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from qlu_clubs_ms.apply where id = #{id}
+    </delete>
+
+</mapper>

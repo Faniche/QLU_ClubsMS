@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qlu.dao.ActivityDao">
+
+    <resultMap type="com.qlu.entity.Activity" id="ActivityMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="clubsid" column="clubsId" jdbcType="INTEGER"/>
+        <result property="topic" column="topic" jdbcType="VARCHAR"/>
+        <result property="time" column="time" jdbcType="TIMESTAMP"/>
+        <result property="location" column="location" jdbcType="VARCHAR"/>
+        <result property="money" column="money" jdbcType="INTEGER"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="ActivityMap">
+        select
+          id, clubsId, topic, time, location, money, status
+        from qlu_clubs_ms.activity
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="ActivityMap">
+        select
+          id, clubsId, topic, time, location, money, status
+        from qlu_clubs_ms.activity
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="ActivityMap">
+        select
+          id, clubsId, topic, time, location, money, status
+        from qlu_clubs_ms.activity
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="clubsid != null">
+                and clubsId = #{clubsid}
+            </if>
+            <if test="topic != null and topic != ''">
+                and topic = #{topic}
+            </if>
+            <if test="time != null">
+                and time = #{time}
+            </if>
+            <if test="location != null and location != ''">
+                and location = #{location}
+            </if>
+            <if test="money != null">
+                and money = #{money}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into qlu_clubs_ms.activity(clubsId, topic, time, location, money, status)
+        values (#{clubsid}, #{topic}, #{time}, #{location}, #{money}, #{status})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update qlu_clubs_ms.activity
+        <set>
+            <if test="clubsid != null">
+                clubsId = #{clubsid},
+            </if>
+            <if test="topic != null and topic != ''">
+                topic = #{topic},
+            </if>
+            <if test="time != null">
+                time = #{time},
+            </if>
+            <if test="location != null and location != ''">
+                location = #{location},
+            </if>
+            <if test="money != null">
+                money = #{money},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from qlu_clubs_ms.activity where id = #{id}
+    </delete>
+
+</mapper>
