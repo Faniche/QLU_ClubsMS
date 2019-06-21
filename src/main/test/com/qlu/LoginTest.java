@@ -20,7 +20,7 @@ public class LoginTest {
     public void selectOne(){
         Login login = null;
         System.out.println(loginDao.equals(null));
-        login = loginDao.queryById(1);
+        login = loginDao.queryById(3);
         try {
             if (login == null) {
                 System.out.println(" ");
