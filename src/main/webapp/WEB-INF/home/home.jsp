@@ -134,7 +134,7 @@
                 <div class="carousel-testimony owl-carousel">
                     <div class="item">
                         <div class="speaker">
-                            <img src="images/basketball.png" class="img-fluid" alt="Colorlib HTML5 Template">
+                            <img src="images/index/basketball.png" class="img-fluid" alt="Colorlib HTML5 Template">
                             <div class="text text-center py-3">
                                 <h3>篮球社</h3>
                                 <span class="position">“人气王”</span>
@@ -149,7 +149,7 @@
 
                     <div class="item">
                         <div class="speaker">
-                            <img src="images/literature%20.jpg" class="img-fluid" alt="Colorlib HTML5 Template">
+                            <img src="images/index/literature.jpg" class="img-fluid" alt="Colorlib HTML5 Template">
                             <div class="text text-center py-3">
                                 <h3>文艺社</h3>
                                 <span class="position">“文艺界的一股清流”</span>
@@ -164,7 +164,7 @@
 
                     <div class="item">
                         <div class="speaker">
-                            <img src="images/wushu.jpg" class="img-fluid" alt="Colorlib HTML5 Template">
+                            <img src="images/index/kongfu.jpg" class="img-fluid" alt="Colorlib HTML5 Template">
                             <div class="text text-center py-3">
                                 <h3>武术社团</h3>
                                 <span class="position">“强身健体，耀我中华”</span>
@@ -179,7 +179,7 @@
 
                     <div class="item">
                         <div class="speaker">
-                            <img src="images/lunhua.jpg" class="img-fluid" alt="Colorlib HTML5 Template">
+                            <img src="images/index/skate.jpg" class="img-fluid" alt="Colorlib HTML5 Template">
                             <div class="text text-center py-3">
                                 <h3>轮滑社</h3>
                                 <span class="position">“滑出精彩”</span>
@@ -194,7 +194,7 @@
 
                     <div class="item">
                         <div class="speaker">
-                            <img src="images/gushiwen.jpg" class="img-fluid" alt="Colorlib HTML5 Template">
+                            <img src="images/index/poem.jpg" class="img-fluid" alt="Colorlib HTML5 Template">
                             <div class="text text-center py-3">
                                 <h3>古诗文社</h3>
                                 <span class="position">“独领风骚”</span>
@@ -241,7 +241,7 @@
 
                         <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="day-1-tab">
                             <div class="speaker-wrap ftco-animate d-flex">
-                                <div class="img speaker-img" style="background-image: url(images/basketball01.jpg);"></div>
+                                <div class="img speaker-img" style="background-image: url(images/index/basketball01.jpg);"></div>
                                 <div class="text pl-md-5">
                                     <span class="time">08: - 10:00</span>
                                     <h2><a href="#">篮球社区总决赛</a></h2>
@@ -250,7 +250,7 @@
                                 </div>
                             </div>
                             <div class="speaker-wrap ftco-animate d-flex">
-                                <div class="img speaker-img" style="background-image: url(images/wenyi01.jpg);"></div>
+                                <div class="img speaker-img" style="background-image: url(images/index/liberature01.jpg);"></div>
                                 <div class="text pl-md-5">
                                     <span class="time">08: - 10:00</span>
                                     <h2><a href="#">文艺大赛</a></h2>
@@ -259,7 +259,7 @@
                                 </div>
                             </div>
                             <div class="speaker-wrap ftco-animate d-flex">
-                                <div class="img speaker-img" style="background-image: url(images/gushiwen01.jpg);"></div>
+                                <div class="img speaker-img" style="background-image: url(images/index/poem.jpg);"></div>
                                 <div class="text pl-md-5">
                                     <span class="time">08: - 10:00</span>
                                     <h2><a href="#">古诗文朗诵</a></h2>
@@ -271,7 +271,7 @@
 
                         <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-day-2-tab">
                             <div class="speaker-wrap ftco-animate d-flex">
-                                <div class="img speaker-img" style="background-image: url(images/lunhua.jpg);"></div>
+                                <div class="img speaker-img" style="background-image: url(images/index/skate.jpg);"></div>
                                 <div class="text pl-md-5">
                                     <span class="time">08: - 10:00</span>
                                     <h2><a href="#">轮滑比赛</a></h2>
@@ -280,7 +280,7 @@
                                 </div>
                             </div>
                             <div class="speaker-wrap ftco-animate d-flex">
-                                <div class="img speaker-img" style="background-image: url(images/namhua01.jpg);"></div>
+                                <div class="img speaker-img" style="background-image: url(images/index/cartoon01.jpg);"></div>
                                 <div class="text pl-md-5">
                                     <span class="time">08: - 10:00</span>
                                     <h2><a href="#">cosplay表演</a></h2>
@@ -289,7 +289,7 @@
                                 </div>
                             </div>
                             <div class="speaker-wrap ftco-animate d-flex">
-                                <div class="img speaker-img" style="background-image: url(images/wushu01.jpg);"></div>
+                                <div class="img speaker-img" style="background-image: url(images/index/wushu01.jpg);"></div>
                                 <div class="text pl-md-5">
                                     <span class="time">08: - 10:00</span>
                                     <h2><a href="#">武术才艺表演</a></h2>
@@ -300,7 +300,7 @@
                         </div>
                         <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-day-3-tab">
                             <div class="speaker-wrap ftco-animate d-flex">
-                                <div class="img speaker-img" style="background-image: url(images/Robot.jpg);"></div>
+                                <div class="img speaker-img" style="background-image: url(images/index/Robot.jpg);"></div>
                                 <div class="text pl-md-5">
                                     <span class="time">08: - 10:00</span>
                                     <h2><a href="#">机器人展览会</a></h2>
@@ -318,7 +318,7 @@
                                 </div>
                             </div>
                             <div class="speaker-wrap ftco-animate d-flex">
-                                <div class="img speaker-img" style="background-image: url(images/basketball01.jpg);"></div>
+                                <div class="img speaker-img" style="background-image: url(images/index/basketball01.jpg);"></div>
                                 <div class="text pl-md-5">
                                     <span class="time">08: - 10:00</span>
                                     <h2><a href="#">篮球赛</a></h2>
@@ -338,7 +338,7 @@
                                 </div>
                             </div>
                             <div class="speaker-wrap ftco-animate d-flex">
-                                <div class="img speaker-img" style="background-image: url(images/pingpang.jpg);"></div>
+                                <div class="img speaker-img" style="background-image: url(images/index/ping-pong.jpg);"></div>
                                 <div class="text pl-md-5">
                                     <span class="time">08: - 10:00</span>
                                     <h2><a href="#">乒乓球比赛</a></h2>
@@ -347,7 +347,7 @@
                                 </div>
                             </div>
                             <div class="speaker-wrap ftco-animate d-flex">
-                                <div class="img speaker-img" style="background-image: url(images/football.png);"></div>
+                                <div class="img speaker-img" style="background-image: url(images/index/football.png);"></div>
                                 <div class="text pl-md-5">
                                     <span class="time">08: - 10:00</span>
                                     <h2><a href="#">足球赛</a></h2>

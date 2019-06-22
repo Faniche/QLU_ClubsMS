@@ -81,7 +81,7 @@
         </div>
         <div class="row">
             <div class="col-md-4 speaker">
-                <img src="images/word.PNG" class="img-fluid" alt="Colorlib HTML5 Template">
+                <img src="images/file/word.PNG" class="img-fluid" alt="Colorlib HTML5 Template">
                 <div class="text text-center pt-3">
                     <h3>社团申请说明</h3>
                     <span class="position">点击下载</span>
@@ -93,7 +93,7 @@
                 </div>
             </div>
             <div class="col-md-4 speaker">
-                <img src="images/word.PNG" class="img-fluid" alt="Colorlib HTML5 Template">
+                <img src="images/file/word.PNG" class="img-fluid" alt="Colorlib HTML5 Template">
                 <div class="text text-center pt-3">
                     <h3>社团注册说明</h3>
                     <span class="position">点击下载</span>
@@ -117,7 +117,7 @@
                 </div>
             </div>
             <div class="col-md-4 speaker">
-                <img src="images/word.PNG" class="img-fluid" alt="Colorlib HTML5 Template">
+                <img src="images/file/word.PNG" class="img-fluid" alt="Colorlib HTML5 Template">
                 <div class="text text-center pt-3">
                     <h3>社团申请表</h3>
                     <span class="position">点击下载</span>
@@ -129,7 +129,7 @@
                 </div>
             </div>
             <div class="col-md-4 speaker">
-                <img src="images/word.PNG" class="img-fluid" alt="Colorlib HTML5 Template">
+                <img src="images/file/word.PNG" class="img-fluid" alt="Colorlib HTML5 Template">
                 <div class="text text-center pt-3">
                     <h3>社团注册表</h3>
                     <span class="position">点击下载</span>
@@ -141,7 +141,7 @@
                 </div>
             </div>
             <div class="col-md-4 speaker">
-                <img src="images/word.PNG" class="img-fluid" alt="Colorlib HTML5 Template">
+                <img src="images/file/word.PNG" class="img-fluid" alt="Colorlib HTML5 Template">
                 <div class="text text-center pt-3">
                     <h3>社团活动场地申请</h3>
                     <span class="position">点击下载</span>

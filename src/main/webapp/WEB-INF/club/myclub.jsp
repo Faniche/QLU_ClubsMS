@@ -74,7 +74,7 @@
     <div class="container">
         <div class="row d-flex">
             <div class="col-md-6 d-flex">
-                <div class="img d-flex align-self-stretch" style="background-image:url(images/shetuan.jpg);"></div>
+                <div class="img d-flex align-self-stretch" style="background-image:url(images/club.jpg);"></div>
             </div>
             <div class="col-md-6 pl-md-5 py-5">
                 <div class="row justify-content-start pb-3">
@@ -88,7 +88,7 @@
                         <div class="block-18 text-center py-4 bg-light mb-4">
                             <div class="text">
                                 <div class="icon d-flex justify-content-center align-items-center">
-                                    <img src="images/basketball.png" alert="图片错误" title="篮球社团"style="width:70px;height: 70px">
+                                    <img src="images/my_clubs/basketball.jng" alert="图片错误" title="篮球社团"style="width:70px;height: 70px">
 
                                 </div>
                                 <strong class="number" data-number="30">0</strong>
@@ -100,7 +100,7 @@
                         <div class="block-18 text-center py-4 bg-light mb-4">
                             <div class="text">
                                 <div class="icon d-flex justify-content-center align-items-center">
-                                    <img src="images/football.png" alert="图片错误" title="篮球社团"style="width:70px;height: 70px">
+                                    <img src="images/my_clubs/football.png" alert="图片错误" title="篮球社团"style="width:70px;height: 70px">
                                 </div>
                                 <strong class="number" data-number="200">0</strong>
                                 <span><a href="clubinfo.html">足球社</a></span>
@@ -111,7 +111,7 @@
                         <div class="block-18 text-center py-4 bg-light mb-4">
                             <div class="text">
                                 <div class="icon d-flex justify-content-center align-items-center">
-                                    <img src="images/wushu.jpg" alert="图片错误" title="篮球社团"style="width:70px;height: 70px">
+                                    <img src="images/my_clubs/kongfu.jpg" alert="图片错误" title="篮球社团"style="width:70px;height: 70px">
                                 </div>
                                 <strong class="number" data-number="2500">0</strong>
                                 <span><a href ="clubinfo.html">武术社</a></span>
@@ -122,7 +122,7 @@
                         <div class="block-18 text-center py-4 bg-light mb-4">
                             <div class="text">
                                 <div class="icon d-flex justify-content-center align-items-center">
-                                    <img src="images/literature%20.jpg" alert="图片错误" title="篮球社团"style="width:70px;height: 70px">
+                                    <img src="images/my_clubs/literature.jpg" alert="图片错误" title="篮球社团"style="width:70px;height: 70px">
                                 </div>
                                 <strong class="number" data-number="40">0</strong>
                                 <span><a href src="clubinfo.html">文艺社</a></span>
@@ -148,7 +148,7 @@
                 <div class="carousel-testimony owl-carousel">
                     <div class="item">
                         <div class="speaker">
-                            <img src="images/lanqiu.jpg" class="img-fluid" alt="Colorlib HTML5 Template" >
+                            <img src="images/my_clubs/basketball.jpg" class="img-fluid" alt="Colorlib HTML5 Template" >
                             <div class="text text-center py-3">
                                 <h3>篮球社</h3>
                                 <span class="position">“人气王”</span>
@@ -163,7 +163,7 @@
 
                     <div class="item">
                         <div class="speaker">
-                            <img src="images/literature%20.jpg" class="img-fluid" alt="Colorlib HTML5 Template">
+                            <img src="images/my_clubs/literature.jpg" class="img-fluid" alt="Colorlib HTML5 Template">
                             <div class="text text-center py-3">
                                 <h3>文艺社</h3>
                                 <span class="position">“文艺界的一股清流”</span>
@@ -178,7 +178,7 @@
 
                     <div class="item">
                         <div class="speaker">
-                            <img src="images/wushu.jpg" class="img-fluid" alt="Colorlib HTML5 Template">
+                            <img src="images/my_clubs/kongfu.jpg" class="img-fluid" alt="Colorlib HTML5 Template">
                             <div class="text text-center py-3">
                                 <h3>武术社团</h3>
                                 <span class="position">“强身健体，耀我中华”</span>

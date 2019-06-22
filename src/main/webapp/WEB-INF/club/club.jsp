@@ -75,7 +75,7 @@
         <div class="row d-flex">
             <div class="col-md-4 d-flex ftco-animate">
                 <div class="blog-entry justify-content-end">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('images/basketball.png');">
+                    <a href="blog-single.html" class="block-20" style="background-image: url('images/activity/basketball.jng');">
                     </a>
                     <div class="text p-4 float-right d-block">
                         <div class="d-flex align-items-center pt-2 mb-4">
@@ -95,7 +95,7 @@
             </div>
             <div class="col-md-4 d-flex ftco-animate">
                 <div class="blog-entry justify-content-end">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('images/football.png');">
+                    <a href="blog-single.html" class="block-20" style="background-image: url('images/activity/football.png');">
                     </a>
                     <div class="text p-4 float-right d-block">
                         <div class="d-flex align-items-center pt-2 mb-4">
@@ -115,7 +115,7 @@
             </div>
             <div class="col-md-4 d-flex ftco-animate">
                 <div class="blog-entry">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('images/pingpangqiu.jpg');">
+                    <a href="blog-single.html" class="block-20" style="background-image: url('images/activity/ping-pong.jpg');">
                     </a>
                     <div class="text p-4 float-right d-block">
                         <div class="d-flex align-items-center pt-2 mb-4">
@@ -136,7 +136,7 @@
 
             <div class="col-md-4 d-flex ftco-animate">
                 <div class="blog-entry justify-content-end">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('images/manhua.jpg');">
+                    <a href="blog-single.html" class="block-20" style="background-image: url('images/activity/cartoon.jpg');">
                     </a>
                     <div class="text p-4 float-right d-block">
                         <div class="d-flex align-items-center pt-2 mb-4">
@@ -156,7 +156,7 @@
             </div>
             <div class="col-md-4 d-flex ftco-animate">
                 <div class="blog-entry justify-content-end">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('images/wushu.jpg');">
+                    <a href="blog-single.html" class="block-20" style="background-image: url('images/activity/kongfu.jpg');">
                     </a>
                     <div class="text p-4 float-right d-block">
                         <div class="d-flex align-items-center pt-2 mb-4">
@@ -176,7 +176,7 @@
             </div>
             <div class="col-md-4 d-flex ftco-animate">
                 <div class="blog-entry">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('images/lunhua.jpg');">
+                    <a href="blog-single.html" class="block-20" style="background-image: url('images/activity/skate.jpg');">
                     </a>
                     <div class="text p-4 float-right d-block">
                         <div class="d-flex align-items-center pt-2 mb-4">
