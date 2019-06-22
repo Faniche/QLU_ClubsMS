@@ -2,6 +2,7 @@ package com.qlu.controller;
 
 import com.qlu.entity.Message;
 import com.qlu.service.MessageService;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -12,7 +13,7 @@ import javax.annotation.Resource;
  * @author Chare
  * @since 2019-06-21 22:35:28
  */
-@RestController
+@Controller
 @RequestMapping("message")
 public class MessageController {
     /**

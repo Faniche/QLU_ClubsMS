@@ -2,6 +2,7 @@ package com.qlu.controller;
 
 import com.qlu.entity.Login;
 import com.qlu.service.LoginService;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -12,7 +13,7 @@ import javax.annotation.Resource;
  * @author Chare
  * @since 2019-06-21 15:58:24
  */
-@RestController
+@Controller
 @RequestMapping("login")
 public class LoginController {
     /**
