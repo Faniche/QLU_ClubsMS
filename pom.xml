@@ -98,6 +98,12 @@
         </dependency>
         <!-- spring依赖  end-->
 
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
         <!-- JavaLib -->
         <dependency>
             <groupId>com.fengwenyi</groupId>
