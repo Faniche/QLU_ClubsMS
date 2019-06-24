@@ -289,10 +289,9 @@
                                 </div>
                             </div>
                             <div class="speaker-wrap ftco-animate d-flex">
-                                <div class="img speaker-img" style="background-image: url(images/index/wushu01.jpg);"></div>
+                                <div class="img speaker-img" style="background-image: url('/images/index/kongfu01.jpg');"></div>
                                 <div class="text pl-md-5">
                                     <span class="time">08: - 10:00</span>
-                                    <h2><a href="#">武术才艺表演</a></h2>
                                     <p>这是武术社团组着的一场才艺表演，有梅花拳，盘龙棍，洪家拳等才艺表演</p>
                                     <h3 class="speaker-name">&mdash; <a href="#">梅花拳</a> <span class="position">让我们拥有完美的体魄</span></h3>
                                 </div>
