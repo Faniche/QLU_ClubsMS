@@ -29,6 +29,13 @@ public interface LoginService {
     List<Login> queryAllByLimit(int offset, int limit);
 
     /**
+     * 根据条件查找信息
+     * @param login
+     * @return
+     */
+    List<Login> queryAll(Login login);
+
+    /**
      * 新增数据
      *
      * @param login 实例对象

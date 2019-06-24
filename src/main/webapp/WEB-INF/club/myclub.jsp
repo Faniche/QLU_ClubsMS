@@ -34,6 +34,8 @@
 </head>
 <body>
 
+<jsp:include page="${pageContext.request.contextPath}/nav_bar.jsp"/>
+
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
         <a class="navbar-brand" href="home.html"><span>Club</span></a>

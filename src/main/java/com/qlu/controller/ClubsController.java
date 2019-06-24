@@ -22,6 +22,8 @@ public class ClubsController {
     @Resource
     private ClubsService clubsService;
 
+
+
     /**
      * 通过主键查询单条数据
      *
@@ -31,6 +33,11 @@ public class ClubsController {
     @GetMapping("selectOne")
     public Clubs selectOne(Integer id) {
         return this.clubsService.queryById(id);
+    }
+
+    @GetMapping("myClubs")
+    public String myClubs(){
+        return "club/club";
     }
 
 }

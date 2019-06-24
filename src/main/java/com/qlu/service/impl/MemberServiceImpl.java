@@ -42,6 +42,16 @@ public class MemberServiceImpl implements MemberService {
         return this.memberDao.queryAllByLimit(offset, limit);
     }
 
+    @Override
+    public List<Member> queryAll(Member member){
+        return memberDao.queryAll(member);
+    }
+
+    @Override
+    public List<Member> queryAllMembers() {
+        return memberDao.queryAllMembers();
+    }
+
     /**
      * 新增数据
      *

@@ -51,6 +51,7 @@
             </div>
             <div class="col-xl-4 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
                 <h2 class="form-signin-heading">请登录</h2>
+                <form action="" method="post">
                 <label for="inputEmail" class="sr-only">邮箱</label>
                 <input type="email" id="inputEmail" class="form-control" placeholder="邮箱" required autofocus>
                 <label for="inputPassword" class="sr-only">密码</label>

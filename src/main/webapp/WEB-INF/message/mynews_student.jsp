@@ -34,6 +34,10 @@
 </head>
 <body>
 
+
+<jsp:include page="/nav_bar.jsp"/>
+
+
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
         <a class="navbar-brand" href="home.html"><span>Club</span></a>
@@ -59,7 +63,7 @@
 
 <!-- END nav -->
 
-<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/images/bg_2.jpg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
@@ -100,7 +104,7 @@
 
                         <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="day-1-tab">
                             <div class="speaker-wrap ftco-animate d-flex">
-                                <div class="img speaker-img" style="background-image: url(images/basketball.png);"></div>
+                                <div class="img speaker-img" style="background-image: url('/images/basketball.png');"></div>
                                 <div class="text pl-md-5">
                                     <span class="time">时间：2019-6-13 14:28</span>
                                     <h2><a href="#">消息</a></h2>
@@ -118,7 +122,7 @@
                                 </div>
                             </div>
                             <div class="speaker-wrap ftco-animate d-flex">
-                                <div class="img speaker-img" style="background-image: url(images/table%20tennis.png);"></div>
+                                <div class="img speaker-img" style="background-image: url('/images/table tennis.png');"></div>
                                 <div class="text pl-md-5">
                                     <span class="time">时间： 2019-6-20 20:12</span>
                                     <h2><a href="#">消息</a></h2>

@@ -29,6 +29,7 @@ public interface MemberDao {
      */
     List<Member> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
 
+    List<Member> queryAllMembers();
 
     /**
      * 通过实体作为筛选条件查询

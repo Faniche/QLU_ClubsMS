@@ -29,6 +29,15 @@ public interface MemberService {
     List<Member> queryAllByLimit(int offset, int limit);
 
     /**
+     * 根据限制条件查询符合条件的成员
+     * @param member
+     * @return
+     */
+    List<Member> queryAll(Member member);
+
+    List<Member> queryAllMembers();
+
+    /**
      * 新增数据
      *
      * @param member 实例对象

@@ -42,6 +42,11 @@ public class LoginServiceImpl implements LoginService {
         return this.loginDao.queryAllByLimit(offset, limit);
     }
 
+    @Override
+    public List<Login> queryAll(Login login) {
+        return loginDao.queryAll(login);
+    }
+
     /**
      * 新增数据
      *

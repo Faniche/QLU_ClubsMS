@@ -4,8 +4,12 @@ import com.qlu.entity.Login;
 import com.qlu.service.LoginService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * (Login)表控制层
@@ -14,7 +18,7 @@ import javax.annotation.Resource;
  * @since 2019-06-21 15:58:24
  */
 @Controller
-@RequestMapping("login")
+@RequestMapping("/")
 public class LoginController {
     /**
      * 服务对象
@@ -33,8 +37,30 @@ public class LoginController {
         return this.loginService.queryById(id);
     }
 
-    @GetMapping("/login")
+    @GetMapping("login")
     public String toLogin() {
+        ModelAndView modelAndView = new ModelAndView();
         return "login/login";
+    }
+
+
+    /**
+     * 根据输入的姓名查找到符合的学生
+     * 郭雅楠
+     * @param name
+     * @return
+     */
+    @PostMapping("login/findByName")
+    public ModelAndView findByName(String name){
+        ModelAndView modelAndView = new ModelAndView();
+        Login login = new Login();
+        login.setName(name);
+        List<Login> userList = loginService.queryAll(login);
+        if (!userList.isEmpty()){
+            modelAndView.addObject("userList", userList);
+            return modelAndView;
+        }
+        modelAndView.addObject("msg","该学生不存在，请核对名字后再查找");
+        return modelAndView;
     }
 }

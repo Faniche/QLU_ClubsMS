@@ -14,7 +14,7 @@ import javax.annotation.Resource;
  * @since 2019-06-21 22:35:01
  */
 @Controller
-@RequestMapping("file")
+@RequestMapping("/")
 public class FileController {
     /**
      * 服务对象
@@ -28,9 +28,10 @@ public class FileController {
      * @param id 主键
      * @return 单条数据
      */
-    @GetMapping("selectOne")
+    @GetMapping("/file/selectOne")
     public File selectOne(Integer id) {
         return this.fileService.queryById(id);
     }
+
 
 }
