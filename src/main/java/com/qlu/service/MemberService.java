@@ -59,6 +59,6 @@ public interface MemberService {
      * @param id 主键
      * @return 是否成功
      */
-    boolean deleteById(Integer id);
+    boolean deleteByMemberId(Integer id);
 
 }

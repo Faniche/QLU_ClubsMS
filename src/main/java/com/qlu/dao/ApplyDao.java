@@ -29,6 +29,12 @@ public interface ApplyDao {
      */
     List<Apply> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
 
+    /**
+     * 通过登录的ID查找所有的消息
+     * @param id
+     * @return
+     */
+    List<Apply> queryAllByLoginId(Integer id);
 
     /**
      * 通过实体作为筛选条件查询

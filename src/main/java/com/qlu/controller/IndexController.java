@@ -11,7 +11,8 @@ public class IndexController {
 
     @GetMapping("index")
     public String toIndex(){
-        return "index";
+
+        return "redirect:/index.jsp";
     }
 
 //    @GetMapping("toIndex")

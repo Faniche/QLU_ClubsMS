@@ -13,12 +13,11 @@ import java.util.List;
 public interface MessageDao {
 
     /**
-     * 通过ID查询单条数据
-     *
+     * 根据用户ID查询所有消息
      * @param id 主键
      * @return 实例对象
      */
-    Message queryById(Integer id);
+    List<Message> queryByLoginId(Integer id);
 
     /**
      * 查询指定行数据
@@ -45,14 +44,6 @@ public interface MessageDao {
      * @return 影响行数
      */
     int insert(Message message);
-
-    /**
-     * 修改数据
-     *
-     * @param message 实例对象
-     * @return 影响行数
-     */
-    int update(Message message);
 
     /**
      * 通过主键删除数据

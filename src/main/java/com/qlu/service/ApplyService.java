@@ -29,6 +29,13 @@ public interface ApplyService {
     List<Apply> queryAllByLimit(int offset, int limit);
 
     /**
+     * 通过登录的ID查找所有的消息
+     * @param id
+     * @return
+     */
+    List<Apply> queryAllByLoginId(Integer id);
+
+    /**
      * 新增数据
      *
      * @param apply 实例对象

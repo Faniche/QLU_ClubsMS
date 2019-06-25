@@ -9,12 +9,15 @@
         <result property="releasedate" column="releaseDate" jdbcType="TIMESTAMP"/>
     </resultMap>
 
-    <!--查询单个-->
-    <select id="queryById" resultMap="MessageMap">
+    <!--根据用户ID查询社团所有消息-->
+    <select id="queryByLoginId" resultMap="MessageMap">
         select
           id, content, clubId, releaseDate
         from qlu_clubs_ms.message
-        where id = #{id}
+        where message.clubId
+        in ((SELECT member.clubId
+                         FROM member
+                         WHERE memberId = #{id}))
     </select>
 
     <!--查询指定行数据-->
@@ -28,7 +31,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="MessageMap">
         select
-          id, content, clubId, releaseDate
+        id, content, clubId, releaseDate
         from qlu_clubs_ms.message
         <where>
             <if test="id != null">
@@ -51,23 +54,6 @@
         insert into qlu_clubs_ms.message(content, clubId, releaseDate)
         values (#{content}, #{clubid}, #{releasedate})
     </insert>
-
-    <!--通过主键修改数据-->
-    <update id="update">
-        update qlu_clubs_ms.message
-        <set>
-            <if test="content != null and content != ''">
-                content = #{content},
-            </if>
-            <if test="clubid != null">
-                clubId = #{clubid},
-            </if>
-            <if test="releasedate != null">
-                releaseDate = #{releasedate},
-            </if>
-        </set>
-        where id = #{id}
-    </update>
 
     <!--通过主键删除-->
     <delete id="deleteById">

@@ -12,12 +12,11 @@ import java.util.List;
 public interface MessageService {
 
     /**
-     * 通过ID查询单条数据
-     *
+     * 根据用户ID查询所有消息
      * @param id 主键
      * @return 实例对象
      */
-    Message queryById(Integer id);
+    List<Message> queryByLoginId(Integer id);
 
     /**
      * 查询多条数据
@@ -35,14 +34,6 @@ public interface MessageService {
      * @return 实例对象
      */
     Message insert(Message message);
-
-    /**
-     * 修改数据
-     *
-     * @param message 实例对象
-     * @return 实例对象
-     */
-    Message update(Message message);
 
     /**
      * 通过主键删除数据

@@ -26,11 +26,11 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a href="home.html" class="nav-link">首页</a></li>
+                <li class="nav-item active"><a href="${pageContext.request.contextPath}/index" class="nav-link">首页</a></li>
                 <li class="nav-item"><a href="myclub.html" class="nav-link">我的社团</a></li>
                 <li class="nav-item"><a href="gonggao.html" class="nav-link">公告</a></li>
                 <li class="nav-item"><a href="club.html" class="nav-link">社团介绍</a></li>
-                <li class="nav-item"><a href="mynews_student.html" class="nav-link">我的消息</a></li>
+                <li class="nav-item"><a href="${pageContext.request.contextPath}/message/show" class="nav-link">我的消息</a></li>
                 <li class="nav-item"><a href="download.html" class="nav-link">下载专区</a></li>
                 <li class="nav-item cta mr-md-2"><a href="login.html" class="nav-link">登录</a></li>
             </ul>

@@ -28,20 +28,23 @@ public class MemberController {
 
     /**
      * 跳转到insert页面
+     *
      * @return
      */
     @GetMapping("insert")
-    public String insert(){
+    public String insert() {
         return "club/insert";
     }
 
     /**
      * 添加新社员并返回添加界面
-     * @param member
+     *
+     * @param memberId
+     * @param clubId
      * @return ModelAndView
      */
     @PostMapping("insert_member")
-    public ModelAndView insertMember(Integer memberId, Integer clubId){
+    public ModelAndView insertMember(Integer memberId, Integer clubId) {
         Member member = new Member();
         member.setMemberid(memberId);
         member.setClubid(clubId);
@@ -53,18 +56,14 @@ public class MemberController {
     }
 
     /**
-    * 根据id删除指定的成员并返回社团管理界面
-    */
+     * 根据id删除指定的成员并返回社团管理界面
+     */
     @PostMapping("delete")
-    public ModelAndView delete(Integer id){
+    public ModelAndView delete(Integer id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("club/clubsManage");
-        boolean result = memberService.deleteById(id);
-        if (result){
-            modelAndView.addObject("msg", "删除成功");
-            return modelAndView;
-        }
-        modelAndView.addObject("msg", "删除失败");
+        boolean result = memberService.deleteByMemberId(id);
+        modelAndView.addObject("msg", "删除成功");
         return modelAndView;
     }
 
@@ -83,17 +82,16 @@ public class MemberController {
 
     /**
      * 根据条件查询出符合条件的社团成员
+     *
      * @param member
      * @return
      */
     @PostMapping("findMemberByLimit")
-    public ModelAndView findMemberByLimit(Member member){
+    public ModelAndView findMemberByLimit(Member member) {
         ModelAndView modelAndView = new ModelAndView();
         List<Member> allMembers = memberService.queryAll(member);
         modelAndView.addObject("allMembers", allMembers);
         modelAndView.setViewName("club/clubsManage");
         return modelAndView;
     }
-
-
 }

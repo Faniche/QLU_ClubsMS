@@ -42,6 +42,10 @@ public class ApplyServiceImpl implements ApplyService {
         return this.applyDao.queryAllByLimit(offset, limit);
     }
 
+    public List<Apply> queryAllByLoginId(Integer id){
+        return this.applyDao.queryAllByLoginId(id);
+    }
+
     /**
      * 新增数据
      *

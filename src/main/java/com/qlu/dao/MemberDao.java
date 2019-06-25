@@ -61,6 +61,6 @@ public interface MemberDao {
      * @param id 主键
      * @return 影响行数
      */
-    int deleteById(Integer id);
+    int deleteByMemberId(Integer id);
 
 }

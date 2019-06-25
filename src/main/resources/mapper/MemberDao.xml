@@ -77,8 +77,8 @@
     </update>
 
     <!--通过主键删除-->
-    <delete id="deleteById">
-        delete from qlu_clubs_ms.member where id = #{id}
+    <delete id="deleteByMemberId">
+        delete from qlu_clubs_ms.member where memberId = #{id}
     </delete>
 
 </mapper>

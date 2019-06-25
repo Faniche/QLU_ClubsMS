@@ -20,14 +20,13 @@ public class MessageServiceImpl implements MessageService {
     private MessageDao messageDao;
 
     /**
-     * 通过ID查询单条数据
-     *
+     * 根据用户ID查询所有消息
      * @param id 主键
      * @return 实例对象
      */
     @Override
-    public Message queryById(Integer id) {
-        return this.messageDao.queryById(id);
+    public List<Message> queryByLoginId(Integer id) {
+        return messageDao.queryByLoginId(id);
     }
 
     /**
@@ -54,17 +53,6 @@ public class MessageServiceImpl implements MessageService {
         return message;
     }
 
-    /**
-     * 修改数据
-     *
-     * @param message 实例对象
-     * @return 实例对象
-     */
-    @Override
-    public Message update(Message message) {
-        this.messageDao.update(message);
-        return this.queryById(message.getId());
-    }
 
     /**
      * 通过主键删除数据

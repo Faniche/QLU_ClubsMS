@@ -26,6 +26,14 @@
         limit #{offset}, #{limit}
     </select>
 
+    <!--通过登录的ID查找所有的消息 -->
+    <select id="queryAllByLoginId" resultMap="ApplyMap">
+        select
+          id, type, proposerId, clubId, date
+        from qlu_clubs_ms.apply
+        limit #{offset}, #{limit}
+    </select>
+
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="ApplyMap">
         select

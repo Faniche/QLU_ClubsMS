@@ -83,7 +83,7 @@ public class MemberServiceImpl implements MemberService {
      * @return 是否成功
      */
     @Override
-    public boolean deleteById(Integer id) {
-        return this.memberDao.deleteById(id) > 0;
+    public boolean deleteByMemberId(Integer id) {
+        return this.memberDao.deleteByMemberId(id) > 0;
     }
 }
