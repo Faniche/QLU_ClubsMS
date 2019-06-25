@@ -11,7 +11,6 @@ import java.util.List;
  * @since 2019-06-21 15:20:53
  */
 public interface LoginDao {
-
     /**
      * 通过ID查询单条数据
      *
@@ -26,7 +25,9 @@ public interface LoginDao {
      * @param offset 查询起始位置
      * @param limit 查询条数
      * @return 对象列表
+     *
      */
+    Login queryLoginByUsernameAndPassword(Login login);
     List<Login> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
 
 

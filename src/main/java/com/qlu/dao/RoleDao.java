@@ -21,6 +21,14 @@ public interface RoleDao {
     Role queryById(Integer id);
 
     /**
+     *
+     * @param id
+     * @return
+     */
+    Role queryByLoginId(Integer id);
+
+
+    /**
      * 查询指定行数据
      *
      * @param offset 查询起始位置

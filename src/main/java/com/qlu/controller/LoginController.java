@@ -1,12 +1,15 @@
 package com.qlu.controller;
 
 import com.qlu.entity.Login;
+import com.qlu.entity.Role;
 import com.qlu.service.LoginService;
+import com.qlu.service.RoleService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +28,9 @@ public class LoginController {
      */
     @Resource
     private LoginService loginService;
+
+    @Resource
+    private RoleService roleService;
 
     /**
      * 通过主键查询单条数据
@@ -45,22 +51,27 @@ public class LoginController {
 
 
     /**
-     * 根据输入的姓名查找到符合的学生
-     * 郭雅楠
-     * @param name
+     * 登录验证
+     *
+     *
+     * @param
      * @return
      */
-    @PostMapping("login/findByName")
-    public ModelAndView findByName(String name){
-        ModelAndView modelAndView = new ModelAndView();
-        Login login = new Login();
-        login.setName(name);
-        List<Login> userList = loginService.queryAll(login);
-        if (!userList.isEmpty()){
-            modelAndView.addObject("userList", userList);
-            return modelAndView;
+    @PostMapping("login/logincheck")
+    public String login(Login login, HttpSession session) {
+        Login loginInfo = loginService.queryLoginByUsernameAndPassword(login);
+        if (loginInfo != null) {
+            session.setAttribute("userinfo", loginInfo);
+            Role role = roleService.queryByLoginId(login.getId());
+            session.setAttribute("role", role);
+            if (role.getName().equals("SuperAdmin")){
+                return "redirect:admin/index.jsp";
+            } else {
+                return "redirect:/index.jsp";
+            }
+
         }
-        modelAndView.addObject("msg","该学生不存在，请核对名字后再查找");
-        return modelAndView;
+
+        return "login/login";
     }
 }

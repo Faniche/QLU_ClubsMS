@@ -29,7 +29,7 @@ public class RoleServiceImpl implements RoleService {
     public Role queryById(Integer id) {
         return this.roleDao.queryById(id);
     }
-
+    public Role queryByLoginId(Integer id){return this.roleDao.queryByLoginId(id);}
     /**
      * 查询多条数据
      *

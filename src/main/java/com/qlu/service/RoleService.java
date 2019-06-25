@@ -19,6 +19,8 @@ public interface RoleService {
      */
     Role queryById(Integer id);
 
+    Role queryByLoginId(Integer id);
+
     /**
      * 查询多条数据
      *

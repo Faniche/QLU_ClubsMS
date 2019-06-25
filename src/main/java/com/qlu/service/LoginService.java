@@ -11,6 +11,9 @@ import java.util.List;
  */
 public interface LoginService {
 
+
+
+
     /**
      * 通过ID查询单条数据
      *
@@ -22,10 +25,11 @@ public interface LoginService {
     /**
      * 查询多条数据
      *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
+     * @param 查询起始位置
+     * @param 查询条数
      * @return 对象列表
      */
+    Login queryLoginByUsernameAndPassword(Login login);
     List<Login> queryAllByLimit(int offset, int limit);
 
     /**

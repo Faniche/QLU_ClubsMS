@@ -29,7 +29,10 @@ public class LoginServiceImpl implements LoginService {
     public Login queryById(Integer id) {
         return this.loginDao.queryById(id);
     }
-
+    @Override
+    public Login queryLoginByUsernameAndPassword(Login login){
+        return loginDao.queryLoginByUsernameAndPassword(login);
+    }
     /**
      * 查询多条数据
      *

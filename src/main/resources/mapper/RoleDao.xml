@@ -15,6 +15,13 @@
         where id = #{id}
     </select>
 
+    <!--查询单个-->
+    <select id="queryByLoginId" resultMap="RoleMap">
+        SELECT *
+        FROM qlu_clubs_ms.role
+        WHERE role.id in (SELECT loginrole.roleId from loginrole where loginrole.userId = #{id})
+    </select>
+
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="RoleMap">
         select
