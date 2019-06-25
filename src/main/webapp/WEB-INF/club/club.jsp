@@ -1,14 +1,8 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 阿布
-  Date: 2019/6/22
-  Time: 15:04
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>社团介绍</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
@@ -34,9 +28,31 @@
 </head>
 <body>
 
-<jsp:include page="/nav_bar.jsp"/>
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="home.html"><span>Club</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
 
-<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active"><a href="home.html" class="nav-link">首页</a></li>
+                <li class="nav-item"><a href="myclub.html" class="nav-link">我的社团</a></li>
+                <li class="nav-item"><a href="gonggao.html" class="nav-link">公告</a></li>
+                <li class="nav-item"><a href="club.html" class="nav-link">社团介绍</a></li>
+                <li class="nav-item"><a href="mynews_student.html" class="nav-link">我的消息</a></li>
+                <li class="nav-item"><a href="download.html" class="nav-link">下载专区</a></li>
+                <li class="nav-item cta mr-md-2"><a href="login.html" class="nav-link">登录</a></li>
+
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- END nav -->
+
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
@@ -53,7 +69,7 @@
         <div class="row d-flex">
             <div class="col-md-4 d-flex ftco-animate">
                 <div class="blog-entry justify-content-end">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('images/activity/basketball.jng');">
+                    <a href="blog-single.html" class="block-20" style="background-image: url('images/basketball.png');">
                     </a>
                     <div class="text p-4 float-right d-block">
                         <div class="d-flex align-items-center pt-2 mb-4">
@@ -67,13 +83,13 @@
                         </div>
                         <h3 class="heading mt-2"><a href="#">篮球社</a></h3>
                         <p>篮球社团以形式多样的活动丰富了学生的课余生活，给予同学一个展示自己的机会，让他们在自己热爱的空间里自由发挥，体验比赛与游戏的不同滋味，享受篮球带给他们的无穷乐趣</p>
-                        <button type="button" class="btn btn-primary">申请加入</button>
+                        <a class="btn btn-primary" href="joinclub.jsp" role="button">申请加入</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 d-flex ftco-animate">
                 <div class="blog-entry justify-content-end">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('images/activity/football.png');">
+                    <a href="blog-single.html" class="block-20" style="background-image: url('images/football.png');">
                     </a>
                     <div class="text p-4 float-right d-block">
                         <div class="d-flex align-items-center pt-2 mb-4">
@@ -87,13 +103,13 @@
                         </div>
                         <h3 class="heading mt-2"><a href="#">足球社</a></h3>
                         <p>提高学生足球理论知识和技术水平，丰富广大同学的业余生活，以强身健体、增强学生体质、培养加强团队意识，旨在促进学生的课外生活</p>
-                        <button type="button" class="btn btn-primary">申请加入</button>
+                        <a class="btn btn-primary" href="joinclub.html" role="button">申请加入</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 d-flex ftco-animate">
                 <div class="blog-entry">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('images/activity/ping-pong.jpg');">
+                    <a href="blog-single.html" class="block-20" style="background-image: url('images/pingpangqiu.jpg');">
                     </a>
                     <div class="text p-4 float-right d-block">
                         <div class="d-flex align-items-center pt-2 mb-4">
@@ -107,14 +123,14 @@
                         </div>
                         <h3 class="heading mt-2"><a href="#">乒乓球社</a></h3>
                         <p>本着让更多人了解国球、热爱国球的原则，积极团结全校乒乓球爱好者和积极分子，培养竞争意识，提高我校学生乒乓球水平，推动乒乓球的普及和发展</p>
-                        <button type="button" class="btn btn-primary">申请加入</button>
+                        <a class="btn btn-primary" href="joinclub.html" role="button">申请加入</a>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-4 d-flex ftco-animate">
                 <div class="blog-entry justify-content-end">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('images/activity/cartoon.jpg');">
+                    <a href="blog-single.html" class="block-20" style="background-image: url('images/manhua.jpg');">
                     </a>
                     <div class="text p-4 float-right d-block">
                         <div class="d-flex align-items-center pt-2 mb-4">
@@ -128,13 +144,13 @@
                         </div>
                         <h3 class="heading mt-2"><a href="#">动漫社</a></h3>
                         <p>让社员在欣赏漫画的同时，学习画漫画，增长对漫画的相关知识，从而更深入的了解动漫，定期举办社员绘画作品展示、动漫真人秀等，让更多的人了解动漫，丰富校园文化</p>
-                        <button type="button" class="btn btn-primary">申请加入</button>
+                        <a class="btn btn-primary" href="joinclub.html" role="button">申请加入</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 d-flex ftco-animate">
                 <div class="blog-entry justify-content-end">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('images/activity/kongfu.jpg');">
+                    <a href="blog-single.html" class="block-20" style="background-image: url('images/wushu.jpg');">
                     </a>
                     <div class="text p-4 float-right d-block">
                         <div class="d-flex align-items-center pt-2 mb-4">
@@ -148,13 +164,13 @@
                         </div>
                         <h3 class="heading mt-2"><a href="#">武术社</a></h3>
                         <p>培养学生高尚武德、优良作风和坚强意志品质，注重培养学生组织能力、创新能力、吃苦耐劳的意志品质及团队互助的集体主义思想，促进少儿身心全面发展，健康成长，为将来适应社会打下良好基础</p>
-                        <button type="button" class="btn btn-primary">申请加入</button>
+                        <a class="btn btn-primary" href="joinclub.html" role="button">申请加入</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 d-flex ftco-animate">
                 <div class="blog-entry">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('images/activity/skate.jpg');">
+                    <a href="blog-single.html" class="block-20" style="background-image: url('images/lunhua.jpg');">
                     </a>
                     <div class="text p-4 float-right d-block">
                         <div class="d-flex align-items-center pt-2 mb-4">
@@ -168,7 +184,7 @@
                         </div>
                         <h3 class="heading mt-2"><a href="#">轮滑社</a></h3>
                         <p>普及高校轮滑运动，促进高校间的轮滑交流，发展轮滑事业，组织轮滑培训，开展轮滑集体活动，增强同学的体制</p>
-                        <button type="button" class="btn btn-primary">申请加入</button>
+                        <a class="btn btn-primary" href="joinclub.html" role="button">申请加入</a>
                     </div>
                 </div>
             </div>
@@ -196,17 +212,10 @@
         <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-                    <h2>下面关于社团纳新的内容或者自由发挥</h2>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
+                    <!--<h2>下面关于社团纳新的内容或者自由发挥</h2>-->
+                    <h2> <p>创建我自己的社团</p></h2>
                     <div class="row d-flex justify-content-center mt-4 mb-4">
-                        <div class="col-md-8">
-                            <form action="#" class="subscribe-form">
-                                <div class="form-group d-flex">
-                                    <input type="text" class="form-control" placeholder="Enter email address">
-                                    <input type="submit" value="Subscribe" class="submit px-3">
-                                </div>
-                            </form>
-                        </div>
+                        <a class="btn btn-lg btn-success" href="newclubs.jsp" role="button">点击去创建</a>
                     </div>
                 </div>
             </div>
