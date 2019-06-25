@@ -83,7 +83,7 @@
                         </div>
                         <h3 class="heading mt-2"><a href="#">篮球社</a></h3>
                         <p>篮球社团以形式多样的活动丰富了学生的课余生活，给予同学一个展示自己的机会，让他们在自己热爱的空间里自由发挥，体验比赛与游戏的不同滋味，享受篮球带给他们的无穷乐趣</p>
-                        <a class="btn btn-primary" href="joinclub.jsp" role="button">申请加入</a>
+                        <a class="btn btn-primary" href="joinclub.html" role="button">申请加入</a>
                     </div>
                 </div>
             </div>
@@ -215,7 +215,7 @@
                     <!--<h2>下面关于社团纳新的内容或者自由发挥</h2>-->
                     <h2> <p>创建我自己的社团</p></h2>
                     <div class="row d-flex justify-content-center mt-4 mb-4">
-                        <a class="btn btn-lg btn-success" href="newclubs.jsp" role="button">点击去创建</a>
+                        <a class="btn btn-lg btn-success" href="newclubs.html" role="button">点击去创建</a>
                     </div>
                 </div>
             </div>
