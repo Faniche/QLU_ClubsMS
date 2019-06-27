@@ -24,8 +24,8 @@
 
                             <c:forEach items="${applyList}" var="item">
                                 <div class="speaker-wrap ftco-animate d-flex">
-                                    <div class="img speaker-img"
-                                         style="background-image: url('${pageContext.request.contextPath}/images/${item.clubId}.jpg');"></div>
+<%--                                    <div class="img speaker-img"--%>
+<%--                                         style="background-image: url('${pageContext.request.contextPath}/images/${item.clubId}.jpg');"></div>--%>
                                     <div class="text pl-md-5">
                                         <span class="time">时间：2019-6-13 15:22</span>
                                         <h2><a href="#">活动申请</a></h2>

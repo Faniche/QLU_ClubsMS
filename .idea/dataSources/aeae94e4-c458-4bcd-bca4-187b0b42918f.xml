@@ -24,14 +24,14 @@
       <Visible>1</Visible>
       <Collation>utf8_general_ci</Collation>
     </schema>
-    <schema id="7" parent="1" name="qlu_clubs_ms2">
+    <schema id="7" parent="1" name="rayuk">
       <Collation>utf8_general_ci</Collation>
     </schema>
-    <schema id="8" parent="1" name="rayuk">
-      <Collation>utf8_general_ci</Collation>
-    </schema>
-    <schema id="9" parent="1" name="sakila">
+    <schema id="8" parent="1" name="sakila">
       <Collation>latin1_swedish_ci</Collation>
+    </schema>
+    <schema id="9" parent="1" name="spring_review">
+      <Collation>utf8_general_ci</Collation>
     </schema>
     <schema id="10" parent="1" name="ssh_crm">
       <Collation>utf8_general_ci</Collation>
@@ -952,491 +952,528 @@
     <table id="248" parent="6" name="privilege"/>
     <table id="249" parent="6" name="role"/>
     <table id="250" parent="6" name="roleprivilege"/>
-    <column id="251" parent="238" name="id">
+    <table id="251" parent="6" name="studentid"/>
+    <column id="252" parent="238" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="252" parent="238" name="clubsId">
+    <column id="253" parent="238" name="clubsId">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="253" parent="238" name="topic">
+    <column id="254" parent="238" name="topic">
       <Position>3</Position>
       <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="254" parent="238" name="time">
+    <column id="255" parent="238" name="time">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="255" parent="238" name="location">
+    <column id="256" parent="238" name="location">
       <Position>5</Position>
       <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="256" parent="238" name="money">
+    <column id="257" parent="238" name="money">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="257" parent="238" name="status">
+    <column id="258" parent="238" name="status">
       <Position>7</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="258" parent="238" name="Activity_clubs_id_fk">
+    <index id="259" parent="238" name="Activity_clubs_id_fk">
       <ColNames>clubsId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="259" parent="238" name="PRIMARY">
+    <key id="260" parent="238" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="260" parent="238" name="Activity_clubs_id_fk">
+    <foreign-key id="261" parent="238" name="Activity_clubs_id_fk">
       <ColNames>clubsId</ColNames>
       <RefSchemaName>qlu_clubs_ms</RefSchemaName>
       <RefTableName>clubs</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="261" parent="239" name="id">
+    <column id="262" parent="239" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="262" parent="239" name="topic">
+    <column id="263" parent="239" name="topic">
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="263" parent="239" name="content">
+    <column id="264" parent="239" name="content">
       <Position>3</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="264" parent="239" name="authorId">
+    <column id="265" parent="239" name="authorId">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="265" parent="239" name="releaseDate">
+    <column id="266" parent="239" name="releaseDate">
       <Position>5</Position>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="266" parent="239" name="Announce_login_id_fk">
+    <index id="267" parent="239" name="Announce_login_id_fk">
       <ColNames>authorId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="267" parent="239" name="PRIMARY">
+    <key id="268" parent="239" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="268" parent="239" name="Announce_login_id_fk">
+    <foreign-key id="269" parent="239" name="Announce_login_id_fk">
       <ColNames>authorId</ColNames>
       <RefSchemaName>qlu_clubs_ms</RefSchemaName>
       <RefTableName>login</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="269" parent="240" name="id">
+    <column id="270" parent="240" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="270" parent="240" name="type">
+    <column id="271" parent="240" name="type">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="271" parent="240" name="proposerId">
+    <column id="272" parent="240" name="proposerId">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="272" parent="240" name="clubId">
+    <column id="273" parent="240" name="clubId">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="273" parent="240" name="date">
+    <column id="274" parent="240" name="date">
       <Position>5</Position>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="274" parent="240" name="Apply_applytype_id_fk">
+    <column id="275" parent="240" name="status">
+      <Position>6</Position>
+      <DataType>int(11)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="276" parent="240" name="Apply_applytype_id_fk">
       <ColNames>type</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="275" parent="240" name="apply_login_id_fk">
+    <index id="277" parent="240" name="apply_login_id_fk">
       <ColNames>proposerId</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="276" parent="240" name="apply_clubs_id_fk">
+    <index id="278" parent="240" name="apply_clubs_id_fk">
       <ColNames>clubId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="277" parent="240" name="PRIMARY">
+    <key id="279" parent="240" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="278" parent="240" name="Apply_applytype_id_fk">
+    <foreign-key id="280" parent="240" name="Apply_applytype_id_fk">
       <ColNames>type</ColNames>
       <RefSchemaName>qlu_clubs_ms</RefSchemaName>
       <RefTableName>applytype</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="279" parent="240" name="apply_login_id_fk">
+    <foreign-key id="281" parent="240" name="apply_login_id_fk">
       <ColNames>proposerId</ColNames>
       <RefSchemaName>qlu_clubs_ms</RefSchemaName>
       <RefTableName>login</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="280" parent="240" name="apply_clubs_id_fk">
+    <foreign-key id="282" parent="240" name="apply_clubs_id_fk">
       <ColNames>clubId</ColNames>
       <RefSchemaName>qlu_clubs_ms</RefSchemaName>
       <RefTableName>clubs</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="281" parent="241" name="id">
+    <column id="283" parent="241" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="282" parent="241" name="type">
+    <column id="284" parent="241" name="type">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="283" parent="241" name="PRIMARY">
+    <key id="285" parent="241" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="284" parent="242" name="id">
+    <column id="286" parent="242" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="285" parent="242" name="name">
+    <column id="287" parent="242" name="name">
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="286" parent="242" name="descript">
+    <column id="288" parent="242" name="descript">
       <Position>3</Position>
       <DataType>text|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="287" parent="242" name="establishedDate">
+    <column id="289" parent="242" name="establishedDate">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="288" parent="242" name="Clubs_name_uindex">
+    <index id="290" parent="242" name="Clubs_name_uindex">
       <ColNames>name</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="289" parent="242" name="PRIMARY">
+    <key id="291" parent="242" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="290" parent="242" name="Clubs_name_uindex">
+    <key id="292" parent="242" name="Clubs_name_uindex">
       <ColNames>name</ColNames>
       <UnderlyingIndexName>Clubs_name_uindex</UnderlyingIndexName>
     </key>
-    <column id="291" parent="243" name="id">
+    <column id="293" parent="243" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="292" parent="243" name="fileName">
+    <column id="294" parent="243" name="fileName">
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="293" parent="243" name="path">
+    <column id="295" parent="243" name="path">
       <Position>3</Position>
       <DataType>varchar(100)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="294" parent="243" name="releaseDate">
+    <column id="296" parent="243" name="releaseDate">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="295" parent="243" name="authorId">
+    <column id="297" parent="243" name="authorId">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="296" parent="243" name="file_login_id_fk">
+    <index id="298" parent="243" name="file_login_id_fk">
       <ColNames>authorId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="297" parent="243" name="PRIMARY">
+    <key id="299" parent="243" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="298" parent="243" name="file_login_id_fk">
+    <foreign-key id="300" parent="243" name="file_login_id_fk">
       <ColNames>authorId</ColNames>
       <RefSchemaName>qlu_clubs_ms</RefSchemaName>
       <RefTableName>login</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="299" parent="244" name="id">
+    <column id="301" parent="244" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="300" parent="244" name="username">
+    <column id="302" parent="244" name="username">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="301" parent="244" name="name">
+    <column id="303" parent="244" name="email">
       <Position>3</Position>
-      <DataType>varchar(20)|0s</DataType>
+      <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="302" parent="244" name="password">
+    <column id="304" parent="244" name="name">
       <Position>4</Position>
       <DataType>varchar(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="303" parent="244" name="PRIMARY">
+    <column id="305" parent="244" name="password">
+      <Position>5</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="306" parent="244" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="304" parent="245" name="id">
+    <column id="307" parent="245" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="305" parent="245" name="userId">
+    <column id="308" parent="245" name="userId">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="306" parent="245" name="roleId">
+    <column id="309" parent="245" name="roleId">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="307" parent="245" name="LoginRole_login_id_fk">
+    <index id="310" parent="245" name="LoginRole_login_id_fk">
       <ColNames>userId</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="308" parent="245" name="LoginRole_role_id_fk">
+    <index id="311" parent="245" name="LoginRole_role_id_fk">
       <ColNames>roleId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="309" parent="245" name="PRIMARY">
+    <key id="312" parent="245" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="310" parent="245" name="LoginRole_login_id_fk">
+    <foreign-key id="313" parent="245" name="LoginRole_login_id_fk">
       <ColNames>userId</ColNames>
       <RefSchemaName>qlu_clubs_ms</RefSchemaName>
       <RefTableName>login</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="311" parent="245" name="LoginRole_role_id_fk">
+    <foreign-key id="314" parent="245" name="LoginRole_role_id_fk">
       <ColNames>roleId</ColNames>
       <RefSchemaName>qlu_clubs_ms</RefSchemaName>
       <RefTableName>role</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="312" parent="246" name="id">
+    <column id="315" parent="246" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="313" parent="246" name="memberId">
+    <column id="316" parent="246" name="memberId">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="314" parent="246" name="clubId">
+    <column id="317" parent="246" name="clubId">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="315" parent="246" name="enrollDate">
+    <column id="318" parent="246" name="enrollDate">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="316" parent="246" name="Member_login_id_fk">
+    <index id="319" parent="246" name="Member_login_id_fk">
       <ColNames>memberId</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="317" parent="246" name="Member_clubs_id_fk">
+    <index id="320" parent="246" name="Member_clubs_id_fk">
       <ColNames>clubId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="318" parent="246" name="PRIMARY">
+    <key id="321" parent="246" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="319" parent="246" name="Member_login_id_fk">
+    <foreign-key id="322" parent="246" name="Member_login_id_fk">
       <ColNames>memberId</ColNames>
       <RefSchemaName>qlu_clubs_ms</RefSchemaName>
       <RefTableName>login</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="320" parent="246" name="Member_clubs_id_fk">
+    <foreign-key id="323" parent="246" name="Member_clubs_id_fk">
       <ColNames>clubId</ColNames>
       <RefSchemaName>qlu_clubs_ms</RefSchemaName>
       <RefTableName>clubs</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="321" parent="247" name="id">
+    <column id="324" parent="247" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="322" parent="247" name="content">
+    <column id="325" parent="247" name="content">
       <Position>2</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="323" parent="247" name="clubId">
+    <column id="326" parent="247" name="clubId">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="324" parent="247" name="releaseDate">
+    <column id="327" parent="247" name="releaseDate">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="325" parent="247" name="Message_login_id_fk">
+    <index id="328" parent="247" name="Message_login_id_fk">
       <ColNames>clubId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="326" parent="247" name="PRIMARY">
+    <key id="329" parent="247" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="327" parent="247" name="Message_login_id_fk">
+    <foreign-key id="330" parent="247" name="Message_login_id_fk">
       <ColNames>clubId</ColNames>
       <RefSchemaName>qlu_clubs_ms</RefSchemaName>
       <RefTableName>clubs</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="328" parent="248" name="id">
+    <column id="331" parent="248" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="329" parent="248" name="model">
+    <column id="332" parent="248" name="model">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="330" parent="248" name="link">
+    <column id="333" parent="248" name="link">
       <Position>3</Position>
       <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="331" parent="248" name="PRIMARY">
+    <key id="334" parent="248" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="332" parent="249" name="id">
+    <column id="335" parent="249" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="333" parent="249" name="name">
+    <column id="336" parent="249" name="name">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="334" parent="249" name="PRIMARY">
+    <key id="337" parent="249" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="335" parent="250" name="id">
+    <column id="338" parent="250" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="336" parent="250" name="roleId">
+    <column id="339" parent="250" name="roleId">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="337" parent="250" name="privilegeId">
+    <column id="340" parent="250" name="privilegeId">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="338" parent="250" name="RolePrivilege_role_id_fk">
+    <index id="341" parent="250" name="RolePrivilege_role_id_fk">
       <ColNames>roleId</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="339" parent="250" name="RolePrivilege_privilege_id_fk">
+    <index id="342" parent="250" name="RolePrivilege_privilege_id_fk">
       <ColNames>privilegeId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="340" parent="250" name="PRIMARY">
+    <key id="343" parent="250" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="341" parent="250" name="RolePrivilege_role_id_fk">
+    <foreign-key id="344" parent="250" name="RolePrivilege_role_id_fk">
       <ColNames>roleId</ColNames>
       <RefSchemaName>qlu_clubs_ms</RefSchemaName>
       <RefTableName>role</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="342" parent="250" name="RolePrivilege_privilege_id_fk">
+    <foreign-key id="345" parent="250" name="RolePrivilege_privilege_id_fk">
       <ColNames>privilegeId</ColNames>
       <RefSchemaName>qlu_clubs_ms</RefSchemaName>
       <RefTableName>privilege</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="346" parent="251" name="id">
+      <Position>1</Position>
+      <DataType>char(10)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="347" parent="251" name="loginId">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="348" parent="251" name="studentId_login_id_fk">
+      <ColNames>loginId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="349" parent="251" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="350" parent="251" name="studentId_login_id_fk">
+      <ColNames>loginId</ColNames>
+      <RefSchemaName>qlu_clubs_ms</RefSchemaName>
+      <RefTableName>login</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
   </database-model>

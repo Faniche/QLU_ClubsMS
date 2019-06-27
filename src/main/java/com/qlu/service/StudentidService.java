@@ -1,17 +1,15 @@
 package com.qlu.service;
 
-import com.qlu.entity.Apply;
-import com.qlu.model.ApplyModel;
-
+import com.qlu.entity.Studentid;
 import java.util.List;
 
 /**
- * (Apply)表服务接口
+ * (Studentid)表服务接口
  *
  * @author Chare
- * @since 2019-06-21 15:17:37
+ * @since 2019-06-27 18:15:27
  */
-public interface ApplyService {
+public interface StudentidService {
 
     /**
      * 通过ID查询单条数据
@@ -19,7 +17,7 @@ public interface ApplyService {
      * @param id 主键
      * @return 实例对象
      */
-    Apply queryById(Integer id);
+    Studentid queryById(String id);
 
     /**
      * 查询多条数据
@@ -28,30 +26,23 @@ public interface ApplyService {
      * @param limit 查询条数
      * @return 对象列表
      */
-    List<Apply> queryAllByLimit(int offset, int limit);
-
-    /**
-     * 通过登录的ID查找所有的消息
-     * @param id
-     * @return
-     */
-    List<ApplyModel> queryAllByLoginId(Integer id);
+    List<Studentid> queryAllByLimit(int offset, int limit);
 
     /**
      * 新增数据
      *
-     * @param apply 实例对象
+     * @param studentid 实例对象
      * @return 实例对象
      */
-    Apply insert(Apply apply);
+    Studentid insert(Studentid studentid);
 
     /**
      * 修改数据
      *
-     * @param apply 实例对象
+     * @param studentid 实例对象
      * @return 实例对象
      */
-    Apply update(Apply apply);
+    Studentid update(Studentid studentid);
 
     /**
      * 通过主键删除数据
@@ -59,6 +50,6 @@ public interface ApplyService {
      * @param id 主键
      * @return 是否成功
      */
-    boolean deleteById(Integer id);
+    boolean deleteById(String id);
 
 }

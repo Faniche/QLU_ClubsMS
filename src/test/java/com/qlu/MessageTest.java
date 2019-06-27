@@ -1,6 +1,7 @@
 package com.qlu;
 
 import com.qlu.entity.Message;
+import com.qlu.model.MessageModel;
 import com.qlu.service.MessageService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,9 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.sql.Timestamp;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,16 +20,15 @@ import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring/spring-dao.xml","classpath:spring/spring-service.xml", "classpath:mybatis-config.xml"})
-
 public class MessageTest {
     @Autowired
     private MessageService messageService;
 
     @Test
     public void queryByLoginId(){
-        List<Message> messageList = messageService.queryByLoginId(2);
-        for (Message message : messageList){
-            System.out.println(message.getContent());
+        List<MessageModel> messageList = messageService.queryByLoginId(2);
+        for (MessageModel message : messageList){
+            System.out.println(message.getContent() + "\t" + message.getClub());
         }
     }
 

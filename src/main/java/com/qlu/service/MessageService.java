@@ -1,6 +1,8 @@
 package com.qlu.service;
 
 import com.qlu.entity.Message;
+import com.qlu.model.MessageModel;
+
 import java.util.List;
 
 /**
@@ -16,7 +18,7 @@ public interface MessageService {
      * @param id 主键
      * @return 实例对象
      */
-    List<Message> queryByLoginId(Integer id);
+    List<MessageModel> queryByLoginId(Integer id);
 
     /**
      * 查询多条数据

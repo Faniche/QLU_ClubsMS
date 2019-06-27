@@ -2,10 +2,13 @@ package com.qlu.service.impl;
 
 import com.qlu.entity.Message;
 import com.qlu.dao.MessageDao;
+import com.qlu.model.MessageModel;
+import com.qlu.service.ClubsService;
 import com.qlu.service.MessageService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,14 +22,28 @@ public class MessageServiceImpl implements MessageService {
     @Resource
     private MessageDao messageDao;
 
+    @Resource
+    private ClubsService clubsService;
+
     /**
      * 根据用户ID查询所有消息
      * @param id 主键
      * @return 实例对象
      */
     @Override
-    public List<Message> queryByLoginId(Integer id) {
-        return messageDao.queryByLoginId(id);
+    public List<MessageModel> queryByLoginId(Integer id) {
+        List<Message> messageList = this.messageDao.queryByLoginId(id);
+        List<MessageModel> messageModelList = new ArrayList<>();
+        for (Message message : messageList){
+            MessageModel messageModel = new MessageModel();
+            messageModel.setId(message.getId());
+            messageModel.setClubid(message.getClubid());
+            messageModel.setContent(message.getContent());
+            messageModel.setReleasedate(message.getReleasedate());
+            messageModel.setClub(clubsService.queryById(message.getClubid()).getName());
+            messageModelList.add(messageModel);
+        }
+        return messageModelList;
     }
 
     /**

@@ -4,6 +4,8 @@ import com.qlu.entity.Apply;
 import com.qlu.entity.Login;
 import com.qlu.entity.Message;
 import com.qlu.entity.Role;
+import com.qlu.model.ApplyModel;
+import com.qlu.model.MessageModel;
 import com.qlu.service.ApplyService;
 import com.qlu.service.MessageService;
 import org.springframework.stereotype.Controller;
@@ -41,12 +43,12 @@ public class MessageController {
         ModelAndView modelAndView = new ModelAndView("message/show");
         Login login = (Login) session.getAttribute("userinfo");
         Role role = (Role)session.getAttribute("role");
-        // 查询出所有的消息
-        List<Apply> applyList = applyService.queryAllByLoginId(login.getId());
+        // 查询出所有的申请
+        List<ApplyModel> applyList = applyService.queryAllByLoginId(login.getId());
         modelAndView.addObject("applyList", applyList);
-        // 查出所有申请
+        // 查出所有消息，只有学生和管理员有消息
         if(role.getId() == 2 || role.getId() == 3) {
-            List<Message> messageList = messageService.queryByLoginId(login.getId());
+            List<MessageModel> messageList = messageService.queryByLoginId(login.getId());
             modelAndView.addObject("messageList", messageList);
         }
         return modelAndView;

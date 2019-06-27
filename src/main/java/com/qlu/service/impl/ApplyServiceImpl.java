@@ -1,11 +1,15 @@
 package com.qlu.service.impl;
 
 import com.qlu.dao.ApplyDao;
+import com.qlu.dao.ApplytypeDao;
+import com.qlu.dao.LoginDao;
 import com.qlu.entity.Apply;
+import com.qlu.model.ApplyModel;
 import com.qlu.service.ApplyService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,6 +23,11 @@ public class ApplyServiceImpl implements ApplyService {
     @Resource
     private ApplyDao applyDao;
 
+    @Resource
+    private ApplytypeDao applytypeDao;
+
+    @Resource
+    private LoginDao loginDao;
     /**
      * 通过ID查询单条数据
      *
@@ -42,8 +51,35 @@ public class ApplyServiceImpl implements ApplyService {
         return this.applyDao.queryAllByLimit(offset, limit);
     }
 
-    public List<Apply> queryAllByLoginId(Integer id){
-        return this.applyDao.queryAllByLoginId(id);
+    public List<ApplyModel> queryAllByLoginId(Integer id){
+        List<Apply> applyList = this.applyDao.queryAllByLoginId(id);
+        List<ApplyModel> applyModels = new ArrayList<>();
+        for (Apply apply : applyList){
+            ApplyModel applyModel = new ApplyModel();
+            applyModel.setId(apply.getId());
+            applyModel.setType(apply.getType());
+            applyModel.setProposerid(apply.getProposerid());
+            if (apply.getClubid() != null) {
+                applyModel.setClubid(apply.getClubid());
+            }
+            applyModel.setDate(apply.getDate());
+            applyModel.setStatus(apply.getStatus());
+            applyModel.setProposer(loginDao.queryById(apply.getProposerid()).getName());
+            applyModel.setApplyType(applytypeDao.queryById(apply.getId()).getType());
+            switch (apply.getStatus()){
+                case 0:
+                    applyModel.setStatusStr("待审核");
+                    break;
+                case 1:
+                    applyModel.setStatusStr("已通过");
+                    break;
+                case 2:
+                    applyModel.setStatusStr("被拒绝");
+                    break;
+            }
+            applyModels.add(applyModel);
+        }
+        return applyModels;
     }
 
     /**
