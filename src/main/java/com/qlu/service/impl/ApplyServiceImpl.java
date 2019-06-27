@@ -1,7 +1,7 @@
 package com.qlu.service.impl;
 
-import com.qlu.entity.Apply;
 import com.qlu.dao.ApplyDao;
+import com.qlu.entity.Apply;
 import com.qlu.service.ApplyService;
 import org.springframework.stereotype.Service;
 

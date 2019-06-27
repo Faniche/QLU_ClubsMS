@@ -48,9 +48,8 @@ public class MessageServiceImpl implements MessageService {
      * @return 实例对象
      */
     @Override
-    public Message insert(Message message) {
-        this.messageDao.insert(message);
-        return message;
+    public boolean insert(Message message) {
+        return this.messageDao.insert(message) > 0;
     }
 
 

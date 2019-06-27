@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Chare
@@ -22,6 +23,9 @@
                     <div class="tab-content" id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
                              aria-labelledby="day-1-tab">
+                            <c:forEach>
+                                
+                            </c:forEach>
                             <div class="speaker-wrap ftco-animate d-flex">
                                 <div class="img speaker-img" style="background-image: url(images/wushu.png);"></div>
                                 <div class="text pl-md-5">

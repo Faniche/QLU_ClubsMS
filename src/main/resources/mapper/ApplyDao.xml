@@ -13,7 +13,7 @@
     <!--查询单个-->
     <select id="queryById" resultMap="ApplyMap">
         select
-          id, type, proposerId, clubId, date
+          id, type, proposerId, clubId, date, status
         from qlu_clubs_ms.apply
         where id = #{id}
     </select>
@@ -21,7 +21,7 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="ApplyMap">
         select
-          id, type, proposerId, clubId, date
+          id, type, proposerId, clubId, date, status
         from qlu_clubs_ms.apply
         limit #{offset}, #{limit}
     </select>
@@ -29,7 +29,7 @@
     <!--通过登录的ID查找所有的消息 -->
     <select id="queryAllByLoginId" resultMap="ApplyMap">
         select
-          id, type, proposerId, clubId, date
+          id, type, proposerId, clubId, date, status
         from qlu_clubs_ms.apply
         limit #{offset}, #{limit}
     </select>
@@ -37,7 +37,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="ApplyMap">
         select
-          id, type, proposerId, clubId, date
+          id, type, proposerId, clubId, date, status
         from qlu_clubs_ms.apply
         <where>
             <if test="id != null">
@@ -55,13 +55,16 @@
             <if test="date != null">
                 and date = #{date}
             </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
         </where>
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into qlu_clubs_ms.apply(type, proposerId, clubId, date)
-        values (#{type}, #{proposerid}, #{clubid}, #{date})
+        insert into qlu_clubs_ms.apply(type, proposerId, clubId, date, status)
+        values (#{type}, #{proposerid}, #{clubid}, #{date}, #{status})
     </insert>
 
     <!--通过主键修改数据-->

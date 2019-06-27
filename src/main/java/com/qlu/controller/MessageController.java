@@ -38,26 +38,34 @@ public class MessageController {
      */
     @GetMapping("show")
     public ModelAndView message(HttpSession session){
-        ModelAndView modelAndView = new ModelAndView();
-//        Login login = (Login) session.getAttribute("userinfo");
-//        Role role = (Role)session.getAttribute("role");
-//        // 查询出所有的消息
-//        List<Message> messageList = messageService.queryByLoginId(login.getId());
-//        List<Apply> applyList = applyService.queryAllByLoginId(login.getId());
-//        modelAndView.addObject("messageList",messageList);
-//
-//        modelAndView.setViewName("message/show");
-//
+        ModelAndView modelAndView = new ModelAndView("message/show");
+        Login login = (Login) session.getAttribute("userinfo");
+        Role role = (Role)session.getAttribute("role");
+        // 查询出所有的消息
+        List<Apply> applyList = applyService.queryAllByLoginId(login.getId());
+        modelAndView.addObject("applyList", applyList);
+        // 查出所有申请
+        if(role.getId() == 2 || role.getId() == 3) {
+            List<Message> messageList = messageService.queryByLoginId(login.getId());
+            modelAndView.addObject("messageList", messageList);
+        }
         return modelAndView;
     }
 
+    /**
+     * message对象包含了要插入的所有信息，不需要再查询
+     * @param message
+     * @return
+     */
     @PostMapping("release")
     public ModelAndView release(Message message){
-        messageService.insert(message);
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("msg", "发布成功");
-        modelAndView.setViewName("message/message.jsp");
+        boolean result = messageService.insert(message);
+        ModelAndView modelAndView = new ModelAndView("message/message");
+        if (result) {
+            modelAndView.addObject("msg", "发布成功");
+        } else {
+            modelAndView.addObject("msg", "发布失败");
+        }
         return modelAndView;
     }
-
 }

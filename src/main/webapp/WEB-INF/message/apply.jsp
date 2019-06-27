@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Chare
@@ -21,8 +22,25 @@
                         <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
                              aria-labelledby="day-1-tab">
 
+                            <c:forEach items="${applyList}" var="item">
+                                <div class="speaker-wrap ftco-animate d-flex">
+                                    <div class="img speaker-img"
+                                         style="background-image: url('${pageContext.request.contextPath}/images/${item.clubId}.jpg');"></div>
+                                    <div class="text pl-md-5">
+                                        <span class="time">时间：2019-6-13 15:22</span>
+                                        <h2><a href="#">活动申请</a></h2>
+                                        <p>2019-6-30 在本校内举办足球比赛</p>
+                                        <h3 class="speaker-name">&mdash; <a href="#">足球社</a> <span
+                                                class="position">杨秋日</span></h3>
+                                        <p>
+                                            <button type="button" class="btn btn-success">同意</button>&nbsp;&nbsp;&nbsp;<button
+                                                type="button" class="btn btn-danger">拒绝
+                                        </button>
+                                    </div>
+                                </div>
+                            </c:forEach>
                             <div class="speaker-wrap ftco-animate d-flex">
-                                <div class="img speaker-img" style="background-image: url(images/football.png);"></div>
+                                <div class="img speaker-img" style="background-image: url('${pageContext.request.contextPath}/images/football.png');"></div>
                                 <div class="text pl-md-5">
                                     <span class="time">时间：2019-6-13 15:22</span>
                                     <h2><a href="#">活动申请</a></h2>

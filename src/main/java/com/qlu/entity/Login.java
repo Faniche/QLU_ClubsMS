@@ -19,6 +19,7 @@ public class Login implements Serializable {
     
     private String password;
 
+    private String email;
 
     public Integer getId() {
         return id;
@@ -52,4 +53,11 @@ public class Login implements Serializable {
         this.password = password;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

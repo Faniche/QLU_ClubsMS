@@ -1,5 +1,7 @@
 package com.qlu.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.sql.Timestamp;
 import java.util.Date;
 import java.io.Serializable;
@@ -18,15 +20,13 @@ public class Message implements Serializable {
     private String content;
     
     private Integer clubid;
-    
+
     private Date releasedate;
 
     public Message() {
         Timestamp timestamp = new Timestamp(new Date().getTime());
         this.releasedate = timestamp;
     }
-
-
 
     public Integer getId() {
         return id;

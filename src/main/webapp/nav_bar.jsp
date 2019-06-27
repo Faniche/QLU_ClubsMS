@@ -6,13 +6,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <script>
     $().ready(function () {
-        if (${sessionScope.logininfo != null}) {
-            var obj = document.getElementById("logintowelcome");
-            obj.innerText = " Hi, ${sessionScope.logininfo.userName}!";
-            $("#goal").attr("href", "${pageContext.request.contextPath}/personal/center.action")
+        if (${sessionScope.userinfo != null}) {
+            var obj = document.getElementById("loginName");
+            obj.innerText = " Hi, ${sessionScope.userinfo.username}!";
+            $("#login_btn").attr("href", "${pageContext.request.contextPath}/message/show")
         }
     })
 </script>
@@ -32,7 +32,14 @@
                 <li class="nav-item"><a href="club.html" class="nav-link">社团介绍</a></li>
                 <li class="nav-item"><a href="${pageContext.request.contextPath}/message/show" class="nav-link">我的消息</a></li>
                 <li class="nav-item"><a href="download.html" class="nav-link">下载专区</a></li>
-                <li class="nav-item cta mr-md-2"><a href="login.html" class="nav-link">登录</a></li>
+
+                <li class="nav-item cta mr-md-2">
+                    <a id="login_btn" href="${pageContext.request.contextPath}/login" class="nav-link">
+                        <span id="loginName">
+                            登录
+                        </span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

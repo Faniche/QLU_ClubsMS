@@ -33,7 +33,7 @@ public interface MessageService {
      * @param message 实例对象
      * @return 实例对象
      */
-    Message insert(Message message);
+    boolean insert(Message message);
 
     /**
      * 通过主键删除数据
