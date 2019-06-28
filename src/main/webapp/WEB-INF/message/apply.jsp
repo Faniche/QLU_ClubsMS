@@ -12,7 +12,7 @@
         <div class="row justify-content-center mb-5 pb-3">
             <div class="col-md-7 text-center heading-section ftco-animate">
                 <!--                <span class="subheading">Testimonial</span>-->
-                <h1 class="mb-4">申&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请</h1>
+                <h1 class="mb-4">申请</h1>
             </div>
         </div>
         <div class="ftco-search">

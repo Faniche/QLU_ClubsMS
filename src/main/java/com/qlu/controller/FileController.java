@@ -1,37 +1,35 @@
 package com.qlu.controller;
 
-import com.qlu.entity.File;
-import com.qlu.service.FileService;
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.annotation.Resource;
-
-/**
- * (File)表控制层
- *
- * @author Chare
- * @since 2019-06-21 22:35:01
- */
 @Controller
-@RequestMapping("/")
 public class FileController {
-    /**
-     * 服务对象
-     */
-    @Resource
-    private FileService fileService;
+    @RequestMapping("/fileUP")
+    public String fileUp(@RequestParam("info1") MultipartFile file){
+        System.out.println();
+//文件上传
+        //获取原文件名称：
+        String fileName=file.getOriginalFilename();//获取原文件名
+        File file2=new File("D:\\files", UUID.randomUUID()+fileName);
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("/file/selectOne")
-    public File selectOne(Integer id) {
-        return this.fileService.queryById(id);
+        try {
+            file.transferTo(file2);
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return "show";
+
     }
-
 
 }
