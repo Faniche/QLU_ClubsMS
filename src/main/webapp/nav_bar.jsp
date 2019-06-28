@@ -39,7 +39,7 @@
                             登录
                         </span>
                     </a>
-                <li class="nav-item"><a href="${pageContext.request.contextPath}/register/register" class="nav-link">注册</a></li>
+
                 </li>
             </ul>
         </div>

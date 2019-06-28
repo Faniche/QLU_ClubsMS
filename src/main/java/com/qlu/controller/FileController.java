@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-public class FileController {
-    @RequestMapping("/fileUP")
+class FileUpController {
+
+    @RequestMapping("/fileUp")
     public String fileUp(@RequestParam("info1") MultipartFile file){
         System.out.println();
-//文件上传
+
+        //文件上传
         //获取原文件名称：
         String fileName=file.getOriginalFilename();//获取原文件名
         File file2=new File("D:\\files", UUID.randomUUID()+fileName);
