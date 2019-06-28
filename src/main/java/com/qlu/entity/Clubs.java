@@ -13,12 +13,16 @@ public class Clubs implements Serializable {
     private static final long serialVersionUID = 794957066246331779L;
     
     private Integer id;
-    
+
+    private Integer leaderId;
+
     private String name;
-    
+
     private String descript;
     
     private Date establisheddate;
+
+    private Integer status;
 
 
     public Integer getId() {
@@ -27,6 +31,14 @@ public class Clubs implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getLeaderId() {
+        return leaderId;
+    }
+
+    public void setLeaderId(Integer leaderId) {
+        this.leaderId = leaderId;
     }
 
     public String getName() {
@@ -53,4 +65,11 @@ public class Clubs implements Serializable {
         this.establisheddate = establisheddate;
     }
 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 }

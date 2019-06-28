@@ -1,6 +1,7 @@
 package com.qlu.service;
 
 import com.qlu.entity.Apply;
+import com.qlu.entity.Role;
 import com.qlu.model.ApplyModel;
 
 import java.util.List;
@@ -35,7 +36,7 @@ public interface ApplyService {
      * @param id
      * @return
      */
-    List<ApplyModel> queryAllByLoginId(Integer id);
+    List<ApplyModel> queryAllByLoginId(Integer i, Role role);
 
     /**
      * 新增数据

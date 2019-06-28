@@ -44,7 +44,7 @@ public class MessageController {
         Login login = (Login) session.getAttribute("userinfo");
         Role role = (Role)session.getAttribute("role");
         // 查询出所有的申请
-        List<ApplyModel> applyList = applyService.queryAllByLoginId(login.getId());
+        List<ApplyModel> applyList = applyService.queryAllByLoginId(login.getId(), role);
         modelAndView.addObject("applyList", applyList);
         // 查出所有消息，只有学生和管理员有消息
         if(role.getId() == 2 || role.getId() == 3) {

@@ -36,10 +36,7 @@ public class MessageServiceImpl implements MessageService {
         List<MessageModel> messageModelList = new ArrayList<>();
         for (Message message : messageList){
             MessageModel messageModel = new MessageModel();
-            messageModel.setId(message.getId());
-            messageModel.setClubid(message.getClubid());
-            messageModel.setContent(message.getContent());
-            messageModel.setReleasedate(message.getReleasedate());
+            messageModel.setMessage(message);
             messageModel.setClub(clubsService.queryById(message.getClubid()).getName());
             messageModelList.add(messageModel);
         }

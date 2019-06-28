@@ -30,11 +30,23 @@ public interface ApplyDao {
     List<Apply> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
 
     /**
-     * 通过登录的ID查找所有的消息
+     * 查出所有的创建社团，解散社团，活动申请
+     * @return
+     */
+    List<Apply> queryByAdmin();
+
+    /**
+     * 根据社团id找关于指定id的社团的所有申请
      * @param id
      * @return
      */
-    List<Apply> queryAllByLoginId(Integer id);
+    List<Apply> queryByClubLeader(Integer id);
+
+    /**
+     * 根据学生ID查询所有申请
+     * @return
+     */
+    List<Apply> queryByStudent(Integer id);
 
     /**
      * 通过实体作为筛选条件查询

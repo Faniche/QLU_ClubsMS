@@ -1,9 +1,7 @@
 package com.qlu.service.impl;
 
-import com.qlu.dao.ApplyDao;
-import com.qlu.dao.ApplytypeDao;
-import com.qlu.dao.LoginDao;
-import com.qlu.entity.Apply;
+import com.qlu.dao.*;
+import com.qlu.entity.*;
 import com.qlu.model.ApplyModel;
 import com.qlu.service.ApplyService;
 import org.springframework.stereotype.Service;
@@ -28,6 +26,16 @@ public class ApplyServiceImpl implements ApplyService {
 
     @Resource
     private LoginDao loginDao;
+
+    @Resource
+    private ClubsDao clubsDao;
+
+    @Resource
+    private ActivityDao activityDao;
+
+    @Resource
+    private MemberDao memberDao;
+
     /**
      * 通过ID查询单条数据
      *
@@ -51,22 +59,53 @@ public class ApplyServiceImpl implements ApplyService {
         return this.applyDao.queryAllByLimit(offset, limit);
     }
 
-    public List<ApplyModel> queryAllByLoginId(Integer id){
-        List<Apply> applyList = this.applyDao.queryAllByLoginId(id);
+    public List<ApplyModel> queryAllByLoginId(Integer id, Role role){
         List<ApplyModel> applyModels = new ArrayList<>();
-        for (Apply apply : applyList){
-            ApplyModel applyModel = new ApplyModel();
-            applyModel.setId(apply.getId());
-            applyModel.setType(apply.getType());
-            applyModel.setProposerid(apply.getProposerid());
-            if (apply.getClubid() != null) {
-                applyModel.setClubid(apply.getClubid());
+        List<Apply> applyList = new ArrayList<>();
+        // 1. 超级管理员：创建社团，解散社团，活动申请
+        if (role.getId() == 1) {
+            // 查出创建社团(1)，解散社团(2)，活动(5)的申请
+            applyList = this.applyDao.queryByAdmin();
+        }
+        // 2. 社长：解散(2)，活动(5)，创建社团(1)，入团申请(3)，退团申请(4)
+        // 所有与管理的社团  有关的 所有申请
+        if (role.getId() == 2) {
+            Clubs clubs = new Clubs();
+            clubs.setLeaderId(id);
+            // 找到管理的社团
+            List<Clubs> clubsList = clubsDao.queryAll(clubs);
+            for (Clubs clubs1 : clubsList){
+                // 遍历所有社团，找到每一个社团的所有申请
+                List<Apply> temp = this.applyDao.queryByClubLeader(clubs1.getId());
+                // 将所有管理的社团的所有申请加到applyList中。
+                for (Apply apply : temp) {
+                    applyList.add(apply);
+                }
             }
-            applyModel.setDate(apply.getDate());
-            applyModel.setStatus(apply.getStatus());
+        }
+        // 3. 学生：创建社团(1)，入团申请(3)，退团申请(4)      发起者是学生本人，
+        if (role.getId() == 2 || role.getId() == 3) {
+            List<Apply> temp = this.applyDao.queryByStudent(id);
+            for (Apply apply : temp) {
+                applyList.add(apply);
+            }
+        }
+        applyModels = this.chengeToModel(applyList);
+        return applyModels;
+    }
+
+    private List<ApplyModel> chengeToModel(List<Apply> applyList) {
+        List<ApplyModel> applyModels = new ArrayList<>();
+        for (Apply apply : applyList) {
+            ApplyModel applyModel = new ApplyModel();
+            applyModel.setApply(apply);
             applyModel.setProposer(loginDao.queryById(apply.getProposerid()).getName());
-            applyModel.setApplyType(applytypeDao.queryById(apply.getId()).getType());
-            switch (apply.getStatus()){
+
+            Applytype applytype = applytypeDao.queryById(apply.getType());
+            String name = applytype.getType();
+            applyModel.setApplyType(name);
+//            applyModel.setApplyType(applytypeDao.queryById(apply.getId()).getType());
+            switch (apply.getStatus()) {
                 case 0:
                     applyModel.setStatusStr("待审核");
                     break;
@@ -76,6 +115,14 @@ public class ApplyServiceImpl implements ApplyService {
                 case 2:
                     applyModel.setStatusStr("被拒绝");
                     break;
+            }
+            // 创建社团的申请，申请内容为社团描述
+            if (apply.getType() == 1){
+                applyModel.setContent(clubsDao.queryById(apply.getClubid()).getDescript());
+            }
+            // 活动申请，申请内容为活动主题
+            if (apply.getType() == 5) {
+                applyModel.setContent(activityDao.queryById(apply.getClubid()).getTopic());
             }
             applyModels.add(applyModel);
         }

@@ -8,6 +8,7 @@
         <result property="proposerid" column="proposerId" jdbcType="INTEGER"/>
         <result property="clubid" column="clubId" jdbcType="INTEGER"/>
         <result property="date" column="date" jdbcType="TIMESTAMP"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
     </resultMap>
 
     <!--查询单个-->
@@ -26,13 +27,31 @@
         limit #{offset}, #{limit}
     </select>
 
-    <!--通过登录的ID查找所有的消息 -->
-    <select id="queryAllByLoginId" resultMap="ApplyMap">
+    <!--查出所有的创建社团，解散社团，活动申请-->
+    <select id="queryByAdmin" resultMap="ApplyMap">
         select
           id, type, proposerId, clubId, date, status
         from qlu_clubs_ms.apply
-        limit #{offset}, #{limit}
+        where type = 1 or type = 2 or type = 5;
     </select>
+
+    <!--查出所有的创建社团，解散社团，活动申请-->
+    <select id="queryByClubLeader" resultMap="ApplyMap">
+        select
+          id, type, proposerId, clubId, date, status
+        from qlu_clubs_ms.apply
+        where clubId = #{id}
+        and (type = 2 or type = 3 or type = 4 or type = 5);
+    </select>
+
+    <!--查出所有的创建社团，解散社团，活动申请-->
+    <select id="queryByStudent" resultMap="ApplyMap">
+        select
+          id, type, proposerId, clubId, date, status
+        from qlu_clubs_ms.apply
+        where proposerId = #{id} and ( type = 1 or type = 3 or type = 4 ) ;
+    </select>
+
 
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="ApplyMap">

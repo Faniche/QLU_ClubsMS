@@ -24,12 +24,18 @@
 
                             <c:forEach items="${applyList}" var="item">
                                 <div class="speaker-wrap ftco-animate d-flex">
-<%--                                    <div class="img speaker-img"--%>
-<%--                                         style="background-image: url('${pageContext.request.contextPath}/images/${item.clubId}.jpg');"></div>--%>
+                                        <%--社团Logo--%>
+                                    <div class="img speaker-img"
+                                         style="background-image: url(${clubsIcon.(item.clubName)});"></div>
                                     <div class="text pl-md-5">
-                                        <span class="time">时间：2019-6-13 15:22</span>
-                                        <h2><a href="#">活动申请</a></h2>
-                                        <p>2019-6-30 在本校内举办足球比赛</p>
+                                            <%--申请时间--%>
+                                        <span class="time">时间：${item.apply.date}</span>
+                                            <%--申请类型--%>
+                                        <h2><a href="#">${item.applyType}</a></h2>
+                                        <%--申请内容--%>
+                                        <p>
+                                            <c:if test=""
+                                        </p>
                                         <h3 class="speaker-name">&mdash; <a href="#">足球社</a> <span
                                                 class="position">杨秋日</span></h3>
                                         <p>
@@ -40,7 +46,8 @@
                                 </div>
                             </c:forEach>
                             <div class="speaker-wrap ftco-animate d-flex">
-                                <div class="img speaker-img" style="background-image: url('${pageContext.request.contextPath}/images/football.png');"></div>
+                                <div class="img speaker-img"
+                                     style="background-image: url('${pageContext.request.contextPath}/images/football.png');"></div>
                                 <div class="text pl-md-5">
                                     <span class="time">时间：2019-6-13 15:22</span>
                                     <h2><a href="#">活动申请</a></h2>

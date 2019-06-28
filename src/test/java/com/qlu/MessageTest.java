@@ -28,7 +28,7 @@ public class MessageTest {
     public void queryByLoginId(){
         List<MessageModel> messageList = messageService.queryByLoginId(2);
         for (MessageModel message : messageList){
-            System.out.println(message.getContent() + "\t" + message.getClub());
+            System.out.println(message.getMessage().getContent() + "\t" + message.getClub());
         }
     }
 
