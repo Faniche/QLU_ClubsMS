@@ -29,6 +29,12 @@ public class RoleServiceImpl implements RoleService {
     public Role queryById(Integer id) {
         return this.roleDao.queryById(id);
     }
+
+    /**
+     * 通过ID查询登录角色的权限
+     * @param id
+     * @return
+     */
     public Role queryByLoginId(Integer id){return this.roleDao.queryByLoginId(id);}
     /**
      * 查询多条数据

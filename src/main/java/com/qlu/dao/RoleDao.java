@@ -20,7 +20,7 @@ public interface RoleDao {
      */
     Role queryById(Integer id);
 
-    /**
+    /**通过id查询数据
      *
      * @param id
      * @return

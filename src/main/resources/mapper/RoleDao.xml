@@ -17,7 +17,7 @@
 
     <!--查询单个-->
     <select id="queryByLoginId" resultMap="RoleMap">
-        SELECT *
+        SELECT  id, name
         FROM qlu_clubs_ms.role
         WHERE role.id in (SELECT loginrole.roleId from loginrole where loginrole.userId = #{id})
     </select>

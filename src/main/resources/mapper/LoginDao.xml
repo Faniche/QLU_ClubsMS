@@ -17,6 +17,14 @@
         where id = #{id}
     </select>
 
+    <select id="queryLoginByUsernameAndPassword" resultMap="LoginMap">
+        select
+          id, username, name, password
+        from qlu_clubs_ms.login
+        where username = #{username}
+        and password = #{password}
+    </select>
+
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="LoginMap">
         select

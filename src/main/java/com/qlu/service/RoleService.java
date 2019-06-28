@@ -19,6 +19,11 @@ public interface RoleService {
      */
     Role queryById(Integer id);
 
+    /**
+     * 通过id查询权限
+     * @param id
+     * @return
+     */
     Role queryByLoginId(Integer id);
 
     /**

@@ -34,11 +34,12 @@
                 <li class="nav-item"><a href="download.html" class="nav-link">下载专区</a></li>
 
                 <li class="nav-item cta mr-md-2">
-                    <a id="login_btn" href="${pageContext.request.contextPath}/login" class="nav-link">
+                <a id="login_btn" href="${pageContext.request.contextPath}/login/login" class="nav-link">
                         <span id="loginName">
                             登录
                         </span>
                     </a>
+                <li class="nav-item"><a href="${pageContext.request.contextPath}/register/register" class="nav-link">注册</a></li>
                 </li>
             </ul>
         </div>
