@@ -71,6 +71,7 @@
 
                 <button class="btn btn-lg btn-primary btn-block" type="submit">确定</button>
                 </form>
+                <span><a href="${pageContext.request.contextPath}/register/register" class="nav-link">若没有账号，点此注册</a></span>
             </div>
         </div>
 
