@@ -11,13 +11,7 @@ import java.util.List;
  */
 public interface ActivityService {
 
-    /**
-     * 通过ID查询单条数据
-     *
-     * @param id 主键
-     * @return 实例对象
-     */
-    Activity queryById(Integer id);
+
 
     /**
      * 查询多条数据
@@ -51,5 +45,21 @@ public interface ActivityService {
      * @return 是否成功
      */
     boolean deleteById(Integer id);
+
+
+
+    /*用于显示首页用到的调用的方法*/
+    /**
+     * 通过ID查询单条数据
+     *
+     * @param id 主键
+     * @return 实例对象
+     */
+    Activity queryById(Integer id);
+    /**
+     * 通过实体作为筛选条件查询
+     * @return 对象列表
+     */
+    List<Activity> findAll();
 
 }

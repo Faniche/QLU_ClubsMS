@@ -76,4 +76,12 @@ public class FileServiceImpl implements FileService {
     public boolean deleteById(Integer id) {
         return this.fileDao.deleteById(id) > 0;
     }
+
+
+    /*用于显示首页用到的调用的方法*/
+    /**
+     * 通过实体作为筛选条件查询
+     * @return 对象列表
+     */
+    public List<File> findAll(){return this.fileDao.findAll();}
 }

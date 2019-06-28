@@ -52,4 +52,7 @@ public interface ClubsService {
      */
     boolean deleteById(Integer id);
 
+
+    /*用于显示首页用到的调用的方法*/
+    List<Clubs> findAll();
 }

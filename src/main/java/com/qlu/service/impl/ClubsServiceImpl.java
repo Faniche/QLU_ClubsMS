@@ -76,4 +76,16 @@ public class ClubsServiceImpl implements ClubsService {
     public boolean deleteById(Integer id) {
         return this.clubsDao.deleteById(id) > 0;
     }
+
+
+
+    /**
+     * 查询所有数据
+
+     * @return 对象列表
+     */
+    @Override
+    public List<Clubs> findAll() {
+        return this.clubsDao.findAll();
+    }
 }

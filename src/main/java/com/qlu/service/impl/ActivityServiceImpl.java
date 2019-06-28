@@ -76,4 +76,15 @@ public class ActivityServiceImpl implements ActivityService {
     public boolean deleteById(Integer id) {
         return this.activityDao.deleteById(id) > 0;
     }
+
+
+
+    /**
+     * 查询多条数据
+     * @return 对象列表
+     */
+    @Override
+    public List<Activity> findAll() {
+        return this.activityDao.findAll();
+    }
 }

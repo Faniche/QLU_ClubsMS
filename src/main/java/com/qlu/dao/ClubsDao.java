@@ -62,4 +62,12 @@ public interface ClubsDao {
      */
     int deleteById(Integer id);
 
+
+    /*用于显示首页的调用的方法*>
+   /**
+    * 查询所有数据
+    *
+    * @return 对象列表
+    */
+    List<Clubs> findAll();
 }

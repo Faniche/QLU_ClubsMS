@@ -96,4 +96,19 @@
         delete from qlu_clubs_ms.activity where id = #{id}
     </delete>
 
+
+
+
+
+
+
+    <!--用于显示首页用到的调用的方法-->
+    <!--通过实体作为筛选条件查询-->
+    <select id="findAll" resultMap="ActivityMap">
+    select
+    id, clubsId, topic, time, location, money, status
+    from qlu_clubs_ms.activity
+    </select>
+
+
 </mapper>

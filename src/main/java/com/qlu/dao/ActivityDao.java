@@ -12,13 +12,7 @@ import java.util.List;
  */
 public interface ActivityDao {
 
-    /**
-     * 通过ID查询单条数据
-     *
-     * @param id 主键
-     * @return 实例对象
-     */
-    Activity queryById(Integer id);
+
 
     /**
      * 查询指定行数据
@@ -61,5 +55,25 @@ public interface ActivityDao {
      * @return 影响行数
      */
     int deleteById(Integer id);
+
+
+
+
+    /*用于页面显示调用的两个方法*/
+    /**
+     * 查询所有活动数据
+
+     * @return 对象列表
+     */
+    List<Activity> findAll();
+
+    /**
+     * 通过ID查询单条数据
+     *
+     * @param id 主键
+     * @return 实例对象
+     */
+    Activity queryById(Integer id);
+
 
 }
