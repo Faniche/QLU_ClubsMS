@@ -17,15 +17,15 @@ public class IndexController {
     public String toIndex(HttpSession session){
 
         // 用于测试
-        Login login = new Login();
-        login.setId(2);
-        login.setName("云天明");
-        login.setPassword("123456");
-        login.setUsername("test");
-        session.setAttribute("userinfo", login);
-        Role role = new Role();
-        role.setId(2);
-        session.setAttribute("role", role);
+//        Login login = new Login();
+//        login.setId(13);
+//        login.setName("秦始皇");
+//        login.setPassword("123456");
+//        login.setUsername("秦始皇");
+//        session.setAttribute("userinfo", login);
+//        Role role = new Role();
+//        role.setId(1);
+//        session.setAttribute("role", role);
 
         return "redirect:/index.jsp";
     }

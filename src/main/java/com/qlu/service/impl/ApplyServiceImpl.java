@@ -119,7 +119,8 @@ public class ApplyServiceImpl implements ApplyService {
             }
             // 活动申请，申请内容为活动主题
             if (apply.getType() == 5) {
-                applyModel.setContent(activityDao.queryById(apply.getClubid()).getTopic());
+                applyModel.setContent(activityDao.queryById(apply.getActivityId()).getTopic());
+                applyModel.setActivity(activityDao.queryById(apply.getActivityId()));
             }
             applyModels.add(applyModel);
         }

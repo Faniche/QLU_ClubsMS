@@ -27,6 +27,8 @@ public class Apply implements Serializable {
 
     private Integer status;
 
+    private Integer activityId;
+
     public Integer getId() {
         return id;
     }
@@ -73,5 +75,13 @@ public class Apply implements Serializable {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getActivityId() {
+        return activityId;
+    }
+
+    public void setActivityId(Integer activityId) {
+        this.activityId = activityId;
     }
 }
