@@ -33,10 +33,10 @@ public class ApplyTest {
     @Test
     public void queryAllByLoginId(){
         Login login = new Login();
-        login.setId(2);
-        login.setName("云天明");
+        login.setId(10);
+        login.setName("周文王");
         login.setPassword("123456");
-        login.setUsername("test");
+        login.setUsername("周文王");
         Role role = new Role();
         role.setId(2);
 
