@@ -42,6 +42,12 @@ public class FileServiceImpl implements FileService {
         return this.fileDao.queryAllByLimit(offset, limit);
     }
 
+    @Override
+    public List<File> queryAll(File file){
+        List<File> files = fileDao.queryAll(file);
+        return files;
+    }
+
     /**
      * 新增数据
      *

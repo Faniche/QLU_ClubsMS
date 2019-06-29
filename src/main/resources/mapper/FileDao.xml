@@ -39,7 +39,7 @@
                 and fileName = #{filename}
             </if>
             <if test="path != null and path != ''">
-                and path = #{path}
+                and path like concat('%',#{path},'%')
             </if>
             <if test="releasedate != null">
                 and releaseDate = #{releasedate}

@@ -37,13 +37,13 @@
 
 <!-- END nav -->
 
-<div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+<div class="hero-wrap js-fullheight" style="background-image: url('${pageContext.request.contextPath}/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
             <div class="col-xl-10 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"> 大型活动时间 <br><span>具体时间 2019</span></h1>
-                <p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">December 21-24, 2019. 中国, 齐鲁工业大学</p>
+                <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"> ${activityList.topic} <br><span>具体时间 2019</span></h1>
+                <p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">${activityList.time} 中国, 齐鲁工业大学</p>
                 <div id="timer" class="d-flex mb-3">
                     <div class="time" id="days"></div>
                     <div class="time pl-4" id="hours"></div>
@@ -111,12 +111,13 @@
         <div class="row">
             <div class="col-md-12 ftco-animate">
                 <div class="carousel-testimony owl-carousel">
+                    <forEach var="activityList" items="${activityList}">
                     <div class="item">
                         <div class="speaker">
                             <img src="images/index/basketball.png" class="img-fluid" alt="Colorlib HTML5 Template">
                             <div class="text text-center py-3">
-                                <h3>篮球社</h3>
-                                <span class="position">“人气王”</span>
+                                <h3>${activityList.name}</h3>
+                                <span class="position">“${activityList.descript}”</span>
                                 <ul class="ftco-social mt-3">
                                     <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                                     <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -125,8 +126,8 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="item">
+                    </forEach>
+                    <%--<div class="item">
                         <div class="speaker">
                             <img src="images/index/literature.jpg" class="img-fluid" alt="Colorlib HTML5 Template">
                             <div class="text text-center py-3">
@@ -184,7 +185,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
             </div>
         </div>
@@ -218,17 +219,18 @@
 
                     <div class="tab-content" id="v-pills-tabContent">
 
+                        <forEach var="activityLists" items="${activityLists}">
                         <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="day-1-tab">
                             <div class="speaker-wrap ftco-animate d-flex">
-                                <div class="img speaker-img" style="background-image: url(images/index/basketball01.jpg);"></div>
+                                <div class="img speaker-img" style="background-image: url("${pageContext.request.contextPath}/images/index/basketball01.jpg);"></div>
                                 <div class="text pl-md-5">
-                                    <span class="time">08: - 10:00</span>
-                                    <h2><a href="#">篮球社区总决赛</a></h2>
-                                    <p>理学院“湖人队”和轻工学院“猛龙队”经过一系列的抉择，站在了总决赛的赛场上，每个球员激情澎湃，热血腾腾，双方都势在必得。</p>
-                                    <h3 class="speaker-name">&mdash; <a href="#">“湖人队VS猛龙队”</a> <span class="position">拭目以待</span></h3>
+                                    <span class="time">${activityLists.time}</span>
+                                    <h2><a href="#">${activityLists.topic}</a></h2>
+                                    <p>举行地址：${activityLists.location}</p>
+                                    <h3 class="speaker-name">&mdash; <a href="#">视觉盛宴</a> <span class="position">让我们拭目以待</span></h3>
                                 </div>
                             </div>
-                            <div class="speaker-wrap ftco-animate d-flex">
+                            <%--<div class="speaker-wrap ftco-animate d-flex">
                                 <div class="img speaker-img" style="background-image: url(images/index/liberature01.jpg);"></div>
                                 <div class="text pl-md-5">
                                     <span class="time">08: - 10:00</span>
@@ -245,20 +247,20 @@
                                     <p>古诗文社团为对古代诗人的追念而组织的一场诗文朗诵，有不同时代，不同风格的诗文都会以不同的形式展现出来</p>
                                     <h3 class="speaker-name">&mdash; <a href="#">李白、仓央嘉措</a> <span class="position">以诗会友</span></h3>
                                 </div>
-                            </div>
+                            </div>--%>
                         </div>
 
                         <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-day-2-tab">
                             <div class="speaker-wrap ftco-animate d-flex">
-                                <div class="img speaker-img" style="background-image: url(images/index/skate.jpg);"></div>
+                                <div class="img speaker-img" style="background-image: url("${pageContext.request.contextPath}/images/index/skate.jpg);"></div>
                                 <div class="text pl-md-5">
-                                    <span class="time">08: - 10:00</span>
-                                    <h2><a href="#">轮滑比赛</a></h2>
-                                    <p>轮滑爱好者自发组织的一场大型群体轮滑比赛，可以在比赛的同时展现自己在轮滑上的造诣 </p>
-                                    <h3 class="speaker-name">&mdash; <a href="#">轮滑爱好者</a> <span class="position">滑出不一样的精彩人生</span></h3>
+                                    <span class="time">${activityLists.time}</span>
+                                    <h2><a href="#">${activityLists.topic}</a></h2>
+                                    <p>举行地址：${activityLists.location} </p>
+                                    <h3 class="speaker-name">&mdash; <a href="#">视觉盛宴</a> <span class="position">让我们拭目以待</span></h3>
                                 </div>
                             </div>
-                            <div class="speaker-wrap ftco-animate d-flex">
+                            <%--<div class="speaker-wrap ftco-animate d-flex">
                                 <div class="img speaker-img" style="background-image: url(images/index/cartoon01.jpg);"></div>
                                 <div class="text pl-md-5">
                                     <span class="time">08: - 10:00</span>
@@ -274,19 +276,19 @@
                                     <p>这是武术社团组着的一场才艺表演，有梅花拳，盘龙棍，洪家拳等才艺表演</p>
                                     <h3 class="speaker-name">&mdash; <a href="#">梅花拳</a> <span class="position">让我们拥有完美的体魄</span></h3>
                                 </div>
-                            </div>
+                            </div>--%>
                         </div>
                         <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-day-3-tab">
                             <div class="speaker-wrap ftco-animate d-flex">
-                                <div class="img speaker-img" style="background-image: url(images/index/Robot.jpg);"></div>
+                                <div class="img speaker-img" style="background-image: url("${pageContext.request.contextPath}/images/index/Robot.jpg);"></div>
                                 <div class="text pl-md-5">
-                                    <span class="time">08: - 10:00</span>
-                                    <h2><a href="#">机器人展览会</a></h2>
-                                    <p>机器人社团组织的一场机器人展览会，提供给一些喜欢AI，喜欢人工智能的一批人一个展示的平台。</p>
-                                    <h3 class="speaker-name">&mdash; <a href="#">机器人</a> <span class="position">与科技为伍</span></h3>
+                                    <span class="time">${activityLists.time}</span>
+                                    <h2><a href="#">${activityLists.topic}</a></h2>
+                                    <p>举行地址：${activityLists.location}</p>
+                                    <h3 class="speaker-name">&mdash; <a href="#">视觉盛宴</a> <span class="position">让我们拭目以待</span></h3>
                                 </div>
                             </div>
-                            <div class="speaker-wrap ftco-animate d-flex">
+                            <%--<div class="speaker-wrap ftco-animate d-flex">
                                 <div class="img speaker-img" style="background-image: url(images/yumaoqiu01.jpg);"></div>
                                 <div class="text pl-md-5">
                                     <span class="time">08: - 10:00</span>
@@ -303,19 +305,19 @@
                                     <p>篮球社团组织的球赛，届时有很多对篮球爱好者参加，来切磋球技，互娱互乐。</p>
                                     <h3 class="speaker-name">&mdash; <a href="#">Brett Morgan</a> <span class="position">以球会友</span></h3>
                                 </div>
-                            </div>
+                            </div>--%>
                         </div>
                         <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-day-4-tab">
                             <div class="speaker-wrap ftco-animate d-flex">
-                                <div class="img speaker-img" style="background-image: url(images/bangqiu.jpg);"></div>
+                                <div class="img speaker-img" style="background-image: url("${pageContext.request.contextPath}/images/bangqiu.jpg);"></div>
                                 <div class="text pl-md-5">
-                                    <span class="time">08: - 10:00</span>
-                                    <h2><a href="#">棒球赛</a></h2>
-                                    <p>棒球社团组织的球赛，届时有很多对棒球爱好者参加，来切磋球技，互娱互乐。</p>
-                                    <h3 class="speaker-name">&mdash; <a href="#">棒球</a> <span class="position">以球会友</span></h3>
+                                    <span class="time">${activityLists.time}</span>
+                                    <h2><a href="#">${activityLists.topic}</a></h2>
+                                    <p>举行地址：${activityLists.location}</p>
+                                    <h3 class="speaker-name">&mdash; <a href="#">视觉盛宴</a> <span class="position">让我们拭目以待</span></h3>
                                 </div>
                             </div>
-                            <div class="speaker-wrap ftco-animate d-flex">
+                            <%--<div class="speaker-wrap ftco-animate d-flex">
                                 <div class="img speaker-img" style="background-image: url(images/index/ping-pong.jpg);"></div>
                                 <div class="text pl-md-5">
                                     <span class="time">08: - 10:00</span>
@@ -332,8 +334,9 @@
                                     <p>足球社团组织的球赛，届时有很多对足球爱好者参加，来切磋球技，互娱互乐。</p>
                                     <h3 class="speaker-name">&mdash; <a href="#">足球赛</a> <span class="position">以球会友</span></h3>
                                 </div>
-                            </div>
+                            </div>--%>
                         </div>
+                        </forEach>
                     </div>
                 </div>
             </div>

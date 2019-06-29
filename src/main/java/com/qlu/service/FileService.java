@@ -29,6 +29,13 @@ public interface FileService {
     List<File> queryAllByLimit(int offset, int limit);
 
     /**
+     *
+     * @param file
+     * @return
+     */
+    List<File> queryAll(File file);
+
+    /**
      * 新增数据
      *
      * @param file 实例对象
