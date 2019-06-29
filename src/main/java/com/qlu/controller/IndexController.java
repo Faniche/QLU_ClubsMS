@@ -19,12 +19,19 @@ public class IndexController {
         // 用于测试
 //        Login login = new Login();
 //        login.setId(13);
+//        login.setId(10);
 //        login.setName("秦始皇");
 //        login.setPassword("123456");
 //        login.setUsername("秦始皇");
+
+//        login.setName("周文王");
+//        login.setPassword("123456");
+//        login.setUsername("周文王");
+//
 //        session.setAttribute("userinfo", login);
 //        Role role = new Role();
 //        role.setId(1);
+//        role.setId(2);
 //        session.setAttribute("role", role);
 
         return "redirect:/index.jsp";

@@ -7,12 +7,13 @@
         <result property="memberid" column="memberId" jdbcType="INTEGER"/>
         <result property="clubid" column="clubId" jdbcType="INTEGER"/>
         <result property="enrolldate" column="enrollDate" jdbcType="TIMESTAMP"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
     </resultMap>
 
     <!--查询单个-->
     <select id="queryById" resultMap="MemberMap">
         select
-          id, memberId, clubId, enrollDate
+          id, memberId, clubId, enrollDate, status
         from qlu_clubs_ms.member
         where id = #{id}
     </select>
@@ -20,7 +21,7 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="MemberMap">
         select
-          id, memberId, clubId, enrollDate
+          id, memberId, clubId, enrollDate, status
         from qlu_clubs_ms.member
         limit #{offset}, #{limit}
     </select>
@@ -28,14 +29,14 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAllMembers" resultMap="MemberMap">
         select
-        id, memberId, clubId, enrollDate
+        id, memberId, clubId, enrollDate, status
         from qlu_clubs_ms.member
     </select>
 
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="MemberMap">
         select
-          id, memberId, clubId, enrollDate
+          id, memberId, clubId, enrollDate, status
         from qlu_clubs_ms.member
         <where>
             <if test="id != null">
@@ -50,13 +51,16 @@
             <if test="enrolldate != null">
                 and enrollDate = #{enrolldate}
             </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
         </where>
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into qlu_clubs_ms.member(memberId, clubId, enrollDate)
-        values (#{memberid}, #{clubid}, #{enrolldate})
+        insert into qlu_clubs_ms.member(memberId, clubId, enrollDate, status)
+        values (#{memberid}, #{clubid}, #{enrolldate}, #{status})
     </insert>
 
     <!--通过主键修改数据-->
@@ -71,6 +75,9 @@
             </if>
             <if test="enrolldate != null">
                 enrollDate = #{enrolldate},
+            </if>
+            <if test="status != null">
+                status = #{status},
             </if>
         </set>
         where id = #{id}

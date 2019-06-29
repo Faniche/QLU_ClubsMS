@@ -21,6 +21,7 @@ public class Member implements Serializable {
     
     private Timestamp enrolldate;
 
+    private Integer status;
 
     public Integer getId() {
         return id;
@@ -52,5 +53,13 @@ public class Member implements Serializable {
 
     public void setEnrolldate(Timestamp enrolldate) {
         this.enrolldate = enrolldate;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }
