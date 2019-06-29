@@ -1,7 +1,10 @@
 package com.qlu.entity;
 
-import java.util.Date;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.sql.Date;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 /**
  * (Apply)实体类
@@ -19,8 +22,8 @@ public class Apply implements Serializable {
     private Integer proposerid;
     
     private Integer clubid;
-    
-    private Date date;
+
+    private Timestamp date;
 
     private Integer status;
 
@@ -56,11 +59,11 @@ public class Apply implements Serializable {
         this.clubid = clubid;
     }
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 

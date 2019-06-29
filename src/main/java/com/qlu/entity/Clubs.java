@@ -1,5 +1,6 @@
 package com.qlu.entity;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.io.Serializable;
 
@@ -20,7 +21,7 @@ public class Clubs implements Serializable {
 
     private String descript;
     
-    private Date establisheddate;
+    private Timestamp establisheddate;
 
     private Integer status;
 
@@ -57,11 +58,11 @@ public class Clubs implements Serializable {
         this.descript = descript;
     }
 
-    public Date getEstablisheddate() {
+    public Timestamp getEstablisheddate() {
         return establisheddate;
     }
 
-    public void setEstablisheddate(Date establisheddate) {
+    public void setEstablisheddate(Timestamp establisheddate) {
         this.establisheddate = establisheddate;
     }
 

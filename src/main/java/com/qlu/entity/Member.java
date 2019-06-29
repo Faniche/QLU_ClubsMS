@@ -1,5 +1,6 @@
 package com.qlu.entity;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.io.Serializable;
 
@@ -18,7 +19,7 @@ public class Member implements Serializable {
     
     private Integer clubid;
     
-    private Date enrolldate;
+    private Timestamp enrolldate;
 
 
     public Integer getId() {
@@ -45,12 +46,11 @@ public class Member implements Serializable {
         this.clubid = clubid;
     }
 
-    public Date getEnrolldate() {
+    public Timestamp getEnrolldate() {
         return enrolldate;
     }
 
-    public void setEnrolldate(Date enrolldate) {
+    public void setEnrolldate(Timestamp enrolldate) {
         this.enrolldate = enrolldate;
     }
-
 }
