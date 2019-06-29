@@ -1,6 +1,6 @@
 package com.qlu.entity;
 
-import java.util.Date;
+import java.sql.Timestamp;
 import java.io.Serializable;
 
 /**
@@ -18,7 +18,7 @@ public class Activity implements Serializable {
     
     private String topic;
     
-    private Date time;
+    private Timestamp time;
     
     private String location;
     
@@ -50,11 +50,11 @@ public class Activity implements Serializable {
         this.topic = topic;
     }
 
-    public Date getTime() {
+    public Timestamp getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(Timestamp time) {
         this.time = time;
     }
 

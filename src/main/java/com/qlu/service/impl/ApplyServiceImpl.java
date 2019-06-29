@@ -100,11 +100,7 @@ public class ApplyServiceImpl implements ApplyService {
             ApplyModel applyModel = new ApplyModel();
             applyModel.setApply(apply);
             applyModel.setProposer(loginDao.queryById(apply.getProposerid()).getName());
-
-            Applytype applytype = applytypeDao.queryById(apply.getType());
-            String name = applytype.getType();
-            applyModel.setApplyType(name);
-//            applyModel.setApplyType(applytypeDao.queryById(apply.getId()).getType());
+            applyModel.setApplyType(applytypeDao.queryById(apply.getType()).getType());
             switch (apply.getStatus()) {
                 case 0:
                     applyModel.setStatusStr("待审核");
@@ -116,13 +112,15 @@ public class ApplyServiceImpl implements ApplyService {
                     applyModel.setStatusStr("被拒绝");
                     break;
             }
+            applyModel.setClubs(clubsDao.queryById(apply.getClubid()));
             // 创建社团的申请，申请内容为社团描述
             if (apply.getType() == 1){
                 applyModel.setContent(clubsDao.queryById(apply.getClubid()).getDescript());
             }
             // 活动申请，申请内容为活动主题
             if (apply.getType() == 5) {
-                applyModel.setContent(activityDao.queryById(apply.getClubid()).getTopic());
+                applyModel.setContent(activityDao.queryById(apply.getActivityId()).getTopic());
+                applyModel.setActivity(activityDao.queryById(apply.getActivityId()));
             }
             applyModels.add(applyModel);
         }

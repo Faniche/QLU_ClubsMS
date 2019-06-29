@@ -1,5 +1,6 @@
 package com.qlu.entity;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.io.Serializable;
 
@@ -18,7 +19,7 @@ public class File implements Serializable {
     
     private String path;
     
-    private Date releasedate;
+    private Timestamp releasedate;
     
     private Integer authorid;
 
@@ -47,11 +48,11 @@ public class File implements Serializable {
         this.path = path;
     }
 
-    public Date getReleasedate() {
+    public Timestamp getReleasedate() {
         return releasedate;
     }
 
-    public void setReleasedate(Date releasedate) {
+    public void setReleasedate(Timestamp releasedate) {
         this.releasedate = releasedate;
     }
 

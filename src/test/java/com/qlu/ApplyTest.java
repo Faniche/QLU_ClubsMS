@@ -4,6 +4,7 @@ import com.qlu.dao.ApplyDao;
 import com.qlu.dao.ApplytypeDao;
 import com.qlu.dao.LoginDao;
 import com.qlu.entity.Apply;
+import com.qlu.entity.Login;
 import com.qlu.entity.Role;
 import com.qlu.model.ApplyModel;
 import com.qlu.service.ApplyService;
@@ -31,9 +32,15 @@ public class ApplyTest {
 
     @Test
     public void queryAllByLoginId(){
+        Login login = new Login();
+        login.setId(2);
+        login.setName("云天明");
+        login.setPassword("123456");
+        login.setUsername("test");
         Role role = new Role();
-        role.setId(3);
-        List<ApplyModel> applyModels = applyService.queryAllByLoginId(26, role);
+        role.setId(2);
+
+        List<ApplyModel> applyModels = applyService.queryAllByLoginId(2, role);
         for (ApplyModel applyModel : applyModels) {
             System.out.println(applyModel.toString());
         }

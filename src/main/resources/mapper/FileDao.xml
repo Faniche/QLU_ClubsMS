@@ -38,9 +38,11 @@
             <if test="filename != null and filename != ''">
                 and fileName = #{filename}
             </if>
+
             <if test="path != null and path != ''">
                 and path like concat('%',#{path},'%')
             </if>
+
             <if test="releasedate != null">
                 and releaseDate = #{releasedate}
             </if>

@@ -9,12 +9,13 @@
         <result property="clubid" column="clubId" jdbcType="INTEGER"/>
         <result property="date" column="date" jdbcType="TIMESTAMP"/>
         <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="activityId" column="activityId" jdbcType="INTEGER"/>
     </resultMap>
 
     <!--查询单个-->
     <select id="queryById" resultMap="ApplyMap">
         select
-          id, type, proposerId, clubId, date, status
+          id, type, activityId, proposerId, clubId, date, status
         from qlu_clubs_ms.apply
         where id = #{id}
     </select>
@@ -22,7 +23,7 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="ApplyMap">
         select
-          id, type, proposerId, clubId, date, status
+          id, type, activityId, proposerId, clubId, date, status
         from qlu_clubs_ms.apply
         limit #{offset}, #{limit}
     </select>
@@ -30,7 +31,7 @@
     <!--查出所有的创建社团，解散社团，活动申请-->
     <select id="queryByAdmin" resultMap="ApplyMap">
         select
-          id, type, proposerId, clubId, date, status
+          id, type, activityId, proposerId, clubId, date, status
         from qlu_clubs_ms.apply
         where type = 1 or type = 2 or type = 5;
     </select>
@@ -38,7 +39,7 @@
     <!--查出所有的创建社团，解散社团，活动申请-->
     <select id="queryByClubLeader" resultMap="ApplyMap">
         select
-          id, type, proposerId, clubId, date, status
+          id, type, activityId, proposerId, clubId, date, status
         from qlu_clubs_ms.apply
         where clubId = #{id}
         and (type = 2 or type = 3 or type = 4 or type = 5);
@@ -47,7 +48,7 @@
     <!--查出所有的创建社团，解散社团，活动申请-->
     <select id="queryByStudent" resultMap="ApplyMap">
         select
-          id, type, proposerId, clubId, date, status
+          id, type, activityId, proposerId, clubId, date, status
         from qlu_clubs_ms.apply
         where proposerId = #{id} and ( type = 1 or type = 3 or type = 4 ) ;
     </select>
@@ -56,7 +57,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="ApplyMap">
         select
-          id, type, proposerId, clubId, date, status
+          id, type, activityId, proposerId, clubId, date, status
         from qlu_clubs_ms.apply
         <where>
             <if test="id != null">
@@ -83,13 +84,16 @@
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into qlu_clubs_ms.apply(type, proposerId, clubId, date, status)
-        values (#{type}, #{proposerid}, #{clubid}, #{date}, #{status})
+        values (#{type},#{activityId} , #{proposerid}, #{clubid}, #{date}, #{status})
     </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
         update qlu_clubs_ms.apply
         <set>
+            <if test="activityId != null">
+                activityId = #{activityId},
+            </if>
             <if test="type != null">
                 type = #{type},
             </if>

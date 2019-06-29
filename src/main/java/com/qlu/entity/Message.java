@@ -3,7 +3,6 @@ package com.qlu.entity;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Timestamp;
-import java.util.Date;
 import java.io.Serializable;
 
 /**
@@ -21,12 +20,7 @@ public class Message implements Serializable {
     
     private Integer clubid;
 
-    private Date releasedate;
-
-    public Message() {
-        Timestamp timestamp = new Timestamp(new Date().getTime());
-        this.releasedate = timestamp;
-    }
+    private Timestamp releasedate;
 
     public Integer getId() {
         return id;
@@ -52,12 +46,11 @@ public class Message implements Serializable {
         this.clubid = clubid;
     }
 
-    public Date getReleasedate() {
+    public Timestamp getReleasedate() {
         return releasedate;
     }
 
-    public void setReleasedate(Date releasedate) {
+    public void setReleasedate(Timestamp releasedate) {
         this.releasedate = releasedate;
     }
-
 }

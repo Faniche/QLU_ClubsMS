@@ -1,5 +1,8 @@
 package com.qlu.entity;
 
+import com.mysql.cj.xdevapi.TableImpl;
+
+import java.sql.Timestamp;
 import java.util.Date;
 import java.io.Serializable;
 
@@ -20,7 +23,7 @@ public class Announce implements Serializable {
     
     private Integer authorid;
     
-    private Date releasedate;
+    private Timestamp releasedate;
 
 
     public Integer getId() {
@@ -55,12 +58,11 @@ public class Announce implements Serializable {
         this.authorid = authorid;
     }
 
-    public Date getReleasedate() {
+    public Timestamp getReleasedate() {
         return releasedate;
     }
 
-    public void setReleasedate(Date releasedate) {
+    public void setReleasedate(Timestamp releasedate) {
         this.releasedate = releasedate;
     }
-
 }
