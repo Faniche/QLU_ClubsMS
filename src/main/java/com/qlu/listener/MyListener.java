@@ -34,12 +34,12 @@ import com.qlu.service.FileService;
 @WebListener
 public class MyListener implements ServletContextListener {
 
-    @Autowired
-    private ActivityService stuService;
-    @Autowired
-    private ClubsService clubsService;
-    @Autowired
-    private FileService fileService;
+//    @Autowired
+//    private ActivityService stuService;
+//    @Autowired
+//    private ClubsService clubsService;
+//    @Autowired
+//    private FileService fileService;
 
     /**
      * Default constructor.
@@ -83,14 +83,16 @@ public class MyListener implements ServletContextListener {
         //查询所有社团，
         List<Clubs> clubsList = clubsService.findAll();
 
+
         // 获取社团LOGO
         //获取FileService对象
-        FileService FileService= (com.qlu.service.FileService) context.getBean(ClubsService.class);
+        FileService fileService=  context.getBean(FileService.class);
         //查询所有图片及路径名
         List<File> fileList = fileService.findAll();
         //建立Map集合
         Map<String,String> clubsIcon = new HashMap<String,String>();
         for(File file: fileList){
+            System.out.println(file.getFilename());
             clubsIcon.put(file.getFilename(),file.getPath());
         }
         //通过路径模糊查询所有
@@ -99,16 +101,12 @@ public class MyListener implements ServletContextListener {
         List<com.qlu.entity.File> files = fileService.queryAll(file);
 
 
-
-
-
-
         //存储所有的活动项目到application
-        application.setAttribute("activityLists",activityList);
+        application.setAttribute("activityList",activityList);
         //存储最新的活动项目到application
-        application.setAttribute("activityList",activity);
+        application.setAttribute("activity",activity);
         //存储所有社团到application
-        application.setAttribute("activityList",clubsList);
+        application.setAttribute("clubsList",clubsList);
         //存储Map集合
         application.setAttribute("clubsIcon",clubsIcon);
         //存储图片集合

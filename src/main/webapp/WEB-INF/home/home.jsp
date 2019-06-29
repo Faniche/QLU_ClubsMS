@@ -42,8 +42,8 @@
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
             <div class="col-xl-10 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"> ${activityList.topic} <br><span>具体时间 2019</span></h1>
-                <p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">${activityList.time} 中国, 齐鲁工业大学</p>
+                <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"> ${activity.topic} <br><span>具体时间 2019</span></h1>
+                <p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">${activity.time} 中国, 齐鲁工业大学</p>
                 <div id="timer" class="d-flex mb-3">
                     <div class="time" id="days"></div>
                     <div class="time pl-4" id="hours"></div>
@@ -111,13 +111,13 @@
         <div class="row">
             <div class="col-md-12 ftco-animate">
                 <div class="carousel-testimony owl-carousel">
-                    <forEach var="activityList" items="${activityList}">
+                    <c:forEach var="item" items="${clubsList}">
                     <div class="item">
                         <div class="speaker">
-                            <img src="images/index/basketball.png" class="img-fluid" alt="Colorlib HTML5 Template">
+                            <img src="${clubsIcon.[item.]}" class="img-fluid" alt="Colorlib HTML5 Template">
                             <div class="text text-center py-3">
-                                <h3>${activityList.name}</h3>
-                                <span class="position">“${activityList.descript}”</span>
+                                <h3>${clubsList.name}</h3>
+                                <span class="position">“${clubsList.descript}”</span>
                                 <ul class="ftco-social mt-3">
                                     <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                                     <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -126,7 +126,7 @@
                             </div>
                         </div>
                     </div>
-                    </forEach>
+                    </c:forEach>
                     <%--<div class="item">
                         <div class="speaker">
                             <img src="images/index/literature.jpg" class="img-fluid" alt="Colorlib HTML5 Template">
@@ -219,14 +219,14 @@
 
                     <div class="tab-content" id="v-pills-tabContent">
 
-                        <forEach var="activityLists" items="${activityLists}">
+                        <forEach var="activityLists" items="${activityList}">
                         <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="day-1-tab">
                             <div class="speaker-wrap ftco-animate d-flex">
                                 <div class="img speaker-img" style="background-image: url("${pageContext.request.contextPath}/images/index/basketball01.jpg);"></div>
                                 <div class="text pl-md-5">
-                                    <span class="time">${activityLists.time}</span>
-                                    <h2><a href="#">${activityLists.topic}</a></h2>
-                                    <p>举行地址：${activityLists.location}</p>
+                                    <span class="time">${activityList.time}</span>
+                                    <h2><a href="#">${activityList.topic}</a></h2>
+                                    <p>举行地址：${activityList.location}</p>
                                     <h3 class="speaker-name">&mdash; <a href="#">视觉盛宴</a> <span class="position">让我们拭目以待</span></h3>
                                 </div>
                             </div>
@@ -254,9 +254,9 @@
                             <div class="speaker-wrap ftco-animate d-flex">
                                 <div class="img speaker-img" style="background-image: url("${pageContext.request.contextPath}/images/index/skate.jpg);"></div>
                                 <div class="text pl-md-5">
-                                    <span class="time">${activityLists.time}</span>
-                                    <h2><a href="#">${activityLists.topic}</a></h2>
-                                    <p>举行地址：${activityLists.location} </p>
+                                    <span class="time">${activityList.time}</span>
+                                    <h2><a href="#">${activityList.topic}</a></h2>
+                                    <p>举行地址：${activityList.location} </p>
                                     <h3 class="speaker-name">&mdash; <a href="#">视觉盛宴</a> <span class="position">让我们拭目以待</span></h3>
                                 </div>
                             </div>
@@ -282,9 +282,9 @@
                             <div class="speaker-wrap ftco-animate d-flex">
                                 <div class="img speaker-img" style="background-image: url("${pageContext.request.contextPath}/images/index/Robot.jpg);"></div>
                                 <div class="text pl-md-5">
-                                    <span class="time">${activityLists.time}</span>
-                                    <h2><a href="#">${activityLists.topic}</a></h2>
-                                    <p>举行地址：${activityLists.location}</p>
+                                    <span class="time">${activityList.time}</span>
+                                    <h2><a href="#">${activityList.topic}</a></h2>
+                                    <p>举行地址：${activityList.location}</p>
                                     <h3 class="speaker-name">&mdash; <a href="#">视觉盛宴</a> <span class="position">让我们拭目以待</span></h3>
                                 </div>
                             </div>
@@ -311,9 +311,9 @@
                             <div class="speaker-wrap ftco-animate d-flex">
                                 <div class="img speaker-img" style="background-image: url("${pageContext.request.contextPath}/images/bangqiu.jpg);"></div>
                                 <div class="text pl-md-5">
-                                    <span class="time">${activityLists.time}</span>
-                                    <h2><a href="#">${activityLists.topic}</a></h2>
-                                    <p>举行地址：${activityLists.location}</p>
+                                    <span class="time">${activityList.time}</span>
+                                    <h2><a href="#">${activityList.topic}</a></h2>
+                                    <p>举行地址：${activityList.location}</p>
                                     <h3 class="speaker-name">&mdash; <a href="#">视觉盛宴</a> <span class="position">让我们拭目以待</span></h3>
                                 </div>
                             </div>
