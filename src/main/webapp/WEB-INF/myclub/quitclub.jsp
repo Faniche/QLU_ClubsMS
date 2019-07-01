@@ -1,13 +1,14 @@
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: 阿布
   Date: 2019/6/25
-  Time: 11:30
+  Time: 16:34
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html lang="zh-CN">
+<!DOCTYPE html>
+<html>
+<<html lang="zh-CN">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +17,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>申请加入社团</title>
+    <title>申请退团</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -37,45 +38,30 @@
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-
 <body>
-
 <div class="container">
-
-
-    <div class="jumbotron" align="center">
-        <h1>加入社团申请表</h1><br>
-        &nbsp;<br>
-        <form action="${pageContext.request.contextPath}/apply/insertapply" method="post" class="form-horizontal">
-
-            <div class="row d-flex justify-content-center">
-                <div align="center">
-                    <div class="form-group">
-                        <label  class="col-sm-4 control-label">社团名字</label>
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" name="joinclubname"  placeholder="确定你要加入的社团名字">
-                        </div>
-                    </div>
-                    <div  class="col-sm-12">
-                        <p class="lead">对你自己做简单介绍，为什么加入社团？</p>
-                        <textarea  class="col-sm-4 form-control" name="joinclubmessage" rows="10" cols="80" ></textarea>
-                        <input type="hidden" name="date" value="<fmt:formatDate value="${date}" pattern="yyyy-MM-dd "/> "/>
-                    </div>
-                    <br>&nbsp<br>
-
-                    <input type="submit" class="btn btn-lg btn-success" value="提交申请" >  &nbsp&nbsp&nbsp&nbsp&nbsp
-                    &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp
-                    <a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/handleClub/giveupjoin" role="button">返回上层</a>
+    <div class="jumbotron">
+        <form action="${pageContext.request.contextPath}/handleClub/tobreakclub" method="post" class="form-horizontal">
+            <div align="center"> <h2>社团详细信息展示</h2></div><br>&nbsp;<br>
+            <div class="speaker-wrap ftco-animate d-flex">
+                <div class="text pl-md-5">
+                    <h4 class="speaker-name"><span class="position">社团名字：篮球社</span></h4>
+                    <h4 class="speaker-name"> <span class="position">社团编号：12</span></h4>
+                    <h4 class="speaker-name"> <span class="position">社长：王也</span></h4>
+                    <h5 class="speaker-name"> <span class="position">社团简介：</span></h5>
+                    <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp篮球社团以形式多样的活动丰富了学生的课余生活，给予同学一个展示自己的机会，
+                        让他们在自己热爱的空间里自由发挥，体验比赛与游戏的不同滋味，享受篮球带给他们的无穷乐趣。</p>
+                    <div align="right"><span class="time">成立时间：2019-6-13 14:28</span></div><br>&nbsp;<br>
 
                 </div>
+            </div >
+            <div align="center">
+                <input type="submit" class="btn btn-lg btn-success" value="申请退团" >  &nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp
+                <a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/handleClub/givebreak" role="button">返回上层</a>
             </div>
-
-
         </form>
     </div>
-
-
-
 
 
 </div> <!-- /container -->
@@ -83,5 +69,7 @@
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+
 </body>
 </html>

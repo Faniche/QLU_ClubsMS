@@ -61,13 +61,5 @@ public interface ClubsDao {
      * @return 影响行数
      */
     int deleteById(Integer id);
-
-
-    /*用于显示首页的调用的方法*>
-   /**
-    * 查询所有数据
-    *
-    * @return 对象列表
-    */
-    List<Clubs> findAll();
+    List<Clubs> queryAllClubs();
 }

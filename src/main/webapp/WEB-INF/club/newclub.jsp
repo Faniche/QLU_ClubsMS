@@ -1,13 +1,12 @@
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: 阿布
   Date: 2019/6/25
-  Time: 11:30
+  Time: 11:29
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html lang="zh-CN">
+<<html lang="zh-CN">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +15,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>申请加入社团</title>
+    <title>申请创建社团</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -44,28 +43,29 @@
 
 
     <div class="jumbotron" align="center">
-        <h1>加入社团申请表</h1><br>
+        <h1>新社团申请表</h1><br>
         &nbsp;<br>
-        <form action="${pageContext.request.contextPath}/apply/insertapply" method="post" class="form-horizontal">
+        <form action="${pageContext.request.contextPath}/handleClub/newclub" method="post" class="form-horizontal">
 
             <div class="row d-flex justify-content-center">
                 <div align="center">
                     <div class="form-group">
-                        <label  class="col-sm-4 control-label">社团名字</label>
+                        <label for="inputEmail3" class="col-sm-4 control-label">社团名字</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" name="joinclubname"  placeholder="确定你要加入的社团名字">
+                            <input type="email" class="form-control" name="clubname" id="inputEmail3" placeholder="确定你的社团名字">
                         </div>
                     </div>
                     <div  class="col-sm-12">
-                        <p class="lead">对你自己做简单介绍，为什么加入社团？</p>
-                        <textarea  class="col-sm-4 form-control" name="joinclubmessage" rows="10" cols="80" ></textarea>
-                        <input type="hidden" name="date" value="<fmt:formatDate value="${date}" pattern="yyyy-MM-dd "/> "/>
+                        <p class="lead">对你的新社团做简单介绍</p>
+                        <textarea  class="col-sm-4 form-control" name="newclubmessage" rows="10" cols="80" >
+
+                    </textarea>
                     </div>
                     <br>&nbsp<br>
 
                     <input type="submit" class="btn btn-lg btn-success" value="提交申请" >  &nbsp&nbsp&nbsp&nbsp&nbsp
                     &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp
-                    <a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/handleClub/giveupjoin" role="button">返回上层</a>
+                    <a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/handleClub/givenew" role="button">返回上层</a>
 
                 </div>
             </div>

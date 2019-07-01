@@ -19,6 +19,11 @@
         where id = #{id}
     </select>
 
+    <!--查询全部数据-->
+    <select id="queryAllClubs" resultMap="ClubsMap">
+        select * from qlu_clubs_ms.clubs
+    </select>
+
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="ClubsMap">
         select
@@ -54,7 +59,7 @@
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into qlu_clubs_ms.clubs(name, leaderId, descript, establishedDate, status)
-        values (#{name}， #{leaderId}, #{descript}, #{establisheddate}, status)
+        values (#{name},#{leaderId}, #{descript}, #{establisheddate}, status)
     </insert>
 
     <!--通过主键修改数据-->

@@ -1,64 +1,79 @@
-<!DOCTYPE html>
+<%--
+  Created by IntelliJ IDEA.
+  User: 阿布
+  Date: 2019/6/28
+  Time: 16:57
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8"  %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <head>
     <title>社团介绍</title>
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/animate.css">
 
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/magnific-popup.css">
 
-    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/aos.css">
 
-    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ionicons.min.css">
 
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery.timepicker.css">
 
 
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/flaticon.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/icomoon.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
-
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-        <a class="navbar-brand" href="home.html"><span>Club</span></a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/index"><span>Club</span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
         </button>
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a href="home.html" class="nav-link">首页</a></li>
-                <li class="nav-item"><a href="myclub.html" class="nav-link">我的社团</a></li>
+                <li class="nav-item active"><a href="${pageContext.request.contextPath}/index" class="nav-link">首页</a></li>
+                <li class="nav-item"><a href="${pageContext.request.contextPath}/handleClub/tomyclub" class="nav-link">我的社团</a></li>
                 <li class="nav-item"><a href="gonggao.html" class="nav-link">公告</a></li>
-                <li class="nav-item"><a href="club.html" class="nav-link">社团介绍</a></li>
-                <li class="nav-item"><a href="mynews_student.html" class="nav-link">我的消息</a></li>
+                <li class="nav-item"><a href="${pageContext.request.contextPath}/handleClub/toclub" class="nav-link">社团介绍</a></li>
+                <li class="nav-item"><a href="${pageContext.request.contextPath}/message/show" class="nav-link">我的消息</a></li>
                 <li class="nav-item"><a href="download.html" class="nav-link">下载专区</a></li>
-                <li class="nav-item cta mr-md-2"><a href="login.html" class="nav-link">登录</a></li>
 
+                <li class="nav-item cta mr-md-2">
+                    <a id="login_btn" href="${pageContext.request.contextPath}/login/login" class="nav-link">
+                        <span id="loginName">
+                            登录
+                        </span>
+                    </a>
 
+                </li>
             </ul>
         </div>
     </div>
 </nav>
+
+<%--<jsp:include page="nav_bar.jsp"></jsp:include>--%>
 <!-- END nav -->
 
-<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="${pageContext.request.contextPath}/background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
             <div class="col-md-9 ftco-animate pb-5">
                 <h1 class="mb-3 bread">社团介绍</h1>
-                <p class="breadcrumbs"><span class="mr-2"><a href="home.html">首页 <i class="ion-ios-arrow-forward"></i></a></span> <span>社团介绍 <i class="ion-ios-arrow-forward"></i></span></p>
+                <p class="breadcrumbs"><span class="mr-2"><a href=" ${pageContext.request.contextPath}/@Resource
+    private ClubsService clubsService;home.html">首页 <i class="ion-ios-arrow-forward"></i></a></span> <span>社团介绍 <i class="ion-ios-arrow-forward"></i></span></p>
             </div>
         </div>
     </div>
@@ -69,7 +84,7 @@
         <div class="row d-flex">
             <div class="col-md-4 d-flex ftco-animate">
                 <div class="blog-entry justify-content-end">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('images/basketball.png');">
+                    <a href="${pageContext.request.contextPath}/ @Resourceprivate ClubsService clubsService;blog-single.html" class="block-20" style="${pageContext.request.contextPath}/background-image: url('images/basketball.png');">
                     </a>
                     <div class="text p-4 float-right d-block">
                         <div class="d-flex align-items-center pt-2 mb-4">
@@ -81,113 +96,34 @@
                                 <span class="mos">2019.06.19</span>
                             </div>
                         </div>
-                        <h3 class="heading mt-2"><a href="#">篮球社</a></h3>
+                        <h3 class="heading mt-2"><a href="${pageContext.request.contextPath}/joinclub.jsp">篮球社</a></h3>
                         <p>篮球社团以形式多样的活动丰富了学生的课余生活，给予同学一个展示自己的机会，让他们在自己热爱的空间里自由发挥，体验比赛与游戏的不同滋味，享受篮球带给他们的无穷乐趣</p>
-                        <a class="btn btn-primary" href="joinclub.html" role="button">申请加入</a>
+                        <a class="btn btn-primary" href="${pageContext.request.contextPath}/handleClub/tojoinclub" role="button">申请加入</a>
                     </div>
                 </div>
             </div>
+            <c:forEach items="${requestScope.clubslist}" var="item">
             <div class="col-md-4 d-flex ftco-animate">
                 <div class="blog-entry justify-content-end">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('images/football.png');">
+                    <a href="${pageContext.request.contextPath}/ " class="block-20" style="${pageContext.request.contextPath}/background-image: url('${clubsIcon.[item.name]}');">
                     </a>
                     <div class="text p-4 float-right d-block">
                         <div class="d-flex align-items-center pt-2 mb-4">
                             <div class="one">
-                                <span class="day">02</span>
+                                <span class="day">01</span>
                             </div>
                             <div class="two">
-                                <span class="yr">公平竞争，团队协作，增进友谊</span>
+                                <span class="yr">${item}</span>
                                 <span class="mos">2019.06.19</span>
                             </div>
                         </div>
-                        <h3 class="heading mt-2"><a href="#">足球社</a></h3>
-                        <p>提高学生足球理论知识和技术水平，丰富广大同学的业余生活，以强身健体、增强学生体质、培养加强团队意识，旨在促进学生的课外生活</p>
-                        <a class="btn btn-primary" href="joinclub.html" role="button">申请加入</a>
+                        <h3 class="heading mt-2"><a href="${pageContext.request.contextPath}/joinclub.jsp">篮球社</a></h3>
+                        <p>篮球社团以形式多样的活动丰富了学生的课余生活，给予同学一个展示自己的机会，让他们在自己热爱的空间里自由发挥，体验比赛与游戏的不同滋味，享受篮球带给他们的无穷乐趣</p>
+                        <a class="btn btn-primary" href="${pageContext.request.contextPath}/handleClub/tojoinclub" role="button">申请加入</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 d-flex ftco-animate">
-                <div class="blog-entry">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('images/pingpangqiu.jpg');">
-                    </a>
-                    <div class="text p-4 float-right d-block">
-                        <div class="d-flex align-items-center pt-2 mb-4">
-                            <div class="one">
-                                <span class="day">03</span>
-                            </div>
-                            <div class="two">
-                                <span class="yr">满足个性，增强体魄</span>
-                                <span class="mos">2019.06.19</span>
-                            </div>
-                        </div>
-                        <h3 class="heading mt-2"><a href="#">乒乓球社</a></h3>
-                        <p>本着让更多人了解国球、热爱国球的原则，积极团结全校乒乓球爱好者和积极分子，培养竞争意识，提高我校学生乒乓球水平，推动乒乓球的普及和发展</p>
-                        <a class="btn btn-primary" href="joinclub.html" role="button">申请加入</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 d-flex ftco-animate">
-                <div class="blog-entry justify-content-end">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('images/manhua.jpg');">
-                    </a>
-                    <div class="text p-4 float-right d-block">
-                        <div class="d-flex align-items-center pt-2 mb-4">
-                            <div class="one">
-                                <span class="day">04</span>
-                            </div>
-                            <div class="two">
-                                <span class="yr">与时俱进，发动动漫产业</span>
-                                <span class="mos">2019.06.19 </span>
-                            </div>
-                        </div>
-                        <h3 class="heading mt-2"><a href="#">动漫社</a></h3>
-                        <p>让社员在欣赏漫画的同时，学习画漫画，增长对漫画的相关知识，从而更深入的了解动漫，定期举办社员绘画作品展示、动漫真人秀等，让更多的人了解动漫，丰富校园文化</p>
-                        <a class="btn btn-primary" href="joinclub.html" role="button">申请加入</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 d-flex ftco-animate">
-                <div class="blog-entry justify-content-end">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('images/wushu.jpg');">
-                    </a>
-                    <div class="text p-4 float-right d-block">
-                        <div class="d-flex align-items-center pt-2 mb-4">
-                            <div class="one">
-                                <span class="day">05</span>
-                            </div>
-                            <div class="two">
-                                <span class="yr">文物兼修 强身健体</span>
-                                <span class="mos">2019.06.19</span>
-                            </div>
-                        </div>
-                        <h3 class="heading mt-2"><a href="#">武术社</a></h3>
-                        <p>培养学生高尚武德、优良作风和坚强意志品质，注重培养学生组织能力、创新能力、吃苦耐劳的意志品质及团队互助的集体主义思想，促进少儿身心全面发展，健康成长，为将来适应社会打下良好基础</p>
-                        <a class="btn btn-primary" href="joinclub.html" role="button">申请加入</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 d-flex ftco-animate">
-                <div class="blog-entry">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('images/lunhua.jpg');">
-                    </a>
-                    <div class="text p-4 float-right d-block">
-                        <div class="d-flex align-items-center pt-2 mb-4">
-                            <div class="one">
-                                <span class="day">06</span>
-                            </div>
-                            <div class="two">
-                                <span class="yr">张扬个性、展现青春、挑战自我</span>
-                                <span class="mos">2016.06.19</span>
-                            </div>
-                        </div>
-                        <h3 class="heading mt-2"><a href="#">轮滑社</a></h3>
-                        <p>普及高校轮滑运动，促进高校间的轮滑交流，发展轮滑事业，组织轮滑培训，开展轮滑集体活动，增强同学的体制</p>
-                        <a class="btn btn-primary" href="joinclub.html" role="button">申请加入</a>
-                    </div>
-                </div>
-            </div>
+            </c:forEach>
         </div>
         <div class="row mt-5">
             <div class="col text-center">
@@ -207,6 +143,7 @@
     </div>
 </section>
 
+
 <section class="ftco-section-parallax">
     <div class="parallax-img d-flex align-items-center">
         <div class="container">
@@ -215,7 +152,7 @@
                     <!--<h2>下面关于社团纳新的内容或者自由发挥</h2>-->
                     <h2> <p>创建我自己的社团</p></h2>
                     <div class="row d-flex justify-content-center mt-4 mb-4">
-                        <a class="btn btn-lg btn-success" href="newclubs.html" role="button">点击去创建</a>
+                        <a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/handleClub/tonewclub" role="button">点击去创建</a>
                     </div>
                 </div>
             </div>
@@ -289,23 +226,23 @@
 <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery-migrate-3.0.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.easing.1.3.js"></script>
-<script src="js/jquery.waypoints.min.js"></script>
-<script src="js/jquery.stellar.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/aos.js"></script>
-<script src="js/jquery.animateNumber.min.js"></script>
-<script src="js/bootstrap-datepicker.js"></script>
-<script src="js/jquery.timepicker.js"></script>
-<script src="js/scrollax.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/popper.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.easing.1.3.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.waypoints.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.stellar.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.magnific-popup.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/aos.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.animateNumber.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap-datepicker.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.timepicker.js"></script>
+<script src="${pageContext.request.contextPath}/js/scrollax.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-<script src="js/google-map.js"></script>
-<script src="js/main.js"></script>
+<script src="${pageContext.request.contextPath}/js/google-map.js"></script>
+<script src="${pageContext.request.contextPath}/js/main.js"></script>
 
 </body>
 </html>

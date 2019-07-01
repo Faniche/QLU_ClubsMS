@@ -51,6 +51,8 @@ public interface ClubsService {
      * @return 是否成功
      */
     boolean deleteById(Integer id);
+//    查询全部社团
+    List<Clubs> queryAllClubs();
 
 
     /*用于显示首页用到的调用的方法*/
