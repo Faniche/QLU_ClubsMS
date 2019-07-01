@@ -16,19 +16,33 @@
         from qlu_clubs_ms.login
         where id = #{id}
     </select>
+    <!--查询所有-->
+    <select id="queryAllmessages" resultMap="LoginMap">
+        select
+         id,username,name,password,email
+        from qlu_clubs_ms.login
+        where login.id in(select studentid.loginId from studentid where studentid.id =#{id})
+    </select>
+    <!--登录信息-->
 
     <select id="queryLoginByUsernameAndPassword" resultMap="LoginMap">
         select
-          id, username, name, password
+         id,name,username,password,email
         from qlu_clubs_ms.login
         where username = #{username}
         and password = #{password}
     </select>
-
+    <select id="queryLoginByEmailAndPassword" resultMap="LoginMap">
+     select
+         id,name,email,password,username
+        from qlu_clubs_ms.login
+        where email = #{email}
+        and password = #{password}
+    </select>
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="LoginMap">
         select
-          id, username, name, password
+          id, username, name, password,email
         from qlu_clubs_ms.login
         limit #{offset}, #{limit}
     </select>
@@ -56,8 +70,8 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into qlu_clubs_ms.login(username, name, password)
-        values (#{username}, #{name}, #{password})
+        insert into qlu_clubs_ms.login(username, name, password,email)
+        values (#{username}, #{name}, #{password},#{email})
     </insert>
 
     <!--通过主键修改数据-->

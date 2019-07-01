@@ -19,6 +19,8 @@ public interface StudentidDao {
      * @return 实例对象
      */
     Studentid queryById(String id);
+    Studentid queryByIdq(Integer id);
+
 
     /**
      * 查询指定行数据

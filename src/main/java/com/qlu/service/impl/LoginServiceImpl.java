@@ -33,6 +33,14 @@ public class LoginServiceImpl implements LoginService {
     public Login queryLoginByUsernameAndPassword(Login login){
         return loginDao.queryLoginByUsernameAndPassword(login);
     }
+    @Override
+    public Login queryLoginByEmailAndPassword(Login login){
+        return loginDao.queryLoginByEmailAndPassword(login);
+    }
+    @Override
+    public Login queryAllmessages(String id){
+        return loginDao.queryAllmessages(id);
+    }
     /**
      * 查询多条数据
      *

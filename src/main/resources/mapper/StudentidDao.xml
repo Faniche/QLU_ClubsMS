@@ -15,6 +15,13 @@
         where id = #{id}
     </select>
 
+    <select id="queryByIdq" resultMap="StudentidMap">
+        select
+          id, loginId
+        from qlu_clubs_ms.studentid
+        where studentid.loginId in(select login.id from login where login.id=#{id})
+    </select>
+
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="StudentidMap">
         select

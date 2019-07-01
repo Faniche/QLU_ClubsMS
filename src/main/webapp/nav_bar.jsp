@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <script>
     $().ready(function () {
@@ -16,7 +17,6 @@
         }
     })
 </script>
-
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
         <a class="navbar-brand" href="home.html"><span>Club</span></a>

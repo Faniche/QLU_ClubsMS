@@ -25,6 +25,7 @@ public interface RoleService {
      * @return
      */
     Role queryByLoginId(Integer id);
+    Role queryByLoginIdq(String email);
 
     /**
      * 查询多条数据
