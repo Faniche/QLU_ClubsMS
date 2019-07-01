@@ -61,7 +61,7 @@
         </div>
     </div>
 </nav>
-<%--<jsp:include page="nav_bar.jsp"></jsp:include>--%>
+<%--<jsp:include page="nav_bar.jsp">--%>
 
 
 <!-- END nav -->

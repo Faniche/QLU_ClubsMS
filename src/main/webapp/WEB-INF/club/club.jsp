@@ -63,7 +63,7 @@
     </div>
 </nav>
 
-<%--<jsp:include page="nav_bar.jsp"></jsp:include>--%>
+<%--<jsp:include page="nav_bar.jsp">--%>
 <!-- END nav -->
 
 <section class="hero-wrap hero-wrap-2 js-fullheight" style="${pageContext.request.contextPath}/background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
@@ -102,10 +102,10 @@
                     </div>
                 </div>
             </div>
-            <c:forEach items="${requestScope.clubslist}" var="item">
+            <c:forEach items="${clubslist}" var="item">
             <div class="col-md-4 d-flex ftco-animate">
                 <div class="blog-entry justify-content-end">
-                    <a href="${pageContext.request.contextPath}/ " class="block-20" style="${pageContext.request.contextPath}/background-image: url('${clubsIcon.[item.name]}');">
+<%--                    <a href="${pageContext.request.contextPath}/ " class="block-20" style="${pageContext.request.contextPath}/background-image: url('${item.name}');">--%>
                     </a>
                     <div class="text p-4 float-right d-block">
                         <div class="d-flex align-items-center pt-2 mb-4">
@@ -113,16 +113,16 @@
                                 <span class="day">01</span>
                             </div>
                             <div class="two">
-                                <span class="yr">${item}</span>
-                                <span class="mos">2019.06.19</span>
+                           <span class="yr">${item.descript}</span><!--社团简介-->
+                                <span class="mos">${item.establisheddate}</span><!--社团成立时间-->
                             </div>
                         </div>
-                        <h3 class="heading mt-2"><a href="${pageContext.request.contextPath}/joinclub.jsp">篮球社</a></h3>
-                        <p>篮球社团以形式多样的活动丰富了学生的课余生活，给予同学一个展示自己的机会，让他们在自己热爱的空间里自由发挥，体验比赛与游戏的不同滋味，享受篮球带给他们的无穷乐趣</p>
-                        <a class="btn btn-primary" href="${pageContext.request.contextPath}/handleClub/tojoinclub" role="button">申请加入</a>
-                    </div>
+                       <h3 class="heading mt-2"><a href="${pageContext.request.contextPath}/joinclub.jsp">${item.name}</a></h3><!--社团名字-->
+                       <p>${item.name}</p><!--社团介绍内容-->
+                    <a class="btn btn-primary" href="${pageContext.request.contextPath}/handleClub/tojoinclub" role="button">申请加入</a>
                 </div>
-            </div>
+              </div>
+         </div>--%>
             </c:forEach>
         </div>
         <div class="row mt-5">

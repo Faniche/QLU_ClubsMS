@@ -86,10 +86,10 @@ public class ClubsServiceImpl implements ClubsService {
      */
     @Override
     public List<Clubs> findAll() {
-        return this.clubsDao.queryAllClubs();
+        return this.clubsDao.findAll();
     }
     @Override
     public  List<Clubs> queryAllClubs(){
-        return this.queryAllClubs();
+        return this.clubsDao.queryAllClubs();
     }
 }

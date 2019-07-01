@@ -16,15 +16,15 @@ import java.util.List;
  * @Author:宰青俊
  * @Dtae:2019/6/29/11:36
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:spring/spring-dao.xml","classpath:spring/spring-service.xml", "classpath:mybatis-config.xml"})
-public class Clubtest {
-    @Resource
-    private ClubsService clubsService;
-
-    @Test
-    public void queryAllClubs(){
-        List<Clubs> list = clubsService.queryAllClubs();
-        System.out.println(list.size());
-    }
-}
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = { "classpath:spring/spring-dao.xml","classpath:spring/spring-service.xml", "classpath:mybatis-config.xml"})
+//public class Clubtest {
+//    @Resource
+//    private ClubsService clubsService;
+//
+//    @Test
+//    public void queryAllClubs(){
+//        List<Clubs> list = clubsService.queryAllClubs();
+//        System.out.println(list.size());
+//    }
+//}

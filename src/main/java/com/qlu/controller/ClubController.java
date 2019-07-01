@@ -30,7 +30,7 @@ public class ClubController {
     @GetMapping("showclub")
     public String showClubList(Map<String,Object> map, HttpServletResponse response, HttpServletRequest request, HttpSession session){
         map.put("clubslist",clubsService.queryAllClubs());
-        System.out.println("跳转到社团介绍界面");
+        System.out.println("跳转到社团介绍界面并展示查寻出来的社团信息");
         return "club/club";
     }
     @GetMapping("tomyclub")

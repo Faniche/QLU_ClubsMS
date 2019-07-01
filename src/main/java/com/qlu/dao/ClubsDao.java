@@ -62,4 +62,5 @@ public interface ClubsDao {
      */
     int deleteById(Integer id);
     List<Clubs> queryAllClubs();
+    List<Clubs> findAll();
 }
