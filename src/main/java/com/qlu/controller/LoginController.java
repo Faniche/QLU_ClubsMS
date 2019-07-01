@@ -1,5 +1,5 @@
 package com.qlu.controller;
-
+import com.qlu.entity.ImageUtil;
 import com.qlu.entity.Studentid;
 import com.qlu.service.StudentidService;
 import org.springframework.stereotype.Controller;
