@@ -61,4 +61,10 @@ public interface MemberService {
      */
     boolean deleteByMemberId(Integer id);
 
+    /**
+     * 社团解散，所有成员的status改为0
+     * @param id 要解散的社团的id
+     * @return
+     */
+    int clubDestroy(Integer id);
 }

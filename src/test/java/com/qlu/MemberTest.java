@@ -25,4 +25,10 @@ public class MemberTest {
         boolean result = memberService.deleteByMemberId(32);
         System.out.println(result);
     }
+
+    @Test
+    public void clubDestroy() {
+        int result = memberService.clubDestroy(15);
+        System.out.println(result);
+    }
 }

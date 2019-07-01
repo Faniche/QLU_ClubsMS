@@ -26,7 +26,7 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active"><a href="${pageContext.request.contextPath}/index" class="nav-link">首页</a></li>
-                <li class="nav-item"><a href="myclub.html" class="nav-link">我的社团</a></li>
+                <li class="nav-item"><a href="${pageContext.request.contextPath}" class="nav-link">我的社团</a></li>
                 <li class="nav-item"><a href="gonggao.html" class="nav-link">公告</a></li>
                 <li class="nav-item"><a href="club.html" class="nav-link">社团介绍</a></li>
                 <li class="nav-item"><a href="${pageContext.request.contextPath}/message/show" class="nav-link">我的消息</a></li>

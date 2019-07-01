@@ -86,4 +86,9 @@ public class MemberServiceImpl implements MemberService {
     public boolean deleteByMemberId(Integer id) {
         return this.memberDao.deleteByMemberId(id) > 0;
     }
+
+    @Override
+    public int clubDestroy(Integer id){
+        return this.memberDao.updateStatusDestroy(id);
+    }
 }

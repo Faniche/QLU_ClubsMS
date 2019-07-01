@@ -88,4 +88,11 @@
         delete from qlu_clubs_ms.member where memberId = #{id}
     </delete>
 
+    <!--社团解散，所有成员关系改为0-->
+    <delete id="updateStatusDestroy">
+        update qlu_clubs_ms.member
+        set status = 0
+        where clubId = #{id}
+    </delete>
+
 </mapper>

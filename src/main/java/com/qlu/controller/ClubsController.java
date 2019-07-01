@@ -1,7 +1,10 @@
 package com.qlu.controller;
 
+import com.qlu.entity.Apply;
 import com.qlu.entity.Clubs;
+import com.qlu.service.ApplyService;
 import com.qlu.service.ClubsService;
+import com.qlu.service.MemberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +25,11 @@ public class ClubsController {
     @Resource
     private ClubsService clubsService;
 
+    @Resource
+    private ApplyService applyService;
 
+    @Resource
+    private MemberService memberService;
 
     /**
      * 通过主键查询单条数据
@@ -36,8 +43,72 @@ public class ClubsController {
     }
 
     @GetMapping("myClubs")
-    public String myClubs(){
+    public String myClubs() {
         return "club/club";
     }
 
+    /**
+     * 同意创建社团申请
+     * @param applyId
+     * @param clubId
+     * @return
+     */
+    @ResponseBody
+    @PostMapping("create_agree")
+    public boolean create_agree(@RequestParam("applyId") Integer applyId, @RequestParam("clubId") Integer clubId) {
+        changeApplyAndClubsStatus(applyId, 1, clubId, 1);
+        return true;
+    }
+
+    /**
+     * 拒绝社团创建申请
+     * @param applyId
+     * @param clubId
+     * @return
+     */
+    @RequestMapping("create_deny")
+    @ResponseBody
+    public boolean create_deny(@RequestParam("applyId") Integer applyId, @RequestParam("clubId") Integer clubId) {
+        changeApplyAndClubsStatus(applyId, 2, clubId, 0);
+        return true;
+    }
+
+    /**
+     * 同意解散社团申请
+     * @param applyId
+     * @param clubId
+     * @return
+     */
+    @ResponseBody
+    @PostMapping("destroy_agree")
+    public boolean destroy_agree(@RequestParam("applyId") Integer applyId, @RequestParam("clubId") Integer clubId) {
+        changeApplyAndClubsStatus(applyId, 1, clubId, 0);
+        // 修改成员表
+        memberService.clubDestroy(clubId);
+        return true;
+    }
+
+    /**
+     * 拒绝解散社团申请
+     * @param applyId
+     * @param clubId
+     * @return
+     */
+    @RequestMapping("destroy_deny")
+    @ResponseBody
+    public boolean destroy_deny(@RequestParam("applyId") Integer applyId, @RequestParam("clubId") Integer clubId) {
+        changeApplyAndClubsStatus(applyId, 2, clubId, 1);
+        return true;
+    }
+
+    private void changeApplyAndClubsStatus(int applyId, int applyStatus, int clubId, int clubStatus) {
+        Apply apply = applyService.queryById(applyId);
+        apply.setStatus(applyStatus);
+        applyService.update(apply);
+        Clubs clubs = clubsService.queryById(clubId);
+        if (clubs.getStatus() != clubStatus) {
+            clubs.setStatus(clubStatus);
+            clubsService.update(clubs);
+        }
+    }
 }

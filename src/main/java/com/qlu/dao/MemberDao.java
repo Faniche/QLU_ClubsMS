@@ -63,4 +63,11 @@ public interface MemberDao {
      */
     int deleteByMemberId(Integer id);
 
+    /**
+     * 社团解散，所有成员的status改为0
+     * @param id 要解散的社团的id
+     * @return
+     */
+    int updateStatusDestroy(Integer id);
+
 }
