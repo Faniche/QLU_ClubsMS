@@ -28,6 +28,8 @@ public interface LoginDao {
      *
      */
     Login queryLoginByUsernameAndPassword(Login login);
+    Login queryLoginByEmailAndPassword(Login login);
+    Login queryAllmessages(String id);
     List<Login> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
 
 

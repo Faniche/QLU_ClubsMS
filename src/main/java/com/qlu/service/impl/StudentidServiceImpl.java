@@ -29,6 +29,11 @@ public class StudentidServiceImpl implements StudentidService {
     public Studentid queryById(String id) {
         return this.studentidDao.queryById(id);
     }
+    public Studentid queryByIdq(Integer id) {
+        return this.studentidDao.queryByIdq(id);
+    }
+
+
 
     /**
      * 查询多条数据

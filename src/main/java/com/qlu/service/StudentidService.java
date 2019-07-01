@@ -18,7 +18,7 @@ public interface StudentidService {
      * @return 实例对象
      */
     Studentid queryById(String id);
-
+    Studentid queryByIdq(Integer id);
     /**
      * 查询多条数据
      *

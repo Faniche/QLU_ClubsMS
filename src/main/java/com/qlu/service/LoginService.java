@@ -30,6 +30,8 @@ public interface LoginService {
      * @return 对象列表
      */
     Login queryLoginByUsernameAndPassword(Login login);
+    Login queryLoginByEmailAndPassword(Login login);
+    Login queryAllmessages(String id);
     List<Login> queryAllByLimit(int offset, int limit);
 
     /**

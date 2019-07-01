@@ -36,6 +36,7 @@ public class RoleServiceImpl implements RoleService {
      * @return
      */
     public Role queryByLoginId(Integer id){return this.roleDao.queryByLoginId(id);}
+    public Role queryByLoginIdq(String email){return this.roleDao.queryByLoginIdq(email);}
     /**
      * 查询多条数据
      *
