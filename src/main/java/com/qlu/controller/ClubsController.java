@@ -2,6 +2,7 @@ package com.qlu.controller;
 
 import com.qlu.entity.Apply;
 import com.qlu.entity.Clubs;
+import com.qlu.entity.Member;
 import com.qlu.service.ApplyService;
 import com.qlu.service.ClubsService;
 import com.qlu.service.MemberService;
@@ -66,7 +67,7 @@ public class ClubsController {
      * @param clubId
      * @return
      */
-    @RequestMapping("create_deny")
+    @PostMapping("create_deny")
     @ResponseBody
     public boolean create_deny(@RequestParam("applyId") Integer applyId, @RequestParam("clubId") Integer clubId) {
         changeApplyAndClubsStatus(applyId, 2, clubId, 0);
@@ -79,8 +80,8 @@ public class ClubsController {
      * @param clubId
      * @return
      */
-    @ResponseBody
     @PostMapping("destroy_agree")
+    @ResponseBody
     public boolean destroy_agree(@RequestParam("applyId") Integer applyId, @RequestParam("clubId") Integer clubId) {
         changeApplyAndClubsStatus(applyId, 1, clubId, 0);
         // 修改成员表
@@ -94,12 +95,73 @@ public class ClubsController {
      * @param clubId
      * @return
      */
-    @RequestMapping("destroy_deny")
+    @PostMapping("destroy_deny")
     @ResponseBody
     public boolean destroy_deny(@RequestParam("applyId") Integer applyId, @RequestParam("clubId") Integer clubId) {
         changeApplyAndClubsStatus(applyId, 2, clubId, 1);
         return true;
     }
+
+    /**
+     * 同意加入社团申请
+     * @param applyId
+     * @param clubId
+     * @param proposerid
+     * @return
+     */
+    @PostMapping("join_agree")
+    @ResponseBody
+    public boolean join_agree(@RequestParam("applyId") Integer applyId,
+                              @RequestParam("clubId") Integer clubId, @RequestParam("proposerid") Integer proposerid) {
+        changeApplyAndMemberStatus(applyId, 1, clubId, proposerid, 1);
+        return true;
+    }
+
+    /**
+     * 拒绝加入社团申请
+     * @param applyId
+     * @param clubId
+     * @param proposerid
+     * @return
+     */
+    @PostMapping("join_deny")
+    @ResponseBody
+    public boolean join_deny(@RequestParam("applyId") Integer applyId,
+                             @RequestParam("clubId") Integer clubId, @RequestParam("proposerid") Integer proposerid) {
+        changeApplyAndMemberStatus(applyId, 2, clubId, proposerid, 0);
+        return true;
+    }
+
+    /**
+     * 同意推出社团申请
+     * @param applyId
+     * @param clubId
+     * @param proposerid
+     * @return
+     */
+    @PostMapping("quit_agree")
+    @ResponseBody
+    public boolean quit_agree(@RequestParam("applyId") Integer applyId,
+                              @RequestParam("clubId") Integer clubId, @RequestParam("proposerid") Integer proposerid) {
+        changeApplyAndMemberStatus(applyId, 1, clubId, proposerid, 0);
+        return true;
+    }
+
+    /**
+     * 拒绝推出社团申请
+     * @param applyId
+     * @param clubId
+     * @param proposerid
+     * @return
+     */
+    @PostMapping("quit_deny")
+    @ResponseBody
+    public boolean quit_deny(@RequestParam("applyId") Integer applyId,
+                             @RequestParam("clubId") Integer clubId, @RequestParam("proposerid") Integer proposerid) {
+        changeApplyAndMemberStatus(applyId, 2, clubId, proposerid, 1);
+        return true;
+    }
+
 
     private void changeApplyAndClubsStatus(int applyId, int applyStatus, int clubId, int clubStatus) {
         Apply apply = applyService.queryById(applyId);
@@ -109,6 +171,24 @@ public class ClubsController {
         if (clubs.getStatus() != clubStatus) {
             clubs.setStatus(clubStatus);
             clubsService.update(clubs);
+        }
+    }
+
+    private void changeApplyAndMemberStatus(int applyId, int applyStatus, int clubId, int proposerid, int memberStatus){
+        Apply apply = applyService.queryById(applyId);
+        apply.setStatus(applyStatus);
+        applyService.update(apply);
+        Member member = new Member();
+        // 根据clubIdh和memberId在member表中找到对应的记录
+        member.setClubid(clubId);
+        member.setMemberid(proposerid);
+        System.out.println("applyId = " + applyId);
+        System.out.println("clubId = " + clubId);
+        member = memberService.queryAll(member).get(0);
+        System.out.println(memberService.queryAll(member).get(0));
+        if (member.getStatus() != memberStatus) {
+            member.setStatus(memberStatus);
+            memberService.update(member);
         }
     }
 }

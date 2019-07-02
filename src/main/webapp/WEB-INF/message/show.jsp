@@ -70,9 +70,9 @@
     </div>
 </section>
 
-<%--<c:if test="${sessionScope.role.id == 2 || sessionScope.role.id == 3}">--%>
-<%--    <jsp:include page="message.jsp"></jsp:include>--%>
-<%--</c:if>--%>
+<c:if test="${sessionScope.role.id == 2 || sessionScope.role.id == 3}">
+    <jsp:include page="message.jsp"></jsp:include>
+</c:if>
 
 <jsp:include page="apply.jsp"/>
 

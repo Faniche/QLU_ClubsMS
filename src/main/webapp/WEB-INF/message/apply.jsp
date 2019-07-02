@@ -28,20 +28,21 @@
                                 <jsp:include page="createClubApply.jsp"/>
                                 <jsp:include page="destroyClubApply.jsp"/>
                             </c:if>
-                            社长
+
+                                <%--社长--%>
                             <c:if test="${role.id == 2}">
                                 <jsp:include page="activityApply.jsp"/>
                                 <jsp:include page="joinClubApply.jsp"/>
-<%--                                <jsp:include page="quitClubApply.jsp"/>--%>
+                                <jsp:include page="quitClubApply.jsp"/>
                                 <jsp:include page="createClubApply.jsp"/>
                                 <jsp:include page="destroyClubApply.jsp"/>
                             </c:if>
-<%--                            &lt;%&ndash;学生&ndash;%&gt;--%>
-<%--                            <c:if test="${role.id == 3}">--%>
-<%--                                <jsp:include page="joinClubApply.jsp"/>--%>
-<%--                                <jsp:include page="quitClubApply.jsp"/>--%>
-<%--                                <jsp:include page="createClubApply.jsp"/>--%>
-<%--                            </c:if>--%>
+                            <%--学生--%>
+                            <c:if test="${role.id == 3}">
+                                <jsp:include page="joinClubApply.jsp"/>
+                                <jsp:include page="quitClubApply.jsp"/>
+                                <jsp:include page="createClubApply.jsp"/>
+                            </c:if>
                         </div>
                     </div>
                 </div>

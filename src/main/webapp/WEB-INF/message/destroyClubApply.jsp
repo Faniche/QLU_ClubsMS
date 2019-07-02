@@ -19,9 +19,9 @@
                     <%--申请时间--%>
                 <span class="time">时间：${item.apply.date}</span>
                     <%--申请类型--%>
-                <h2><a href="#">${item.applyType}</a></h2><br>
+                <h2>${item.applyType}</h2><br>
                 <h3 class="speaker-name">&mdash; <a href="#">${item.clubs.name}</a> <span
-                        class="position">${item.proposer}</span></h3>
+                        class="position">${item.proposer}</span></h3><br>
                     <%--超级管理员--%>
                 <c:if test="${role.id == 1}">
                     <%--未审核--%>
@@ -60,7 +60,7 @@
                 url: "${pageContext.request.contextPath}/clubs/destroy_agree",
                 data: {'applyId':$(this).attr("value"),'clubId':$(this).attr("clubId")},
                 success: function () {
-                    obj.text('拒绝');
+                    obj.text('同意');
                 }
             })
         });
@@ -71,7 +71,7 @@
                 url: "${pageContext.request.contextPath}/clubs/destroy_deny",
                 data: {'applyId':$(this).attr("value"),'clubId':$(this).attr("clubId")},
                 success: function () {
-                    obj.text('同意')
+                    obj.text('拒绝')
                 }
             })
         })

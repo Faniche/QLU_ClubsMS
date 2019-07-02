@@ -23,34 +23,23 @@
                         <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
                              aria-labelledby="day-1-tab">
                             <c:forEach items="${messageList}" var="item">
-                            <div class="speaker-wrap ftco-animate d-flex">
-<%--                                社团Logo--%>
-<%--                                <div class="img speaker-img"--%>
-<%--                                     style="background-image: url(${clubsIcon.[item.clubs.name]});"></div>--%>
-<%--                                <div class="text pl-md-5">--%>
+                                <div class="speaker-wrap ftco-animate d-flex">
                                     <div class="img speaker-img"
-                                         style="background-image: url('${pageContext.request.contextPath}/images/icon/basketball.jpg');"></div>
+                                         style="background-image: url('${pageContext.request.contextPath}/${clubsIcon[item.club]}');">
+                                    </div>
                                     <div class="text pl-md-5">
-                                            <%--消息发布时间--%>
                                         <span class="time">时间：${item.message.releasedate}</span>
-                                            <%--申请类型--%>
-<%--                                        <h2><a href="#">${item.applyType}</a></h2>--%>
-                                            <%--申请内容--%>
+                                            <%--内容--%>
+                                        <br><br>
                                         <p>${item.message.content}</p>
-                                        <h3 class="speaker-name">&mdash; <a href="#">${item.club}</a>
-<%--                                            <span class="position">${item.proposer}</span>--%>
-                                        </h3>
-                                        <p>
-<%--                                            <button type="button" class="btn btn-success">同意</button>&nbsp;&nbsp;&nbsp;<button--%>
-<%--                                                type="button" class="btn btn-danger">拒绝--%>
-<%--                                        </button>--%>
+                                        <h3 class="speaker-name">&mdash; <a href="${pageContext.request.contextPath}/handleClub/tojoinclub">${item.club}</a></h3>
                                     </div>
                                 </div>
-                                </c:forEach>
-                            </div>
+                            </c:forEach>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </section>
