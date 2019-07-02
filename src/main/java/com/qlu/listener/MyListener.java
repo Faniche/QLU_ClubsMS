@@ -92,7 +92,7 @@ public class MyListener implements ServletContextListener {
         //建立Map集合
         Map<String,String> clubsIcon = new HashMap<String,String>();
         for(File file: fileList){
-            System.out.println(file.getFilename());
+            System.out.println(file.getFilename() + ", " + file.getPath());
             clubsIcon.put(file.getFilename(),file.getPath());
         }
         //通过路径模糊查询所有

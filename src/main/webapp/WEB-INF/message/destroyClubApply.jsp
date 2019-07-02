@@ -13,7 +13,7 @@
                 <%--    社团Logo--%>
                 <%--    <div class="img speaker-img" style="background-image: url(${clubsIcon.[item.clubs.name]});"></div>--%>
             <div class="img speaker-img"
-                 style="background-image: url('${pageContext.request.contextPath}/images/icon/basketball.jpg');">
+                 style="background-image: url('${pageContext.request.contextPath}/${clubsIcon[item.clubs.name]}');">
             </div>
             <div class="text pl-md-5">
                     <%--申请时间--%>

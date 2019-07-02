@@ -28,6 +28,8 @@ public interface ClubsService {
      */
     List<Clubs> queryAllByLimit(int offset, int limit);
 
+    List<Clubs> queryAll(Clubs clubs);
+
     /**
      * 新增数据
      *

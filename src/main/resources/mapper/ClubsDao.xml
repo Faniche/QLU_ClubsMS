@@ -21,7 +21,9 @@
 
     <!--查询全部数据-->
     <select id="queryAllClubs" resultMap="ClubsMap">
-        select * from qlu_clubs_ms.clubs
+        select
+            id, leaderId, name, descript, establishedDate, status
+        from qlu_clubs_ms.clubs
     </select>
 
     <!--查询指定行数据-->

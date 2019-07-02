@@ -7,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:forEach items="${applyList}" var="item">
     <c:if test="${item.apply.type == 5}">
@@ -14,7 +15,7 @@
                 <%--    社团Logo--%>
                 <%--    <div class="img speaker-img" style="background-image: url(${clubsIcon.[item.clubs.name]});"></div>--%>
             <div class="img speaker-img"
-                 style="background-image: url('${pageContext.request.contextPath}/images/icon/basketball.jpg');">
+                 style="background-image: url('${pageContext.request.contextPath}/${clubsIcon[item.clubs.name]}');">
             </div>
             <div class="text pl-md-5">
                     <%--申请时间--%>
@@ -23,7 +24,7 @@
                 <h2 class="h2">${item.applyType}</h2><br>
                     <%--申请内容--%>
                 <p>${item.content}</p>
-                <p>活动时间：&nbsp;${item.activity.time}</p>
+                <p>活动时间：&nbsp;<fmt:formatDate value="${item.activity.time}"/></p>
                 <p>活动地点：&nbsp;${item.activity.location}</p>
                 <p>活动经费：&nbsp;${item.activity.money}</p>
                 <h3 class="speaker-name">&mdash; <a href="">${item.clubs.name}</a> <span

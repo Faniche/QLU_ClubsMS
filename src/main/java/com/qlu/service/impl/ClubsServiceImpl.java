@@ -42,6 +42,11 @@ public class ClubsServiceImpl implements ClubsService {
         return this.clubsDao.queryAllByLimit(offset, limit);
     }
 
+    @Override
+    public List<Clubs> queryAll(Clubs clubs) {
+        return this.clubsDao.queryAll(clubs);
+    }
+
     /**
      * 新增数据
      *

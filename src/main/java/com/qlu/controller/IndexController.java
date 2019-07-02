@@ -17,8 +17,8 @@ public class IndexController {
     public String toIndex(HttpSession session) {
 
         // 用于测试
-//        Login login = new Login();
-//        Role role = new Role();
+        Login login = new Login();
+        Role role = new Role();
 
 //        login.setId(13);
 //        login.setName("秦始皇");
@@ -26,20 +26,20 @@ public class IndexController {
 //        login.setUsername("秦始皇");
 //        role.setId(1);
 
-//        login.setId(10);
-//        login.setName("周文王");
-//        login.setPassword("123456");
-//        login.setUsername("周文王");
-//        role.setId(2);
+        login.setId(10);
+        login.setName("周文王");
+        login.setPassword("123456");
+        login.setUsername("周文王");
+        role.setId(2);
 
-//        login.setId(18);
-//        login.setName("汪淼");
+//        login.setId(12);
+//        login.setName("哥白尼");
 //        login.setPassword("123456");
-//        login.setUsername("汪淼");
+//        login.setUsername("哥白尼");
 //        role.setId(3);
 
-//        session.setAttribute("userinfo", login);
-//        session.setAttribute("role", role);
+        session.setAttribute("userinfo", login);
+        session.setAttribute("role", role);
 
         return "redirect:/index.jsp";
     }

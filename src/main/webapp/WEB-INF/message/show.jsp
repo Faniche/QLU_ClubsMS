@@ -48,7 +48,15 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="${pageContext.request.contextPath}/js/google-map.js"></script>
     <script src="${pageContext.request.contextPath}/js/main.js"></script>
+    <style type="text/css">
+        .my_apply {
+            display: none;
+        }
 
+        .release_message {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 
@@ -70,13 +78,62 @@
     </div>
 </section>
 
-<c:if test="${sessionScope.role.id == 2 || sessionScope.role.id == 3}">
-    <jsp:include page="message.jsp"></jsp:include>
-</c:if>
 
-<jsp:include page="apply.jsp"/>
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="ftco-search">
+            <div class="row">
 
+                <div class="col-md-12 nav-link-wrap">
+                    <div class="nav nav-pills d-flex text-center" id="v-pills-tab" role="tablist"
+                         aria-orientation="vertical">
+                        <c:if test="${sessionScope.role.id != 1}">
+                            <a class="nav-link ftco-animate active" id="my_message" data-toggle="pill" href="#v-pills-1"
+                               role="tab" aria-controls="v-pills-1" aria-selected="true">我的消息<span>2019.05.01</span></a>
+                        </c:if>
+                        <a class="nav-link ftco-animate" id="my_apply" data-toggle="pill" href="#v-pills-2"
+                           role="tab" aria-controls="v-pills-2" aria-selected="false">申请<span>2019.05.02</span></a>
+                        <c:if test="${sessionScope.role.id == 2}">
+                            <a class="nav-link ftco-animate" id="release_message" data-toggle="pill" href="#v-pills-3"
+                               role="tab" aria-controls="v-pills-3"
+                               aria-selected="false">发布消息<span>2019.05.04</span></a>
+                        </c:if>
+                    </div>
+                </div>
 
+                <c:if test="${sessionScope.role.id == 2 || sessionScope.role.id == 3}">
+                    <jsp:include page="message.jsp"></jsp:include>
+                </c:if>
+                <jsp:include page="apply.jsp"/>
+                <c:if test="${sessionScope.role.id == 2}">
+                    <jsp:include page="releaseMessage.jsp"></jsp:include>
+                </c:if>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    $().ready(function () {
+        $("#my_apply").click(function () {
+            $(".my_apply").css("display", "block");
+            $(".my_message").css("display", "none");
+            $(".release_message").css("display", "none");
+        })
+
+        $("#my_message").click(function () {
+            $(".my_apply").css("display", "none");
+            $(".my_message").css("display", "block");
+            $(".release_message").css("display", "none");
+        })
+
+        $("#release_message").click(function () {
+            $(".my_apply").css("display", "none");
+            $(".my_message").css("display", "none");
+            $(".release_message").css("display", "block");
+        })
+    })
+</script>
 
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-migrate-3.0.1.min.js"></script>

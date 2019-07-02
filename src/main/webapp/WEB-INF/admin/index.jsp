@@ -8,10 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>管理员主页</title>
-
+    <title>管理员</title>
 </head>
 <body>
-<h2>我是管理员</h2>
+<%--超级管理员导航栏--%>
+<jsp:include page="nav_bar.jsp"/>
+
 </body>
 </html>
