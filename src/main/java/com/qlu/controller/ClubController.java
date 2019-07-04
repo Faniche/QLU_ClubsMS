@@ -1,13 +1,14 @@
 package com.qlu.controller;
 
 import com.qlu.dao.ApplyDao;
+import com.qlu.entity.Apply;
 import com.qlu.model.ApplyModel;
+import com.qlu.service.ApplyService;
 import com.qlu.service.ClubsService;
 import org.omg.CORBA.Request;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -30,41 +31,62 @@ public class ClubController {
     @GetMapping("showclub")
     public String showClubList(Map<String,Object> map, HttpServletResponse response, HttpServletRequest request, HttpSession session){
         map.put("clubslist",clubsService.queryAllClubs());
-        System.out.println("跳转到社团介绍界面并展示查寻出来的社团信息");
+//        System.out.println("跳转到社团介绍界面并展示查寻出来的社团信息");
         return "club/club";
     }
     @GetMapping("tomyclub")
-    public String toMyClub(){
-        System.out.println("跳转到我的社团介绍界面");
+    public String toMyClub(Map<String,Object> map, HttpServletResponse response, HttpServletRequest request, HttpSession session){
+      //  map.put("myclubname".clubsService.queryMyClub());
+
+        System.out.println("跳转到我的社团界面");
         return "myclub/myclub";
     }
 //加入社团
-    @GetMapping("tojoinclub")
-    public String toJoin(){
+    @PostMapping ("tojoinclub")
+    public String toJoin(HttpSession session,HttpServletRequest request,HttpServletResponse response){
+        String clubid=request.getParameter("clubid");
+        String clubname=request.getParameter("clubname");
+        session.setAttribute("id",clubid);//部门id
+        session.setAttribute("name",clubname);
+//        System.out.println(clubid);
+//        System.out.println(clubname);
+        ModelAndView modelAndView = new ModelAndView();
         System.out.println("转到申请加入社团界面");
+        Object stuidInfo=session.getAttribute("stuidInfo");//登录用户的ID
+        System.out.println(stuidInfo);
         return "club/joinclub";
     }
     @PostMapping("joinclub")
-    public String joinClub(ApplyModel applyModel, HttpServletRequest request){
-        String joinclubname=request.getParameter("joinclubname");
-        String joinclubmeassage=request.getParameter("joinclubmessage");
-
-//        request.setAttribute("clubId",1);
-//        request.setAttribute("proposerId",20160311);
-//        request.setAttribute("type",3);
-//        request.setAttribute("date",applyModel.getApply().getDate());
-//        request.setAttribute("status",0);
-//        System.out.println("date");
-//        System.out.println("status");
-        System.out.println("joinclubname");
+    public String joinClub(ApplyModel applyModel, HttpServletRequest request,HttpSession session){
+        Integer clubid= (Integer) session.getAttribute("id");//获取部门ID
+        String clubname= (String) session.getAttribute("name");
+        Object type=request.getParameter("type");
+        Object status= request.getParameter("status");
+        Object date=request.getParameter("date");
+//        Member member = new Member();
+//        member.setMemberid(memberId);
+//        member.setClubid(clubId);
+//        ModelAndView modelAndView = new ModelAndView();
+//        memberService.insert(member);
+//        modelAndView.setViewName("club/insert");
+//        modelAndView.addObject("msg", "添加成功");
+//        return modelAndView;
+//        Apply apply = new Apply();
+//        apply.setType();
+//        apply.setStatus();
+//        apply.getActivityId();
+//        apply.getClubid();
+//        apply.getDate();
+//        System.out.println("joinclubname");
         System.out.println("提交入团申请");
         //这里获取数据，存入数据
         return "club/club";//路径要改
     }
     @GetMapping("giveupjoin")
-    public String giveUpJoin(){
-        System.out.println("放弃加入社团申请");
-        return "club/club";
+    public String giveUpJoin(Map<String,Object> map){
+        map.put("clubslist",clubsService.queryAllClubs());
+//        System.out.println("放弃加入社团申请");
+        return "redirect:club/club.jsp";
     }
 
     //退出社团
@@ -117,5 +139,11 @@ public class ClubController {
         System.out.println("放弃申请创建社团");
         return "club/club";
     }
+@PostMapping("id")
+    @ResponseBody
+    public String Getid(@RequestParam("")Integer id){
 
+        return "";
+
+}
 }

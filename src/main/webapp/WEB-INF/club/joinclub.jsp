@@ -6,6 +6,8 @@
   Time: 11:30
   To change this template use File | Settings | File Templates.
 --%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.*"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="zh-CN">
 <head>
@@ -47,26 +49,35 @@
         <h1>加入社团申请表</h1><br>
         &nbsp;<br>
         <form action="${pageContext.request.contextPath}/apply/insertapply" method="post" class="form-horizontal">
-
             <div class="row d-flex justify-content-center">
                 <div align="center">
                     <div class="form-group">
                         <label  class="col-sm-4 control-label">社团名字</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" name="joinclubname"  placeholder="确定你要加入的社团名字">
+                            <input type="text" class="form-control" name="joinclubname"  placeholder="${sessionScope.get('name')}">
                         </div>
                     </div>
                     <div  class="col-sm-12">
                         <p class="lead">对你自己做简单介绍，为什么加入社团？</p>
-                        <textarea  class="col-sm-4 form-control" name="joinclubmessage" rows="10" cols="80" ></textarea>
-                        <input type="hidden" name="date" value="<fmt:formatDate value="${date}" pattern="yyyy-MM-dd "/> "/>
+                        <textarea  class="col-sm-4 form-control" name="joinclubmessage" rows="10" cols="80" >${sessionScope.get('stuidInfo')}</textarea>
+<%--                        <input type="date" name="date" value="<fmt:formatDate value="${date}" pattern="yyyy-MM-dd "/> "/>--%>
                     </div>
                     <br>&nbsp<br>
-
+<%--                    <input type="hidden" name="_method" value="put">--%>
+                    <input type="hidden" name="activityId" ><!--申请类型-->
+                    <input type="hidden" name="type" value="3"><!--申请类型-->
+                    <input type="hidden" name="status" value="0"><!--申请状态-->
+                    <input type="hidden" name="clubid" value="${sessionScope.get('id')}"><!--社团ID传入到后台-->
+                    <input type="hidden" name="proposerid" value="${sessionScope.get('stuidInfo')}">
+<%--                    <%--%>
+<%--                        Date d =new Date();--%>
+<%--                        SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");--%>
+<%--                        String date=df.format(d);--%>
+<%--                    %>--%>
+<%--                    <input type="date" name="date">--%>
                     <input type="submit" class="btn btn-lg btn-success" value="提交申请" >  &nbsp&nbsp&nbsp&nbsp&nbsp
                     &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp
                     <a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/handleClub/giveupjoin" role="button">返回上层</a>
-
                 </div>
             </div>
 

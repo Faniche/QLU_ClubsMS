@@ -4,11 +4,14 @@ import com.qlu.entity.Apply;
 import com.qlu.model.ApplyModel;
 import com.qlu.service.ApplyService;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.util.Date;
 
 /**
  * (Apply)表控制层
@@ -36,10 +39,26 @@ public class ApplyController {
         return this.applyService.queryById(id);
     }
     @PostMapping("insertapply")
-    public String insertApply(HttpServletResponse response, HttpServletRequest reques,ApplyModel applyModel ){
+    public String insertApply(HttpServletResponse response, HttpServletRequest request, ApplyModel applyModel, HttpSession session){
+         //获取页面传过来的值插入数据库
+          String type = request.getParameter("type");
+          String  date =request.getParameter("date");
+          String id =request.getParameter("clubid");
+          String proposerid=request.getParameter("proposerid");
+          String clubid=(String) session.getAttribute("id");
+          String status= request.getParameter("status");
+          System.out.println(proposerid);
+          System.out.println(clubid);
 
-        System.out.println("插入数据");
-        return "";
+        //申请提交
+        Apply apply= new Apply();
+        apply.setType(new Integer(type));
+//        apply.setActivityId(new Integer(null));
+        apply.setProposerid(new Integer(proposerid));
+        apply.setClubid(new Integer(id));
+        System.out.println("提交申请");
+//        apply.setStatus();
+        return "redirect:index.jsp";
     }
 
 

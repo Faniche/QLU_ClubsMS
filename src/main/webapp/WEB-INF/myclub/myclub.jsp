@@ -33,35 +33,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-    <div class="container">
-        <a class="navbar-brand" href="${pageContext.request.contextPath}/index"><span>Club</span></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="oi oi-menu"></span> Menu
-        </button>
 
-        <div class="collapse navbar-collapse" id="ftco-nav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a href="${pageContext.request.contextPath}/index" class="nav-link">首页</a></li>
-                <li class="nav-item"><a href="${pageContext.request.contextPath}/clubs/myClubs" class="nav-link">我的社团</a></li>
-                <li class="nav-item"><a href="${pageContext.request.contextPath}/" class="nav-link">公告</a></li>
-                <li class="nav-item"><a href="${pageContext.request.contextPath}/clubs/Clubs" class="nav-link">社团介绍</a></li>
-                <li class="nav-item"><a href="${pageContext.request.contextPath}/message/show" class="nav-link">我的消息</a></li>
-                <li class="nav-item"><a href="${pageContext.request.contextPath}/" class="nav-link">下载专区</a></li>
-
-                <li class="nav-item cta mr-md-2">
-                    <a id="login_btn" href="${pageContext.request.contextPath}/login/login" class="nav-link">
-                        <span id="loginName">
-                            登录
-                        </span>
-                    </a>
-
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<%--<jsp:include page="nav_bar.jsp">--%>
+<jsp:include page="/nav_bar.jsp"/>
 
 
 <!-- END nav -->
@@ -72,43 +45,74 @@
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
             <div class="col-md-9 ftco-animate pb-5">
                 <h1 class="mb-3 bread">我的社团</h1>
-                <p class="breadcrumbs"><span class="mr-2"><a href="${pageContext.request.contextPath}/home.html">主页 <i class="ion-ios-arrow-forward"></i></a></span> <span>我的社团<i class="ion-ios-arrow-forward"></i></span></p>
+                <p class="breadcrumbs"><span class="mr-2">主页 <i class="ion-ios-arrow-forward"></i></span> <span>我的社团<i class="ion-ios-arrow-forward"></i></span></p>
             </div>
         </div>
     </div>
-</section>
 
-<section class="ftco-counter img" id="section-counter">
-    <div class="container">
-        <div class="row d-flex">
-            <div class="col-md-6 d-flex">
-                <div class="img d-flex align-self-stretch" style="${pageContext.request.contextPath}/background-image:url(images/club.jpg);"></div>
-            </div>
-            <div class="col-md-6 pl-md-5 py-5">
-                <div class="row justify-content-start pb-3">
-                    <div class="col-md-12 heading-section ftco-animate">
-                        <span class="subheading">社团列表</span>
-                        <h2 class="mb-4"><span>加入的</span> 社团</h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 justify-content-center counter-wrap ftco-animate">
-                        <div class="block-18 text-center py-4 bg-light mb-4">
-                            <div class="text">
-                                <div class="icon d-flex justify-content-center align-items-center">
-                                    <img src="${pageContext.request.contextPath}/images/my_clubs/basketball.jng" alert="图片错误" title="篮球社团"style="width:70px;height: 70px">
-                                </div>
-                                <span><a href ="${pageContext.request.contextPath}/handleClub/toqiutclub">篮球社</a></span>
+    <div class="container marketing">
+        <hr class="featurette-divider">
+        <div class="row featurette">
+<%--            <div class="col-md-6 col-md-push-6">--%>
+<%--                <div class="jumbotron" align="center">--%>
+<%--                    <h2>${item.name}</h2><br>--%>
+<%--                    &nbsp;<br>--%>
+<%--                    <form action="${pageContext.request.contextPath}/handleClub/tojoinclub" method="post" class="form-horizontal">--%>
+<%--                        <div class="row d-flex justify-content-center">--%>
+<%--                            <div align="center">--%>
+<%--                                <div class="form-group">--%>
+<%--                                    <label  class="col-sm-4 control-label">社团ID:${item.id}</label>--%>
+<%--                                    <label  class="col-sm-6 control-label">社长ID:${item.leaderId}</label>--%>
+<%--                                    <label  class="col-sm-4 control-label">创建日期:${item.establisheddate}</label>--%>
+<%--                                </div>--%>
+<%--                                <div  class="col-sm-12">--%>
+<%--                                    <p class="lead">社团简介</p>--%>
+<%--                                    <textarea  class="col-sm-12form-control" name="joinclubmessage"  rows="4" cols="56"  >${item.descript}</textarea>--%>
+<%--                                        &lt;%&ndash;                                <input type="hidden" name="date" value="<fmt:formatDate value="${date} pattern="yyyy-MM-dd "/>&ndash;%&gt;--%>
+<%--                                </div>--%>
+<%--                                <br>&nbsp<br>--%>
+<%--                                <input type="hidden" name="clubid" value="${item.id}"><!--社团ID传入到后台-->--%>
+<%--                                <input type="hidden" name="clubname" value="${item.name}"><!--社团名字传入到后台-->--%>
+<%--                                <input type="submit" class="btn btn-lg btn-success" value="申请加入" >  &nbsp&nbsp&nbsp&nbsp&nbsp--%>
+<%--                                &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp--%>
+<%--                                <a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/handleClub/giveupjoin" role="button">详细信息</a>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </form>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+            <c:forEach items="${clubslist}" var="item">
+                        <div class="col-md-6 col-md-pull-6">
+                            <div class="jumbotron" align="center">
+                                <h3>社团名字</h3><br>
+                                &nbsp;<br>
+                                <form action="${pageContext.request.contextPath}/apply/insertapply" method="post" class="form-horizontal">
+
+                                    <div class="row d-flex justify-content-center">
+                                        <div align="center">
+                                            <div class="form-group">
+                                                <label  class="col-sm-4 control-label">社团ID:</label>
+                                                <label  class="col-sm-6 control-label">社长ID:</label>
+                                                <label  class="col-sm-4 control-label">创建日期:</label>
+                                            </div>
+                                            <div  class="col-sm-12">
+                                                <p class="lead">社团简介</p>
+                                                <textarea  class="col-sm-12 form-control" name="joinclubmessage" rows="6" cols="50" ></textarea>
+<%--                                                <input type="hidden" name="date" value="<fmt:formatDate value="${date} pattern="yyyy-MM-dd "/>--%>
+                                            </div>
+                                            <br>&nbsp<br>
+                                            <input type="submit" class="btn btn-lg btn-success" value="申请加入" >  &nbsp&nbsp&nbsp&nbsp&nbsp
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp
+                                            <a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/handleClub/giveupjoin" role="button">详细信息</a>
+                                            </div>
+                                        </div>
+                                </form>
                             </div>
                         </div>
-                    </div>
-
-                </div>
-            </div>
+            </c:forEach>
         </div>
     </div>
-</section>
-
+</section>6
 <section class="ftco-section testimony-section">
     <div class="container">
         <div class="row justify-content-center mb-5 pb-3">

@@ -27,43 +27,70 @@
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery.timepicker.css">
-
-
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/icomoon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Carousel Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="carousel.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="jumbotron-narrow.css" rel="stylesheet">
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="${pageContext.request.contextPath}/../../assets/js/ie-emulation-modes-warning.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="${pageContext.request.contextPath}/https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="${pageContext.request.contextPath}/https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-    <div class="container">
-        <a class="navbar-brand" href="${pageContext.request.contextPath}/index"><span>Club</span></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="oi oi-menu"></span> Menu
-        </button>
+<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+<script>
+    $().ready(function () {
+        if (${sessionScope.userinfo != null}) {
+            var obj = document.getElementById("loginName");
+            obj.innerText = " Hi, ${sessionScope.userinfo.username}!";
+            $("#login_btn").attr("href", "${pageContext.request.contextPath}/message/show")
+        }
+    })
+</script>
 
-        <div class="collapse navbar-collapse" id="ftco-nav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a href="${pageContext.request.contextPath}/index" class="nav-link">首页</a></li>
-                <li class="nav-item"><a href="${pageContext.request.contextPath}/handleClub/tomyclub" class="nav-link">我的社团</a></li>
-                <li class="nav-item"><a href="gonggao.html" class="nav-link">公告</a></li>
-                <li class="nav-item"><a href="${pageContext.request.contextPath}/handleClub/toclub" class="nav-link">社团介绍</a></li>
-                <li class="nav-item"><a href="${pageContext.request.contextPath}/message/show" class="nav-link">我的消息</a></li>
-                <li class="nav-item"><a href="download.html" class="nav-link">下载专区</a></li>
-
-                <li class="nav-item cta mr-md-2">
-                    <a id="login_btn" href="${pageContext.request.contextPath}/login/login" class="nav-link">
-                        <span id="loginName">
-                            登录
-                        </span>
-                    </a>
-
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<%--<jsp:include page="nav_bar.jsp">--%>
+<jsp:include page="/nav_bar.jsp"/>
 <!-- END nav -->
 
 <section class="hero-wrap hero-wrap-2 js-fullheight" style="${pageContext.request.contextPath}/background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
@@ -78,70 +105,169 @@
         </div>
     </div>
 </section>
+<c:forEach items="${clubslist}" var="item">
+<div class="container marketing">
+    <hr class="featurette-divider">
+    <div class="row featurette">
+        <div class="col-md-6 col-md-push-6">
+            <div class="jumbotron" align="center">
+                <h2>${item.name}</h2><br>
+                &nbsp;<br>
+                <form action="${pageContext.request.contextPath}/handleClub/tojoinclub" method="post" class="form-horizontal">
+                    <div class="row d-flex justify-content-center">
+                        <div align="center">
+                            <div class="form-group">
+                                <label  class="col-sm-4 control-label">社团ID:${item.id}</label>
+                                <label  class="col-sm-6 control-label">社长ID:${item.leaderId}</label>
+                                <label  class="col-sm-4 control-label">创建日期:${item.establisheddate}</label>
+                            </div>
+                            <div  class="col-sm-12">
+                                <p class="lead">社团简介</p>
+                                <textarea  class="col-sm-12form-control" name="joinclubmessage"  rows="4" cols="56"  >${item.descript}</textarea>
+<%--                                <input type="hidden" name="date" value="<fmt:formatDate value="${date} pattern="yyyy-MM-dd "/>--%>
+                            </div>
+                            <br>&nbsp<br>
+                                <input type="hidden" name="clubid" value="${item.id}"><!--社团ID传入到后台-->
+                                <input type="hidden" name="clubname" value="${item.name}"><!--社团名字传入到后台-->
+                                <input type="submit" class="btn btn-lg btn-success" value="申请加入" >  &nbsp&nbsp&nbsp&nbsp&nbsp
+                                &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp
+                                <a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/handleClub/giveupjoin" role="button">详细信息</a>
+                            </div>
+                        </div>
+                </form>
+            </div>
+        </div>
+<%--        <div class="col-md-6 col-md-pull-6">--%>
+<%--            <div class="jumbotron" align="center">--%>
+<%--                <h3>社团名字</h3><br>--%>
+<%--                &nbsp;<br>--%>
+<%--                <form action="${pageContext.request.contextPath}/apply/insertapply" method="post" class="form-horizontal">--%>
 
-<section class="ftco-section bg-light">
-    <div class="container">
-        <div class="row d-flex">
-            <div class="col-md-4 d-flex ftco-animate">
-                <div class="blog-entry justify-content-end">
-                    <a href="${pageContext.request.contextPath}/ @Resourceprivate ClubsService clubsService;blog-single.html" class="block-20" style="${pageContext.request.contextPath}/background-image: url('images/basketball.png');">
-                    </a>
-                    <div class="text p-4 float-right d-block">
-                        <div class="d-flex align-items-center pt-2 mb-4">
-                            <div class="one">
-                                <span class="day">01</span>
-                            </div>
-                            <div class="two">
-                                <span class="yr">激情刺激，团队合作</span>
-                                <span class="mos">2019.06.19</span>
-                            </div>
-                        </div>
-                        <h3 class="heading mt-2"><a href="${pageContext.request.contextPath}/joinclub.jsp">篮球社</a></h3>
-                        <p>篮球社团以形式多样的活动丰富了学生的课余生活，给予同学一个展示自己的机会，让他们在自己热爱的空间里自由发挥，体验比赛与游戏的不同滋味，享受篮球带给他们的无穷乐趣</p>
-                        <a class="btn btn-primary" href="${pageContext.request.contextPath}/handleClub/tojoinclub" role="button">申请加入</a>
-                    </div>
-                </div>
-            </div>
-            <c:forEach items="${clubslist}" var="item">
-            <div class="col-md-4 d-flex ftco-animate">
-                <div class="blog-entry justify-content-end">
-<%--                    <a href="${pageContext.request.contextPath}/ " class="block-20" style="${pageContext.request.contextPath}/background-image: url('${item.name}');">--%>
-                    </a>
-                    <div class="text p-4 float-right d-block">
-                        <div class="d-flex align-items-center pt-2 mb-4">
-                            <div class="one">
-                                <span class="day">01</span>
-                            </div>
-                            <div class="two">
-                           <span class="yr">${item.descript}</span><!--社团简介-->
-                                <span class="mos">${item.establisheddate}</span><!--社团成立时间-->
-                            </div>
-                        </div>
-                       <h3 class="heading mt-2"><a href="${pageContext.request.contextPath}/joinclub.jsp">${item.name}</a></h3><!--社团名字-->
-                       <p>${item.name}</p><!--社团介绍内容-->
-                    <a class="btn btn-primary" href="${pageContext.request.contextPath}/handleClub/tojoinclub" role="button">申请加入</a>
-                </div>
-              </div>
-         </div>--%>
-            </c:forEach>
-        </div>
-        <div class="row mt-5">
-            <div class="col text-center">
-                <div class="block-27">
-                    <ul>
-                        <li><a href="#">&lt;</a></li>
-                        <li class="active"><span>1</span></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">&gt;</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+<%--                    <div class="row d-flex justify-content-center">--%>
+<%--                        <div align="center">--%>
+<%--                            <div class="form-group">--%>
+<%--                                <label  class="col-sm-4 control-label">社团ID:</label>--%>
+<%--                                <label  class="col-sm-6 control-label">社长ID:</label>--%>
+<%--                                <label  class="col-sm-4 control-label">创建日期:</label>--%>
+<%--                            </div>--%>
+<%--                            <div  class="col-sm-12">--%>
+<%--                                <p class="lead">社团简介</p>--%>
+<%--                                <textarea  class="col-sm-12 form-control" name="joinclubmessage" rows="6" cols="50" ></textarea>--%>
+<%--&lt;%&ndash;                                <input type="hidden" name="date" value="<fmt:formatDate value="${date} pattern="yyyy-MM-dd "/>&ndash;%&gt;--%>
+<%--                            </div>--%>
+<%--                            <br>&nbsp<br>--%>
+<%--                            <input type="submit" class="btn btn-lg btn-success" value="申请加入" >  &nbsp&nbsp&nbsp&nbsp&nbsp--%>
+<%--                            &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp--%>
+<%--                            <a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/handleClub/giveupjoin" role="button">详细信息</a>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                </form>--%>
+<%--            </div>--%>
+<%--        </div>--%>
     </div>
-</section>
+</div><!-- /.container -->
+</c:forEach>
+<%--   1     --%>
+<%--<section class="ftco-section bg-light">--%>
+<%--    <div class="container">--%>
+<%--        <div class="row d-flex">--%>
+<%--            <div class="col-md-4 d-flex ftco-animate">--%>
+<%--                <div class="blog-entry justify-content-end">--%>
+<%--                    <a href="${pageContext.request.contextPath}/ @Resourceprivate ClubsService clubsService;blog-single.html" class="block-20" style="${pageContext.request.contextPath}/background-image: url('images/basketball.png');">--%>
+<%--                    </a>--%>
+<%--                    <div class="text p-4 float-right d-block">--%>
+<%--                        <div class="d-flex align-items-center pt-2 mb-4">--%>
+<%--                            <div class="one">--%>
+<%--                                <span class="day">社团编号</span>--%>
+<%--                            </div>--%>
+<%--                            <div class="two">--%>
+<%--                                <span class="yr">社团简介?</span>--%>
+<%--                                <span class="mos">社团成立时间</span>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <h3 class="heading mt-2"><a href="${pageContext.request.contextPath}/joinclub.jsp">社团名字</a></h3>--%>
+<%--                        <p>社长编号</p>--%>
+<%--                        <a class="btn btn-primary" href="${pageContext.request.contextPath}/handleClub/tojoinclub" role="button">申请加入</a>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+
+<%--            <div class="container marketing">--%>
+<%--                <hr class="featurette-divider">--%>
+<%--                <div class="row featurette">--%>
+<%--                <c:forEach items="${clubslist}" var="item">--%>
+<%--                    <div class="col-md-6 col-md-push-6">--%>
+<%--                        <div class="jumbotron" align="center">--%>
+<%--                            <h3>${item.name}</h3><br>--%>
+<%--                            &nbsp;<br>--%>
+<%--                            <form action="${pageContext.request.contextPath}/handleClub/tojoinclub" method="post" class="form-horizontal">--%>
+<%--                                <div class="row d-flex justify-content-center">--%>
+<%--                                    <div align="center">--%>
+<%--                                        <div class="form-group">--%>
+<%--                                            <label  class="col-sm-4 control-label">社团ID:${item.id}</label>--%>
+<%--                                            <label  class="col-sm-6 control-label">社长ID:${item.leaderId}</label>--%>
+<%--                                            <label  class="col-sm-4 control-label">创建日期:${item.establisheddate}</label>--%>
+<%--                                        </div>--%>
+<%--                                        <div  class="col-sm-12">--%>
+<%--                                            <p class="lead">社团简介</p>--%>
+<%--                                            <textarea  class="col-sm-12 form-control" name="joinclubmessage"  rows="6" cols="50"  >${item.descript}</textarea>--%>
+<%--                                                                            <input type="hidden" name="date" value="<fmt:formatDate value="${date} pattern="yyyy-MM-dd "/>--%>
+<%--                                        </div>--%>
+<%--                                        <br>&nbsp<br>--%>
+<%--                                        <input type="hidden" name="clubid" value="${item.id}"><!--社团ID传入到后台-->--%>
+<%--                                        <input type="submit" class="btn btn-lg btn-success" value="申请加入" >  &nbsp&nbsp&nbsp&nbsp&nbsp--%>
+<%--                                        &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp--%>
+<%--                                        <a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/handleClub/giveupjoin" role="button">详细信息</a>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                            </form>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    </c:forEach>--%>
+<%--            </div><!-- /.container -->--%>
+<%--            <c:forEach items="${clubslist}" var="item">--%>
+<%--            <div class="col-md-4 d-flex ftco-animate">--%>
+<%--                <div class="blog-entry justify-content-end">--%>
+<%--                    <a href="${pageContext.request.contextPath}/ " class="block-20" style="${pageContext.request.contextPath}/background-image: url('${item.name}');">--%>
+<%--                    </a>--%>
+<%--                    <div class="text p-4 float-right d-block">--%>
+<%--                        <div class="d-flex align-items-center pt-2 mb-4">--%>
+<%--                            <div class="one">--%>
+<%--                                <span class="day">${item.id}</span>--%>
+<%--                            </div>--%>
+<%--                            <div class="two">--%>
+<%--                           <span class="yr">${item.descript}</span><!--社团简介-->--%>
+<%--                                <span class="mos">${item.establisheddate}</span><!--社团成立时间-->--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                       <h3 class="heading mt-2"><a href="${pageContext.request.contextPath}/joinclub.jsp">${item.name}</a></h3><!--社团名字-->--%>
+<%--                       <p>${item.leaderId}</p><!--社团社长ID-->--%>
+<%--                    <a class="btn btn-primary" href="${pageContext.request.contextPath}/handleClub/tojoinclub" role="button">申请加入</a>--%>
+<%--                </div>--%>
+<%--              </div>--%>
+<%--         </div>--%>
+<%--            </c:forEach>--%>
+
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        <div class="row mt-5">--%>
+<%--            <div class="col text-center">--%>
+<%--                <div class="block-27">--%>
+<%--                    <ul>--%>
+<%--                        <li><a href="#">&lt;</a></li>--%>
+<%--                        <li class="active"><span>1</span></li>--%>
+<%--                        <li><a href="#">2</a></li>--%>
+<%--                        <li><a href="#">3</a></li>--%>
+<%--                        <li><a href="#">4</a></li>--%>
+<%--                        <li><a href="#">5</a></li>--%>
+<%--                        <li><a href="#">&gt;</a></li>--%>
+<%--                    </ul>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+
+<%--</section>--%>
 
 
 <section class="ftco-section-parallax">
@@ -243,6 +369,15 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="${pageContext.request.contextPath}/js/google-map.js"></script>
 <script src="${pageContext.request.contextPath}/js/main.js"></script>
-
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<script src="${pageContext.request.contextPath}/../../assets/js/vendor/holder.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="${pageContext.request.contextPath}/../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>

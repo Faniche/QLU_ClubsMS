@@ -13,8 +13,8 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/")
 public class IndexController {
 
-    @GetMapping("index")
-    public String toIndex(HttpSession session){
+//    @GetMapping("index")
+//    public String toIndex(HttpSession session){
 
         // 用于测试
 //        Login login = new Login();
@@ -23,7 +23,7 @@ public class IndexController {
 //        login.setName("秦始皇");
 //        login.setPassword("123456");
 //        login.setUsername("秦始皇");
-
+//
 //        login.setName("周文王");
 //        login.setPassword("123456");
 //        login.setUsername("周文王");
@@ -34,6 +34,6 @@ public class IndexController {
 //        role.setId(2);
 //        session.setAttribute("role", role);
 
-        return "redirect:/index.jsp";
-    }
+//        return "redirect:/index.jsp";
+//    }
 }

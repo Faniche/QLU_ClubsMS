@@ -83,7 +83,7 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into qlu_clubs_ms.apply(type, proposerId, clubId, date, status)
+        insert into qlu_clubs_ms.apply(type,activityId, proposerId, clubId, date, status)
         values (#{type},#{activityId} , #{proposerid}, #{clubid}, #{date}, #{status})
     </insert>
 
