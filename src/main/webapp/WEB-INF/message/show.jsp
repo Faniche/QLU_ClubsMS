@@ -89,14 +89,14 @@
                          aria-orientation="vertical">
                         <c:if test="${sessionScope.role.id != 1}">
                             <a class="nav-link ftco-animate active" id="my_message" data-toggle="pill" href="#v-pills-1"
-                               role="tab" aria-controls="v-pills-1" aria-selected="true">我的消息<span>2019.05.01</span></a>
+                               role="tab" aria-controls="v-pills-1" aria-selected="true">我的消息</a>
                         </c:if>
                         <a class="nav-link ftco-animate" id="my_apply" data-toggle="pill" href="#v-pills-2"
-                           role="tab" aria-controls="v-pills-2" aria-selected="false">申请<span>2019.05.02</span></a>
+                           role="tab" aria-controls="v-pills-2" aria-selected="false">申请</a>
                         <c:if test="${sessionScope.role.id == 2}">
                             <a class="nav-link ftco-animate" id="release_message" data-toggle="pill" href="#v-pills-3"
                                role="tab" aria-controls="v-pills-3"
-                               aria-selected="false">发布消息<span>2019.05.04</span></a>
+                               aria-selected="false">发布消息</a>
                         </c:if>
                     </div>
                 </div>

@@ -17,6 +17,7 @@
         from qlu_clubs_ms.login
         where id = #{id}
     </select>
+
     <!--查询所有-->
     <select id="queryAllmessages" resultMap="LoginMap">
         select
@@ -33,6 +34,7 @@
         where username = #{username}
         and password = #{password}
     </select>
+
     <select id="queryLoginByEmailAndPassword" resultMap="LoginMap">
      select
          id,name,email,password,username
@@ -40,6 +42,7 @@
         where email = #{email}
         and password = #{password}
     </select>
+
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="LoginMap">
         select

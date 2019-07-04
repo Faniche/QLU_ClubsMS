@@ -43,6 +43,9 @@
             <if test="id != null">
                 and id = #{id}
             </if>
+            <if test="leaderId != null">
+                and leaderId = #{leaderId}
+            </if>
             <if test="name != null and name != ''">
                 and name = #{name}
             </if>

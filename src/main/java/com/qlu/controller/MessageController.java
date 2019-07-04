@@ -1,20 +1,23 @@
 package com.qlu.controller;
 
-import com.qlu.entity.Apply;
-import com.qlu.entity.Login;
-import com.qlu.entity.Message;
-import com.qlu.entity.Role;
+import com.qlu.entity.*;
 import com.qlu.model.ApplyModel;
+import com.qlu.model.MemberModel;
 import com.qlu.model.MessageModel;
 import com.qlu.service.ApplyService;
+import com.qlu.service.ClubsService;
+import com.qlu.service.MemberService;
 import com.qlu.service.MessageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * (Message)表控制层
@@ -34,6 +37,12 @@ public class MessageController {
     @Resource
     private ApplyService applyService;
 
+    @Resource
+    private ClubsService clubsService;
+
+    @Resource
+    private MemberService memberService;
+
     /**
      * 转到消息页面
      * @return
@@ -51,6 +60,22 @@ public class MessageController {
             List<MessageModel> messageList = messageService.queryByLoginId(login.getId());
             modelAndView.addObject("messageList", messageList);
         }
+        // 查出所有管理的社团以及成员
+        if(role.getId() == 2) {
+            Clubs clubs = new Clubs();
+            clubs.setLeaderId(login.getId());
+            List<Clubs> managedClubs = clubsService.queryAll(clubs);
+            modelAndView.addObject("managedClubs", managedClubs);
+            // 一个人可能同时是多个社团的负责人
+            Map<String, List<MemberModel>> clubAndMemberList = new HashMap<>();
+            for (Clubs club : managedClubs){
+                Member member = new Member();
+                member.setClubid(club.getId());
+                List<MemberModel> memberModels = memberService.queryAllModel(member);
+                clubAndMemberList.put(club.getName(), memberModels);
+            }
+            modelAndView.addObject("clubAndMemberList", clubAndMemberList);
+        }
         return modelAndView;
     }
 
@@ -60,14 +85,17 @@ public class MessageController {
      * @return
      */
     @PostMapping("release")
-    public ModelAndView release(Message message){
-        boolean result = messageService.insert(message);
+    public String release(Message message, Map<String, Object> map){
+        System.out.println(message.getContent());
+        System.out.println(message.getClubid());
+        boolean result = true;
+//                messageService.insert(message);
         ModelAndView modelAndView = new ModelAndView("message/message");
         if (result) {
             modelAndView.addObject("msg", "发布成功");
         } else {
             modelAndView.addObject("msg", "发布失败");
         }
-        return modelAndView;
+        return "message/show";
     }
 }
