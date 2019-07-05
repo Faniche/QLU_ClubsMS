@@ -53,63 +53,34 @@
     <div class="container marketing">
         <hr class="featurette-divider">
         <div class="row featurette">
-<%--            <div class="col-md-6 col-md-push-6">--%>
-<%--                <div class="jumbotron" align="center">--%>
-<%--                    <h2>${item.name}</h2><br>--%>
-<%--                    &nbsp;<br>--%>
-<%--                    <form action="${pageContext.request.contextPath}/handleClub/tojoinclub" method="post" class="form-horizontal">--%>
-<%--                        <div class="row d-flex justify-content-center">--%>
-<%--                            <div align="center">--%>
-<%--                                <div class="form-group">--%>
-<%--                                    <label  class="col-sm-4 control-label">社团ID:${item.id}</label>--%>
-<%--                                    <label  class="col-sm-6 control-label">社长ID:${item.leaderId}</label>--%>
-<%--                                    <label  class="col-sm-4 control-label">创建日期:${item.establisheddate}</label>--%>
-<%--                                </div>--%>
-<%--                                <div  class="col-sm-12">--%>
-<%--                                    <p class="lead">社团简介</p>--%>
-<%--                                    <textarea  class="col-sm-12form-control" name="joinclubmessage"  rows="4" cols="56"  >${item.descript}</textarea>--%>
-<%--                                        &lt;%&ndash;                                <input type="hidden" name="date" value="<fmt:formatDate value="${date} pattern="yyyy-MM-dd "/>&ndash;%&gt;--%>
-<%--                                </div>--%>
-<%--                                <br>&nbsp<br>--%>
-<%--                                <input type="hidden" name="clubid" value="${item.id}"><!--社团ID传入到后台-->--%>
-<%--                                <input type="hidden" name="clubname" value="${item.name}"><!--社团名字传入到后台-->--%>
-<%--                                <input type="submit" class="btn btn-lg btn-success" value="申请加入" >  &nbsp&nbsp&nbsp&nbsp&nbsp--%>
-<%--                                &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp--%>
-<%--                                <a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/handleClub/giveupjoin" role="button">详细信息</a>--%>
+<%--            <c:forEach items="${clubslist}" var="item">--%>
+<%--                        <div class="col-md-6 col-md-pull-6">--%>
+<%--                            <div class="jumbotron" align="center">--%>
+<%--                                <h3>社团名字</h3><br>--%>
+<%--                                &nbsp;<br>--%>
+<%--                                <form action="${pageContext.request.contextPath}/apply/insertapply" method="post" class="form-horizontal">--%>
+
+<%--                                    <div class="row d-flex justify-content-center">--%>
+<%--                                        <div align="center">--%>
+<%--                                            <div class="form-group">--%>
+<%--                                                <label  class="col-sm-4 control-label">社团ID:</label>--%>
+<%--                                                <label  class="col-sm-6 control-label">社长ID:</label>--%>
+<%--                                                <label  class="col-sm-4 control-label">创建日期:</label>--%>
+<%--                                            </div>--%>
+<%--                                            <div  class="col-sm-12">--%>
+<%--                                                <p class="lead">社团简介</p>--%>
+<%--                                                <textarea  class="col-sm-12 form-control" name="joinclubmessage" rows="6" cols="50" ></textarea>--%>
+<%--                                            </div>--%>
+<%--                                            <br>&nbsp<br>--%>
+<%--                                            <input type="submit" class="btn btn-lg btn-success" value="申请加入" >  &nbsp&nbsp&nbsp&nbsp&nbsp--%>
+<%--                                            &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp--%>
+<%--                                            <a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/handleClub/giveupjoin" role="button">详细信息</a>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
+<%--                                </form>--%>
 <%--                            </div>--%>
 <%--                        </div>--%>
-<%--                    </form>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-            <c:forEach items="${clubslist}" var="item">
-                        <div class="col-md-6 col-md-pull-6">
-                            <div class="jumbotron" align="center">
-                                <h3>社团名字</h3><br>
-                                &nbsp;<br>
-                                <form action="${pageContext.request.contextPath}/apply/insertapply" method="post" class="form-horizontal">
-
-                                    <div class="row d-flex justify-content-center">
-                                        <div align="center">
-                                            <div class="form-group">
-                                                <label  class="col-sm-4 control-label">社团ID:</label>
-                                                <label  class="col-sm-6 control-label">社长ID:</label>
-                                                <label  class="col-sm-4 control-label">创建日期:</label>
-                                            </div>
-                                            <div  class="col-sm-12">
-                                                <p class="lead">社团简介</p>
-                                                <textarea  class="col-sm-12 form-control" name="joinclubmessage" rows="6" cols="50" ></textarea>
-<%--                                                <input type="hidden" name="date" value="<fmt:formatDate value="${date} pattern="yyyy-MM-dd "/>--%>
-                                            </div>
-                                            <br>&nbsp<br>
-                                            <input type="submit" class="btn btn-lg btn-success" value="申请加入" >  &nbsp&nbsp&nbsp&nbsp&nbsp
-                                            &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp
-                                            <a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/handleClub/giveupjoin" role="button">详细信息</a>
-                                            </div>
-                                        </div>
-                                </form>
-                            </div>
-                        </div>
-            </c:forEach>
+<%--            </c:forEach>--%>
         </div>
     </div>
 </section>6

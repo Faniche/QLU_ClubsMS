@@ -124,16 +124,18 @@ public class ClubController {
     }
 
     //创建社团
-    @GetMapping("tonewclub")
-    public String toNewClub(){
+    @PostMapping("tonewclub")
+    public String toNewClub(HttpServletResponse response,HttpSession session,HttpServletRequest request){
+        Object stuidInfo=session.getAttribute("stuidInfo");
+        System.out.println(stuidInfo);
         System.out.println("转到申请创建社团界面");
         return "club/newclub";
     }
-    @PostMapping("newclub")
-    public String newClub(){
-        System.out.println("提交创建社团申请");
-        return "club/newclub";//提交路径要改
-    }
+//    @PostMapping("newclub")
+//    public String newClub(){
+//        System.out.println("提交创建社团申请");
+//        return "club/newclub";//提交路径要改
+//    }
     @GetMapping("givenew")
     public String giveNew(){
         System.out.println("放弃申请创建社团");

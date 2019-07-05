@@ -45,24 +45,28 @@
     <div class="jumbotron" align="center">
         <h1>新社团申请表</h1><br>
         &nbsp;<br>
-        <form action="${pageContext.request.contextPath}/handleClub/newclub" method="post" class="form-horizontal">
+        <form action="${pageContext.request.contextPath}/apply/newclubapply" method="post" class="form-horizontal">
 
             <div class="row d-flex justify-content-center">
                 <div align="center">
                     <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-4 control-label">社团名字</label>
+                        <label for="inputEmail3" class="col-sm-4 control-label">社团名字:</label>
                         <div class="col-sm-4">
-                            <input type="email" class="form-control" name="clubname" id="inputEmail3" placeholder="确定你的社团名字">
+                            <input type="text" class="form-control" name="name" id="inputEmail3" placeholder="确定你的社团名字">
                         </div>
                     </div>
                     <div  class="col-sm-12">
                         <p class="lead">对你的新社团做简单介绍</p>
-                        <textarea  class="col-sm-4 form-control" name="newclubmessage" rows="10" cols="80" >
+                        <input type="textarea" class="col-sm-4 form-control" name="descript" rows="10" cols="60" >
+<%--                        <textarea  class="col-sm-4 form-control" name="newclubmessage" rows="10" cols="80" >--%>
 
                     </textarea>
                     </div>
                     <br>&nbsp<br>
-
+                    <input type="hidden" name="type" value="1"><!--申请加入社团类型-->
+                    <input type="hidden" name="activityId" value="">
+                    <input type="hidden" name="ststus" value="0"><!--申请状态-->
+                    <input type="hidden" name="proposerId" value="${sessionScope.get('stuidInfo')}"><!--申请者id-->
                     <input type="submit" class="btn btn-lg btn-success" value="提交申请" >  &nbsp&nbsp&nbsp&nbsp&nbsp
                     &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp
                     <a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/handleClub/givenew" role="button">返回上层</a>
