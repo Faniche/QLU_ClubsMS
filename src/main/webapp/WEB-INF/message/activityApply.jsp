@@ -7,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:forEach items="${applyList}" var="item">
     <c:if test="${item.apply.type == 5}">
@@ -14,20 +15,20 @@
                 <%--    社团Logo--%>
                 <%--    <div class="img speaker-img" style="background-image: url(${clubsIcon.[item.clubs.name]});"></div>--%>
             <div class="img speaker-img"
-                 style="background-image: url('${pageContext.request.contextPath}/images/icon/basketball.jpg');">
+                 style="background-image: url('${pageContext.request.contextPath}/${clubsIcon[item.clubs.name]}');">
             </div>
             <div class="text pl-md-5">
                     <%--申请时间--%>
                 <span class="time">时间：${item.apply.date}</span>
                     <%--申请类型--%>
-                <h2><a href="#">${item.applyType}</a></h2><br>
+                <h2 class="h2">${item.applyType}</h2><br>
                     <%--申请内容--%>
                 <p>${item.content}</p>
-                <p>活动时间：&nbsp;${item.activity.time}</p>
+                <p>活动时间：&nbsp;<fmt:formatDate value="${item.activity.time}"/></p>
                 <p>活动地点：&nbsp;${item.activity.location}</p>
                 <p>活动经费：&nbsp;${item.activity.money}</p>
-                <h3 class="speaker-name">&mdash; <a href="#">${item.clubs.name}</a> <span
-                        class="position">${item.proposer}</span></h3>
+                <h3 class="speaker-name">&mdash; <a href="">${item.clubs.name}</a> <span
+                        class="position">${item.proposer}</span></h3><br>
                     <%--超级管理员--%>
                 <c:if test="${role.id == 1}">
                     <%--未审核--%>
@@ -65,7 +66,7 @@
                 url: "${pageContext.request.contextPath}/activity/agree",
                 data: {'activityId':$(this).attr("value"),'applyId':$(this).attr("apply")},
                 success: function () {
-                    obj.text('拒绝');
+                    obj.text('同意');
                 }
             })
         });
@@ -76,7 +77,7 @@
                 url: "${pageContext.request.contextPath}/activity/deny",
                 data: {'activityId':$(this).attr("value"),'applyId':$(this).attr("apply")},
                 success: function () {
-                    obj.text('同意');
+                    obj.text('拒绝');
                 }
             })
         })

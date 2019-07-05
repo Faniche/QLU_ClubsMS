@@ -1,11 +1,14 @@
 package com.qlu.service.impl;
 
+import com.qlu.dao.LoginDao;
 import com.qlu.entity.Announce;
 import com.qlu.dao.AnnounceDao;
+import com.qlu.model.AnnounceModel;
 import com.qlu.service.AnnounceService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,6 +21,9 @@ import java.util.List;
 public class AnnounceServiceImpl implements AnnounceService {
     @Resource
     private AnnounceDao announceDao;
+
+    @Resource
+    private LoginDao loginDao;
 
     /**
      * 通过ID查询单条数据
@@ -75,5 +81,18 @@ public class AnnounceServiceImpl implements AnnounceService {
     @Override
     public boolean deleteById(Integer id) {
         return this.announceDao.deleteById(id) > 0;
+    }
+
+    @Override
+    public List<AnnounceModel> findAll() {
+        List<Announce> announceList = this.announceDao.findAll();
+        List<AnnounceModel> announceModelList = new ArrayList<>();
+        for (Announce announce : announceList){
+            AnnounceModel model = new AnnounceModel();
+            model.setAnnounce(announce);
+            model.setAuthor(this.loginDao.queryById(announce.getId()).getName());
+            announceModelList.add(model);
+        }
+        return announceModelList;
     }
 }

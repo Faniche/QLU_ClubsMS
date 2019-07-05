@@ -5,6 +5,7 @@
     <resultMap type="com.qlu.entity.Login" id="LoginMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="username" column="username" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
         <result property="password" column="password" jdbcType="VARCHAR"/>
     </resultMap>
@@ -12,10 +13,11 @@
     <!--查询单个-->
     <select id="queryById" resultMap="LoginMap">
         select
-          id, username, name, password
+          id, username, email, name, password
         from qlu_clubs_ms.login
         where id = #{id}
     </select>
+
     <!--查询所有-->
     <select id="queryAllmessages" resultMap="LoginMap">
         select
@@ -32,6 +34,7 @@
         where username = #{username}
         and password = #{password}
     </select>
+
     <select id="queryLoginByEmailAndPassword" resultMap="LoginMap">
      select
          id,name,email,password,username
@@ -39,6 +42,7 @@
         where email = #{email}
         and password = #{password}
     </select>
+
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="LoginMap">
         select
@@ -50,7 +54,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="LoginMap">
         select
-          id, username, name, password
+        id, username, email, name, password
         from qlu_clubs_ms.login
         <where>
             <if test="id != null">
@@ -81,11 +85,11 @@
             <if test="username != null and username != ''">
                 username = #{username},
             </if>
-            <if test="name != null and name != ''">
-                name = #{name},
-            </if>
             <if test="password != null and password != ''">
                 password = #{password},
+            </if>
+            <if test="email != null and email != ''">
+                email = #{email},
             </if>
         </set>
         where id = #{id}

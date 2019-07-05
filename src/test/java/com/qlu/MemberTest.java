@@ -1,11 +1,14 @@
 package com.qlu;
 
+import com.qlu.entity.Member;
 import com.qlu.service.MemberService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.List;
 
 /**
  * @Project: QLU_ClubsMS
@@ -30,5 +33,14 @@ public class MemberTest {
     public void clubDestroy() {
         int result = memberService.clubDestroy(15);
         System.out.println(result);
+    }
+
+    @Test
+    public void queryAll(){
+        Member member = new Member();
+        member.setClubid(1);
+        member.setMemberid(1);
+        List<Member> memberList = memberService.queryAll(member);
+        System.out.println(memberList.size());
     }
 }

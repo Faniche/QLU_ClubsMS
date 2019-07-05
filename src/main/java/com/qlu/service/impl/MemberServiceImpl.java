@@ -1,11 +1,17 @@
 package com.qlu.service.impl;
 
+import com.qlu.dao.ClubsDao;
+import com.qlu.dao.LoginDao;
+import com.qlu.entity.Login;
 import com.qlu.entity.Member;
 import com.qlu.dao.MemberDao;
+import com.qlu.model.MemberModel;
 import com.qlu.service.MemberService;
+import org.springframework.context.annotation.Role;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,6 +24,12 @@ import java.util.List;
 public class MemberServiceImpl implements MemberService {
     @Resource
     private MemberDao memberDao;
+
+    @Resource
+    private ClubsDao clubsDao;
+
+    @Resource
+    private LoginDao loginDao;
 
     /**
      * 通过ID查询单条数据
@@ -90,5 +102,19 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public int clubDestroy(Integer id){
         return this.memberDao.updateStatusDestroy(id);
+    }
+
+    @Override
+    public List<MemberModel> queryAllModel(Member member) {
+        List<Member> list = this.memberDao.queryAll(member);
+        List<MemberModel> memberModels = new ArrayList<>();
+        for (Member member1 : list){
+            MemberModel memberModel = new MemberModel();
+            memberModel.setMember(member1);
+            memberModel.setClubName(clubsDao.queryById(member.getClubid()).getName());
+            memberModel.setMemberName(loginDao.queryById(member1.getMemberid()).getName());
+            memberModels.add(memberModel);
+        }
+        return memberModels;
     }
 }

@@ -1,16 +1,15 @@
 <%--
   Created by IntelliJ IDEA.
   User: Chare
-  Date: 2019/6/25
-  Time: 16:40
+  Date: 2019/7/4
+  Time: 15:32
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <html>
 <head>
-    <title>我的消息</title>
+    <title>公告</title>
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/open-iconic-bootstrap.min.css">
@@ -25,7 +24,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/icomoon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
-
     <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/jquery-migrate-3.0.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/popper.min.js"></script>
@@ -43,18 +41,8 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="${pageContext.request.contextPath}/js/google-map.js"></script>
     <script src="${pageContext.request.contextPath}/js/main.js"></script>
-    <style type="text/css">
-        .my_message {
-            display: none;
-        }
-
-        .release_message {
-            display: none;
-        }
-    </style>
 </head>
 <body>
-
 <jsp:include page="/nav_bar.jsp"/>
 
 <section class="hero-wrap hero-wrap-2 js-fullheight"
@@ -64,69 +52,73 @@
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
             <div class="col-md-9 ftco-animate pb-5">
-                <h1 class="mb-3 bread">我的消息</h1>
+                <h1 class="mb-3 bread">公告</h1>
                 <p class="breadcrumbs"><span class="mr-2"><a href="${pageContext.request.contextPath}/index">首页 <i
                         class="ion-ios-arrow-forward"></i></a></span>
-                    <span>我的消息 <i class="ion-ios-arrow-forward"></i></span></p>
+                    <span>公告 <i class="ion-ios-arrow-forward"></i></span></p>
             </div>
         </div>
     </div>
 </section>
 
+<c:if test="">
+    <jsp:include page="releaseAnnounce.jsp"/>
+</c:if>
 
 <section class="ftco-section bg-light">
     <div class="container">
         <div class="ftco-search">
             <div class="row">
+                <div class="col-md-12 tab-wrap my_message">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
+                             aria-labelledby="day-1-tab">
+                            <div>
+                                <c:forEach items="${announceList}" var="item">
+                                    <div class="speaker-wrap ftco-animate d-flex">
+                                            <%--                                        <div class="img speaker-img"--%>
+                                            <%--                                             style="background-image: url('${pageContext.request.contextPath}/${clubsIcon[item.club]}');">--%>
+                                            <%--                                        </div>--%>
+                                        <div class="text pl-md-5">
+                                            <span class="time">时间：${item.announce.releasedate}</span>
+                                                <%--内容--%>
+                                            <br>
+                                            <p>${item.announce.topic}</p>
+                                            <p>${item.announce.content}</p>
+                                            <h3 class="speaker-name">&mdash; ${item.author}
+                                            </h3>
+                                            <c:if test="${role.id==1}">
+                                                <span>
+                                                <button type="button" class="btn btn-danger announce_del"
+                                                        value="${item.announce.id}">删除</button>
 
-                <div class="col-md-12 nav-link-wrap">
-                    <div class="nav nav-pills d-flex text-center" id="v-pills-tab" role="tablist"
-                         aria-orientation="vertical">
-                        <a class="nav-link ftco-animate" id="my_apply" data-toggle="pill" href="#v-pills-2"
-                           role="tab" aria-controls="v-pills-2" aria-selected="false">申请</a>
-                        <c:if test="${sessionScope.role.id != 1}">
-                            <a class="nav-link ftco-animate active" id="my_message" data-toggle="pill" href="#v-pills-1"
-                               role="tab" aria-controls="v-pills-1" aria-selected="true">我的消息</a>
-                        </c:if>
-                        <c:if test="${sessionScope.role.id == 2}">
-                            <a class="nav-link ftco-animate" id="release_message" data-toggle="pill" href="#v-pills-3"
-                               role="tab" aria-controls="v-pills-3"
-                               aria-selected="false">发布消息</a>
-                        </c:if>
+                                                </span>
+                                            </c:if>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <c:if test="${sessionScope.role.id == 2 || sessionScope.role.id == 3}">
-                    <jsp:include page="message.jsp"></jsp:include>
-                </c:if>
-                <jsp:include page="apply.jsp"/>
-                <c:if test="${sessionScope.role.id == 2}">
-                    <jsp:include page="releaseMessage.jsp"></jsp:include>
-                </c:if>
             </div>
         </div>
     </div>
 </section>
 
 <script type="text/javascript">
-    $().ready(function () {
-        $("#my_apply").click(function () {
-            $(".my_apply").css("display", "block");
-            $(".my_message").css("display", "none");
-            $(".release_message").css("display", "none");
-        })
-
-        $("#my_message").click(function () {
-            $(".my_apply").css("display", "none");
-            $(".my_message").css("display", "block");
-            $(".release_message").css("display", "none");
-        })
-
-        $("#release_message").click(function () {
-            $(".my_apply").css("display", "none");
-            $(".my_message").css("display", "none");
-            $(".release_message").css("display", "block");
-        })
+    $(".announce_del").click(function () {
+        var obj = $(this).parents('span');
+        if (window.confirm("确认删除吗？")){
+            $.ajax({
+                type: "POST",
+                url: "${pageContext.request.contextPath}/announce/delete",
+                data: {'id': $(this).attr("value")},
+                success: function () {
+                    obj.text('已删除');
+                }
+            })
+        }
     })
 </script>
 

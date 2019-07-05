@@ -13,27 +13,34 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/")
 public class IndexController {
 
-//    @GetMapping("index")
-//    public String toIndex(HttpSession session){
+    @GetMapping("index")
+    public String toIndex(HttpSession session) {
 
         // 用于测试
-//        Login login = new Login();
+        Login login = new Login();
+        Role role = new Role();
+
 //        login.setId(13);
-//        login.setId(10);
 //        login.setName("秦始皇");
 //        login.setPassword("123456");
 //        login.setUsername("秦始皇");
-//
-//        login.setName("周文王");
-//        login.setPassword("123456");
-//        login.setUsername("周文王");
-//
-//        session.setAttribute("userinfo", login);
-//        Role role = new Role();
 //        role.setId(1);
-//        role.setId(2);
-//        session.setAttribute("role", role);
 
-//        return "redirect:/index.jsp";
-//    }
+        login.setId(10);
+        login.setName("周文王");
+        login.setPassword("123456");
+        login.setUsername("周文王");
+        role.setId(2);
+
+//        login.setId(12);
+//        login.setName("哥白尼");
+//        login.setPassword("123456");
+//        login.setUsername("哥白尼");
+//        role.setId(3);
+
+        session.setAttribute("userinfo", login);
+        session.setAttribute("role", role);
+
+        return "redirect:/index.jsp";
+    }
 }

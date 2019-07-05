@@ -1,6 +1,8 @@
 package com.qlu.service;
 
 import com.qlu.entity.Member;
+import com.qlu.model.MemberModel;
+
 import java.util.List;
 
 /**
@@ -67,4 +69,6 @@ public interface MemberService {
      * @return
      */
     int clubDestroy(Integer id);
+
+    List<MemberModel> queryAllModel(Member member);
 }

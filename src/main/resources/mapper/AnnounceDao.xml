@@ -26,6 +26,13 @@
         limit #{offset}, #{limit}
     </select>
 
+    <!--查询指定行数据-->
+    <select id="findAll" resultMap="AnnounceMap">
+        select
+          id, topic, content, authorId, releaseDate
+        from qlu_clubs_ms.announce
+    </select>
+
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="AnnounceMap">
         select
