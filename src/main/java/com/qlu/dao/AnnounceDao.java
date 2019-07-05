@@ -63,4 +63,5 @@ AnnounceDao {
      */
     int deleteById(Integer id);
 
+    List<Announce> findAll();
 }

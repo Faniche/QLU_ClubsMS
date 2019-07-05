@@ -131,7 +131,7 @@
 
                     <div class="item">
                         <div class="speaker">
-                            <img src="images/literature%20.jpg" class="img-fluid" alt="Colorlib HTML5 Template">
+                            <img src="images/literature.jpg" class="img-fluid" alt="Colorlib HTML5 Template">
                             <div class="text text-center py-3">
                                 <h3>文艺社</h3>
                                 <span class="position">“文艺界的一股清流”</span>
@@ -370,7 +370,7 @@
     </div>
 </section>
 
-
+<jsp:include page="footer.jsp"/>
 <!-- loader -->
 <div id="ftco-loader" class="show fullscreen">
     <svg class="circular" width="48px" height="48px">

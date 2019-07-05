@@ -8,6 +8,7 @@ import com.qlu.service.ApplyService;
 import com.qlu.service.ClubsService;
 import com.qlu.service.MemberService;
 import com.qlu.service.MessageService;
+import com.qlu.util.DateUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -81,21 +82,23 @@ public class MessageController {
 
     /**
      * message对象包含了要插入的所有信息，不需要再查询
-     * @param message
+     * @param
      * @return
      */
     @PostMapping("release")
-    public String release(Message message, Map<String, Object> map){
-        System.out.println(message.getContent());
-        System.out.println(message.getClubid());
-        boolean result = true;
-//                messageService.insert(message);
-        ModelAndView modelAndView = new ModelAndView("message/message");
+    public String release(HttpSession session, HttpServletRequest request, Map<String, Object> map){
+        String content = request.getParameter("content");
+        Integer clubId = Integer.valueOf(request.getParameter("clubId"));
+        Message message = new Message();
+        message.setContent(content);
+        message.setClubid(clubId);
+        message.setReleasedate(DateUtil.getTimeStamp());
+        boolean result = messageService.insert(message);
         if (result) {
-            modelAndView.addObject("msg", "发布成功");
+            session.setAttribute("msg", "发送成功！");
         } else {
-            modelAndView.addObject("msg", "发布失败");
+            session.setAttribute("msg", "发布失败！");
         }
-        return "message/show";
+        return "redirect:/message/show";
     }
 }

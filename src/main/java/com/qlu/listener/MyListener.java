@@ -33,27 +33,10 @@ import com.qlu.service.FileService;
  */
 @WebListener
 public class MyListener implements ServletContextListener {
-
-//    @Autowired
-//    private ActivityService stuService;
-//    @Autowired
-//    private ClubsService clubsService;
-//    @Autowired
-//    private FileService fileService;
-
-    /**
-     * Default constructor.
-     */
-    public MyListener() {//
-        System.out.println("MyListener.MyListener()");
-    }
-
     /**
      * @see ServletContextListener#contextDestroyed(ServletContextEvent)
      */
-    public void contextDestroyed(ServletContextEvent arg0)  {
-        System.out.println("MyListener.contextDestroyed()");
-    }
+    public void contextDestroyed(ServletContextEvent arg0)  { }
 
     /**
      * @see ServletContextListener#contextInitialized(ServletContextEvent)
@@ -62,28 +45,17 @@ public class MyListener implements ServletContextListener {
     /*主要代码*/
     public void contextInitialized(ServletContextEvent evt)  { 	//初始化项目
         ServletContext application= evt.getServletContext();
-        System.out.println("application:"+application);
-
-        //WebApplicationContext context=WebApplicationContextUtils.getRequiredWebApplicationContext(application);
         WebApplicationContext context=	WebApplicationContextUtils.getWebApplicationContext(application);
-        System.out.println("context:"+context);
-
-
         //获取ActivityService对象
         ActivityService activityService=context.getBean(ActivityService.class);
         //查询所有活动项目，
         List<Activity> activityList = activityService.findAll();
         //查询最新的活动项目
         Activity activity = activityService.queryById(1);
-        System.out.println(activity);
-
-
         //获取ClubsService对象
         ClubsService clubsService=context.getBean(ClubsService.class);
         //查询所有社团，
         List<Clubs> clubsList = clubsService.findAll();
-
-
         // 获取社团LOGO
         //获取FileService对象
         FileService fileService=  context.getBean(FileService.class);
@@ -92,15 +64,12 @@ public class MyListener implements ServletContextListener {
         //建立Map集合
         Map<String,String> clubsIcon = new HashMap<String,String>();
         for(File file: fileList){
-            System.out.println(file.getFilename() + ", " + file.getPath());
             clubsIcon.put(file.getFilename(),file.getPath());
         }
         //通过路径模糊查询所有
         com.qlu.entity.File file = new com.qlu.entity.File();
         file.setPath("images/icon");
         List<com.qlu.entity.File> files = fileService.queryAll(file);
-
-
         //存储所有的活动项目到application
         application.setAttribute("activityList",activityList);
         //存储最新的活动项目到application
@@ -112,8 +81,5 @@ public class MyListener implements ServletContextListener {
         //存储图片集合
         application.setAttribute("files",files);
     }
-
-
-
 }
 

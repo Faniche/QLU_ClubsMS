@@ -1,11 +1,15 @@
 package com.qlu.controller;
 
 import com.qlu.entity.Announce;
+import com.qlu.model.AnnounceModel;
 import com.qlu.service.AnnounceService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
+import java.util.List;
+import java.util.Map;
 
 /**
  * (Announce)表控制层
@@ -33,4 +37,17 @@ public class AnnounceController {
         return this.announceService.queryById(id);
     }
 
+    @GetMapping("/")
+    public String toAnnounce(Map<String, Object> map){
+        List<AnnounceModel> announceList = announceService.findAll();
+        map.put("announceList", announceList);
+        return "announce/show";
+    }
+
+    @PostMapping("delete")
+    @ResponseBody
+    public String delete(@RequestParam("id")Integer id){
+        boolean result = announceService.deleteById(id);
+        return "delete";
+    }
 }

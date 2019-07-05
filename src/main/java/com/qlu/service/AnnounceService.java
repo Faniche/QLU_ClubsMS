@@ -1,6 +1,8 @@
 package com.qlu.service;
 
 import com.qlu.entity.Announce;
+import com.qlu.model.AnnounceModel;
+
 import java.util.List;
 
 /**
@@ -52,4 +54,5 @@ public interface AnnounceService {
      */
     boolean deleteById(Integer id);
 
+    List<AnnounceModel> findAll();
 }
