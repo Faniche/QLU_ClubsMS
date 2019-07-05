@@ -2,9 +2,12 @@ package com.qlu.controller;
 
 import com.qlu.entity.Apply;
 import com.qlu.entity.Clubs;
+import com.qlu.entity.Login;
+import com.qlu.entity.Member;
 import com.qlu.model.ApplyModel;
 import com.qlu.service.ApplyService;
 import com.qlu.service.ClubsService;
+import com.qlu.service.MemberService;
 import com.qlu.util.DateUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
@@ -33,74 +36,91 @@ public class ApplyController {
 
     @Resource
     private ClubsService clubsService;
+    @Resource
+    private MemberService memberService;
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("selectOne")
-    public Apply selectOne(Integer id) {
-        return this.applyService.queryById(id);
+    @PostMapping("joinClubApply")
+    public String joinClubApply(HttpServletRequest request, HttpSession session) {
+        Login login = (Login) session.getAttribute("userinfo");
+        String clubid=request.getParameter("clubid");
+        //Integer clubid = (Integer) session.getAttribute("clubid");//无法强转？
+        Member member = new Member();
+        //出现错误无法获取clubid
+        member.setClubid(new Integer(clubid));
+        System.out.println(new Integer(clubid));
+        member.setStatus(0);
+        member.setEnrolldate(DateUtil.getTimeStamp());
+        member.setMemberid(login.getId());
+        member = memberService.insert(member);
+
+        Apply apply = new Apply();
+        apply.setClubid(new Integer(clubid));
+        apply.setStatus(0);
+        apply.setType(3);
+        apply.setProposerid(login.getId());
+        apply.setDate(DateUtil.getTimeStamp());
+        apply = applyService.insert(apply);
+        System.out.println("提交加入社团申请");
+        return "club/joinclub";
     }
-    @PostMapping("insertapply")
-    public String insertApply(HttpServletResponse response, HttpServletRequest request, ApplyModel applyModel, HttpSession session){
-         //获取页面传过来的值插入数据库
-          String type = request.getParameter("type");
-          String  date =request.getParameter("date");
-          String id =request.getParameter("clubid");
-          String proposerid=request.getParameter("proposerid");
-          String clubid=(String) session.getAttribute("id");
-          String status= request.getParameter("status");
-          System.out.println(proposerid);
-          System.out.println(clubid);
 
-        //申请提交
-        Apply apply= new Apply();
-        apply.setType(new Integer(type));
-//        apply.setActivityId(new Integer(null));
-        apply.setProposerid(new Integer(proposerid));
-        apply.setClubid(new Integer(id));
-        System.out.println("提交申请");
-//        apply.setStatus();
-        return "redirect:index.jsp";
-    }
-    @PostMapping("newclubapply")
-    public String insertNewclub(HttpServletResponse response, HttpServletRequest request, HttpSession session){
-        String type=request.getParameter("type");//申请类型
-        String proposerId=request.getParameter("proposerId");//申请者ID
-        String leaderId=request.getParameter("leaderid");//社长ID和申请者ID一样
-        String status=request.getParameter("status");//申请状态
-        String date=request.getParameter("");//日期的获取
-        String name=request.getParameter("name");//社团名字
-        System.out.println(name);
-        String descript=request.getParameter("descript");//社团介绍
-        System.out.println(proposerId);
-        System.out.println(new Integer(type));
-        System.out.println("新建社团");
+    @PostMapping("createClubApply")
+    public String createClubApply(HttpServletRequest request, HttpSession session) {
+        Login login = (Login) session.getAttribute("userinfo");
+        String name = request.getParameter("name");//社团名字
+        String descript = request.getParameter("descript");//社团介绍
 
-         Clubs clubs=new Clubs();
-         clubs.setLeaderId(new Integer(leaderId));
-         clubs.setName(name);
-         clubs.setDescript(descript);
-         clubs.setStatus(new Integer(status));
-         clubs.setEstablisheddate(DateUtil.getTimeStamp());
-         clubs=clubsService.insert(clubs);
+        Clubs clubs = new Clubs();
+        clubs.setLeaderId(login.getId());//获取登录id
+        System.out.println(new Integer(login.getId()));
+        clubs.setName(name);
+        clubs.setDescript(descript);
+        clubs.setStatus(0);
+        clubs.setEstablisheddate(DateUtil.getTimeStamp());
+        clubs = clubsService.insert(clubs);
 
-        Apply apply= new Apply();
-        apply.setProposerid(new Integer(proposerId));
-        apply.setType(new Integer(type));
-        apply.setStatus(new Integer(status));
-        apply.setType(new Integer(type));
+        Apply apply = new Apply();
+        apply.setProposerid(login.getId());
+        apply.setType(new Integer(1));
+        apply.setStatus(0);
         apply.setClubid(clubs.getId());
         apply.setDate(DateUtil.getTimeStamp());
-        apply =applyService.insert(apply);
-        System.out.println("创建申请提交");
-       //apply表和cluds表同是插入一条数据
+        apply = applyService.insert(apply);
         return "club/newclub";
+      //  return "redirect:/handelClub/showclub";
     }
 
-
-
+    /**
+     * 解散社团
+     * @param clubId
+     * @param session
+     * @return
+     */
+    @PostMapping("destroyClubApply")
+    public String destroyClubApply(@RequestParam("clubId") Integer clubId, HttpSession session){
+        Login login = (Login) session.getAttribute("userinfo");
+        destroyOrQuit(login.getId(), clubId, 2);
+        return "redirect:/handelClub/tomyclub";
+    }
+    /**
+     * 退出社团
+     * @param clubId
+     * @param session
+     * @return
+     */
+    @PostMapping("quitClubApply")
+    public String quitClubApply(@RequestParam("clubId") Integer clubId, HttpSession session){
+        Login login = (Login) session.getAttribute("userinfo");
+        destroyOrQuit(login.getId(), clubId, 4);
+        return "redirect:/handelClub/tomyclub";
+    }
+    private void destroyOrQuit(Integer loginId, Integer clubId, Integer type){
+        Apply apply = new Apply();
+        apply.setProposerid(loginId);
+        apply.setType(type);
+        apply.setStatus(0);
+        apply.setClubid(clubId);
+        apply.setDate(DateUtil.getTimeStamp());
+        apply = applyService.insert(apply);
+    }
 }

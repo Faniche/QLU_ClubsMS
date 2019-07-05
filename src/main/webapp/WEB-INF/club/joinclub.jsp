@@ -43,53 +43,32 @@
 <body>
 
 <div class="container">
-
-
     <div class="jumbotron" align="center">
         <h1>加入社团申请表</h1><br>
         &nbsp;<br>
-        <form action="${pageContext.request.contextPath}/apply/insertapply" method="post" class="form-horizontal">
+        <form action="${pageContext.request.contextPath}/apply/joinClubApply" method="post" class="form-horizontal">
             <div class="row d-flex justify-content-center">
                 <div align="center">
                     <div class="form-group">
                         <label  class="col-sm-4 control-label">社团名字</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" name="joinclubname"  placeholder="${sessionScope.get('name')}">
+                            <input type="text" class="form-control" name="clubname"  placeholder="${clubname}">
                         </div>
                     </div>
                     <div  class="col-sm-12">
                         <p class="lead">对你自己做简单介绍，为什么加入社团？</p>
-                        <textarea  class="col-sm-4 form-control" name="joinclubmessage" rows="10" cols="80" >${sessionScope.get('stuidInfo')}</textarea>
-<%--                        <input type="date" name="date" value="<fmt:formatDate value="${date}" pattern="yyyy-MM-dd "/> "/>--%>
+                        <textarea  class="col-sm-4 form-control" name="joinclubmessage" rows="10" cols="80" >${clubid}</textarea>
                     </div>
                     <br>&nbsp<br>
-<%--                    <input type="hidden" name="_method" value="put">--%>
-                    <input type="hidden" name="activityId" ><!--申请类型-->
-                    <input type="hidden" name="type" value="3"><!--申请类型-->
-                    <input type="hidden" name="status" value="0"><!--申请状态-->
-                    <input type="hidden" name="clubid" value="${sessionScope.get('id')}"><!--社团ID传入到后台-->
-                    <input type="hidden" name="proposerid" value="${sessionScope.get('stuidInfo')}">
-<%--                    <%--%>
-<%--                        Date d =new Date();--%>
-<%--                        SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");--%>
-<%--                        String date=df.format(d);--%>
-<%--                    %>--%>
-<%--                    <input type="date" name="date">--%>
+                    <input type="hidden" name="clubid" value="${clubid}"><!--社团ID传入到后台-->
                     <input type="submit" class="btn btn-lg btn-success" value="提交申请" >  &nbsp&nbsp&nbsp&nbsp&nbsp
                     &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp
                     <a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/handleClub/giveupjoin" role="button">返回上层</a>
                 </div>
             </div>
-
-
         </form>
     </div>
-
-
-
-
-
-</div> <!-- /container -->
+</div>
 
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

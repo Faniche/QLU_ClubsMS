@@ -64,7 +64,7 @@
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into qlu_clubs_ms.clubs(name, leaderId, descript, establishedDate, status)
-        values (#{name},#{leaderId}, #{descript}, #{establisheddate}, status)
+        values (#{name},#{leaderId}, #{descript}, #{establisheddate}, #{status})
     </insert>
 
     <!--通过主键修改数据-->
@@ -94,7 +94,13 @@
     <delete id="deleteById">
         delete from qlu_clubs_ms.clubs where id = #{id}
     </delete>
-
+    <!--用于显示首页的调用的方法-->
+    <!--通过实体作为筛选条件查询-->
+    <select id="findAll" resultMap="ClubsMap">
+     select
+      id, name, descript, establishedDate
+      from qlu_clubs_ms.clubs
+    </select>
 <!--    &lt;!&ndash;根据登录者id查询出加入或者管理的社团名字&ndash;&gt;-->
 <!--    <select id="queryMyClub" resultMap="MyClub">-->
 <!--        select name from qlu_clubs_ms.clubs-->
