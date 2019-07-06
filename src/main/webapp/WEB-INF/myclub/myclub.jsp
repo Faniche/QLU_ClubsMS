@@ -78,6 +78,10 @@
     </div>
 </section>
 
+<c:if test="${sessionScope.role.id==2}">
+    <jsp:include page=""/>
+</c:if>
+
 <section class="ftco-counter img" id="section-counter">
     <div class="container">
         <div class="row d-flex">

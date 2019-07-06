@@ -20,17 +20,17 @@ public class IndexController {
         Login login = new Login();
         Role role = new Role();
 
-//        login.setId(13);
-//        login.setName("秦始皇");
-//        login.setPassword("123456");
-//        login.setUsername("秦始皇");
-//        role.setId(1);
-
-        login.setId(10);
-        login.setName("周文王");
+        login.setId(13);
+        login.setName("秦始皇");
         login.setPassword("123456");
-        login.setUsername("周文王");
-        role.setId(2);
+        login.setUsername("秦始皇");
+        role.setId(1);
+
+//        login.setId(10);
+//        login.setName("周文王");
+//        login.setPassword("123456");
+//        login.setUsername("周文王");
+//        role.setId(2);
 
 //        login.setId(12);
 //        login.setName("哥白尼");

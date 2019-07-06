@@ -96,9 +96,6 @@
     </delete>
 
 
-
-
-
     <!--用于显示首页的调用的方法-->
     <!--通过实体作为筛选条件查询-->
     <select id="findAll" resultMap="ClubsMap">

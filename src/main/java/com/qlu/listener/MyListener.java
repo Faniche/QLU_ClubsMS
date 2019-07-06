@@ -59,27 +59,23 @@ public class MyListener implements ServletContextListener {
         // 获取社团LOGO
         //获取FileService对象
         FileService fileService=  context.getBean(FileService.class);
-        //查询所有图片及路径名
-        List<File> fileList = fileService.findAll();
+        //通过路径模糊查询所有
+        File file = new File();
+        file.setPath("images/icon");
+        List<File> fileList = fileService.queryAll(file);
         //建立Map集合
         Map<String,String> clubsIcon = new HashMap<String,String>();
-        for(File file: fileList){
-            clubsIcon.put(file.getFilename(),file.getPath());
+        for(File file1: fileList){
+            clubsIcon.put(file1.getFilename(),file1.getPath());
         }
-        //通过路径模糊查询所有
-        com.qlu.entity.File file = new com.qlu.entity.File();
-        file.setPath("images/icon");
-        List<com.qlu.entity.File> files = fileService.queryAll(file);
         //存储所有的活动项目到application
         application.setAttribute("activityList",activityList);
         //存储最新的活动项目到application
         application.setAttribute("activity",activity);
         //存储所有社团到application
         application.setAttribute("clubsList",clubsList);
-        //存储Map集合
+        //存储图片Map集合
         application.setAttribute("clubsIcon",clubsIcon);
-        //存储图片集合
-        application.setAttribute("files",files);
     }
 }
 

@@ -32,8 +32,8 @@
                 </c:if>
                 <li class="nav-item"><a href="${pageContext.request.contextPath}/announce/" class="nav-link">公告</a></li>
                 <li class="nav-item"><a href="${pageContext.request.contextPath}/handleClub/showclub" class="nav-link">社团介绍</a></li>
-                <li class="nav-item"><a href="${pageContext.request.contextPath}/message/show" class="nav-link">我的消息</a></li>
-                <li class="nav-item"><a href="${pageContext.request.contextPath}/file/down" class="nav-link">下载专区</a></li>
+                <li class="nav-item"><a href="${pageContext.request.contextPath}/message/" class="nav-link">我的消息</a></li>
+                <li class="nav-item"><a href="${pageContext.request.contextPath}/file/" class="nav-link">文件专区</a></li>
 
                 <li class="nav-item cta mr-md-2">
                 <a id="login_btn" href="${pageContext.request.contextPath}/login/login" class="nav-link">
