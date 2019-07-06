@@ -82,7 +82,7 @@
                 <div class="col-md-12 nav-link-wrap">
                     <div class="nav nav-pills d-flex text-center" id="v-pills-tab" role="tablist"
                          aria-orientation="vertical">
-                        <a class="nav-link ftco-animate" id="my_apply" data-toggle="pill" href="#v-pills-2"
+                        <a class="nav-link ftco-animate active" id="my_apply" data-toggle="pill" href="#v-pills-2"
                            role="tab" aria-controls="v-pills-2" aria-selected="false">申请</a>
                         <c:if test="${sessionScope.role.id != 1}">
                             <a class="nav-link ftco-animate active" id="my_message" data-toggle="pill" href="#v-pills-1"
