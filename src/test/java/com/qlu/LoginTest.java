@@ -42,4 +42,16 @@ public class LoginTest {
             System.out.println(login1.getName() + "\t" + login1.getUsername());
         }
     }
+
+    @Test
+    public void queryAll() {
+        Login login = new Login();
+        login.setUsername("stitm");
+        if (!loginService.queryAll(login).isEmpty()){
+            System.out.println(loginService.queryAll(login).size());
+            System.out.println("feikong");
+        } else {
+            System.out.println("kong");
+        }
+    }
 }

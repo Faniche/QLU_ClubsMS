@@ -14,7 +14,7 @@
         from qlu_clubs_ms.studentid
         where id = #{id}
     </select>
-
+   <!--通过login中的id查询单个-->
     <select id="queryByIdq" resultMap="StudentidMap">
         select
           id, loginId

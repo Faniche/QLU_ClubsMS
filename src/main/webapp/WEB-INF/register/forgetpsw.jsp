@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
-    <title>注册界面</title>
+    <title>忘记密码</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
@@ -34,50 +34,6 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <script type="text/javascript">
         $(function () {
-            $("#username").blur(function () {
-                <!--验证用户名-->
-                if ($("input[name=username]").val() == "") {
-                    alert("用户名不能为空");
-                } else {
-
-                    <!-- 获取输入的账号 -->
-                    var username = $("input[name=username]").val();
-                    <!-- 通过ajax方式将值传到后台 -->
-                    $.ajax({
-                        url: "${pageContext.request.contextPath}/register/usernamecheck",<!-- 要传的地址 -->
-                        type: "post",                        <!-- 传值的方式 -->
-                        data: {"username": username},         <!-- 传的数据(json对象) -->
-                        success: function (result) {           <!-- 成功后执行的代码 -->
-                            if (result == "false") {
-                                alert("账号已存在");
-                            }
-
-                        }
-                    });
-                }
-            });
-            $("#id").blur(function () {
-                <!--验证学号-->
-                if ($("input[name=id]").val() == "") {
-                    alert("学号不能为空");
-                } else {
-                    <!-- 获取输入的账号 -->
-                    var id = $("input[name=id]").val();
-                    <!-- 通过ajax方式将值传到后台 -->
-                    $.ajax({
-                        url: "${pageContext.request.contextPath}/register/idcheck",<!-- 要传的地址 -->
-                        type: "post",                        <!-- 传值的方式 -->
-                        data: {"id": id},         <!-- 传的数据(json对象) -->
-                        success: function (result) {           <!-- 成功后执行的代码 -->
-                            if (result == "false") {
-                                alert("学号不存在");
-                            }
-
-                        }
-                    });
-                }
-            });
-
             $("#pwd1").blur(function () {
                 if ($("input[name=pwd1]").val() == "") {
                     alert("密码不能为空");
@@ -98,15 +54,13 @@
 
                         <!-- 通过ajax方式将值传到后台 -->
                         $.ajax({
-                            url: "${pageContext.request.contextPath}/register/emailcheck",<!-- 要传的地址 -->
+                            url: "${pageContext.request.contextPath}/email/emailcheck",<!-- 要传的地址 -->
                             type: "post",                        <!-- 传值的方式 -->
                             data: {"email": email},         <!-- 传的数据(json对象) -->
                             success: function (result) {   <!-- 成功后执行的代码 -->
-
-                                if (result == "false") {
-                                    alert("邮箱已被注册");
+                                if (result == "true") {
+                                    alert('邮箱不存在')
                                 }
-
                             }
                         });
 
@@ -114,7 +68,6 @@
                 }
             });
             $("#btn1").click(function () {
-                <!--验证验证码-->
                 var email = $("input[name=email]").val();
 
                 <!-- 通过ajax方式将值传到后台 -->
@@ -130,34 +83,35 @@
 
                     }
                 });
-            });
-            $("#loginBtn").click(function () {
-                if ($("input[name=code]").val() == "") {
-                    alert("验证码不能为空");
-                } else {
-                    <!-- 获取输入的验证码 -->
-                    var code = $("input[name=code]").val();
-                    <!-- 通过ajax方式将值传到后台 -->
-                    $.ajax({
-                        url: "${pageContext.request.contextPath}/email/checkCode",<!-- 要传的地址 -->
-                        type: "post",                        <!-- 传值的方式 -->
-                        data: {"code": code},     <!-- 传的数据(json对象) -->
-                        success: function (result) {           <!-- 成功后执行的代码 -->
+                $("#loginBtn").click(function () {
+                    <!--验证验证码-->
+                    if ($("input[name=code]").val() == "") {
+                        alert("验证码不能为空");
+                    } else {
+                        <!-- 获取输入的验证码 -->
+                        var code = $("input[name=code]").val();
+                        <!-- 通过ajax方式将值传到后台 -->
+                        $.ajax({
+                            url: "${pageContext.request.contextPath}/email/checkCode",<!-- 要传的地址 -->
+                            type: "post",                        <!-- 传值的方式 -->
+                            data: {"code": code},     <!-- 传的数据(json对象) -->
+                            success: function (result) {           <!-- 成功后执行的代码 -->
+                                if (result == "false") {
+                                    alert("验证码错误");
+                                } else {
+                                    $("form").submit();
+                                }
 
-                            if (result == "false") {
-                                alert("验证码错误");
-                            } else {
-                                $("form").submit();
                             }
+                        });
+                    }
+                });
 
-                        }
-                    });
-                }
             });
-
 
             function check1() {
-                <!--验证两次验证码是否一致-->
+                <!--验证两次密码是否一致-->
+
                 pwd1 = document.getElementById("pwd1").value;
                 pwd2 = document.getElementById("pwd2").value;
                 if (pwd1 != pwd2) {
@@ -193,18 +147,11 @@
                 </div>
             </div>
             <div class="col-xl-4 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                <h2 class="form-signin-heading">注册</h2>
+                <h2 class="form-signin-heading">重置密码</h2>
                 <span>${msg}</span>
-                <form action="${pageContext.request.contextPath}/register/Loginregister" method="post">
+                <form action="${pageContext.request.contextPath}/register/updatepassword" method="post">
 
-                    <input type="text" name="username" id="username" class="form-control" placeholder="用户名" required
-                           autofocus>
-                    <br/>
-                    <input type="text" name="id" id="id" class="form-control" placeholder="学号" required autofocus>
-                    <br/>
-                    <input type="text" name="name" id="inputText3" class="form-control" placeholder="姓名" required
-                           autofocus>
-                    <br/>
+
                     <label for="email" class="sr-only">邮箱</label>
                     <input type="email" name="email" id="email" class="form-control" placeholder="邮箱" required
                            autofocus>
@@ -219,7 +166,7 @@
                     <input type="password" name="password" id="pwd2" class="form-control" placeholder="确认密码" required>
                     <br/>
                     <button onclick="return check1()" id="loginBtn" class="btn btn-lg btn-primary btn-block"
-                            type="button">确定
+                            type="submit">确定
                     </button>
                 </form>
             </div>

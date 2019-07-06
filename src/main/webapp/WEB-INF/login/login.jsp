@@ -31,18 +31,53 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/icomoon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#LoginBtn").click(function () {
+                if ($("input[name=captcha]").val() == "") {
+                    alert("验证码不能为空");
+                } else {
+                    <!-- 获取输入的验证码 -->
+                    var verifyCode = $("input[name=captcha]").val();
+                    <!-- 通过ajax方式将值传到后台 -->
+                    $.ajax({
+                        url: "${pageContext.request.contextPath}/login/checkVerifyCode",<!-- 要传的地址 -->
+                        type: "post",                        <!-- 传值的方式 -->
+                        data: {"verifyCode": verifyCode},     <!-- 传的数据(json对象) -->
+                        success: function (result) {           <!-- 成功后执行的代码 -->
+                            if (result == "false") {
+                                alert("验证码错误");
+                            } else {
+                                $("form").submit();
+                            }
+
+                        }
+                    });
+                }
+            });
+            <!-- 刷新图片 -->
+            $("#refresh").unbind("click").bind("click", function () {
+                <!-- 传递一个随机数给后台 -->
+                $("#createCheckCode").attr("src", "${pageContext.request.contextPath}/login/checkCaptchaCode?r" + Math.random());
+            });
+        });
+    </script>
 </head>
-</head>
+
 <body>
 
 
 <div class="hero-wrap js-fullheight" style="background-color: white;" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
+             data-scrollax-parent="true">
             <div class="col-xl-8 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"> 齐鲁工业大学 <br><span>社团之夜 2019</span></h1>
-                <p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">December 21-24, 2019. Paris, Italy</p>
+                <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"> 齐鲁工业大学 <br><span>社团之夜 2019</span>
+                </h1>
+                <p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">December 21-24, 2019.
+                    Paris, Italy</p>
                 <div id="timer" class="d-flex mb-3">
                     <div class="time" id="days"></div>
                     <div class="time pl-4" id="hours"></div>
@@ -51,27 +86,32 @@
                 </div>
             </div>
             <div class="col-xl-4 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                <span><a href="${pageContext.request.contextPath}/login/email" class="">邮箱登录</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/login/stuid" class="">学号登录</a></span>
+                <span><a href="${pageContext.request.contextPath}/login/email" class="">邮箱登录</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="${pageContext.request.contextPath}/login/stuid" class="">学号登录</a>
+                </span>
                 <h2 class="form-signin-heading">请登录</h2>
-                <span>${msg}</span>
-                <form action="${pageContext.request.contextPath}/login/logincheck" method="post">
-                <label for="inputText" class="sr-only">账号</label>
-                    <input type="text"name ="username" id="inputText" class="form-control" placeholder="账号" required autofocus>
-                <label for="inputPassword" class="sr-only">密码</label>
-                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="密码" required>
-                     <span>
-                         <input type="text" placeholder="输入四位验证码" name="captcha" id="captcha" onkeypress="" style="width:200px;" />
-                     <img src="${pageContext.request.contextPath}/login/checkCaptchaCode.do" id="createCheckCode"  align="middle" style="width:150px;"/><a href="javascript:void(0)" onclick="location.reload();">点击刷新验证码</a></span>
-                     </span>
-                         <div class="checkbox">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Remember me
-                    </label>
-                </div>
+                <span style="color: red">${msg}</span>
 
-                <button class="btn btn-lg btn-primary btn-block" type="submit">确定</button>
+                <form action="${pageContext.request.contextPath}/login/logincheck" method="post">
+                    <label for="inputText" class="sr-only">账号</label>
+                    <input type="text" name="username" id="inputText" class="form-control" placeholder="账号" required
+                           autofocus>
+                    <label for="inputPassword" class="sr-only">密码</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="密码"
+                           required>
+                    <span>
+                         <input type="text" placeholder="输入四位验证码" name="captcha" id="captcha" onkeypress=""
+                                style="width:200px;"/>
+                   <a id="refresh" class="nav-link"><img src="${pageContext.request.contextPath}/login/checkCaptchaCode"
+                                                         id="createCheckCode"
+                                                         align="middle" style="width:150px;"/></a>
+                    </span>
+                    <button class="btn btn-lg btn-primary btn-block" id="LoginBtn" type="button">确定</button>
                 </form>
-                <span><a href="${pageContext.request.contextPath}/register/register" class="nav-link">没有账号？点此注册</a></span>
+                <span><a href="${pageContext.request.contextPath}/register/register"
+                         class="nav-link">没有账号？点此注册</a></span>
+                <span><a href="${pageContext.request.contextPath}/register/forgetpsw"
+                         class="nav-link">忘记密码？</a></span>
             </div>
         </div>
 
@@ -80,7 +120,13 @@
 
 
 <!-- loader -->
-<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+<div id="ftco-loader" class="show fullscreen">
+    <svg class="circular" width="48px" height="48px">
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+                stroke="#F96D00"/>
+    </svg>
+</div>
 
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-migrate-3.0.1.min.js"></script>

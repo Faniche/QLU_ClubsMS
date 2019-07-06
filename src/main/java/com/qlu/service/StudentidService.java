@@ -18,6 +18,13 @@ public interface StudentidService {
      * @return 实例对象
      */
     Studentid queryById(String id);
+
+    /**
+     * 通过登录表中的id查询
+     *
+     * @param id login中的id
+     * @return
+     */
     Studentid queryByIdq(Integer id);
     /**
      * 查询多条数据
@@ -34,7 +41,15 @@ public interface StudentidService {
      * @param studentid 实例对象
      * @return 实例对象
      */
+
     Studentid insert(Studentid studentid);
+    /**
+     * 通过实体作为筛选条件查询
+     *
+     * @param studentid 实例对象
+     * @return 对象列表
+     */
+    List<Studentid> queryAll(Studentid studentid);
 
     /**
      * 修改数据
