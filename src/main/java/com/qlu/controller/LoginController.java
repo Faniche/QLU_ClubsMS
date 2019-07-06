@@ -1,4 +1,5 @@
 package com.qlu.controller;
+
 import com.qlu.util.ImageUtil;
 import com.qlu.entity.Studentid;
 import com.qlu.service.StudentidService;
@@ -6,13 +7,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.Map;
+
 import com.qlu.entity.Login;
 import com.qlu.entity.Role;
 import com.qlu.service.LoginService;
 import com.qlu.service.RoleService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
 import javax.annotation.Resource;
 import java.awt.image.BufferedImage;
 import java.io.OutputStream;
@@ -52,14 +56,14 @@ public class LoginController {
     }
 
     /**
-     * 验证码
+     * 调用验证码
      *
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/checkCaptchaCode.do", method = RequestMethod.GET)
+    @GetMapping("checkCaptchaCode")
     public void validateCode(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        //第一个参数是生成的验证码，第二个参数是生成的图片
+        //生成验证码
         Object[] objs = ImageUtil.createImage();
         //将验证码存入Session
         request.getSession(true).setAttribute("validateCode", objs[0]);
@@ -77,31 +81,36 @@ public class LoginController {
 
     /**
      * 检验验证码
+     *
      * @return
      */
+    @PostMapping("checkVerifyCode")
+    @ResponseBody
+    public Object checkVerifyCode(@RequestParam(value = "verifyCode") String verifyCode, HttpSession session, HttpServletResponse resp) {
+        Map map = new HashMap();
+        String flag = null;
+        if (verifyCode != null) {
+            //获取图片中的验证码
+            String validateCode = (String) session.getAttribute("validateCode");
+            //输入的与图片中的进行比较
+            if (validateCode != null && validateCode.toUpperCase().equals(verifyCode.toUpperCase())) {
+                map.put("valid", true);
+                flag = "true";
+            } else {
+                map.put("valid", false);
+                flag = "false";
+            }
+        } else {
+            map.put("valid", false);
+            flag = "false";
+        }
+        return flag;
+    }
+
     /**
-     * @RequestMapping(value="/checkVerifyCode.action",method= RequestMethod.POST)
-     * @ResponseBody public Object checkVerifyCode(@RequestParam(value = "verifyCode") String verifyCode,HttpServletRequest req, HttpServletResponse resp){
-     * Map map=new HashMap();
-     * String flag = null;
-     * if(verifyCode!=null){
-     * HttpSession session = req.getSession();
-     * //获取图片中的验证码
-     * String validateCode= (String) session.getAttribute("captcha");
-     * //输入的与图片中的进行比较
-     * if(validateCode!=null&&validateCode.equals(verifyCode.toUpperCase())){
-     * map.put("valid", true);
-     * flag = "true";
-     * }else{
-     * map.put("valid", false);
-     * flag = "false";
-     * }
-     * }else{
-     * map.put("valid", false);
-     * flag = "false";
-     * }
-     * return flag;
-     * }
+     * 跳转页面
+     *
+     * @return
      */
     @GetMapping("login")
     public String toLogin() {
@@ -120,6 +129,13 @@ public class LoginController {
         ModelAndView modelAndView = new ModelAndView();
         return "login/loginStu";
     }
+    //注销
+    @GetMapping("exit")
+    public String exit(HttpSession session) {
+        session.removeAttribute("userinfo");
+        session.removeAttribute("stuidInfo");
+        return "redirect:/index.jsp";
+    }
 
     /**
      * 用户登录验证
@@ -131,15 +147,21 @@ public class LoginController {
     @PostMapping("logincheck")
     public ModelAndView login(Login login, HttpSession session, Map<String, Object> map) {
         ModelAndView modelAndView = new ModelAndView();
+        //查询账号密码返回一个对象
         Login loginInfo = loginService.queryLoginByUsernameAndPassword(login);
-
+        //对象是否为空，验证账号密码是否正确
         if (loginInfo != null) {
+            //将登陆信息放入Session中
             session.setAttribute("userinfo", loginInfo);
+            //根据用户id查询角色权限
             Role role = roleService.queryByLoginId(loginInfo.getId());
+            //查询角色的学号
             Studentid stuidInfo = studentidService.queryByIdq(loginInfo.getId());
+            //将角色权限放入Session中
             session.setAttribute("role", role);
-            session.setAttribute("stuidInfo",stuidInfo);
-
+            //将学号放入Session中
+            session.setAttribute("stuidInfo", stuidInfo);
+            //判断角色的权限
             if (role.getName().equals("SuperAdmin")) {
                 modelAndView.setViewName("admin/index");
             } else {
@@ -162,14 +184,21 @@ public class LoginController {
     @PostMapping("loginEmailcheck")
     public ModelAndView login1(Login login, HttpSession session, Map<String, Object> map) {
         ModelAndView modelAndView = new ModelAndView();
+        //查询邮箱和密码返回一个对象
         Login loginInfo = loginService.queryLoginByEmailAndPassword(login);
-
+        //判断对象是否为空。
         if (loginInfo != null) {
+            //将登陆信息放入Session中
             session.setAttribute("userinfo", loginInfo);
+            //查询学号
             Studentid stuidInfo = studentidService.queryByIdq(loginInfo.getId());
+            //根据邮箱查询角色权限
             Role role = roleService.queryByLoginIdq(loginInfo.getEmail());
+            //将角色权限放入Session中
             session.setAttribute("role", role);
-            session.setAttribute("stuidInfo",stuidInfo);
+            //将学号放入Session中
+            session.setAttribute("stuidInfo", stuidInfo);
+           //判断角色权限
             if (role.getName().equals("SuperAdmin")) {
                 modelAndView.setViewName("admin/index");
             } else {
@@ -192,20 +221,27 @@ public class LoginController {
     @PostMapping("loginStucheck")
     public ModelAndView login2(HttpSession session, Map<String, Object> map, HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
+        //查询学号返回一个对象
         Studentid stuidInfo = studentidService.queryById(request.getParameter("id"));
+       //获取密码
         String s1 = request.getParameter("password");
+        //判断学号是存在
         if (stuidInfo != null) {
+            //若学号存在查询登录表的所有信息。
             Login loginInfo = loginService.queryAllmessages(request.getParameter("id"));
+            //获取登录表的密码
             String s2 = loginInfo.getPassword();
+            //验证密码是否相同
             if (s1.equals(s2)) {
-
+                //将登陆表信息放入Session中
                 session.setAttribute("userinfo", loginInfo);
+                //将学号放入Session中
                 session.setAttribute("stuidInfo", stuidInfo.getId());
-
-
+                //查询角色权限
                 Role role = roleService.queryByLoginId(loginInfo.getId());
-
+                //将角色的权限放入Session中
                 session.setAttribute("role", role);
+                //判断角色的权限
                 if (role.getName().equals("SuperAdmin")) {
                     modelAndView.setViewName("admin/index");
                 } else {
@@ -215,15 +251,13 @@ public class LoginController {
                 modelAndView.setViewName("login/loginStu");
                 map.put("msg", "学号或密码错误！");
             }
-        }else{
+        } else {
             modelAndView.setViewName("login/loginStu");
             map.put("msg", "学号或密码错误！");
         }
         return modelAndView;
     }
-    /**张树杰
-     * 注册
-     */
+
 
 }
 

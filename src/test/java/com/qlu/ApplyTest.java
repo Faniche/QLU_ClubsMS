@@ -26,7 +26,6 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring/spring-dao.xml","classpath:spring/spring-service.xml", "classpath:mybatis-config.xml"})
 public class ApplyTest {
-
     @Autowired
     private ApplyService applyService;
 

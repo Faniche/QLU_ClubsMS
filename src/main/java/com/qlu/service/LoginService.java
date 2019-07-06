@@ -29,11 +29,29 @@ public interface LoginService {
      * @param 查询条数
      * @return 对象列表
      */
-    Login queryLoginByUsernameAndPassword(Login login);
-    Login queryLoginByEmailAndPassword(Login login);
-    Login queryAllmessages(String id);
+
     List<Login> queryAllByLimit(int offset, int limit);
 
+    /**
+     * 查询账号密码
+     * @param login 实例对象
+     * @return 实例对象
+     */
+    Login queryLoginByUsernameAndPassword(Login login);
+
+    /**
+     * 查询邮箱密码
+     * @param login 实例对象
+     * @return 实例对象
+     */
+    Login queryLoginByEmailAndPassword(Login login);
+
+    /**
+     * 通过id查询登录表中的所有信息
+     * @param id 学号
+     * @return 实例对象
+     */
+    Login queryAllmessages(String id);
     /**
      * 根据条件查找信息
      * @param login

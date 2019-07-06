@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/*
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -26,11 +27,11 @@ public class IndexController {
 //        login.setUsername("秦始皇");
 //        role.setId(1);
 
-        login.setId(10);
-        login.setName("周文王");
-        login.setPassword("123456");
-        login.setUsername("周文王");
-        role.setId(2);
+        //login.setId(10);
+        //login.setName("周文王");
+        //login.setPassword("123456");
+        //login.setUsername("周文王");
+        //role.setId(2);
 
 //        login.setId(12);
 //        login.setName("哥白尼");
@@ -44,3 +45,4 @@ public class IndexController {
         return "redirect:/index.jsp";
     }
 }
+*/

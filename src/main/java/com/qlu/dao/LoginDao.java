@@ -27,14 +27,31 @@ public interface LoginDao {
      * @return 对象列表
      *
      */
-    Login queryLoginByUsernameAndPassword(Login login);
-
-    Login queryLoginByEmailAndPassword(Login login);
-
-    Login queryAllmessages(String id);
-
     List<Login> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
 
+    /**
+     * 查找账号密码
+     *
+     * @param login 实例对象
+     * @return 实例对象
+     */
+    Login queryLoginByUsernameAndPassword(Login login);
+
+    /**
+     * 查找邮箱密码
+     *
+     * @param login 实例对象
+     * @return 实例对象
+     */
+    Login queryLoginByEmailAndPassword(Login login);
+
+    /**
+     * 通过学号查询所有信息
+     *
+     * @param id 学号
+     * @return 实例对象
+     */
+    Login queryAllmessages(String id);
 
     /**
      * 通过实体作为筛选条件查询

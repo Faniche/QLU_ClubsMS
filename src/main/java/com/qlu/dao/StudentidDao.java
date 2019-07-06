@@ -19,6 +19,13 @@ public interface StudentidDao {
      * @return 实例对象
      */
     Studentid queryById(String id);
+
+    /**
+     * 通过login中的id查询单条数据
+     *
+     * @param id login表中的id
+     * @return
+     */
     Studentid queryByIdq(Integer id);
 
 
