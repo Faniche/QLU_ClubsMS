@@ -161,12 +161,8 @@ public class LoginController {
             session.setAttribute("role", role);
             //将学号放入Session中
             session.setAttribute("stuidInfo", stuidInfo);
-            //判断角色的权限
-            if (role.getName().equals("SuperAdmin")) {
-                modelAndView.setViewName("admin/index");
-            } else {
-                modelAndView.setViewName("redirect:/index.jsp");
-            }
+            modelAndView.setViewName("redirect:/index.jsp");
+
         } else {
             modelAndView.setViewName("login/login");
             map.put("msg", "账号密码错误！");
@@ -198,12 +194,8 @@ public class LoginController {
             session.setAttribute("role", role);
             //将学号放入Session中
             session.setAttribute("stuidInfo", stuidInfo);
-           //判断角色权限
-            if (role.getName().equals("SuperAdmin")) {
-                modelAndView.setViewName("admin/index");
-            } else {
-                modelAndView.setViewName("redirect:/index.jsp");
-            }
+            modelAndView.setViewName("redirect:/index.jsp");
+
         } else {
             modelAndView.setViewName("login/loginEmail");
             map.put("msg", "邮箱或密码错误！");
@@ -241,12 +233,7 @@ public class LoginController {
                 Role role = roleService.queryByLoginId(loginInfo.getId());
                 //将角色的权限放入Session中
                 session.setAttribute("role", role);
-                //判断角色的权限
-                if (role.getName().equals("SuperAdmin")) {
-                    modelAndView.setViewName("admin/index");
-                } else {
-                    modelAndView.setViewName("redirect:/index.jsp");
-                }
+                modelAndView.setViewName("redirect:/index.jsp");
             } else {
                 modelAndView.setViewName("login/loginStu");
                 map.put("msg", "学号或密码错误！");
