@@ -59,4 +59,6 @@ public interface ClubsService {
 
     /*用于显示首页用到的调用的方法*/
     List<Clubs> findAll();
+
+//    List<Clubs> queryMyClub();
 }

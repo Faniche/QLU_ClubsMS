@@ -29,14 +29,32 @@ public class LoginServiceImpl implements LoginService {
     public Login queryById(Integer id) {
         return this.loginDao.queryById(id);
     }
+
+    /**
+     * 查询账号密码
+     * @param login 实例对象
+     * @return 实例对象
+     */
     @Override
     public Login queryLoginByUsernameAndPassword(Login login){
         return loginDao.queryLoginByUsernameAndPassword(login);
     }
+
+    /**
+     * 查询邮箱密码
+     * @param login 实例对象
+     * @return 实例对象
+     */
     @Override
     public Login queryLoginByEmailAndPassword(Login login){
         return loginDao.queryLoginByEmailAndPassword(login);
     }
+
+    /**
+     * 查询登录表所有信息
+     * @param id 学号
+     * @return 实例对象
+     */
     @Override
     public Login queryAllmessages(String id){
         return loginDao.queryAllmessages(id);

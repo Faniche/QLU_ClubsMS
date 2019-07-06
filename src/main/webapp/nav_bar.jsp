@@ -13,8 +13,8 @@
     $().ready(function () {
         if (${sessionScope.userinfo != null}) {
             var obj = document.getElementById("loginName");
-            obj.innerText = " Hi, ${sessionScope.userinfo.username}!";
-            $("#login_btn").attr("href", "${pageContext.request.contextPath}/message/show")
+            obj.innerText = " Hi, ${sessionScope.userinfo.name}!";
+            $("#login_btn").attr("href", "${pageContext.request.contextPath}/personal/personal")
         }
     })
 </script>
@@ -42,6 +42,12 @@
                         </span>
                     </a>
                 </li>
+                <li class="nav-item cta mr-md-2">
+                    <c:if test="${userinfo!=null}">
+                        <a href="${pageContext.request.contextPath}/login/exit" class="nav-link">注销</a>
+                    </c:if>
+                </li>
+
             </ul>
         </div>
     </div>

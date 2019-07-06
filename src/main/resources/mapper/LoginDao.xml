@@ -5,7 +5,6 @@
     <resultMap type="com.qlu.entity.Login" id="LoginMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="username" column="username" jdbcType="VARCHAR"/>
-        <result property="email" column="email" jdbcType="VARCHAR"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
         <result property="password" column="password" jdbcType="VARCHAR"/>
     </resultMap>
@@ -13,11 +12,10 @@
     <!--查询单个-->
     <select id="queryById" resultMap="LoginMap">
         select
-          id, username, email, name, password
+          id, username, name, password
         from qlu_clubs_ms.login
         where id = #{id}
     </select>
-
     <!--查询所有-->
     <select id="queryAllmessages" resultMap="LoginMap">
         select
@@ -26,7 +24,6 @@
         where login.id in(select studentid.loginId from studentid where studentid.id =#{id})
     </select>
     <!--登录信息-->
-
     <select id="queryLoginByUsernameAndPassword" resultMap="LoginMap">
         select
          id,name,username,password,email
@@ -34,7 +31,6 @@
         where username = #{username}
         and password = #{password}
     </select>
-
     <select id="queryLoginByEmailAndPassword" resultMap="LoginMap">
      select
          id,name,email,password,username
@@ -42,7 +38,6 @@
         where email = #{email}
         and password = #{password}
     </select>
-
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="LoginMap">
         select
@@ -54,7 +49,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="LoginMap">
         select
-        id, username, email, name, password
+          id, username, name, password,email
         from qlu_clubs_ms.login
         <where>
             <if test="id != null">
@@ -68,6 +63,9 @@
             </if>
             <if test="password != null and password != ''">
                 and password = #{password}
+            </if>
+            <if test="email != null and email != ''">
+                and email = #{email}
             </if>
         </where>
     </select>

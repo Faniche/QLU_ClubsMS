@@ -29,6 +29,14 @@ public class StudentidServiceImpl implements StudentidService {
     public Studentid queryById(String id) {
         return this.studentidDao.queryById(id);
     }
+
+    /**
+     * 通过login表中的id查询
+     *
+     * @param id login中的id
+     * @return
+     */
+    @Override
     public Studentid queryByIdq(Integer id) {
         return this.studentidDao.queryByIdq(id);
     }
@@ -57,6 +65,16 @@ public class StudentidServiceImpl implements StudentidService {
     public Studentid insert(Studentid studentid) {
         this.studentidDao.insert(studentid);
         return studentid;
+    }
+    /**
+     * 通过实体作为筛选条件查询
+     *
+     * @param studentid 实例对象
+     * @return 对象列表
+     */
+    @Override
+     public List<Studentid> queryAll(Studentid studentid){
+        return studentidDao.queryAll(studentid);
     }
 
     /**
