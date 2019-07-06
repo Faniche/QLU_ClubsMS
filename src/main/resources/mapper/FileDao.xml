@@ -29,7 +29,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="FileMap">
         select
-          id, fileName, path, releaseDate, authorId
+        id, fileName, path, releaseDate, authorId
         from qlu_clubs_ms.file
         <where>
             <if test="id != null">
@@ -83,6 +83,20 @@
         delete from qlu_clubs_ms.file where id = #{id}
     </delete>
 
+
+    <select id="findAllFiles" resultMap="FileMap">
+    select
+        id, fileName, path, releaseDate, authorId
+    from qlu_clubs_ms.file
+    WHERE path LIKE 'files/%'
+</select>
+
+    <select id="findAllIcons" resultMap="FileMap">
+    select
+        id, fileName, path, releaseDate, authorId
+    from qlu_clubs_ms.file
+    WHERE path LIKE 'images/icon%'
+</select>
 
 
     <!--用于显示首页用到的调用的方法-->

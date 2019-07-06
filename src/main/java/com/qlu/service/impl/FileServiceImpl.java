@@ -1,11 +1,17 @@
 package com.qlu.service.impl;
 
+import com.qlu.dao.ClubsDao;
+import com.qlu.dao.LoginroleDao;
+import com.qlu.entity.Clubs;
 import com.qlu.entity.File;
 import com.qlu.dao.FileDao;
+import com.qlu.entity.Loginrole;
+import com.qlu.model.FileModel;
 import com.qlu.service.FileService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,6 +24,11 @@ import java.util.List;
 public class FileServiceImpl implements FileService {
     @Resource
     private FileDao fileDao;
+    @Resource
+    private LoginroleDao loginroleDao;
+    @Resource
+    private ClubsDao clubsDao;
+
 
     /**
      * 通过ID查询单条数据
@@ -81,6 +92,32 @@ public class FileServiceImpl implements FileService {
     @Override
     public boolean deleteById(Integer id) {
         return this.fileDao.deleteById(id) > 0;
+    }
+
+    @Override
+    public List<FileModel> findAllFiles(){
+        List<FileModel> models = new ArrayList<>();
+        List<File> files = this.fileDao.findAllFiles();
+        for (File file : files) {
+            FileModel fileModel = new FileModel();
+            fileModel.setFile(file);
+            Loginrole role = loginroleDao.queryById(file.getAuthorid());
+            if (role.getId() == 1) {
+                fileModel.setAuthor("社团管理委员会");
+            } else {
+                Clubs clubs = new Clubs();
+                clubs.setLeaderId(file.getAuthorid());
+                clubs = clubsDao.queryAll(clubs).get(0);
+                fileModel.setAuthor(clubs.getName());
+            }
+            models.add(fileModel);
+        }
+        return models;
+    }
+
+    @Override
+    public List<File> findAllIcons() {
+        return this.fileDao.findAllIcons();
     }
 
 

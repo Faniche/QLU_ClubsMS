@@ -1,6 +1,8 @@
 package com.qlu.service;
 
 import com.qlu.entity.File;
+import com.qlu.model.FileModel;
+
 import java.util.List;
 
 /**
@@ -58,6 +60,16 @@ public interface FileService {
      * @return 是否成功
      */
     boolean deleteById(Integer id);
+
+    /**
+     * 查找所有文本文件
+     */
+    List<FileModel> findAllFiles();
+
+    /**
+     * 查找所有的社团LOGO
+     */
+    List<File> findAllIcons();
 
 
     /*用于显示首页用到的调用的方法*/

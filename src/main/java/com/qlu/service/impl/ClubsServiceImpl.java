@@ -93,6 +93,11 @@ public class ClubsServiceImpl implements ClubsService {
     public List<Clubs> findAll() {
       return this.clubsDao.findAll();
     }
+
+    /**
+     * 查询优秀社团八个
+     * @return
+     */
    @Override
     public  List<Clubs> queryAllClubs(){
         return this.clubsDao.queryAllClubs();
