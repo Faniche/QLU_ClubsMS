@@ -5,6 +5,7 @@
   Time: 15:13
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html lang="en">
 <head>
@@ -49,41 +50,22 @@
             </div>
         </div>
     </div>
+            <%--超级管理员--%>
+            <c:if test="${role.id == 1}">
+                <jsp:include page="supermanager.jsp"/>
 
-    <div class="container marketing">
-        <hr class="featurette-divider">
-        <div class="row featurette">
-<%--            <c:forEach items="${clubslist}" var="item">--%>
-<%--                        <div class="col-md-6 col-md-pull-6">--%>
-<%--                            <div class="jumbotron" align="center">--%>
-<%--                                <h3>社团名字</h3><br>--%>
-<%--                                &nbsp;<br>--%>
-<%--                                <form action="${pageContext.request.contextPath}/apply/insertapply" method="post" class="form-horizontal">--%>
+            </c:if>
 
-<%--                                    <div class="row d-flex justify-content-center">--%>
-<%--                                        <div align="center">--%>
-<%--                                            <div class="form-group">--%>
-<%--                                                <label  class="col-sm-4 control-label">社团ID:</label>--%>
-<%--                                                <label  class="col-sm-6 control-label">社长ID:</label>--%>
-<%--                                                <label  class="col-sm-4 control-label">创建日期:</label>--%>
-<%--                                            </div>--%>
-<%--                                            <div  class="col-sm-12">--%>
-<%--                                                <p class="lead">社团简介</p>--%>
-<%--                                                <textarea  class="col-sm-12 form-control" name="joinclubmessage" rows="6" cols="50" ></textarea>--%>
-<%--                                            </div>--%>
-<%--                                            <br>&nbsp<br>--%>
-<%--                                            <input type="submit" class="btn btn-lg btn-success" value="申请加入" >  &nbsp&nbsp&nbsp&nbsp&nbsp--%>
-<%--                                            &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp--%>
-<%--                                            <a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/handleClub/giveupjoin" role="button">详细信息</a>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
-<%--                                </form>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--            </c:forEach>--%>
-        </div>
-    </div>
-</section>
+            <%--社长--%>
+            <c:if test="${role.id == 2}">
+                <jsp:include page="studentclub.jsp"/>
+                <jsp:include page="managerclub.jsp"/>
+
+            </c:if>
+            <%--学生--%>
+            <c:if test="${role.id == 3}">
+                <jsp:include page="studentclub.jsp"/>
+            </c:if>
 <section class="ftco-section testimony-section">
     <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
@@ -97,8 +79,21 @@
                 <div class="carousel-testimony owl-carousel">
                     <div class="item">
                         <div class="speaker">
+                        <img src="${pageContext.request.contextPath}/images/my_clubs/basketball.jpg" class="img-fluid" alt="Colorlib HTML5 Template" >
+                        <div class="text text-center py-1">
+                            <h3>足球社</h3>
+                            <span class="position">“人气王”</span>
+                            <ul class="ftco-social mt-3">
+                                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                            </ul>
+                        </div>
+                        </div>
+
+                        <div class="speaker">
                             <img src="${pageContext.request.contextPath}/images/my_clubs/basketball.jpg" class="img-fluid" alt="Colorlib HTML5 Template" >
-                            <div class="text text-center py-3">
+                            <div class="text text-center py-1">
                                 <h3>足球社</h3>
                                 <span class="position">“人气王”</span>
                                 <ul class="ftco-social mt-3">
@@ -106,6 +101,14 @@
                                     <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
                                     <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
                                 </ul>
+                            </div>
+                        </div>
+
+                        <div class="speaker">
+                            <img src="${pageContext.request.contextPath}/images/my_clubs/basketball.jpg" class="img-fluid" alt="Colorlib HTML5 Template" >
+                            <div class="text text-center py-1">
+                                <h3>社团名字</h3>
+                                <span class="position">社团简介</span>
                             </div>
                         </div>
                     </div>
@@ -122,7 +125,6 @@
 
 <!-- loader -->
 <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
 
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-migrate-3.0.1.min.js"></script>

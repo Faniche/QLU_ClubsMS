@@ -95,19 +95,7 @@ public class ClubController {
         return "club/joinclub";
     }
 
-//    /**
-//     * @param applyModel
-//     * @param request
-//     * @param session
-//     * @return
-//     */
-//    @PostMapping("joinClub")
-//    public String joinClub(ApplyModel applyModel, HttpServletRequest request, HttpSession session) {
-//        Integer clubid = (Integer) session.getAttribute("id");//获取部门ID
-//
-//        //这里获取数据，存入数据
-//        return "club/club";//路径要改
-//    }
+
 
     /**
      * 退出
@@ -122,6 +110,10 @@ public class ClubController {
         return "redirect:club/club.jsp";
     }
 
+    /**
+     *
+     * @return
+     */
     //退出社团
     @GetMapping("toqiutclub")
     public String toQuit() {
@@ -129,6 +121,10 @@ public class ClubController {
         return "myclub/quitclub";
     }
 
+    /**
+     *
+     * @return
+     */
     @PostMapping("quitclub")
     public String quitclub() {
         System.out.println("提交退团申请");
@@ -141,6 +137,10 @@ public class ClubController {
         return "myclub/myclub";
     }
 
+    /**
+     *
+     * @return
+     */
     //解散社团
     @GetMapping("tobreakclub")
     public String toBreakClub() {
@@ -148,36 +148,51 @@ public class ClubController {
         return "myclub/breakclub";
     }
 
+    /**
+     *
+     * @return
+     */
     @PostMapping("breakclub")
     public String breakClub() {
         System.out.println("提交解散社团申请");
         return "myclub/breakclub";//提交路径要改
     }
 
+    /**
+     *
+     * @return
+     */
     @GetMapping("givebreak")
     public String giveUpBreak() {
         System.out.println("放弃申请解散社团");
         return "myclub/myclub";
     }
 
+    /**
+     * 跳转到申请创建社团界面
+     * @return
+     */
     //创建社团
     @PostMapping("tonewclub")
-    public String toNewClub(HttpServletResponse response, HttpSession session, HttpServletRequest request) {
-        System.out.println("转到申请创建社团界面");
+    public String toNewClub() {
         return "club/newclub";
     }
 
-    //    @PostMapping("newclub")
-//    public String newClub(){
-//        System.out.println("提交创建社团申请");
-//        return "club/newclub";//提交路径要改
-//    }
+    /**
+     * 放弃创建新社团
+     * @return
+     */
     @GetMapping("givenew")
     public String giveNew() {
         System.out.println("放弃申请创建社团");
         return "club/club";
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @PostMapping("id")
     @ResponseBody
     public String Getid(@RequestParam("") Integer id) {
