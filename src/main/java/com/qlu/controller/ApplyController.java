@@ -43,11 +43,8 @@ public class ApplyController {
     public String joinClubApply(HttpServletRequest request, HttpSession session) {
         Login login = (Login) session.getAttribute("userinfo");
         String clubid=request.getParameter("clubid");
-        //Integer clubid = (Integer) session.getAttribute("clubid");//无法强转？
         Member member = new Member();
-        //出现错误无法获取clubid
         member.setClubid(new Integer(clubid));
-        System.out.println(new Integer(clubid));
         member.setStatus(0);
         member.setEnrolldate(DateUtil.getTimeStamp());
         member.setMemberid(login.getId());

@@ -1,11 +1,15 @@
 package com.qlu.service.impl;
 
+import com.qlu.dao.LoginDao;
 import com.qlu.entity.Clubs;
 import com.qlu.dao.ClubsDao;
+import com.qlu.model.ClubsModel;
 import com.qlu.service.ClubsService;
+import com.qlu.service.LoginService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,6 +22,9 @@ import java.util.List;
 public class ClubsServiceImpl implements ClubsService {
     @Resource
     private ClubsDao clubsDao;
+
+    @Resource
+    private LoginDao loginDao;
 
     /**
      * 通过ID查询单条数据
@@ -83,15 +90,27 @@ public class ClubsServiceImpl implements ClubsService {
     }
 
 
-
     /**
      * 查询所有数据
 
      * @return 对象列表
      */
     @Override
-    public List<Clubs> findAll() {
-      return this.clubsDao.findAll();
+    public List<ClubsModel> findAll() {
+        List<Clubs> clubs = this.clubsDao.findAll();
+        List<ClubsModel> models = new ArrayList<>();
+        for (Clubs clubs1 : clubs){
+            ClubsModel clubsModel = new ClubsModel();
+            clubsModel.setClubs(clubs1);
+            clubsModel.setLeader(this.loginDao.queryById(clubs1.getLeaderId()).getName());
+            if (clubs1.getStatus() == 1) {
+                clubsModel.setStatus("存在");
+            } else {
+                clubsModel.setStatus("已解散或正在申请中");
+            }
+            models.add(clubsModel);
+        }
+        return models;
     }
    @Override
     public  List<Clubs> queryAllClubs(){
