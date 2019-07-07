@@ -208,8 +208,6 @@ public class ClubsController {
         // 根据clubIdh和memberId在member表中找到对应的记录
         member.setClubid(clubId);
         member.setMemberid(proposerid);
-        System.out.println("applyId = " + applyId);
-        System.out.println("clubId = " + clubId);
         member = memberService.queryAll(member).get(0);
         System.out.println(memberService.queryAll(member).get(0));
         if (member.getStatus() != memberStatus) {

@@ -100,7 +100,6 @@
     <delete id="deleteById">
         delete from qlu_clubs_ms.activity where id = #{id}
     </delete>
-
     <!--通过实体作为筛选条件查询-->
     <select id="findAll" resultMap="ActivityMap">
     select

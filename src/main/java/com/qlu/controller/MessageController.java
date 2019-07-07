@@ -48,7 +48,7 @@ public class MessageController {
      * 转到消息页面
      * @return
      */
-    @GetMapping("show")
+    @GetMapping("/")
     public ModelAndView message(HttpSession session){
         ModelAndView modelAndView = new ModelAndView("message/show");
         Login login = (Login) session.getAttribute("userinfo");
@@ -95,10 +95,10 @@ public class MessageController {
         message.setReleasedate(DateUtil.getTimeStamp());
         boolean result = messageService.insert(message);
         if (result) {
-            session.setAttribute("msg", "发送成功！");
+            map.put("msg", "发送成功！");
         } else {
-            session.setAttribute("msg", "发布失败！");
+            map.put("msg", "发布失败！");
         }
-        return "redirect:/message/show";
+        return "message/show";
     }
 }

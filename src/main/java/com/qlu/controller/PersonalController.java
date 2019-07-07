@@ -31,7 +31,6 @@ public class PersonalController {
 
     /**
      * 跳转到个人中心页面
-     *
      * @return
      */
     @GetMapping("personal")
@@ -42,7 +41,6 @@ public class PersonalController {
 
     /**
      * 跳转到更新用户名
-     *
      * @return
      */
     @GetMapping("updateusername")
@@ -53,7 +51,6 @@ public class PersonalController {
 
     /**
      * 跳转到更新邮箱
-     *
      * @return
      */
     @GetMapping("updateEmail")
@@ -64,7 +61,6 @@ public class PersonalController {
 
     /**
      * 跳转到更新密码
-     *
      * @return
      */
     @GetMapping("updatepassword")
@@ -75,7 +71,6 @@ public class PersonalController {
 
     /**
      * 修改用户名
-     *
      * @param request
      * @param session
      * @param map
@@ -109,7 +104,6 @@ public class PersonalController {
             }
 
         }
-
         return modelAndView;
     }
 

@@ -1,6 +1,8 @@
 package com.qlu.service;
 
 import com.qlu.entity.Clubs;
+import com.qlu.model.ClubsModel;
+
 import java.util.List;
 
 /**
@@ -65,5 +67,7 @@ public interface ClubsService {
      */
     List<Clubs> findAll();
 
+
+    List<ClubsModel> findModel();
 //    List<Clubs> queryMyClub();
 }

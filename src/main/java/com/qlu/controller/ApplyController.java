@@ -43,11 +43,8 @@ public class ApplyController {
     public String joinClubApply(HttpServletRequest request, HttpSession session) {
         Login login = (Login) session.getAttribute("userinfo");
         String clubid=request.getParameter("clubid");
-        //Integer clubid = (Integer) session.getAttribute("clubid");//无法强转？
         Member member = new Member();
-        //出现错误无法获取clubid
         member.setClubid(new Integer(clubid));
-        System.out.println(new Integer(clubid));
         member.setStatus(0);
         member.setEnrolldate(DateUtil.getTimeStamp());
         member.setMemberid(login.getId());
@@ -108,11 +105,12 @@ public class ApplyController {
      * @param session
      * @return
      */
-    @PostMapping("quitClubApply")
+    @PostMapping("quitClub")
+    @ResponseBody
     public String quitClubApply(@RequestParam("clubId") Integer clubId, HttpSession session){
         Login login = (Login) session.getAttribute("userinfo");
-        destroyOrQuit(login.getId(), clubId, 4);
-        return "redirect:/handelClub/tomyclub";
+        this.destroyOrQuit(login.getId(), clubId, 4);
+        return "";
     }
     private void destroyOrQuit(Integer loginId, Integer clubId, Integer type){
         Apply apply = new Apply();
