@@ -101,10 +101,5 @@
       id, name, descript, establishedDate
       from qlu_clubs_ms.clubs
     </select>
-<!--    &lt;!&ndash;根据登录者id查询出加入或者管理的社团名字&ndash;&gt;-->
-<!--    <select id="queryMyClub" resultMap="MyClub">-->
-<!--        select name from qlu_clubs_ms.clubs-->
-<!--        and (select clubid from qlu_clubs_ms.member where id=#{id})-->
-<!--    </select>-->
 
 </mapper>

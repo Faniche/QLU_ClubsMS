@@ -37,7 +37,7 @@
                                       placeholder="消息内容"></textarea>
                             </div>
                             <div class="form-group">
-                                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+                                <input type="submit" value="发&nbsp;&nbsp;&nbsp;送" class="btn btn-primary py-3 px-5">
                             </div>
                         </form>
                     </div>

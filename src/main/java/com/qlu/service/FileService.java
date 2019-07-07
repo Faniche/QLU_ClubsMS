@@ -1,6 +1,8 @@
 package com.qlu.service;
 
 import com.qlu.entity.File;
+import com.qlu.model.FileModel;
+
 import java.util.List;
 
 /**
@@ -23,13 +25,12 @@ public interface FileService {
      * 查询多条数据
      *
      * @param offset 查询起始位置
-     * @param limit 查询条数
+     * @param limit  查询条数
      * @return 对象列表
      */
     List<File> queryAllByLimit(int offset, int limit);
 
     /**
-     *
      * @param file
      * @return
      */
@@ -59,11 +60,15 @@ public interface FileService {
      */
     boolean deleteById(Integer id);
 
-
-    /*用于显示首页用到的调用的方法*/
     /**
-     * 通过实体作为筛选条件查询
+     * 查找所有文本文件
      * @return 对象列表
      */
-    List<File> findAll();
+    List<FileModel> findAllFiles();
+
+    /**
+     * 查找所有社团logo
+     * @return
+     */
+    List<File> findAllIcons();
 }

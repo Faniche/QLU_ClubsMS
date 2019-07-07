@@ -38,6 +38,7 @@ public class LoginController {
      */
     @Resource
     private LoginService loginService;
+
     @Resource
     private StudentidService studentidService;
 
@@ -81,7 +82,6 @@ public class LoginController {
 
     /**
      * 检验验证码
-     *
      * @return
      */
     @PostMapping("checkVerifyCode")
@@ -140,7 +140,6 @@ public class LoginController {
     /**
      * 用户登录验证
      * 张树杰
-     *
      * @param
      * @return
      */
@@ -173,7 +172,6 @@ public class LoginController {
     /**
      * 邮箱登录验证
      * 张树杰
-     *
      * @param
      * @return
      */
@@ -206,7 +204,6 @@ public class LoginController {
     /**
      * 学号登录验证
      * 张树杰
-     *
      * @param
      * @return
      */
@@ -244,8 +241,6 @@ public class LoginController {
         }
         return modelAndView;
     }
-
-
 }
 
 

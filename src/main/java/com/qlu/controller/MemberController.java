@@ -28,7 +28,6 @@ public class MemberController {
 
     /**
      * 跳转到insert页面
-     *
      * @return
      */
     @GetMapping("insert")
@@ -38,7 +37,6 @@ public class MemberController {
 
     /**
      * 添加新社员并返回添加界面
-     *
      * @param memberId
      * @param clubId
      * @return ModelAndView
@@ -67,22 +65,8 @@ public class MemberController {
         return modelAndView;
     }
 
-//    /**
-//     * @return ModelAndView
-//     * 查询所有的社团成员
-//     */
-//    @GetMapping("allMembers")
-//    public ModelAndView allMembers(){
-//        ModelAndView modelAndView = new ModelAndView();
-//        List<Member> allMembers = memberService.queryAllMembers();
-//        modelAndView.addObject("allMembers", allMembers);
-//        modelAndView.setViewName("club/clubsManage");
-//        return modelAndView;
-//    }
-
     /**
      * 根据条件查询出符合条件的社团成员
-     *
      * @param member
      * @return
      */

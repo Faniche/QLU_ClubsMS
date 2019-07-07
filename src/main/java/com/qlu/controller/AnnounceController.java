@@ -1,12 +1,15 @@
 package com.qlu.controller;
 
 import com.qlu.entity.Announce;
+import com.qlu.entity.Login;
 import com.qlu.model.AnnounceModel;
 import com.qlu.service.AnnounceService;
+import com.qlu.util.DateUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
@@ -49,5 +52,24 @@ public class AnnounceController {
     public String delete(@RequestParam("id")Integer id){
         boolean result = announceService.deleteById(id);
         return "delete";
+    }
+
+    @PostMapping("release")
+    public String release(HttpSession session, HttpServletRequest request, Map<String, Object> map){
+        String topic = request.getParameter("topic");
+        String content = request.getParameter("content");
+        Announce announce = new Announce();
+        Login login = (Login) session.getAttribute("userinfo");
+        announce.setAuthorid(login.getId());
+        announce.setTopic(topic);
+        announce.setContent(content);
+        announce.setReleasedate(DateUtil.getTimeStamp());
+        announce = announceService.insert(announce);
+        if (announce != null) {
+            session.setAttribute("msg", "发送成功！");
+        } else {
+            session.setAttribute("msg", "发布失败！");
+        }
+        return "redirect:/announce/";
     }
 }
