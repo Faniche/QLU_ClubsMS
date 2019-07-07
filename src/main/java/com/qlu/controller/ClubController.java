@@ -57,28 +57,41 @@ public class ClubController {
     public String toMyClub(Map<String, Object> map, HttpSession session) {
         Login login = (Login) session.getAttribute("userinfo");
         Role role = (Role) session.getAttribute("role");
-        Member member = new Member();
-        member.setMemberid(login.getId());
-        List<Member> list = memberService.queryAll(member);
-        List<Clubs> clubsList = new ArrayList<>();
-        Clubs clubs=new Clubs();
-        for (Member member1 : list) {
-            clubs = clubsService.queryById(member1.getId());
-            clubsList.add(clubs);
-        }
-        List<String> clubNameList = new ArrayList<>();
-        for (Clubs clubs1 : clubsList) {
-            clubNameList.add(clubs1.getName());
-        }
-        map.put("joinedClubs", clubsList);
+        System.out.println(role.getId());
+//        Member member = new Member();
+//        member.setMemberid(login.getId());
+//        List<Member> list = memberService.queryAll(member);
+//        List<Clubs> clubsList = new ArrayList<>();
+//        Clubs clubs=new Clubs();
+//        for (Member member1 : list) {
+//            clubs = clubsService.queryById(member1.getId());
+//            clubsList.add(clubs);
+//        }
+//        List<String> clubNameList = new ArrayList<>();
+//        for (Clubs clubs1 : clubsList) {
+//            clubNameList.add(clubs1.getName());
+//        }
+//        map.put("joinedClubs", clubsList);
         System.out.println("跳转到我的社团界面");
-        if (role.getId() == 1){
-            return "myclub/supermanager";
-
-        }else if(role.getId()== 2){
-            return "myclub/manager";
+        if (role.getId() == 2){
+            //管理员页面，查出我管理和加入的社团
+            Member member = new Member();
+            member.setMemberid(login.getId());
+            List<Member> list = memberService.queryAll(member);
+            List<Clubs> clubsList = new ArrayList<>();
+            Clubs clubs=new Clubs();
         }
-        return "myclub/student";
+            //学生页面，查出我加入的社团
+            Member member = new Member();
+            member.setMemberid(login.getId());
+            List<Member> list = memberService.queryAll(member);
+            List<Clubs> clubsList = new ArrayList<>();
+            Clubs clubs=new Clubs();
+
+            System.out.println(login.getId());
+            return "myclub/myclub";
+
+
     }
 
     /**

@@ -96,7 +96,7 @@ public class ClubsServiceImpl implements ClubsService {
      * @return 对象列表
      */
     @Override
-    public List<ClubsModel> findAll() {
+    public List<ClubsModel> findModel() {
         List<Clubs> clubs = this.clubsDao.findAll();
         List<ClubsModel> models = new ArrayList<>();
         for (Clubs clubs1 : clubs){
@@ -116,7 +116,10 @@ public class ClubsServiceImpl implements ClubsService {
     public  List<Clubs> queryAllClubs(){
         return this.clubsDao.queryAllClubs();
     }
-//   @Override
-//
-//   public List<Clubs> queryMyClub(){ return this.clubsDao.queryMyClub();}
+
+    @Override
+    public List<Clubs> findAll() {
+        return this.clubsDao.findAll();
+    }
+
 }

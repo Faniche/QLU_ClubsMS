@@ -50,21 +50,13 @@
             </div>
         </div>
     </div>
-
-            <%--超级管理员--%>
-            <c:if test="${sessionScope.role.id==1}">
-
-                <jsp:include page="supermanager.jsp"/>
-            </c:if>
             <%--社长--%>
             <c:if test="${sessionScope.role.id==2}">
-
-                <jsp:include page="studentclub.jsp"/>
-                <jsp:include page="managerclub.jsp"/>
+                <jsp:include page="managerclub.jsp"></jsp:include>
             </c:if>
             <%--学生--%>
             <c:if test="${sessionScope.role.id==3}">
-                <jsp:include page="studentclub.jsp"/>
+                <jsp:include page="studentclub.jsp"></jsp:include>
             </c:if>
 
 <!-- loader -->

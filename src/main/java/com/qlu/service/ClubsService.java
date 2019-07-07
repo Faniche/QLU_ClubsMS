@@ -60,7 +60,9 @@ public interface ClubsService {
 
 
     /*用于显示首页用到的调用的方法*/
-    List<ClubsModel> findAll();
+    List<Clubs> findAll();
 
+
+    List<ClubsModel> findModel();
 //    List<Clubs> queryMyClub();
 }
