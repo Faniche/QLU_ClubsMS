@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
     <title>我的社团</title>
@@ -50,78 +50,22 @@
             </div>
         </div>
     </div>
+
             <%--超级管理员--%>
-            <c:if test="${role.id == 1}">
+            <c:if test="${sessionScope.role.id==1}">
+
                 <jsp:include page="supermanager.jsp"/>
-
             </c:if>
-
             <%--社长--%>
-            <c:if test="${role.id == 2}">
+            <c:if test="${sessionScope.role.id==2}">
+
                 <jsp:include page="studentclub.jsp"/>
                 <jsp:include page="managerclub.jsp"/>
-
             </c:if>
             <%--学生--%>
-            <c:if test="${role.id == 3}">
+            <c:if test="${sessionScope.role.id==3}">
                 <jsp:include page="studentclub.jsp"/>
             </c:if>
-<section class="ftco-section testimony-section">
-    <div class="container">
-        <div class="row justify-content-center mb-5 pb-3">
-            <div class="col-md-7 text-center heading-section ftco-animate">
-                <span class="subheading">你未加入的社团</span>
-                <h2 class="mb-4"><span>优秀</span>社团</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 ftco-animate">
-                <div class="carousel-testimony owl-carousel">
-                    <div class="item">
-                        <div class="speaker">
-                        <img src="${pageContext.request.contextPath}/images/my_clubs/basketball.jpg" class="img-fluid" alt="Colorlib HTML5 Template" >
-                        <div class="text text-center py-1">
-                            <h3>足球社</h3>
-                            <span class="position">“人气王”</span>
-                            <ul class="ftco-social mt-3">
-                                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-                            </ul>
-                        </div>
-                        </div>
-
-                        <div class="speaker">
-                            <img src="${pageContext.request.contextPath}/images/my_clubs/basketball.jpg" class="img-fluid" alt="Colorlib HTML5 Template" >
-                            <div class="text text-center py-1">
-                                <h3>足球社</h3>
-                                <span class="position">“人气王”</span>
-                                <ul class="ftco-social mt-3">
-                                    <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                                    <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                                    <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="speaker">
-                            <img src="${pageContext.request.contextPath}/images/my_clubs/basketball.jpg" class="img-fluid" alt="Colorlib HTML5 Template" >
-                            <div class="text text-center py-1">
-                                <h3>社团名字</h3>
-                                <span class="position">社团简介</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-                <p align="center"><a href="club.html"><font color="blue " size="12">查看详情</font></a></p>
-</section>
-
-
-
 
 <!-- loader -->
 <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>

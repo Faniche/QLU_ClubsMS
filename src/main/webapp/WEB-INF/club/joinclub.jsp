@@ -57,7 +57,7 @@
                     </div>
                     <div  class="col-sm-12">
                         <p class="lead">对你自己做简单介绍，为什么加入社团？</p>
-                        <textarea  class="col-sm-4 form-control" name="joinclubmessage" rows="10" cols="80" >${clubid}</textarea>
+                        <textarea  class="col-sm-4 form-control" name="joinclubmessage" rows="10" cols="80" ></textarea>
                     </div>
                     <br>&nbsp<br>
                     <input type="hidden" name="clubid" value="${clubid}"><!--社团ID传入到后台-->

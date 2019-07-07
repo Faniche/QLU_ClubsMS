@@ -40,7 +40,7 @@
 <div class="container">
 
     <div class="jumbotron">
-        <form action="${pageContext.request.contextPath}/handleClub/breakclub" method="" class="form-horizontal">
+        <form action="${pageContext.request.contextPath}/apply/destroyClubApply" method="" class="form-horizontal">
             <div align="center"> <h2>社团详细信息展示</h2></div><br>&nbsp;<br>
             <div class="speaker-wrap ftco-animate d-flex">
                 <div class="text pl-md-5">

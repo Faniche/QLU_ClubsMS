@@ -1,10 +1,7 @@
 package com.qlu.controller;
 
 import com.qlu.dao.ApplyDao;
-import com.qlu.entity.Apply;
-import com.qlu.entity.Clubs;
-import com.qlu.entity.Login;
-import com.qlu.entity.Member;
+import com.qlu.entity.*;
 import com.qlu.model.ApplyModel;
 import com.qlu.model.MemberModel;
 import com.qlu.service.ApplyService;
@@ -59,17 +56,29 @@ public class ClubController {
     @GetMapping("tomyclub")
     public String toMyClub(Map<String, Object> map, HttpSession session) {
         Login login = (Login) session.getAttribute("userinfo");
+        Role role = (Role) session.getAttribute("role");
         Member member = new Member();
         member.setMemberid(login.getId());
         List<Member> list = memberService.queryAll(member);
         List<Clubs> clubsList = new ArrayList<>();
+        Clubs clubs=new Clubs();
         for (Member member1 : list) {
-            Clubs clubs = clubsService.queryById(member1.getId());
+            clubs = clubsService.queryById(member1.getId());
             clubsList.add(clubs);
+        }
+        List<String> clubNameList = new ArrayList<>();
+        for (Clubs clubs1 : clubsList) {
+            clubNameList.add(clubs1.getName());
         }
         map.put("joinedClubs", clubsList);
         System.out.println("跳转到我的社团界面");
-        return "myclub/myclub";
+        if (role.getId() == 1){
+            return "myclub/supermanager";
+
+        }else if(role.getId()== 2){
+            return "myclub/manager";
+        }
+        return "myclub/student";
     }
 
     /**
@@ -122,13 +131,14 @@ public class ClubController {
     }
 
     /**
-     *
+     *退出社团
      * @return
      */
     @PostMapping("quitclub")
     public String quitclub() {
+
         System.out.println("提交退团申请");
-        return "myclub/?";//路径要改
+        return "myclub/quitclub";//路径要改
     }
 
     @GetMapping("giveupquit")
@@ -144,7 +154,7 @@ public class ClubController {
     //解散社团
     @GetMapping("tobreakclub")
     public String toBreakClub() {
-        System.out.println("转到申请解散社团界面");
+        System.out.println("转到申请解散社团界面和删除成员添加修改");
         return "myclub/breakclub";
     }
 

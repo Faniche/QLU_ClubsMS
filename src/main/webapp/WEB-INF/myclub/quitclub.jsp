@@ -41,7 +41,7 @@
 <body>
 <div class="container">
     <div class="jumbotron">
-        <form action="${pageContext.request.contextPath}/handleClub/tobreakclub" method="post" class="form-horizontal">
+        <form action="${pageContext.request.contextPath}/apply/quitClubApply" method="post" class="form-horizontal">
             <div align="center"> <h2>社团详细信息展示</h2></div><br>&nbsp;<br>
             <div class="speaker-wrap ftco-animate d-flex">
                 <div class="text pl-md-5">
@@ -56,6 +56,7 @@
                 </div>
             </div >
             <div align="center">
+                <input type="hidden" name="clubid" value="clubid">
                 <input type="submit" class="btn btn-lg btn-success" value="申请退团" >  &nbsp&nbsp&nbsp&nbsp&nbsp
                 &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp
                 <a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/handleClub/givebreak" role="button">返回上层</a>
