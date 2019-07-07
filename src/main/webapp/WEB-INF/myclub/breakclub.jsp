@@ -57,7 +57,7 @@
             <div align="center">
                 <input type="submit" class="btn btn-lg btn-success" value="申请解散社团" >  &nbsp&nbsp&nbsp&nbsp&nbsp
                 &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp
-                <a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/handleClub/givebreak" role="button">返回上层</a>
+                <a class="btn btn-lg btn-success" onclick="window.history.back()" role="button">返回上层</a>
             </div>
         </form>
     </div>

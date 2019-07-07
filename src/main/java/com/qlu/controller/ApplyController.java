@@ -105,11 +105,12 @@ public class ApplyController {
      * @param session
      * @return
      */
-    @PostMapping("quitClubApply")
+    @PostMapping("quitClub")
+    @ResponseBody
     public String quitClubApply(@RequestParam("clubId") Integer clubId, HttpSession session){
         Login login = (Login) session.getAttribute("userinfo");
-        destroyOrQuit(login.getId(), clubId, 4);
-        return "redirect:/handelClub/tomyclub";
+        this.destroyOrQuit(login.getId(), clubId, 4);
+        return "";
     }
     private void destroyOrQuit(Integer loginId, Integer clubId, Integer type){
         Apply apply = new Apply();

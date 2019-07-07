@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: 阿布
@@ -10,8 +11,9 @@
     <div class="container">
         <div class="row d-flex">
             <div class="col-md-6 d-flex">
-<%--                图片展示--%>
-<%--                <div class="img d-flex align-self-stretch" style="background-image:url(images/shetuan.jpg);"></div>--%>
+                <%--                图片展示--%>
+                <div class="img d-flex align-self-stretch"
+                     style="background-image:url('${pageContext.request.contextPath}/images/my_clubs/shetuan.jpg');"></div>
             </div>
             <div class="col-md-6 pl-md-5 py-5">
                 <div class="row justify-content-start pb-3">
@@ -24,36 +26,41 @@
                     <div class="col-md-6 justify-content-center counter-wrap ftco-animate">
                         <div class="block-18 text-center py-4 bg-light mb-4">
                             <div class="text">
-                                <div >
+                                <div>
                                     <h3>我管理的社团</h3><br>
                                 </div>
-                                <!-- 循环查询到的表单-->
-                                <form method="post" action="/handleClub/tobreakclub">
-                                    <input type="submit" class="btn btn-success" value="部门名字">&nbsp;&nbsp;&nbsp;
-                                    <input type="button" class="btn btn-danger" value="点击操作"> <br>
-                                    <input type="hidden" name="clubid" value="">
-                                    <input type="hidden" name="clubname" value="">
-                                </form><br>
+                                <c:forEach var="item" items="${managedClubs}">
+                                    <!-- 循环查询到的表单-->
+                                    <form method="post" action="${pageContext.request.contextPath}/handleClub/tobreakclub">
+                                        <input type="submit" class="btn btn-success" value="${item.name}">
+                                        <input type="button" class="btn btn-danger" value="点击操作"> <br>
+                                        <input type="hidden" name="clubid" value="${item.id}">
+                                        <input type="hidden" name="clubname" value="${item.name}">
+                                    </form>
+                                    <br>
+                                </c:forEach>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 justify-content-center counter-wrap ftco-animate">
                         <div class="block-18 text-center py-4 bg-light mb-4">
                             <div class="text">
-                                <div >
+                                <div>
                                     <h3>我加入的社团</h3><br>
                                 </div>
-                                <!-- 循环查询到的表单-->
-                                <form method="post" action="#">
-                                    <input type="submit" class="btn btn-success" value="部门名字">&nbsp;&nbsp;&nbsp;
-                                    <input type="button" class="btn btn-danger" value="点击操作">
-                                    <input type="hidden" name="clubid" value="">
-                                    <input type="hidden" name="clubname" value="">
-                                </form><br>
+                                <c:forEach items="${joinedClubsList}" var="item">
+                                    <!-- 循环查询到的表单-->
+                                    <form method="post" action="${pageContext.request.contextPath}/handleClub/quitclub">
+                                        <input type="submit" class="btn btn-success" value="${item.name}">
+                                        <input type="button" class="btn btn-danger" value="点击操作">
+                                        <input type="hidden" name="clubid" value="${item.id}">
+                                        <input type="hidden" name="clubname" value="${item.name}">
+                                    </form>
+                                    <br>
+                                </c:forEach>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
