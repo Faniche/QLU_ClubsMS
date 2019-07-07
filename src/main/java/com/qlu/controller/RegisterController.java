@@ -150,16 +150,22 @@ public class RegisterController {
         //获取表单提交的邮箱和密码
         String s1 = request.getParameter("email");
         String s2 = request.getParameter("password");
-        Login login = new Login();
-        login.setEmail(s1);
-        //根据邮箱查询信息
-        List<Login> list = loginService.queryAll(login);
-        login = list.get(0);
-        //更新密码
-        login.setPassword(s2);
-        loginService.update(login);
-        modelAndView.setViewName("login/login");
-
+        String s3 = request.getParameter("code");
+        String s4 = (String) session.getAttribute("authCode");
+        if(s3.equals(s4)) {
+            Login login = new Login();
+            login.setEmail(s1);
+            //根据邮箱查询信息
+            List<Login> list = loginService.queryAll(login);
+            login = list.get(0);
+            //更新密码
+            login.setPassword(s2);
+            loginService.update(login);
+            modelAndView.setViewName("login/login");
+        } else {
+            map.put("msg", "验证码错误");
+            modelAndView.setViewName("register/forgetpsw");
+        }
         return modelAndView;
     }
 }

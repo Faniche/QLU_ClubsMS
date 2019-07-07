@@ -120,7 +120,8 @@ To change this template use File | Settings | File Templates.
                     <c:forEach var="item" items="${clubsList}">
                         <div class="item">
                             <div class="speaker">
-                                <img src="${pageContext.request.contextPath}/${clubsIcon[item.name]}" class="img-fluid" alt="Colorlib HTML5 Template">
+                                <img src="${pageContext.request.contextPath}/${clubsIcon[item.name]}" class="img-fluid"
+                                     alt="Colorlib HTML5 Template">
                                 <div class="text text-center py-3">
                                     <h3>${item.name}</h3>
                                     <span class="position">${item.descript}</span>
@@ -149,27 +150,20 @@ To change this template use File | Settings | File Templates.
                 <h2 class="mb-1"><span>最近三天</span> 活动时间</h2>
             </div>
         </div>
+
         <div class="row">
+
             <c:forEach var="item" items="${activityList}">
-            <div class="col-md-6 ftco-animate">
+                <div class="col-md-4 ftco-animate">
                     <div class="block-7">
                         <div class="text-center">
-                            <h4>活动名称：${item.topic}</h4>
-                            <h5>活动时间: ${item.time}</h5>
-                            <h6>活动地点: ${item.location}</h6>
-                        </div>
-                    </div>
-            </div>
-            </c:forEach>
-                <div class="col-md-6 ftco-animate">
-                    <div class="block-7">
-                        <div class="text-center">
-                            <h4>活动名称：${item.topic}</h4>
-                            <h5>活动时间: ${item.time}</h5>
-                            <h6>活动地点: ${item.location}</h6>
+                            <h4>${item.topic}</h4>
+                            <h5>${item.time}</h5>
+                            <h6>${item.location}</h6>
                         </div>
                     </div>
                 </div>
+            </c:forEach>
         </div>
     </div>
 </section>

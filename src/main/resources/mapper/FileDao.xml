@@ -95,7 +95,7 @@
     select
         id, fileName, path, releaseDate, authorId
     from qlu_clubs_ms.file
-    WHERE path LIKE 'images/icon%'
+    WHERE path LIKE 'images/icon/%'
 </select>
 
 

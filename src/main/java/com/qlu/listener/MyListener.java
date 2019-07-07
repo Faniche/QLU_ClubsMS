@@ -58,10 +58,11 @@ public class MyListener implements ServletContextListener {
         long currentDate = date.getTime();
         //1天= 86400000milliseconds
         long supDate = currentDate - 86400000 * 3;
-        long infDate = currentDate - 86400000 * 3;
+        long infDate = currentDate + 86400000 * 3;
         Timestamp supTime = new Timestamp(supDate);
         Timestamp infTime = new Timestamp(infDate);
         List<Activity> activityList = activityService.findTimeRange(supTime, infTime);
+        System.out.println(activityList.size());
         //查询最新的活动项目
         Activity latestActivity = activityService.findOne();
 
