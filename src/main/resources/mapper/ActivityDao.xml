@@ -95,7 +95,6 @@
         </set>
         where id = #{id}
     </update>
-
     <!--通过主键删除-->
     <delete id="deleteById">
         delete from qlu_clubs_ms.activity where id = #{id}
@@ -106,7 +105,6 @@
     id, clubsId, topic, time, location, money, status
     from qlu_clubs_ms.activity
     </select>
-
     <!--查询最近三天的活动-->
     <select id="findTimeRange" resultMap="ActivityMap" parameterMap="rangeMap">
         select

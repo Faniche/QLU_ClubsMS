@@ -150,11 +150,9 @@ To change this template use File | Settings | File Templates.
                 <h2 class="mb-1"><span>最近三天</span> 活动时间</h2>
             </div>
         </div>
-
         <div class="row">
-
             <c:forEach var="item" items="${activityList}">
-                <div class="col-md-4 ftco-animate">
+                <div class="col-md-6 ftco-animate">
                     <div class="block-7">
                         <div class="text-center">
                             <h4>${item.topic}</h4>
