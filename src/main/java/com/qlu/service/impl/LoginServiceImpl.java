@@ -59,6 +59,11 @@ public class LoginServiceImpl implements LoginService {
     public Login queryAllmessages(String id){
         return loginDao.queryAllmessages(id);
     }
+
+    @Override
+    public Login queryAllmessages2(Integer id){
+        return loginDao.queryAllmessages2(id);
+    }
     /**
      * 查询多条数据
      *

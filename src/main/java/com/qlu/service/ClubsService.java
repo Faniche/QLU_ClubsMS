@@ -29,6 +29,11 @@ public interface ClubsService {
      * @return 对象列表
      */
     List<Clubs> queryAllByLimit(int offset, int limit);
+    /**
+     * 用于社员的操作
+     * @param id
+     * @return
+     */
 
     List<Clubs> queryAll(Clubs clubs);
 

@@ -52,6 +52,14 @@ public interface LoginService {
      * @return 实例对象
      */
     Login queryAllmessages(String id);
+
+    /**
+     * 用于社员的操作
+     * @param id
+     * @return
+     */
+
+    Login queryAllmessages2(Integer id);
     /**
      * 根据条件查找信息
      * @param login
@@ -82,5 +90,6 @@ public interface LoginService {
      * @return 是否成功
      */
     boolean deleteById(Integer id);
+
 
 }

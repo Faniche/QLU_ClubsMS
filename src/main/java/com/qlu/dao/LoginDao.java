@@ -52,6 +52,13 @@ public interface LoginDao {
      * @return 实例对象
      */
     Login queryAllmessages(String id);
+    /**
+     * 用于社员的操作
+     * @param id
+     * @return
+     */
+
+    Login queryAllmessages2(Integer id);
 
     /**
      * 通过实体作为筛选条件查询

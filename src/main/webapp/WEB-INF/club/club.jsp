@@ -11,20 +11,14 @@
 <head>
     <title>社团介绍</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/animate.css">
-
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/magnific-popup.css">
-
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/aos.css">
-
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ionicons.min.css">
-
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery.timepicker.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/flaticon.css">
@@ -32,51 +26,29 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-
-    <title>Carousel Template for Bootstrap</title>
-
-    <!-- Bootstrap core CSS -->
+    <title>我的社团界面</title>
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie8-responsive-file-warning.js"></script>
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
     <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Custom styles for this template -->
     <link href="carousel.css" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-    <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
     <link href="jumbotron-narrow.css" rel="stylesheet">
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie8-responsive-file-warning.js"></script>
     <script src="${pageContext.request.contextPath}/../../assets/js/ie-emulation-modes-warning.js"></script>
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
     <script src="${pageContext.request.contextPath}/https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="${pageContext.request.contextPath}/https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
@@ -93,7 +65,7 @@
 <jsp:include page="/nav_bar.jsp"/>
 <!-- END nav -->
 
-<section class="hero-wrap hero-wrap-2 js-fullheight" style="${pageContext.request.contextPath}/background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+<section class="hero-wrap hero-wrap-2 js-fullheight"  style="background-image: url('${pageContext.request.contextPath}/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
@@ -177,15 +149,11 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="${pageContext.request.contextPath}/js/google-map.js"></script>
 <script src="${pageContext.request.contextPath}/js/main.js"></script>
-<!-- Bootstrap core JavaScript
 ================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 <script src="${pageContext.request.contextPath}/../../assets/js/vendor/holder.min.js"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="${pageContext.request.contextPath}/../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>

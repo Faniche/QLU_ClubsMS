@@ -51,5 +51,10 @@ public interface LoginroleService {
      * @return 是否成功
      */
     boolean deleteById(Integer id);
+    /**
+     * 查询全部信息
+     */
+
+
 
 }

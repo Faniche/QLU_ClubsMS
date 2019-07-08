@@ -23,6 +23,18 @@
         from qlu_clubs_ms.login
         where login.id in(select studentid.loginId from studentid where studentid.id =#{id})
     </select>
+    /**
+    * 用于社员的操作
+    * @param id
+    * @return
+    */
+
+    <select id="queryAllmessages2" resultMap="LoginMap">
+        select
+         id,username,name,password,email
+        from qlu_clubs_ms.login
+        where login.id in(select studentid.loginId from studentid where studentid.id =#{id})
+    </select>
     <!--登录信息-->
     <select id="queryLoginByUsernameAndPassword" resultMap="LoginMap">
         select

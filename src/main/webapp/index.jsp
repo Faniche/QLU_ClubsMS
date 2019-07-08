@@ -353,7 +353,7 @@
                                 </div>
                             </div>
                             <div class="speaker-wrap ftco-animate d-flex">
-                                <div class="img speaker-img" style="background-image: url(images/icon/football.png);"></div>
+<%--                                <div class="img speaker-img" style="background-image: url(images/icon/football.png);"></div>--%>
                                 <div class="text pl-md-5">
                                     <span class="time">08: - 10:00</span>
                                     <h2><a href="#">足球赛</a></h2>
