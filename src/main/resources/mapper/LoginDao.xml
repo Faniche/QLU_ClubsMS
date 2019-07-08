@@ -26,6 +26,7 @@
     </select>
 
     <!--登录信息-->
+
     <select id="queryLoginByUsernameAndPassword" resultMap="LoginMap">
         select
          id,name,username,password,email

@@ -1,22 +1,16 @@
 package com.qlu.controller;
 
-import com.qlu.dao.ApplyDao;
 import com.qlu.entity.*;
-import com.qlu.model.ApplyModel;
 import com.qlu.model.ClubsModel;
 import com.qlu.model.MemberModel;
-import com.qlu.service.ApplyService;
 import com.qlu.service.ClubsService;
 import com.qlu.service.LoginService;
 import com.qlu.service.MemberService;
-import org.omg.CORBA.Request;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +36,7 @@ public class ClubController {
 
     /**
      * 社团介绍
-     *
+     *查询出全部社团
      * @param map
      * @param session
      * @return
@@ -54,7 +48,7 @@ public class ClubController {
     }
 
     /**
-     * 跳转到我的社团
+     * 跳转到我的社团界面
      *
      * @param map
      * @param session
@@ -67,15 +61,14 @@ public class ClubController {
         Member member = new Member();
         member.setMemberid(login.getId());
         List<Member> members = memberService.queryAll(member);
-
-        // 加入的社团
+        // 查询出加入的社团
         List<Clubs> joinedClubsList = new ArrayList<>();
         for (Member member1 : members) {
             Clubs clubs = new Clubs();
             clubs = clubsService.queryById(member1.getClubid());
             joinedClubsList.add(clubs);
         }
-        //管理员页面，查出我管理
+        //管理员页面，查出我管理的社团
         if (role.getId() == 2) {
             Clubs clubs = new Clubs();
             clubs.setLeaderId(login.getId());
@@ -97,7 +90,6 @@ public class ClubController {
     @PostMapping("tojoinclub")
     public String toJoin(HttpSession session, HttpServletRequest request, Map<String, Object> map) {
         String clubid = request.getParameter("clubid");
-        System.out.println(clubid);
         String clubname = request.getParameter("clubname");
         session.setAttribute("clubid", clubid);//部门id
         map.put("clubid", clubid);
@@ -105,29 +97,14 @@ public class ClubController {
         session.setAttribute("clubname", clubname);
         ModelAndView modelAndView = new ModelAndView();
         Login userinfo = (Login) session.getAttribute("userinfo");//登录用户的ID
-//        stuidInfo= userinfo.getId();
-//        System.out.println(stuidInfo);
         return "club/joinclub";
     }
 
 
     /**
-     * 退出
-     *
-     * @param map
+     * 跳转到退出社团界面
      * @return
      */
-    @GetMapping("giveupjoin")
-    public String giveUpJoin(Map<String, Object> map) {
-        map.put("clubslist", clubsService.queryAllClubs());
-//        System.out.println("放弃加入社团申请");
-        return "redirect:club/club.jsp";
-    }
-
-    /**
-     * @return
-     */
-    //退出社团
     @PostMapping("toqiutclub")
     public String toQuit(@RequestParam("clubId") Integer clubId, Map<String, Object> map) {
         Clubs club = clubsService.queryById(clubId);
@@ -139,19 +116,20 @@ public class ClubController {
         return "myclub/quitclub";
     }
 
-    @GetMapping("giveupquit")
-    public String giveUpQuit() {
-        System.out.println("放弃申请退出");
-        return "myclub/myclub";
-    }
 
     /**
+     * 解散社团
      * @return
      */
-    //解散社团
+
     @PostMapping("tobreakclub")
-    public String toBreakClub() {
-        System.out.println("转到申请解散社团界面和删除成员添加修改");
+    public String toBreakClub(@RequestParam("clubId") Integer clubId, Map<String, Object> map) {
+        Clubs club = clubsService.queryById(clubId);
+        ClubsModel clubDetail = new ClubsModel();
+        clubDetail.setClubs(club);
+        Login login = loginService.queryById(club.getLeaderId());
+        clubDetail.setLeader(login.getName());
+        map.put("clubDetail", clubDetail);
         return "myclub/breakclub";
     }
 
@@ -160,17 +138,7 @@ public class ClubController {
      */
     @PostMapping("breakclub")
     public String breakClub() {
-        System.out.println("提交解散社团申请");
         return "myclub/breakclub";//提交路径要改
-    }
-
-    /**
-     * @return
-     */
-    @GetMapping("givebreak")
-    public String giveUpBreak() {
-        System.out.println("放弃申请解散社团");
-        return "myclub/myclub";
     }
 
     /**
@@ -178,21 +146,9 @@ public class ClubController {
      *
      * @return
      */
-    //创建社团
     @PostMapping("tonewclub")
     public String toNewClub() {
         return "club/newclub";
-    }
-
-    /**
-     * 放弃创建新社团
-     *
-     * @return
-     */
-    @GetMapping("givenew")
-    public String giveNew() {
-        System.out.println("放弃申请创建社团");
-        return "club/club";
     }
 
     /**
@@ -203,6 +159,21 @@ public class ClubController {
     @ResponseBody
     public String Getid(@RequestParam("") Integer id) {
         return "";
-
     }
+
+    /**
+     * 跳转到社团成员添加和删除界面
+     * @return
+     */
+    @PostMapping("toCRUDmember")
+    public String toCRUDmember(@RequestParam("clubId") Integer clubId,HttpSession session,Map<String, Object> map){
+        Member member = new Member();
+        member.setMemberid(clubId);
+        Clubs clubs=clubsService.queryById(clubId);
+        List<MemberModel> members = memberService.queryAllModel(member);
+        map.put("members", members);
+        map.put("manager",clubs);
+        return "myclub/CRUDmember";
+    }
+
 }

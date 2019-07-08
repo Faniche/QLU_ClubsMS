@@ -1,5 +1,6 @@
 package com.qlu.model;
 
+import com.qlu.entity.Login;
 import com.qlu.entity.Member;
 import jdk.net.SocketFlow;
 
@@ -15,6 +16,7 @@ public class MemberModel {
     private Member member;
     private String memberName;
     private String clubName;
+    private Login login;
 
     public Member getMember() {
         return member;
@@ -40,4 +42,11 @@ public class MemberModel {
         this.clubName = clubName;
     }
 
+    public Login getLogin() {
+        return login;
+    }
+
+    public void setLogin(Login login) {
+        this.login = login;
+    }
 }

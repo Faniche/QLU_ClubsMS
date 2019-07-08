@@ -39,6 +39,12 @@ public class ApplyController {
     @Resource
     private MemberService memberService;
 
+    /**
+     * 申请加入社团
+     * @param request
+     * @param session
+     * @return
+     */
     @PostMapping("joinClubApply")
     public String joinClubApply(HttpServletRequest request, HttpSession session) {
         Login login = (Login) session.getAttribute("userinfo");
@@ -57,25 +63,29 @@ public class ApplyController {
         apply.setProposerid(login.getId());
         apply.setDate(DateUtil.getTimeStamp());
         apply = applyService.insert(apply);
-        System.out.println("提交加入社团申请");
         return "club/joinclub";
     }
 
+    /**
+     * 申请创建社团
+     * @param request
+     * @param session
+     * @return
+     */
     @PostMapping("createClubApply")
     public String createClubApply(HttpServletRequest request, HttpSession session) {
         Login login = (Login) session.getAttribute("userinfo");
         String name = request.getParameter("name");//社团名字
         String descript = request.getParameter("descript");//社团介绍
-
+        //创建社团插入社团表，审核状态为未通过，在数据库中用 0 表示
         Clubs clubs = new Clubs();
         clubs.setLeaderId(login.getId());//获取登录id
-        System.out.println(new Integer(login.getId()));
         clubs.setName(name);
         clubs.setDescript(descript);
         clubs.setStatus(0);
         clubs.setEstablisheddate(DateUtil.getTimeStamp());
         clubs = clubsService.insert(clubs);
-
+        //创建新申请插入申请表
         Apply apply = new Apply();
         apply.setProposerid(login.getId());
         apply.setType(new Integer(1));
@@ -84,7 +94,6 @@ public class ApplyController {
         apply.setDate(DateUtil.getTimeStamp());
         apply = applyService.insert(apply);
         return "club/newclub";
-      //  return "redirect:/handelClub/showclub";
     }
 
     /**
@@ -97,7 +106,7 @@ public class ApplyController {
     public String destroyClubApply(@RequestParam("clubId") Integer clubId, HttpSession session){
         Login login = (Login) session.getAttribute("userinfo");
         destroyOrQuit(login.getId(), clubId, 2);
-        return "redirect:/handelClub/tomyclub";
+        return "handelClub/breakclub";
     }
     /**
      * 退出社团
@@ -113,6 +122,7 @@ public class ApplyController {
         return "";
     }
     private void destroyOrQuit(Integer loginId, Integer clubId, Integer type){
+        //创建新申请插入申请表
         Apply apply = new Apply();
         apply.setProposerid(loginId);
         apply.setType(type);

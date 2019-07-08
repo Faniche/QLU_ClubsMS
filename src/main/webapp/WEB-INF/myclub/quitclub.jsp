@@ -52,11 +52,20 @@
         <div align="center"><h2>社团详细信息展示</h2></div>
         <br>&nbsp;<br>
         <div class="speaker-wrap ftco-animate d-flex">
-            <div class="text pl-md-5">
-                <h4 class="speaker-name"><span class="position">社团名字：${clubDetail.clubs.name}</span></h4>
-                <h4 class="speaker-name"><span class="position">社团编号：${clubDetail.clubs.id}</span></h4>
-                <h4 class="speaker-name"><span class="position">社长：${clubDetail.leader}</span></h4>
-                <h5 class="speaker-name"><span class="position">社团简介：</span></h5>
+            <div class="text pl-md-5"><table align="center" >
+                <tr>
+                    <td> <h4 class="speaker-name"><span class="position">社团名字：${clubDetail.clubs.name}</span></h4></td>
+                </tr>
+                <tr>
+                <td><h4 class="speaker-name"><span class="position">社团编号：${clubDetail.clubs.id}</span></h4></td>
+                </tr>
+                <tr>
+                <td><h4 class="speaker-name"><span class="position">社长：${clubDetail.leader}</span></h4></td>
+                </tr>
+                <tr>
+                <td><h5 class="speaker-name"><span class="position">社团简介：</span></h5></td>
+                </tr>
+                </table>
                 <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp${clubDetail.clubs.descript}</p>
                 <div align="right"><span class="time">成立时间：${clubDetail.clubs.establisheddate}</span></div>
                 <br>&nbsp;<br>
@@ -74,20 +83,19 @@
 <script type="text/javascript">
     $("#quit_club_btn").click(function () {
         if (window.confirm("确定退出吗")) {
-            var obj = $(this);
             $.ajax({
                 type: "POST",
                 url: "${pageContext.request.contextPath}/apply/quitClub",
                 data: {'clubId':$(this).attr("clubId")},
                 success: function () {
-                    obj.attr('disabled',false)
+                    $("#quit_club_btn").prop("disabled",false);
+                    alert("已提交申请");
                 }
             })
+
         }
     })
 </script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 </body>
-
 </body>
 </html>

@@ -1,6 +1,7 @@
 package com.qlu;
 
 import com.qlu.entity.Member;
+import com.qlu.model.MemberModel;
 import com.qlu.service.MemberService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,11 +24,11 @@ public class MemberTest {
     @Autowired
     private MemberService memberService;
 
-    @Test
-    public void deleteById(){
-        boolean result = memberService.deleteByMemberId(32);
-        System.out.println(result);
-    }
+//    @Test
+//    public void deleteById(){
+//        boolean result = memberService.deleteByMemberId(32);
+//        System.out.println(result);
+//    }
 
     @Test
     public void clubDestroy() {
@@ -43,4 +44,15 @@ public class MemberTest {
         List<Member> memberList = memberService.queryAll(member);
         System.out.println(memberList.size());
     }
+
+    @Test
+    public  void delete(){
+        Member member = new Member();
+        member.setMemberid(4);
+        member.setClubid(11);
+        memberService.deleteByMemberId(member);
+        System.out.println("删除成功");
+    }
+
+
 }
