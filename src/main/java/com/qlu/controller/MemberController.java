@@ -1,7 +1,10 @@
 package com.qlu.controller;
 
+import com.qlu.entity.Clubs;
 import com.qlu.entity.Login;
 import com.qlu.entity.Member;
+import com.qlu.model.MemberModel;
+import com.qlu.service.ClubsService;
 import com.qlu.service.LoginService;
 import com.qlu.service.MemberService;
 import org.springframework.stereotype.Controller;
@@ -26,8 +29,12 @@ public class MemberController {
      * 服务对象
      */
     @Resource
+
     private MemberService memberService;
+
     @Resource LoginService loginService;
+
+    @Resource ClubsService clubsService;
     /**
      * 跳转到insert页面
      * @return
@@ -88,13 +95,20 @@ public class MemberController {
      * @return
      */
     @PostMapping("delete")
-    public String delete(HttpServletRequest request){
+    public String delete(HttpServletRequest request,Map<String, Object> map){
         Integer memberid =Integer.valueOf(request.getParameter("memberid")) ;
-        Integer clubid =Integer.valueOf(request.getParameter("clubid")) ;
+        Integer clubId =Integer.valueOf(request.getParameter("clubid")) ;
         Member member = new Member();
         member.setMemberid(memberid);
-        member.setClubid(clubid);
+        member.setClubid(clubId);
         Boolean result1 =memberService.deleteByMemberId(member);
+
+        Member member1 = new Member();
+        member1.setClubid(clubId);
+        Clubs clubs=clubsService.queryById(clubId);
+        List<MemberModel> members = memberService.queryAllModel(member1);
+        map.put("members", members);
+        map.put("manager",clubs);
         return "myclub/CRUDmember";
     }
 }

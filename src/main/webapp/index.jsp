@@ -9,18 +9,25 @@ To change this template use File | Settings | File Templates.
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>首页</title>
+    <title>主页界面</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/animate.css">
+
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/magnific-popup.css">
+
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/aos.css">
+
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ionicons.min.css">
+
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery.timepicker.css">
+
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/icomoon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
@@ -28,10 +35,11 @@ To change this template use File | Settings | File Templates.
 </head>
 <body>
 
-<jsp:include page="/nav_bar.jsp"/>
+<jsp:include page="/nav_bar.jsp"></jsp:include>
+<!-- END nav -->
 
 <div class="hero-wrap js-fullheight"
-     style="background-image: url('${pageContext.request.contextPath}/images/index/bg_1.jpg');"
+     style="${pageContext.request.contextPath}/background-image: url('images/bg_1.jpg');"
      data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
@@ -215,5 +223,6 @@ To change this template use File | Settings | File Templates.
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="${pageContext.request.contextPath}/js/google-map.js"></script>
 <script src="${pageContext.request.contextPath}/js/main.js"></script>
+
 </body>
 </html>
