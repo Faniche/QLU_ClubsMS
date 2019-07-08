@@ -83,7 +83,7 @@
         delete from qlu_clubs_ms.file where id = #{id}
     </delete>
 
-
+    <!--图片文件外的其他文件-->
     <select id="findAllFiles" resultMap="FileMap">
     select
         id, fileName, path, releaseDate, authorId
@@ -91,6 +91,7 @@
     WHERE path LIKE 'files/%'
 </select>
 
+    <!--查询所有社团LOGO图片文件-->
     <select id="findAllIcons" resultMap="FileMap">
     select
         id, fileName, path, releaseDate, authorId
@@ -98,8 +99,6 @@
     WHERE path LIKE 'images/icon/%'
 </select>
 
-
-    <!--用于显示首页用到的调用的方法-->
     <!--通过实体作为筛选条件查询-->
     <select id="findAll" resultMap="FileMap">
     select

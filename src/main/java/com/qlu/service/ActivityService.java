@@ -60,15 +60,13 @@ public interface ActivityService {
      */
     List<Activity> findAll();
 
-
-    /*用于显示首页用到的调用的方法*/
     /**
      * 查询最近三天的活动
      */
     List<Activity> findTimeRange(Timestamp supTime, Timestamp infTime);
+
     /**
      * 查询最新的一条活动
      */
     Activity findOne();
-
 }

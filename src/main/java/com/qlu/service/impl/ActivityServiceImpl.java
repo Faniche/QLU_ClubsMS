@@ -80,29 +80,18 @@ public class ActivityServiceImpl implements ActivityService {
         return this.activityDao.deleteById(id) > 0;
     }
 
-
-
-    /**
-     * 查询多条数据
-     * @return 对象列表
-     */
     @Override
     public List<Activity> findAll() {
         return this.activityDao.findAll();
     }
 
-    /**
-     * 查询最近三天的活动
-     */
     public List<Activity> findTimeRange(Timestamp supTime,Timestamp infTime){
         Map<String,Timestamp> map =new HashMap<>();
         map.put("supTime",supTime);
         map.put("infTime",infTime);
         return this.activityDao.findTimeRange(map);
     }
-    /**
-     * 查询最新的一条活动
-     */
+
     public Activity findOne(){
         return this.activityDao.findOne();
     }

@@ -29,7 +29,6 @@ public interface FileDao {
      */
     List<File> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
 
-
     /**
      * 通过实体作为筛选条件查询
      *
@@ -62,7 +61,6 @@ public interface FileDao {
      */
     int deleteById(Integer id);
 
-
     /**
      * 返回出图片文件外的其他文件
      * @return
@@ -74,8 +72,6 @@ public interface FileDao {
      */
     List<File> findAllIcons();
 
-
-    /*用于显示首页用到的调用的方法*/
     /**
      * 通过实体作为筛选条件查询
      * @return 对象列表

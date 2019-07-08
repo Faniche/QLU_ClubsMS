@@ -71,11 +71,8 @@ public interface FileService {
      */
     List<File> findAllIcons();
 
-
-    /*用于显示首页用到的调用的方法*/
     /**
      * 通过实体作为筛选条件查询
-     * @return 对象列表
      */
     List<File> findAll();
 }

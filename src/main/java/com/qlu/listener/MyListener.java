@@ -46,42 +46,35 @@ public class MyListener implements ServletContextListener {
      * @see ServletContextListener#contextInitialized(ServletContextEvent)
      */
 
-    /*主要代码*/
     public void contextInitialized(ServletContextEvent evt) {    //初始化项目
         ServletContext application = evt.getServletContext();
         WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(application);
 
-        //获取ActivityService对象
+        //查询最近三天的活动项目
+        //查询最新的活动项目
         ActivityService activityService = context.getBean(ActivityService.class);
-        //查询最近三天的活动项目，
         Date date = DateUtil.getTimeStamp();
         long currentDate = date.getTime();
-        //1天= 86400000milliseconds
         long supDate = currentDate - 86400000 * 3;
         long infDate = currentDate + 86400000 * 3;
         Timestamp supTime = new Timestamp(supDate);
         Timestamp infTime = new Timestamp(infDate);
         List<Activity> activityList = activityService.findTimeRange(supTime, infTime);
-        System.out.println(activityList.size());
-        //查询最新的活动项目
         Activity latestActivity = activityService.findOne();
 
-        //获取ClubsService对象
-        ClubsService clubsService = context.getBean(ClubsService.class);
         //查询所有社团，
+        ClubsService clubsService = context.getBean(ClubsService.class);
         List<Clubs> clubsList = clubsService.findAll();
 
-        //获取FileService对象
-        FileService fileService = context.getBean(FileService.class);
         //通过路径模糊查询所有,获取社团LOGO
+        FileService fileService = context.getBean(FileService.class);
         List<File> fileList = fileService.findAllIcons();
-        //建立Map集合
         Map<String, String> clubsIcon = new HashMap<String, String>();
         for (File file1 : fileList) {
             clubsIcon.put(file1.getFilename(), file1.getPath());
-            System.out.println(file1.getPath());
         }
         Long latestActivityDate = latestActivity.getTime().getTime();
+
         //存储所有的活动项目到application
         application.setAttribute("activityList", activityList);
         //存储最新的活动项目到application
@@ -92,7 +85,6 @@ public class MyListener implements ServletContextListener {
         application.setAttribute("clubsList", clubsList);
         //存储Map集合
         application.setAttribute("clubsIcon", clubsIcon);
-
     }
 }
 

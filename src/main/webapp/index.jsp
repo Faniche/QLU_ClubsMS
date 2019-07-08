@@ -196,7 +196,6 @@ To change this template use File | Settings | File Templates.
         if (seconds < "10") {
             seconds = "0" + seconds;
         }
-
         $("#days").html(days + "<span>Days</span>");
         $("#hours").html(hours + "<span>Hours</span>");
         $("#minutes").html(minutes + "<span>Minutes</span>");

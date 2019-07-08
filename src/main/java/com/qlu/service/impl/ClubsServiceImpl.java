@@ -113,10 +113,6 @@ public class ClubsServiceImpl implements ClubsService {
         return models;
     }
 
-    /**
-     * 查询优秀社团八个
-     * @return
-     */
    @Override
     public  List<Clubs> queryAllClubs(){
         return this.clubsDao.queryAllClubs();

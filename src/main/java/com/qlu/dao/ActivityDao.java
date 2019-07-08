@@ -59,9 +59,6 @@ public interface ActivityDao {
      */
     int deleteById(Integer id);
 
-
-
-
     /*用于页面显示调用的两个方法*/
     /**
      * 查询所有活动数据
@@ -79,9 +76,7 @@ public interface ActivityDao {
     Activity queryById(Integer id);
 
     /**
-     *
-     * @param map
-     * @return
+     *查询最近三天的活动
      */
     List<Activity> findTimeRange(Map<String, Timestamp> map);
 
