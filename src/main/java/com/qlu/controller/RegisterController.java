@@ -150,16 +150,15 @@ public class RegisterController {
         //获取表单提交的邮箱和密码
         String s1 = request.getParameter("email");
         String s2 = request.getParameter("password");
-        Login login = new Login();
-        login.setEmail(s1);
-        //根据邮箱查询信息
-        List<Login> list = loginService.queryAll(login);
-        login = list.get(0);
-        //更新密码
-        login.setPassword(s2);
-        loginService.update(login);
-        modelAndView.setViewName("login/login");
-
-        return modelAndView;
+            Login login = new Login();
+            login.setEmail(s1);
+            //根据邮箱查询信息
+            List<Login> list = loginService.queryAll(login);
+            login = list.get(0);
+            //更新密码
+            login.setPassword(s2);
+            loginService.update(login);
+            modelAndView.setViewName("login/login");
+             return modelAndView;
     }
 }

@@ -4,9 +4,12 @@ import com.qlu.entity.Activity;
 import com.qlu.dao.ActivityDao;
 import com.qlu.service.ActivityService;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * (Activity)表服务实现类
@@ -77,14 +80,20 @@ public class ActivityServiceImpl implements ActivityService {
         return this.activityDao.deleteById(id) > 0;
     }
 
-
-
-    /**
-     * 查询多条数据
-     * @return 对象列表
-     */
     @Override
     public List<Activity> findAll() {
         return this.activityDao.findAll();
     }
+
+    public List<Activity> findTimeRange(Timestamp supTime,Timestamp infTime){
+        Map<String,Timestamp> map =new HashMap<>();
+        map.put("supTime",supTime);
+        map.put("infTime",infTime);
+        return this.activityDao.findTimeRange(map);
+    }
+
+    public Activity findOne(){
+        return this.activityDao.findOne();
+    }
+
 }

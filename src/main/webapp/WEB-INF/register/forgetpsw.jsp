@@ -155,18 +155,20 @@
                     <label for="email" class="sr-only">邮箱</label>
                     <input type="email" name="email" id="email" class="form-control" placeholder="邮箱" required
                            autofocus>
+                    <br/>
                     <tr><input type="text" placeholder="邮箱验证码" name="code" id="code" onkeypress=""
-                               style="width:200px;"/>
+                                 style="width:200px;"/>
                         <button type="button" id="btn1" class="btn btn-primary">获取验证码</button>
 
                     </tr>
+                    <br/>
                     <br/>
                     <input type="password" name="password" id="pwd1" class="form-control" placeholder="密码" required>
                     <br/>
                     <input type="password" name="password" id="pwd2" class="form-control" placeholder="确认密码" required>
                     <br/>
                     <button onclick="return check1()" id="loginBtn" class="btn btn-lg btn-primary btn-block"
-                            type="submit">确定
+                            type="button">确定
                     </button>
                 </form>
             </div>

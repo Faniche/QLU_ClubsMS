@@ -29,11 +29,6 @@ public interface ClubsService {
      * @return 对象列表
      */
     List<Clubs> queryAllByLimit(int offset, int limit);
-    /**
-     * 用于社员的操作
-     * @param id
-     * @return
-     */
 
     List<Clubs> queryAll(Clubs clubs);
 
@@ -60,14 +55,13 @@ public interface ClubsService {
      * @return 是否成功
      */
     boolean deleteById(Integer id);
-//    查询全部社团
+    /*查询全部社团*/
     List<Clubs> queryAllClubs();
 
-
-    /*用于显示首页用到的调用的方法*/
+    /**
+     * 查询优秀社团
+     */
     List<Clubs> findAll();
 
-
     List<ClubsModel> findModel();
-//    List<Clubs> queryMyClub();
 }

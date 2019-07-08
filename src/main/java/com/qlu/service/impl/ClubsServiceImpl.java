@@ -112,6 +112,7 @@ public class ClubsServiceImpl implements ClubsService {
         }
         return models;
     }
+
    @Override
     public  List<Clubs> queryAllClubs(){
         return this.clubsDao.queryAllClubs();

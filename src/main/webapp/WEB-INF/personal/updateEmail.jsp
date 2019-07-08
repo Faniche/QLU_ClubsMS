@@ -130,7 +130,7 @@
                             <form action="${pageContext.request.contextPath}/personal/email" method="post">
                                 <label for="email" class="sr-only">邮箱</label>
                                 <input type="email" name="email" id="email" class="form-control" placeholder="邮箱"
-                                       required autofocus>
+                                required autofocus>
                                 <tr><input type="text" placeholder="邮箱验证码" name="code" id="code" onkeypress=""
                                            style="width:200px;"/>
                                     <button type="button" id="btn1" class="btn btn-primary">获取验证码</button>

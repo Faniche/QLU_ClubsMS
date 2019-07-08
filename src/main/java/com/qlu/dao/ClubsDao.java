@@ -61,7 +61,7 @@ public interface ClubsDao {
      * @return 影响行数
      */
     int deleteById(Integer id);
+
     List<Clubs> queryAllClubs();
     List<Clubs> findAll();
-//    List<Clubs> queryMyClub();
 }
