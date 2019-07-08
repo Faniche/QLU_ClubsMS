@@ -11,7 +11,6 @@
 <head>
     <title>公告</title>
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/animate.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.min.css">
@@ -40,7 +39,7 @@
     <script src="${pageContext.request.contextPath}/js/scrollax.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="${pageContext.request.contextPath}/js/google-map.js"></script>
-    <script src="${pageContext.request.contextPath}/clu"></script>
+
 </head>
 <body>
 <jsp:include page="/nav_bar.jsp"/>
@@ -61,7 +60,7 @@
     </div>
 </section>
 
-<c:if test="${role.id==1}">
+<c:if test="${role.id!=null&&role.id!=3}">
     <jsp:include page="releaseAnnounce.jsp"/>
 </c:if>
 
@@ -105,7 +104,23 @@
     </div>
 </section>
 
+<jsp:include page="/footer.jsp"/>
 
+<script type="text/javascript">
+    $(".announce_del").click(function () {
+        var obj = $(this).parents('span');
+        if (window.confirm("确认删除吗？")){
+            $.ajax({
+                type: "POST",
+                url: "${pageContext.request.contextPath}/announce/delete",
+                data: {'id': $(this).attr("value")},
+                success: function () {
+                    obj.text('已删除');
+                }
+            })
+        }
+    })
+</script>
 
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-migrate-3.0.1.min.js"></script>

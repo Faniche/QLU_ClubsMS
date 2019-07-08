@@ -51,7 +51,7 @@ public interface LoginDao {
      * @param id 学号
      * @return 实例对象
      */
-    Login queryAllmessages(String id);
+    Login queryAllInfo(String id);
 
     /**
      * 通过实体作为筛选条件查询

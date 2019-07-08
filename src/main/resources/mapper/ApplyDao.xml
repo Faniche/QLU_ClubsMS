@@ -36,7 +36,7 @@
         where type = 1 or type = 2 or type = 5;
     </select>
 
-    <!--查出所有的创建社团，解散社团，活动申请-->
+    <!--查出所有的，解散社团，入团申请，退团申请，创建社团-->
     <select id="queryByClubLeader" resultMap="ApplyMap">
         select
           id, type, activityId, proposerId, clubId, date, status
@@ -45,14 +45,13 @@
         and (type = 2 or type = 3 or type = 4 or type = 5);
     </select>
 
-    <!--查出所有的创建社团，解散社团，活动申请-->
+    <!--查出所有的创建社团，入团社团，退团申请-->
     <select id="queryByStudent" resultMap="ApplyMap">
         select
           id, type, activityId, proposerId, clubId, date, status
         from qlu_clubs_ms.apply
         where proposerId = #{id} and ( type = 1 or type = 3 or type = 4 ) ;
     </select>
-
 
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="ApplyMap">

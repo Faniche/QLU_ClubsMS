@@ -51,7 +51,7 @@ public interface LoginService {
      * @param id 学号
      * @return 实例对象
      */
-    Login queryAllmessages(String id);
+    Login queryAllInfo(String id);
     /**
      * 根据条件查找信息
      * @param login
