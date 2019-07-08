@@ -63,7 +63,6 @@ public class ApplyController {
         apply.setProposerid(login.getId());
         apply.setDate(DateUtil.getTimeStamp());
         apply = applyService.insert(apply);
-        System.out.println("提交加入社团申请");
         return "club/joinclub";
     }
 
@@ -107,7 +106,7 @@ public class ApplyController {
     public String destroyClubApply(@RequestParam("clubId") Integer clubId, HttpSession session){
         Login login = (Login) session.getAttribute("userinfo");
         destroyOrQuit(login.getId(), clubId, 2);
-        return "redirect:/handelClub/breakclub";
+        return "handelClub/breakclub";
     }
     /**
      * 退出社团

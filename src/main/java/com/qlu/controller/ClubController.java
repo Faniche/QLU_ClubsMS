@@ -138,7 +138,6 @@ public class ClubController {
      */
     @PostMapping("breakclub")
     public String breakClub() {
-        System.out.println("提交解散社团申请");
         return "myclub/breakclub";//提交路径要改
     }
 
@@ -169,6 +168,7 @@ public class ClubController {
     @PostMapping("toCRUDmember")
     public String toCRUDmember(@RequestParam("clubId") Integer clubId,HttpSession session,Map<String, Object> map){
         Member member = new Member();
+        member.setMemberid(clubId);
         Clubs clubs=clubsService.queryById(clubId);
         List<MemberModel> members = memberService.queryAllModel(member);
         map.put("members", members);

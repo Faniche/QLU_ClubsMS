@@ -1,6 +1,7 @@
 package com.qlu;
 
 import com.qlu.entity.Member;
+import com.qlu.model.MemberModel;
 import com.qlu.service.MemberService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,6 +44,7 @@ public class MemberTest {
         List<Member> memberList = memberService.queryAll(member);
         System.out.println(memberList.size());
     }
+
     @Test
     public  void delete(){
         Member member = new Member();
@@ -51,4 +53,6 @@ public class MemberTest {
         memberService.deleteByMemberId(member);
         System.out.println("删除成功");
     }
+
+
 }

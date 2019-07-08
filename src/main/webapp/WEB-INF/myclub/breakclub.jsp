@@ -42,7 +42,7 @@
                 <input type="hidden" name="clubId" value="${clubDetail.clubs.id}">
                 <input type="submit" class="btn btn-lg btn-danger" value="申请解散社团" >  &nbsp&nbsp&nbsp&nbsp&nbsp
                 &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp
-                <a class="btn btn-lg btn-success" onclick="window.history.back()" role="button">返回上层</a>
+                <a class="btn btn-lg btn-info" onclick="window.history.back()" role="button">返回上层</a>
             </div>
         </form>
     </div>

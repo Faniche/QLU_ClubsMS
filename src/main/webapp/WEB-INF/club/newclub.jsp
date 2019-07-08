@@ -24,7 +24,7 @@
 </head>
 <body>
 <div>
-    &nbsp;<br> &nbsp;<br>
+    <br>&nbsp;<br>
 </div>
 <div class="container">
     <div class="jumbotron" align="center">
@@ -45,7 +45,7 @@
                     <br>&nbsp<br>
                     <input type="submit" class="btn btn-lg btn-success" value="提交申请" >  &nbsp&nbsp&nbsp&nbsp&nbsp
                     &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp
-                    <button class="btn btn-lg btn-info" onclick="window.history.back()">返回上层</button>
+                    <a class="btn btn-lg btn-info" onclick="window.history.()">返回上层</a>
                 </div>
         </form>
     </div>

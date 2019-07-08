@@ -52,7 +52,7 @@
                     <input type="hidden" name="clubid" value="${clubid}"><!--社团ID传入到后台-->
                     <input type="submit" class="btn btn-lg btn-success" value="提交申请" >  &nbsp&nbsp&nbsp&nbsp&nbsp
                     &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp
-                    <button class="btn btn-lg btn-info" onclick="window.history.back()">返回上层</button>
+                    <a class="btn btn-lg btn-info" onclick="window.history.back()">返回上层</a>
                 </div>
             </div>
         </form>

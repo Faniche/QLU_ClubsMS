@@ -74,7 +74,7 @@
                 &nbsp;
             </div>
 
-            <div align="center" ><button type="button" class="btn btn-warning" onclick="window.history.back()"><h3>点击完成退出</h3></button></div>
+            <div align="center" ><a class="btn btn-lg btn-info" onclick="window.history.back()"><h3>点击完成退出</h3></a></div>
         </div>
     </div>
 </div>
