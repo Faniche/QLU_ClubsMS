@@ -2,7 +2,10 @@ package com.qlu.dao;
 
 import com.qlu.entity.Activity;
 import org.apache.ibatis.annotations.Param;
+
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.Map;
 
 /**
  * (Activity)表数据库访问层
@@ -74,6 +77,18 @@ public interface ActivityDao {
      * @return 实例对象
      */
     Activity queryById(Integer id);
+
+    /**
+     *
+     * @param map
+     * @return
+     */
+    List<Activity> findTimeRange(Map<String, Timestamp> map);
+
+    /**
+     * 查询最新的一条活动
+     */
+    Activity findOne();
 
 
 }

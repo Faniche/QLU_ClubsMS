@@ -100,6 +100,12 @@
      select
       id, name, descript, establishedDate
       from qlu_clubs_ms.clubs
+      GROUP BY id ASC
+      limit 8
+      /*SELECT clubId,count(clubId) FROM member
+      GROUP BY clubId
+      ORDER BY count(clubId) DESC
+      LIMIT 3*/
     </select>
 
 </mapper>

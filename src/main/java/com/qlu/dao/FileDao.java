@@ -56,10 +56,12 @@ public interface FileDao {
 
     /**
      * 通过主键删除数据
+     *
      * @param id 主键
      * @return 影响行数
      */
     int deleteById(Integer id);
+
 
     /**
      * 返回出图片文件外的其他文件
@@ -68,8 +70,15 @@ public interface FileDao {
     List<File> findAllFiles();
 
     /**
-     * 查询所有社团logo图片文件
-     * @return
+     * 查询所有社团LOGO图片文件
      */
     List<File> findAllIcons();
+
+
+    /*用于显示首页用到的调用的方法*/
+    /**
+     * 通过实体作为筛选条件查询
+     * @return 对象列表
+     */
+    List<File> findAll();
 }

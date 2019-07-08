@@ -9,9 +9,7 @@ import com.qlu.entity.File;
  * @Date: 2019/7/6 / 10:28
  */
 public class FileModel {
-
     private File file;
-
     private String author;
 
     public File getFile() {

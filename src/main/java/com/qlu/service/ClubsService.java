@@ -65,6 +65,11 @@ public interface ClubsService {
 
 
     /*用于显示首页用到的调用的方法*/
+
+    /**
+     * 查询优秀社团
+     * @return clusList
+     */
     List<Clubs> findAll();
 
 

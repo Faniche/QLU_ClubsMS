@@ -1,7 +1,11 @@
 package com.qlu.service.impl;
 
-import com.qlu.dao.*;
-import com.qlu.entity.*;
+import com.qlu.dao.ClubsDao;
+import com.qlu.dao.LoginroleDao;
+import com.qlu.entity.Clubs;
+import com.qlu.entity.File;
+import com.qlu.dao.FileDao;
+import com.qlu.entity.Loginrole;
 import com.qlu.model.FileModel;
 import com.qlu.service.FileService;
 import org.springframework.stereotype.Service;
@@ -20,12 +24,11 @@ import java.util.List;
 public class FileServiceImpl implements FileService {
     @Resource
     private FileDao fileDao;
-
+    @Resource
+    private LoginroleDao loginroleDao;
     @Resource
     private ClubsDao clubsDao;
 
-    @Resource
-    private LoginroleDao loginroleDao;
 
     /**
      * 通过ID查询单条数据
@@ -99,7 +102,7 @@ public class FileServiceImpl implements FileService {
             FileModel fileModel = new FileModel();
             fileModel.setFile(file);
             Loginrole role = loginroleDao.queryById(file.getAuthorid());
-            if (role.getRoleid() == 1) {
+            if (role.getId() == 1) {
                 fileModel.setAuthor("社团管理委员会");
             } else {
                 Clubs clubs = new Clubs();
@@ -116,5 +119,12 @@ public class FileServiceImpl implements FileService {
     public List<File> findAllIcons() {
         return this.fileDao.findAllIcons();
     }
-}
 
+
+    /*用于显示首页用到的调用的方法*/
+    /**
+     * 通过实体作为筛选条件查询
+     * @return 对象列表
+     */
+    public List<File> findAll(){return this.fileDao.findAll();}
+}
