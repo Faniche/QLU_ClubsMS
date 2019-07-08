@@ -33,7 +33,6 @@
                                     <!-- 循环查询到的表单-->
                                     <form method="post" action="${pageContext.request.contextPath}/handleClub/toqiutclub">
                                         <input type="submit" class="btn btn-success" value="${item.name}">
-<%--                                        <input type="button" class="btn btn-danger" value="点击操作">--%>
                                         <input type="hidden" name="clubId" value="${item.id}">
                                     </form>
                                     <br>

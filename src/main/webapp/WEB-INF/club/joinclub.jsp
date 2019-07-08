@@ -52,15 +52,12 @@
                     <input type="hidden" name="clubid" value="${clubid}"><!--社团ID传入到后台-->
                     <input type="submit" class="btn btn-lg btn-success" value="提交申请" >  &nbsp&nbsp&nbsp&nbsp&nbsp
                     &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp
-<%--                    <a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/handleClub/giveupjoin" >返回上层</a>--%>
                     <button class="btn btn-lg btn-info" onclick="window.history.back()">返回上层</button>
                 </div>
             </div>
         </form>
     </div>
 </div>
-
-
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>

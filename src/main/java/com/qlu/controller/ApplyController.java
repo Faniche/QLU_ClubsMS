@@ -81,7 +81,6 @@ public class ApplyController {
         //创建社团插入社团表，审核状态为未通过，在数据库中用 0 表示
         Clubs clubs = new Clubs();
         clubs.setLeaderId(login.getId());//获取登录id
-        System.out.println(new Integer(login.getId()));
         clubs.setName(name);
         clubs.setDescript(descript);
         clubs.setStatus(0);

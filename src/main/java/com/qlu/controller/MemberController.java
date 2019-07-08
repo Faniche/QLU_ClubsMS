@@ -91,13 +91,10 @@ public class MemberController {
     public String delete(HttpServletRequest request){
         Integer memberid =Integer.valueOf(request.getParameter("memberid")) ;
         Integer clubid =Integer.valueOf(request.getParameter("clubid")) ;
-        System.out.println("member="+memberid);
-        System.out.println("clubid="+clubid);
         Member member = new Member();
         member.setMemberid(memberid);
         member.setClubid(clubid);
         Boolean result1 =memberService.deleteByMemberId(member);
-        System.out.println("删除完成");
         return "myclub/CRUDmember";
     }
 }

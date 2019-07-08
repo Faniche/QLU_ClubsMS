@@ -130,7 +130,6 @@ public class ClubController {
         Login login = loginService.queryById(club.getLeaderId());
         clubDetail.setLeader(login.getName());
         map.put("clubDetail", clubDetail);
-        System.out.println("转到申请解散社团界面和删除成员添加修改");
         return "myclub/breakclub";
     }
 
@@ -170,8 +169,6 @@ public class ClubController {
     @PostMapping("toCRUDmember")
     public String toCRUDmember(@RequestParam("clubId") Integer clubId,HttpSession session,Map<String, Object> map){
         Member member = new Member();
-        member.setMemberid(clubId);
-        System.out.println(clubId);
         Clubs clubs=clubsService.queryById(clubId);
         List<MemberModel> members = memberService.queryAllModel(member);
         map.put("members", members);
@@ -179,13 +176,4 @@ public class ClubController {
         return "myclub/CRUDmember";
     }
 
-    /**
-     * 添加删除成员操作
-     * @return
-     */
-    @PostMapping("CRUDmember")
-    public String CRUDmember(){
-
-        return "";
-    }
 }

@@ -58,7 +58,7 @@ public interface MemberService {
     /**
      * 通过主键删除数据
      *
-     * @param id 主键
+     * @param
      * @return 是否成功
      */
     boolean deleteByMemberId(Member member);
