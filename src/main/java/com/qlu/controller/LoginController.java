@@ -134,7 +134,6 @@ public class LoginController {
     public String exit(HttpSession session) {
         session.removeAttribute("userinfo");
         session.removeAttribute("stuidInfo");
-        session.removeAttribute("role");
         return "redirect:/index.jsp";
     }
 
@@ -218,7 +217,7 @@ public class LoginController {
         //判断学号是存在
         if (stuidInfo != null) {
             //若学号存在查询登录表的所有信息。
-            Login loginInfo = loginService.queryAllInfo(request.getParameter("id"));
+            Login loginInfo = loginService.queryAllmessages(request.getParameter("id"));
             //获取登录表的密码
             String s2 = loginInfo.getPassword();
             //验证密码是否相同

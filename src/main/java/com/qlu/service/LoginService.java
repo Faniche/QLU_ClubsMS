@@ -51,12 +51,10 @@ public interface LoginService {
      * @param id 学号
      * @return 实例对象
      */
-    Login queryAllInfo(String id);
-    /**
-     * 根据条件查找信息
-     * @param login
-     * @return
-     */
+    Login queryAllmessages(String id);
+
+
+
     List<Login> queryAll(Login login);
 
     /**
@@ -82,5 +80,6 @@ public interface LoginService {
      * @return 是否成功
      */
     boolean deleteById(Integer id);
+
 
 }

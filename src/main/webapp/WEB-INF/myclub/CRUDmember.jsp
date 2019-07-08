@@ -60,6 +60,7 @@
                             <form action="${pageContext.request.contextPath}/member/delete" method="post">
                                 <input type="hidden" name="memberid" value="${item.member.memberid}">
                                 <input type="hidden" name="clubid" value="${item.member.clubid}">
+                                <input type="hidden" name="clubid">
                                 <input type="submit"  value="删除">
                             </form>
                            &nbsp;&nbsp;&nbsp;

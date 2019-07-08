@@ -41,3 +41,18 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(".announce_del").click(function () {
+        var obj = $(this).parents('span');
+        if (window.confirm("确认删除吗？")){
+            $.ajax({
+                type: "POST",
+                url: "${pageContext.request.contextPath}/announce/delete",
+                data: {'id': $(this).attr("value")},
+                success: function () {
+                    obj.text('已删除');
+                }
+            })
+        }
+    })
+</script>

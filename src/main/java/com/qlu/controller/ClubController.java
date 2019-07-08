@@ -166,9 +166,9 @@ public class ClubController {
      * @return
      */
     @PostMapping("toCRUDmember")
-    public String toCRUDmember(@RequestParam("clubId") Integer clubId,HttpSession session,Map<String, Object> map){
+    public String toCRUDmember(@RequestParam("clubId") Integer clubId,Map<String, Object> map){
         Member member = new Member();
-        member.setMemberid(clubId);
+        member.setClubid(clubId);
         Clubs clubs=clubsService.queryById(clubId);
         List<MemberModel> members = memberService.queryAllModel(member);
         map.put("members", members);

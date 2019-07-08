@@ -16,15 +16,13 @@
         from qlu_clubs_ms.login
         where id = #{id}
     </select>
-
     <!--查询所有-->
-    <select id="queryAllInfo" resultMap="LoginMap">
+    <select id="queryAllmessages" resultMap="LoginMap">
         select
          id,username,name,password,email
         from qlu_clubs_ms.login
         where login.id in(select studentid.loginId from studentid where studentid.id =#{id})
     </select>
-
     <!--登录信息-->
 
     <select id="queryLoginByUsernameAndPassword" resultMap="LoginMap">
@@ -34,7 +32,6 @@
         where username = #{username}
         and password = #{password}
     </select>
-
     <select id="queryLoginByEmailAndPassword" resultMap="LoginMap">
      select
          id,name,email,password,username
@@ -53,7 +50,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="LoginMap">
         select
-        id, username, name, password,email
+          id, username, name, password,email
         from qlu_clubs_ms.login
         <where>
             <if test="id != null">
@@ -101,4 +98,5 @@
     <delete id="deleteById">
         delete from qlu_clubs_ms.login where id = #{id}
     </delete>
+
 </mapper>

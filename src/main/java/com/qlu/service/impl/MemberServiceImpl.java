@@ -106,6 +106,7 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public List<MemberModel> queryAllModel(Member member) {
+        // 查询所有成员
         List<Member> list = this.memberDao.queryAll(member);
         List<MemberModel> memberModels = new ArrayList<>();
         for (Member member1 : list){

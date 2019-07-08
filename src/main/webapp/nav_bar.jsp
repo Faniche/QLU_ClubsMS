@@ -26,26 +26,28 @@
         </button>
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a href="${pageContext.request.contextPath}/index" class="nav-link">首页</a></li>
+                <li class="nav-item active"><a href="${pageContext.request.contextPath}/index" class="nav-link">首页</a></li>
                 <c:if test="${role.id!=1}">
-                    <li class="nav-item"><a href="${pageContext.request.contextPath}/handleClub/tomyclub" class="nav-link ">我的社团</a></li>
+                    <li class="nav-item"><a href="${pageContext.request.contextPath}/handleClub/tomyclub" class="nav-link">我的社团</a></li>
                 </c:if>
                 <li class="nav-item"><a href="${pageContext.request.contextPath}/announce/" class="nav-link">公告</a></li>
                 <li class="nav-item"><a href="${pageContext.request.contextPath}/handleClub/showclub" class="nav-link">社团介绍</a></li>
                 <li class="nav-item"><a href="${pageContext.request.contextPath}/message/" class="nav-link">我的消息</a></li>
                 <li class="nav-item"><a href="${pageContext.request.contextPath}/file/" class="nav-link">文件专区</a></li>
-                <li class="nav-item">
+
+                <li class="nav-item cta mr-md-2">
                 <a id="login_btn" href="${pageContext.request.contextPath}/login/login" class="nav-link">
                         <span id="loginName">
                             登录
                         </span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item cta mr-md-2">
                     <c:if test="${userinfo!=null}">
                         <a href="${pageContext.request.contextPath}/login/exit" class="nav-link">注销</a>
                     </c:if>
                 </li>
+
             </ul>
         </div>
     </div>

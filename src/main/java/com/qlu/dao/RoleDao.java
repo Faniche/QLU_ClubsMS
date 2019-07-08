@@ -26,7 +26,6 @@ public interface RoleDao {
      * @return
      */
     Role queryByLoginId(Integer id);
-
     Role queryByLoginIdq(String email);
 
     /**

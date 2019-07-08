@@ -36,7 +36,6 @@
                                     <form method="post" action="${pageContext.request.contextPath}/handleClub/tobreakclub">
                                         <input type="submit" class="btn btn-success" value="${item.name}">
                                         <input type="hidden" name="clubId" value="${item.id}">
-                                        <input type="hidden" name="clubname" value="${item.name}">
                                     </form></td>&nbsp;
                                             <td>
                                     <form method="post" action="${pageContext.request.contextPath}/handleClub/toCRUDmember">

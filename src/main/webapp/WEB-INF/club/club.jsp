@@ -49,29 +49,6 @@
     <script src="${pageContext.request.contextPath}/../../assets/js/ie-emulation-modes-warning.js"></script>
     <script src="${pageContext.request.contextPath}/https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="${pageContext.request.contextPath}/https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-
-    <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/popper.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/jquery.easing.1.3.js"></script>
-    <script src="${pageContext.request.contextPath}/js/jquery.waypoints.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/jquery.stellar.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/jquery.magnific-popup.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/aos.js"></script>
-    <script src="${pageContext.request.contextPath}/js/jquery.animateNumber.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/bootstrap-datepicker.js"></script>
-    <script src="${pageContext.request.contextPath}/js/jquery.timepicker.js"></script>
-    <script src="${pageContext.request.contextPath}/js/scrollax.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="${pageContext.request.contextPath}/js/google-map.js"></script>
-    <script src="${pageContext.request.contextPath}/js/main.js"></script>
-    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/../../assets/js/vendor/holder.min.js"></script>
-    <script src="${pageContext.request.contextPath}/../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </head>
 <body>
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
@@ -153,7 +130,29 @@
 </section>
 
 <!- loader -->
-<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
-    <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/popper.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.easing.1.3.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.waypoints.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.stellar.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.magnific-popup.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/aos.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.animateNumber.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap-datepicker.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.timepicker.js"></script>
+<script src="${pageContext.request.contextPath}/js/scrollax.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="${pageContext.request.contextPath}/js/google-map.js"></script>
+<script src="${pageContext.request.contextPath}/js/main.js"></script>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/../../assets/js/vendor/holder.min.js"></script>
+<script src="${pageContext.request.contextPath}/../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>

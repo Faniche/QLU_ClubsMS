@@ -54,5 +54,12 @@ public class MemberTest {
         System.out.println("删除成功");
     }
 
-
+    @Test
+    public void queryAllModel() {
+        Member member = new Member();
+        member.setClubid(1);
+        List<Member> memberList = memberService.queryAll(member);
+        List<MemberModel> members = memberService.queryAllModel(member);
+        System.out.println(members.size());
+    }
 }

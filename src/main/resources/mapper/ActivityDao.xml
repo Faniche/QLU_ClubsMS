@@ -37,7 +37,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="ActivityMap">
         select
-        id, clubsId, topic, time, location, money, status
+          id, clubsId, topic, time, location, money, status
         from qlu_clubs_ms.activity
         <where>
             <if test="id != null">
@@ -95,26 +95,22 @@
         </set>
         where id = #{id}
     </update>
-
     <!--通过主键删除-->
     <delete id="deleteById">
         delete from qlu_clubs_ms.activity where id = #{id}
     </delete>
-
-    <!--查询所有-->
+    <!--通过实体作为筛选条件查询-->
     <select id="findAll" resultMap="ActivityMap">
-        select
-            id, clubsId, topic, time, location, money, status
-        from qlu_clubs_ms.activity
+    select
+    id, clubsId, topic, time, location, money, status
+    from qlu_clubs_ms.activity
     </select>
-
     <!--查询最近三天的活动-->
     <select id="findTimeRange" resultMap="ActivityMap" parameterMap="rangeMap">
         select
         id, clubsId, topic, time, location, money, status
         from qlu_clubs_ms.activity
         where time between #{supTime} and #{infTime}
-        and status = 1
     </select>
 
     <!--查询最新的一个活动-->
@@ -122,7 +118,7 @@
         select
         id, clubsId, topic, time, location, money, status
         from qlu_clubs_ms.activity
-        where status = 1
+        where status=1
         Order BY time desc
         limit 1
     </select>
