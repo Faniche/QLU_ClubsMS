@@ -53,6 +53,7 @@
             </if>
             and status = 1
         </where>
+        and status = 1
     </select>
 
     <!--新增所有列-->

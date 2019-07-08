@@ -48,7 +48,7 @@
 
 <section class="ftco-section">
     <div class="container">
-        <c:if test="${role.id!=3}">
+        <c:if test="${role!=null&&role.id!=3}">
             <div class="row justify-content-center mb-5 pb-3">
                 <div class="col-md-7 text-center heading-section ftco-animate">
                     <h2 class="mb-4"><span>上传文件</span></h2>

@@ -92,14 +92,14 @@
     <delete id="deleteById">
         delete from qlu_clubs_ms.clubs where id = #{id}
     </delete>
-    <!--用于显示首页的调用的方法-->
+
     <!--通过实体作为筛选条件查询-->
     <select id="findAll" resultMap="ClubsMap">
-     select
-      id, name, descript, establishedDate
-      from qlu_clubs_ms.clubs
-      GROUP BY id ASC
-      limit 8
+        select
+            id, name, descript, establishedDate
+        from qlu_clubs_ms.clubs
+        where status = 1
+        GROUP BY id ASC
+        limit 8
     </select>
-
 </mapper>

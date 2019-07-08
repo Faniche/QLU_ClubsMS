@@ -21,10 +21,15 @@
         FROM qlu_clubs_ms.role
         WHERE role.id in (SELECT loginrole.roleId from loginrole where loginrole.userId = #{id})
     </select>
+
     <select id="queryByLoginIdq" resultMap="RoleMap">
         SELECT  id, name
         FROM qlu_clubs_ms.role
-        WHERE role.id in (SELECT loginrole.roleId from loginrole where loginrole.userId in(SELECT login.id from login where login.email=#{email}) )
+        WHERE role.id in
+        (SELECT loginrole.roleId
+        from loginrole
+        where loginrole.userId
+        in(SELECT login.id from login where login.email=#{email}) )
     </select>
 
     <!--查询指定行数据-->

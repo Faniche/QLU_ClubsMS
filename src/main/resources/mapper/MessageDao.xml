@@ -15,9 +15,9 @@
           id, content, clubId, releaseDate
         from qlu_clubs_ms.message
         where message.clubId
-        in ((SELECT member.clubId
+        in (SELECT member.clubId
                          FROM member
-                         WHERE memberId = #{id}))
+                         WHERE memberId = #{id})
     </select>
 
     <!--查询指定行数据-->

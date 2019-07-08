@@ -9,7 +9,7 @@ To change this template use File | Settings | File Templates.
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>主页界面</title>
+    <title>首页</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/open-iconic-bootstrap.min.css">
@@ -28,11 +28,10 @@ To change this template use File | Settings | File Templates.
 </head>
 <body>
 
-<jsp:include page="/nav_bar.jsp"></jsp:include>
-<!-- END nav -->
+<jsp:include page="/nav_bar.jsp"/>
 
 <div class="hero-wrap js-fullheight"
-     style="${pageContext.request.contextPath}/background-image: url('images/bg_1.jpg');"
+     style="background-image: url('${pageContext.request.contextPath}/images/index/bg_1.jpg');"
      data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
@@ -216,6 +215,5 @@ To change this template use File | Settings | File Templates.
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="${pageContext.request.contextPath}/js/google-map.js"></script>
 <script src="${pageContext.request.contextPath}/js/main.js"></script>
-
 </body>
 </html>
