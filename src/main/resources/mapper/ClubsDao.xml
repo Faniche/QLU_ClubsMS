@@ -55,9 +55,7 @@
             <if test="establisheddate != null">
                 and establishedDate = #{establisheddate}
             </if>
-            <if test="status != null">
-                and status = #{status}
-            </if>
+            and status = 1
         </where>
     </select>
 

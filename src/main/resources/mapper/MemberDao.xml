@@ -30,7 +30,7 @@
     <select id="queryAllMembers" resultMap="MemberMap">
         select
         id, memberId, clubId, enrollDate, status
-        from qlu_clubs_ms.member
+        from qlu_clubs_ms.member  where  status=1
     </select>
 
     <!--通过实体作为筛选条件查询-->
@@ -51,9 +51,7 @@
             <if test="enrolldate != null">
                 and enrollDate = #{enrolldate}
             </if>
-            <if test="status != null">
-                and status = #{status}
-            </if>
+            and status = 1
         </where>
     </select>
 
