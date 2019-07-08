@@ -35,10 +35,12 @@ public class FileController {
 
     @PostMapping("/upload")
     public String upload(@RequestParam("file") MultipartFile file, HttpSession session, Map<String, Object> map) {
+        System.out.println("文件上传");
         // 获取当期项目的绝对路径
         String path = session.getServletContext().getRealPath("/");
         // 获取源文件名称
         String fileName = file.getOriginalFilename();
+        System.out.println(fileName);
         Login login = (Login) session.getAttribute("userinfo");
         Role role = (Role) session.getAttribute("role");
 
@@ -55,6 +57,7 @@ public class FileController {
             path += "files\\clubs\\";
             uploadFile.setPath("files/clubs/" + fileName);
         }
+        System.out.println(path);
         File fileUploadToServer = new File(path, fileName);
         try {
             //将要上传的文件传到file
@@ -68,7 +71,6 @@ public class FileController {
             e.printStackTrace();
             map.put("msg", "上传失败！");
         }
-        map.put("msg", "上传成功！");
         List<FileModel> fileList = fileService.findAllFiles();
         map.put("fileList", fileList);
         return "file/show";

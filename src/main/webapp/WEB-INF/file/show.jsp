@@ -65,10 +65,11 @@
                 <div class="col-md-3"></div>
                 <form id="fileupload_form" class="col-md-6 form-inline"
                       action="${pageContext.request.contextPath}/file/upload"
-                      method="post" enctype="multipart/form-data">
+                      method="post"
+                      enctype="multipart/form-data">
                     <div class="form-group">
                         <input type="file" name="file" id="fileup" class="form-control">
-                    </div>
+                    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <div class="form-group">
                         <input class="form-control" type="button" id="upload" value="提交"/>
                     </div>

@@ -112,7 +112,7 @@ public class LoginController {
      *
      * @return
      */
-    @GetMapping("login")
+    @GetMapping("/")
     public String toLogin() {
         ModelAndView modelAndView = new ModelAndView();
         return "login/login";

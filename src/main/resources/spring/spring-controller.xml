@@ -10,23 +10,14 @@
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <!-- 配置SpringMVC -->
-    <!-- 1.开启SpringMVC注解模式 -->
-    <!-- 简化配置：
-        (1)自动注册DefaultAnootationHandlerMapping,AnotationMethodHandlerAdapter
-        (2)提供一些列：数据绑定，数字和日期的format @NumberFormat, @DateTimeFormat, xml,json默认读写支持
-    -->
     <mvc:annotation-driven/>
 
-    <!-- 2.静态资源默认servlet配置
-        (1)加入对静态资源的处理：js,gif,png
-        (2)允许使用"/"做整体映射
-     -->
     <mvc:default-servlet-handler/>
     <mvc:resources mapping="/js/**" location="/js/"/>
     <mvc:resources mapping="/css/**" location="/css/"/>
     <mvc:resources mapping="/images/**" location="/images/"/>
     <mvc:resources mapping="/file/**" location="/files/"/>
+
     <!-- 3.配置jsp 显示ViewResolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
@@ -34,18 +25,25 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 默认编码 -->
+        <property name="defaultEncoding" value="utf-8"/>
+        <!-- 设置multipart请求所允许的最大大小，默认不限制 -->
+        <property name="maxUploadSize" value="10485760000"/>
+        <!-- 设置一个大小，multipart请求小于这个大小时会存到内存中，大于这个内存会存到硬盘中 -->
+        <property name="maxInMemorySize" value="40960"/>
+    </bean>
     <!-- 4.扫描web相关的bean -->
     <context:component-scan base-package="com.qlu.controller"/>
+
     <!-- 5.拦截器-->
     <!--登录拦截器-->
-
-
     <mvc:interceptors>
-    <mvc:interceptor>
-        <mvc:mapping path="/message/**"/>
-        <bean class="com.qlu.interceptor.LoginInterceptor"/>
-    </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/message/**"/>
+            <bean class="com.qlu.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
     </mvc:interceptors>
 
-        </beans>
+</beans>

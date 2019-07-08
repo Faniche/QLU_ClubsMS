@@ -35,7 +35,7 @@
                 <li class="nav-item"><a href="${pageContext.request.contextPath}/message/" class="nav-link">我的消息</a></li>
                 <li class="nav-item"><a href="${pageContext.request.contextPath}/file/" class="nav-link">文件专区</a></li>
                 <li class="nav-item">
-                <a id="login_btn" href="${pageContext.request.contextPath}/login/login" class="nav-link">
+                <a id="login_btn" href="${pageContext.request.contextPath}/login/" class="nav-link">
                         <span id="loginName">
                             登录
                         </span>
