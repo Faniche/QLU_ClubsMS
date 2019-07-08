@@ -2,6 +2,7 @@ package com.qlu.controller;
 
 import com.qlu.entity.*;
 import com.qlu.model.ClubsModel;
+import com.qlu.model.MemberModel;
 import com.qlu.service.ClubsService;
 import com.qlu.service.LoginService;
 import com.qlu.service.MemberService;
@@ -167,24 +168,14 @@ public class ClubController {
      * @return
      */
     @PostMapping("toCRUDmember")
-    public String toCRUDmember(HttpSession session,@RequestParam("clubId") Integer clubId,
-                               HttpServletRequest request,Map<String, Object> map){
-        String clubid = request.getParameter("clubId");
-        String CRUDclubname=request.getParameter("clubname");
-        session.setAttribute("clubname",CRUDclubname);
+    public String toCRUDmember(@RequestParam("clubId") Integer clubId,HttpSession session,Map<String, Object> map){
         Member member = new Member();
         member.setMemberid(clubId);
-        List<Member> members = memberService.queryAll(member);
-        System.out.println(member.getMemberid());
-        List<Login> allLoginList =new ArrayList<>();
-        for (Member member1 : members) {
-            Login login1 = new Login();
-            login1 = loginService.queryAllmessages2(new Integer(member1.getMemberid()));
-            allLoginList.add(login1);
-            System.out.println(login1.getName());
-        }
-        map.put("allLoginList", allLoginList);
-        System.out.println("查询社员");
+        System.out.println(clubId);
+        Clubs clubs=clubsService.queryById(clubId);
+        List<MemberModel> members = memberService.queryAllModel(member);
+        map.put("members", members);
+        map.put("manager",clubs);
         return "myclub/CRUDmember";
     }
 

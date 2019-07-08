@@ -62,11 +62,6 @@ public interface ClubsDao {
      */
     int deleteById(Integer id);
     List<Clubs> queryAllClubs();
-
-    /**
-     * 查询优秀社团
-     * @return
-     */
     List<Clubs> findAll();
 //    List<Clubs> queryMyClub();
 }

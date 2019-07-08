@@ -37,46 +37,38 @@
                     &nbsp;<br>
                 </div>
             </div>
-            <h2 class="sub-header">可添加或者删除社员</h2>
+            <h2 class="sub-header">可添删除社员</h2>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>学号</th>
-                        <th>姓名</th>
-                        <th>邮箱</th>
+                        <th>社团名字</th>
                         <th>登录名</th>
-                        <th>密码</th>
+                        <th>邮箱</th>
+                        <th>加入日期</th>
                         <td clospan="2" align="center"><b>操作</b></td>
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach var="item" items="${allLoginList}" >
+                    <c:forEach items="${members}" var="item">
                     <tr>
-                        <td>${item.id}</td>
-                        <th>${item.name}</th>
-                        <td>${item.email}</td>
-                        <td>${item.username}</td>
-                        <td>${item.password}</td>
-                        <td><a href="${pageContext.request.contextPath}/member/delete/${item.id}" >删除</a>&nbsp;&nbsp;&nbsp;
-                            <a href="${pageContext.request.contextPath}/member/insert">添加</a>${msg}
+                        <td>${item.clubName}</td>
+                        <td>${item.memberName}</td>
+                        <th>${item.login.email}</th>
+                        <td>${item.member.enrolldate}</td>
+                        <td>
+                            <form action="${pageContext.request.contextPath}/member/delete" method="post">
+                                <input type="hidden" name="memberid" value="${item.member.memberid}">
+                                <input type="hidden" name="clubid" value="${item.member.clubid}">
+                                <input type="submit"  value="删除">
+                            </form>
+                           &nbsp;&nbsp;&nbsp;
                         </td>
                     </tr>
                     </c:forEach>
                     </tbody>
                 </table>
-<%--                <form action="${pageContext.request.contextPath}/member/insert" method="post">--%>
-<%--                <table class="table table-striped">--%>
-<%--                    <tr>--%>
-<%--                        <td>--%>
-<%--                        <td>        学号：<input type="text" name="stuName"> </td>--%>
-<%--                        <td>        姓名：<input type="text" name="name"> </td>--%>
-<%--                        <td>       clubid：<input type="date" name="clubid"> </td>--%>
-<%--                        <td>       入团日期：<input type="date" name="brithday"> </td>--%>
-<%--                        <td>       <input type="submit" value="添加"></td>--%>
-<%--                    </tr>--%>
-<%--                </table>--%>
-<%--                </form>--%>
+
             </div>
             <div>
                 &nbsp;
@@ -86,22 +78,6 @@
         </div>
     </div>
 </div>
-<form action="" method="post" id="form01">
-    <input type="hidden" name="_method" value="delete">
-</form>
-</div>
-<script type="text/javascript">
-    $(function(){
-        $(".mydel").click(function(){
-            //alert(this.href);
-            var h=this.href;
-            $("#form01").attr("action",h).submit();
-
-            return false;
-        });
-
-    });
-</script>
 
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>

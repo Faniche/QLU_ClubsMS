@@ -42,7 +42,6 @@
                                     <form method="post" action="${pageContext.request.contextPath}/handleClub/toCRUDmember">
                                         <input type="submit" class="btn btn-danger" value="成员管理">
                                         <input type="hidden" name="clubId" value="${item.id}">
-                                        <input type="hidden" name="clubname" value="${item.name}">
                                     </form></td>
                                     <br></tr>
                                     </table>

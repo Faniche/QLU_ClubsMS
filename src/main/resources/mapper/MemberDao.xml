@@ -85,8 +85,11 @@
 
     <!--通过主键删除-->
     <delete id="deleteByMemberId">
-        delete from qlu_clubs_ms.member where memberId = #{id}
+        delete from qlu_clubs_ms.member
+        where memberId = #{memberid} and clubId = #{clubid}
     </delete>
+
+
 
     <!--社团解散，所有成员关系改为0-->
     <delete id="updateStatusDestroy">

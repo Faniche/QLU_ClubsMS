@@ -61,7 +61,7 @@ public interface MemberDao {
      * @param id 主键
      * @return 影响行数
      */
-    int deleteByMemberId(Integer id);
+    int  deleteByMemberId(Member member);
 
     /**
      * 社团解散，所有成员的status改为0

@@ -23,11 +23,11 @@ public class MemberTest {
     @Autowired
     private MemberService memberService;
 
-    @Test
-    public void deleteById(){
-        boolean result = memberService.deleteByMemberId(32);
-        System.out.println(result);
-    }
+//    @Test
+//    public void deleteById(){
+//        boolean result = memberService.deleteByMemberId(32);
+//        System.out.println(result);
+//    }
 
     @Test
     public void clubDestroy() {
@@ -42,5 +42,13 @@ public class MemberTest {
         member.setMemberid(1);
         List<Member> memberList = memberService.queryAll(member);
         System.out.println(memberList.size());
+    }
+    @Test
+    public  void delete(){
+        Member member = new Member();
+        member.setMemberid(4);
+        member.setClubid(11);
+        memberService.deleteByMemberId(member);
+        System.out.println("删除成功");
     }
 }

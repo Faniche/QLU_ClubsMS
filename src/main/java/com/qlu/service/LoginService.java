@@ -53,18 +53,8 @@ public interface LoginService {
      */
     Login queryAllmessages(String id);
 
-    /**
-     * 用于社员的操作
-     * @param id
-     * @return
-     */
 
-    Login queryAllmessages2(Integer id);
-    /**
-     * 根据条件查找信息
-     * @param login
-     * @return
-     */
+
     List<Login> queryAll(Login login);
 
     /**

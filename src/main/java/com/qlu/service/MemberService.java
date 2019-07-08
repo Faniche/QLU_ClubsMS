@@ -61,7 +61,7 @@ public interface MemberService {
      * @param id 主键
      * @return 是否成功
      */
-    boolean deleteByMemberId(Integer id);
+    boolean deleteByMemberId(Member member);
 
     /**
      * 社团解散，所有成员的status改为0

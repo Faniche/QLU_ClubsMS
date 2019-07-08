@@ -58,7 +58,6 @@ public interface LoginDao {
      * @return
      */
 
-    Login queryAllmessages2(Integer id);
 
     /**
      * 通过实体作为筛选条件查询

@@ -89,18 +89,18 @@ public class MemberServiceImpl implements MemberService {
     }
 
     /**
-     * 通过主键删除数据
+     * 通过memberid, clubid删除数据
      *
-     * @param id 主键
+     * @param
      * @return 是否成功
      */
     @Override
-    public boolean deleteByMemberId(Integer id) {
-        return this.memberDao.deleteByMemberId(id) > 0;
+    public boolean deleteByMemberId(Member member) {
+        return this.memberDao.deleteByMemberId(member) > 0;
     }
 
     @Override
-    public int clubDestroy(Integer id){
+    public int clubDestroy(Integer id ){
         return this.memberDao.updateStatusDestroy(id);
     }
 
@@ -111,8 +111,9 @@ public class MemberServiceImpl implements MemberService {
         for (Member member1 : list){
             MemberModel memberModel = new MemberModel();
             memberModel.setMember(member1);
-            memberModel.setClubName(clubsDao.queryById(member.getClubid()).getName());
+            memberModel.setClubName(clubsDao.queryById(member1.getClubid()).getName());
             memberModel.setMemberName(loginDao.queryById(member1.getMemberid()).getName());
+            memberModel.setLogin(loginDao.queryById(member1.getMemberid()));
             memberModels.add(memberModel);
         }
         return memberModels;

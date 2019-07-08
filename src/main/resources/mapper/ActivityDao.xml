@@ -13,11 +13,6 @@
         <result property="status" column="status" jdbcType="INTEGER"/>
     </resultMap>
 
-    <parameterMap id="rangeMap" type="map">
-        <parameter property="supTime" jdbcType="TIMESTAMP"/>
-        <parameter property="infTime" jdbcType="TIMESTAMP"/>
-    </parameterMap>
-
     <!--查询单个-->
     <select id="queryById" resultMap="ActivityMap">
         select
@@ -37,7 +32,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="ActivityMap">
         select
-          id, clubsId, topic, time, location, money, status
+        id, clubsId, topic, time, location, money, status
         from qlu_clubs_ms.activity
         <where>
             <if test="id != null">
@@ -100,28 +95,12 @@
     <delete id="deleteById">
         delete from qlu_clubs_ms.activity where id = #{id}
     </delete>
+    <!--用于显示首页用到的调用的方法-->
+
     <!--通过实体作为筛选条件查询-->
     <select id="findAll" resultMap="ActivityMap">
     select
-    id, clubsId, topic, time, location, money, status
+        id, clubsId, topic, time, location, money, status
     from qlu_clubs_ms.activity
-    </select>
-
-    <!--查询最近三天的活动-->
-    <select id="findTimeRange" resultMap="ActivityMap" parameterMap="rangeMap">
-        select
-        id, clubsId, topic, time, location, money, status
-        from qlu_clubs_ms.activity
-        where time between #{supTime} and #{infTime}
-    </select>
-
-    <!--查询最新的一个活动-->
-    <select id="findOne" resultMap="ActivityMap">
-        select
-        id, clubsId, topic, time, location, money, status
-        from qlu_clubs_ms.activity
-        where status=1
-        Order BY time desc
-        limit 1
     </select>
 </mapper>
