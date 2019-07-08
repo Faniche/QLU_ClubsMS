@@ -74,10 +74,11 @@
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
              data-scrollax-parent="true">
             <div class="col-xl-8 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"> 齐鲁工业大学 <br><span>社团之夜 2019</span>
+                <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">${latestActivity.topic}
+                    <br><span>具体时间 2019</span>
                 </h1>
-                <p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">December 21-24, 2019.
-                    Paris, Italy</p>
+                <p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">${latestActivity.time}
+                    中国, 齐鲁工业大学</p>
                 <div id="timer" class="d-flex mb-3">
                     <div class="time" id="days"></div>
                     <div class="time pl-4" id="hours"></div>
@@ -96,22 +97,24 @@
                     <label for="inputText" class="sr-only">账号</label>
                     <input type="text" name="username" id="inputText" class="form-control" placeholder="账号" required
                            autofocus>
+                    <br/>
                     <label for="inputPassword" class="sr-only">密码</label>
                     <input type="password" name="password" id="inputPassword" class="form-control" placeholder="密码"
                            required>
+                    <br/>
                     <span>
                          <input type="text" placeholder="输入四位验证码" name="captcha" id="captcha" onkeypress=""
-                                style="width:200px;"/>
+                                class="form-control" style="width:200px;"/>
                    <a id="refresh" class="nav-link"><img src="${pageContext.request.contextPath}/login/checkCaptchaCode"
                                                          id="createCheckCode"
                                                          align="middle" style="width:150px;"/></a>
                     </span>
                     <button class="btn btn-lg btn-primary btn-block" id="LoginBtn" type="button">确定</button>
                 </form>
-                <span><a href="${pageContext.request.contextPath}/register/register"
+                <span><tr><a href="${pageContext.request.contextPath}/register/register"
                          class="nav-link">没有账号？点此注册</a></span>
-                <span><a href="${pageContext.request.contextPath}/register/forgetpsw"
-                         class="nav-link">忘记密码？</a></span>
+                <tr><a href="${pageContext.request.contextPath}/register/forgetpsw"
+                         class="nav-link">忘记密码？</a></tr></span>
             </div>
         </div>
 
@@ -127,6 +130,37 @@
                 stroke="#F96D00"/>
     </svg>
 </div>
+<script type="text/javascript">
+    function makeTimer() {
+        var endTime = new Date(${applicationScope.latestActivityDate});
+        endTime = (Date.parse(endTime) / 1000);
+        var now = new Date();
+        now = (Date.parse(now) / 1000);
+        var timeLeft = endTime - now;
+        var days = Math.floor(timeLeft / 86400);
+        var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
+        var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600)) / 60);
+        var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
+        if (hours < "10") {
+            hours = "0" + hours;
+        }
+        if (minutes < "10") {
+            minutes = "0" + minutes;
+        }
+        if (seconds < "10") {
+            seconds = "0" + seconds;
+        }
+
+        $("#days").html(days + "<span>Days</span>");
+        $("#hours").html(hours + "<span>Hours</span>");
+        $("#minutes").html(minutes + "<span>Minutes</span>");
+        $("#seconds").html(seconds + "<span>Seconds</span>");
+    }
+
+    setInterval(function () {
+        makeTimer();
+    }, 1000);
+</script>
 
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-migrate-3.0.1.min.js"></script>
