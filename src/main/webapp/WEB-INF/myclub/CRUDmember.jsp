@@ -44,7 +44,6 @@
                     <tr>
                         <th>社团名字</th>
                         <th>登录名</th>
-                        <th>邮箱</th>
                         <th>加入日期</th>
                         <td clospan="2" align="center"><b>操作</b></td>
                     </tr>
@@ -54,7 +53,6 @@
                     <tr>
                         <td>${item.clubName}</td>
                         <td>${item.memberName}</td>
-                        <th>${item.login.email}</th>
                         <td>${item.member.enrolldate}</td>
                         <td>
                             <form action="${pageContext.request.contextPath}/member/delete" method="post">

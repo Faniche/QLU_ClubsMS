@@ -10,6 +10,7 @@
 <html lang="en">
 <head>
     <title>社团介绍</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/open-iconic-bootstrap.min.css">
@@ -24,31 +25,23 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/icomoon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-    <title>我的社团界面</title>
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-    <script src="../../assets/js/ie8-responsive-file-warning.js"></script>
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <link href="carousel.css" rel="stylesheet">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-    <link href="jumbotron-narrow.css" rel="stylesheet">
-    <script src="../../assets/js/ie8-responsive-file-warning.js"></script>
-    <script src="${pageContext.request.contextPath}/../../assets/js/ie-emulation-modes-warning.js"></script>
-    <script src="${pageContext.request.contextPath}/https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="${pageContext.request.contextPath}/https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/popper.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.easing.1.3.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.waypoints.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.stellar.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.magnific-popup.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/aos.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.animateNumber.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap-datepicker.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.timepicker.js"></script>
+    <script src="${pageContext.request.contextPath}/js/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="${pageContext.request.contextPath}/js/google-map.js"></script>
+    <script src="${pageContext.request.contextPath}/js/main.js"></script>
 </head>
 <body>
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
