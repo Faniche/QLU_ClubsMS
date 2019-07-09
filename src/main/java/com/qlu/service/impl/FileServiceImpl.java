@@ -100,8 +100,11 @@ public class FileServiceImpl implements FileService {
         for (File file : files) {
             FileModel fileModel = new FileModel();
             fileModel.setFile(file);
-            Loginrole role = loginroleDao.queryById(file.getAuthorid());
-            if (role.getId() == 1) {
+            Loginrole loginrole = new Loginrole();
+            loginrole.setUserid(file.getAuthorid());
+            List<Loginrole> list = loginroleDao.queryAll(loginrole);
+            loginrole = list.get(0);
+            if (loginrole.getRoleid() == 1) {
                 fileModel.setAuthor("社团管理委员会");
             } else {
                 Clubs clubs = new Clubs();

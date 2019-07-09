@@ -1,6 +1,8 @@
 package com.qlu;
 
+import com.qlu.entity.File;
 import com.qlu.entity.Message;
+import com.qlu.model.FileModel;
 import com.qlu.service.FileService;
 import com.qlu.service.MemberService;
 import org.junit.Test;
@@ -11,7 +13,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.util.List;
 
 import static org.junit.Assert.fail;
@@ -31,7 +32,12 @@ public class FileTest {
     public void queryAll(){
         com.qlu.entity.File file = new com.qlu.entity.File();
         file.setPath("images/icon");
-        List<com.qlu.entity.File> files = fileService.queryAll(file);
+        List<File> files = fileService.queryAll(file);
         System.out.println(files.size());
+    }
+
+    @Test
+    public void quertAllFile(){
+        List<FileModel> list = fileService.findAllFiles();
     }
 }
