@@ -27,7 +27,6 @@ To change this template use File | Settings | File Templates.
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery.timepicker.css">
-
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/icomoon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
