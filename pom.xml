@@ -26,7 +26,7 @@
         <slf4j.version>1.8.0-beta2</slf4j.version>
         <log4j.version>1.2.17</log4j.version>
         <!-- mysql驱动版本号 -->
-        <mysql-driver.version>6.0.6</mysql-driver.version>
+        <mysql-driver.version>8.0.28</mysql-driver.version>
     </properties>
 
     <dependencies>
